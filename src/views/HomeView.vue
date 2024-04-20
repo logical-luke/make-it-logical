@@ -23,9 +23,9 @@ import IconLocation from "@/components/icons/IconLocation.vue";
       </h3>
     </div>
     <div class="py-2">
-      <div class="w-full md:w-3/4 pt-2">
+      <div class="w-full mt-4 lg:w-1/2 pt-2 border-3 bg-white border-indigo-900 rounded-2xl shadow-md">
         <div
-            class="px-6 py-12 md:px-12 bg-white border-3 border-indigo-900 rounded-2xl shadow-md"
+            class="px-6 py-12 md:px-12"
         >
           <form action="">
             <div class="mb-8">
@@ -43,7 +43,7 @@ import IconLocation from "@/components/icons/IconLocation.vue";
                   name=""
                   id=""
                   cols="30"
-                  rows="10"
+                  rows="7"
                   placeholder="Imagine the Possibilities..."
               ></textarea>
             </div>
@@ -57,7 +57,7 @@ import IconLocation from "@/components/icons/IconLocation.vue";
       </div>
       <div class="mt-10">
         <div class="flex flex-col lg:flex-row">
-          <div class="w-full px-4 mb-12">
+          <div class="w-full mb-12">
             <div
                 class="inline-flex mb-8 w-20 h-20 items-center justify-center bg-white text-indigo-900 border-3 border-indigo-900 rounded-full shadow-md"
             >

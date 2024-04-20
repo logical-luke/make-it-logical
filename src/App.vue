@@ -17,14 +17,14 @@ import {RouterView} from 'vue-router'
         </a>
       </nav>
     </header>
-    <section class="py-26 bg-white relative overflow-hidden">
-      <div class="container px-4 mx-auto relative">
+    <section class="bg-white relative overflow-hidden">
+      <div class="container px-10 mx-auto relative">
         <main>
           <RouterView/>
         </main>
       </div>
     </section>
-    <footer class="flex flex-row pt-10 md:pt-0 justify-end items-end px-10 relative">
+    <footer class="flex flex-row mt-10 mb-6 justify-end items-end mr-6">
       <section>
         <div class="container justify-end mx-auto">
           <div class="flex flex-wrap justify-between">
