@@ -1,7 +1,39 @@
-<script setup>
-import { RouterView } from 'vue-router'
+<script setup xmlns="http://www.w3.org/1999/html">
+import {RouterView} from 'vue-router'
 </script>
 
 <template>
-  <RouterView />
+  <div id="content">
+    <header>
+      <nav class="flex flex-row justify-between items-center py-6 px-10 lg:mb-10 relative">
+        <a class="text-lg flex gap-4" href="#">
+          <div>
+            <img alt="Make IT Logical Logo" class="h-16" src="@/assets/logo.svg" width="auto"/>
+          </div>
+          <div class="flex flex-col">
+            <h1>Full-Stack Web and Mobile App Development Agency</h1>
+            <h2 class="font-bold">Make IT Logical</h2>
+          </div>
+        </a>
+      </nav>
+    </header>
+    <section class="py-26 bg-white relative overflow-hidden">
+      <div class="container px-4 mx-auto relative">
+        <main>
+          <RouterView/>
+        </main>
+      </div>
+    </section>
+    <footer class="flex flex-row pt-10 md:pt-0 justify-end items-end px-10 relative">
+      <section>
+        <div class="container justify-end mx-auto">
+          <div class="flex flex-wrap justify-between">
+            <div class="w-full lg:w-auto mb-6 lg:mb-0">
+              <p class="text-center text-lg font-extrabold">© Make IT Logical. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </footer>
+  </div>
 </template>
