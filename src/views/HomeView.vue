@@ -1,10 +1,7 @@
 <template>
   <div>
-    <div class="flex justify-between flex-col md:gap-2 lg:gap-4 md:justify-between h-[calc(100vh-135px)] xl:h-auto" >
+    <div class="flex flex-col md:gap-2 lg:gap-4 justify-between h-[calc(100vh-165px)] xl:h-auto" >
       <div>
-      <span class="text-lg font-extrabold text-indigo-500">
-        Simplifying the Experience, Together
-      </span>
       </div>
       <div>
         <h2 class="text-3xl md:text-4xl font-extrabold font-heading">
