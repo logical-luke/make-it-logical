@@ -24,7 +24,7 @@ import {RouterView} from 'vue-router'
         </main>
       </div>
     </section>
-    <footer class="flex flex-row mt-5 mb-0 justify-center items-center lg:items-end lg:justify-end lg:mr-6 ">
+    <footer class="flex flex-row mt-5 lg:mt-2 mb-0 lg:mb-2 justify-center items-center lg:items-end lg:justify-end lg:mr-6 ">
       <section>
         <div class="container justify-end mx-auto">
           <div class="flex flex-wrap justify-between">

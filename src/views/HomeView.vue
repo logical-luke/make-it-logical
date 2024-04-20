@@ -70,7 +70,7 @@
             <h3 class="text-2xl font-extrabold mb-3">Email</h3>
             <a class="text-xl underline sm:text-2xl font-bold text-gray-400" href="mailto: contact@makeitlogical.io">contact@makeitlogical.io</a>
           </div>
-          <div class="w-full px-4 mb-12 sm:mb-0">
+          <div class="w-full mb-12 sm:mb-0">
             <div
                 class="inline-flex mb-8 w-20 h-20 items-center justify-center bg-white text-indigo-900 border-3 border-indigo-900 rounded-full shadow-md"
             >
