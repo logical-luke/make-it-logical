@@ -1,61 +1,49 @@
 <template>
   <div>
-    <div class="flex justify-between flex-col md:gap-2 lg:gap-4 md:justify-between h-[calc(100vh-135px)] xl:h-auto" >
-      <div>
-      <span class="text-lg font-extrabold text-indigo-500">
-        Simplifying the Experience, Together
-      </span>
-      </div>
-      <div>
-        <h2 class="text-3xl md:text-4xl font-extrabold font-heading">
-          We want to hear YOUR VISION!
-        </h2>
-        <button
-            class="xl:hidden bg-indigo-500 hover:bg-indigo-700 inline-block mt-4 py-4 px-6 text-center text-lg leading-6 text-white font-extrabold border-3 border-indigo-900 shadow rounded transition duration-200"
-            @click="scrollToForm"
-        >
-          Inspire Us
-        </button>
-      </div>
-      <div class="flex flex-col gap-2">
-        <h2 class="text-xl">
-          Have an idea for an app?
-        </h2>
-        <p class="text-xl font-bold">Tell us about it!</p>
-        <h3 class="text-xl">
-          At <span class="font-bold">Make IT Logical</span>, we bridge tech and
-          human insights to bring goals to life as an intuitive online
-          experience for everyone.
-        </h3>
-      </div>
+    <div>
+          <span class="text-lg font-extrabold text-indigo-500">
+              Simplifying the Expierence, Together
+          </span>
+
+      <h2 class="text-3xl md:text-4xl font-extrabold font-heading mt-3 mb-3">
+        We want to hear YOUR VISION!
+      </h2>
+      <h2 class="text-xl leading-8 mb-2">
+        Have an idea for an app? <span class="font-bold">Tell us about it!</span>
+      </h2>
+      <h3 class="text-xl leading-8">
+        At <span class="font-bold">Make IT Logical</span>, we bridge tech and human insights to bring goals to
+        life as an intuitive online
+        experience for everyone.
+      </h3>
     </div>
-    <div class="py-2" id="form">
-      <div class="w-full mt-4 2xl:w-1/2 pt-2 border-3 bg-white border-indigo-900 rounded-2xl shadow-md">
+    <div class="py-2">
+      <div class="w-full mt-4 lg:w-1/2 pt-2 border-3 bg-white border-indigo-900 rounded-2xl shadow-md">
         <div
             class="px-6 py-12 md:px-12"
         >
           <template v-if="!sent">
-            <div class="mb-8">
-              <label class="block mb-2 font-extrabold" for="">Email You At</label>
-              <input
-                  class="inline-block w-full p-4 text-lg font-extrabold placeholder-indigo-900 shadow border-2 border-indigo-900 rounded outline-none"
-                  type="email"
-                  v-model="email"
-                  placeholder="your@email.com"
-              />
-            </div>
-            <div class="mb-8">
-              <label class="block mb-2 font-extrabold" for="">Your Concept</label>
-              <textarea
-                  class="w-full p-4 text-lg font-extrabold placeholder-indigo-900 shadow border-2 border-indigo-900 rounded resize-none"
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="7"
-                  v-model="message"
-                  placeholder="Imagine the Possibilities..."
-              ></textarea>
-            </div>
+          <div class="mb-8">
+            <label class="block mb-2 font-extrabold" for="">Email You At</label>
+            <input
+                class="inline-block w-full p-4 text-lg font-extrabold placeholder-indigo-900 shadow border-2 border-indigo-900 rounded outline-none"
+                type="email"
+                v-model="email"
+                placeholder="your@email.com"
+            />
+          </div>
+          <div class="mb-8">
+            <label class="block mb-2 font-extrabold" for="">Your Concept</label>
+            <textarea
+                class="w-full p-4 text-lg font-extrabold placeholder-indigo-900 shadow border-2 border-indigo-900 rounded resize-none"
+                name=""
+                id=""
+                cols="30"
+                rows="7"
+                v-model="message"
+                placeholder="Imagine the Possibilities..."
+            ></textarea>
+          </div>
           </template>
           <button
               :class="[ error ? 'bg-red-500 hover:bg-red-700' : (sent ? 'bg-green-500' : 'bg-indigo-500 hover:bg-indigo-700') ]"
@@ -63,9 +51,9 @@
               class="inline-block w-full py-4 px-6 text-center text-lg leading-6 text-white font-extrabold border-3 border-indigo-900 shadow rounded transition duration-200"
               @click="buttonClickHandler"
           >
-            <sync-loader v-if="isSending" color="white"/>
+            <sync-loader v-if="isSending" color="white" />
             <template v-else>
-              {{ this.buttonText }}
+              {{  this.buttonText }}
             </template>
 
           </button>
@@ -133,10 +121,6 @@ export default {
     },
   },
   methods: {
-    scrollToForm() {
-      const form = document.querySelector('#form');
-      form.scrollIntoView({  block: "start", inline: "end", behavior: 'smooth' });
-    },
     async buttonClickHandler() {
       if (!this.email) {
         this.error = true;

@@ -5,14 +5,14 @@ import {RouterView} from 'vue-router'
 <template>
   <div id="content">
     <header>
-      <nav class="flex flex-row justify-between items-center py-6 px-10 lg:mb-10 relative">
-        <a class="text-lg flex gap-4" href="#">
+      <nav class="flex flex-row items-center py-6 px-10 relative">
+        <a class="flex text-sm lg:text-lg flex-row gap-4" href="#">
           <div>
             <img alt="Make IT Logical Logo" class="h-16" src="@/assets/logo.svg" width="auto"/>
           </div>
-          <div class="flex flex-col">
-            <h1>Web and Mobile App Development Agency</h1>
-            <h2 class="font-bold">Make IT Logical</h2>
+          <div class="flex flex-col justify-center">
+            <h1>Web and Mobile App Development</h1>
+            <h2 class="font-extrabold">Make IT Logical</h2>
           </div>
         </a>
       </nav>
@@ -24,7 +24,7 @@ import {RouterView} from 'vue-router'
         </main>
       </div>
     </section>
-    <footer class="flex flex-row mt-5 lg:mt-2 mb-0 lg:mb-2 justify-center items-center lg:items-end lg:justify-end lg:mr-6 ">
+    <footer class="flex flex-row mt-5 mb-0 justify-center items-center xl:items-end xl:justify-end xl:mr-10 ">
       <section>
         <div class="container justify-end mx-auto">
           <div class="flex flex-wrap justify-between">
