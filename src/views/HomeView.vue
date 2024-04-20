@@ -1,8 +1,3 @@
-<script setup>
-import IconEmail from "@/components/icons/IconEmail.vue";
-import IconLocation from "@/components/icons/IconLocation.vue";
-</script>
-
 <template>
   <div>
     <div>
@@ -27,32 +22,41 @@ import IconLocation from "@/components/icons/IconLocation.vue";
         <div
             class="px-6 py-12 md:px-12"
         >
-          <form action="">
-            <div class="mb-8">
-              <label class="block mb-2 font-extrabold" for="">Email You At</label>
-              <input
-                  class="inline-block w-full p-4 text-lg font-extrabold placeholder-indigo-900 shadow border-2 border-indigo-900 rounded outline-none"
-                  type="email"
-                  placeholder="your@email.com"
-              />
-            </div>
-            <div class="mb-8">
-              <label class="block mb-2 font-extrabold" for="">Your Innovative Concept</label>
-              <textarea
-                  class="w-full p-4 text-lg font-extrabold placeholder-indigo-900 shadow border-2 border-indigo-900 rounded resize-none"
-                  name=""
-                  id=""
-                  cols="30"
-                  rows="7"
-                  placeholder="Imagine the Possibilities..."
-              ></textarea>
-            </div>
-            <button
-                class="inline-block w-full py-4 px-6 text-center text-lg leading-6 text-white font-extrabold bg-indigo-800 hover:bg-indigo-900 border-3 border-indigo-900 shadow rounded transition duration-200"
-            >
-              Inspire Us
-            </button>
-          </form>
+          <template v-if="!sent">
+          <div class="mb-8">
+            <label class="block mb-2 font-extrabold" for="">Email You At</label>
+            <input
+                class="inline-block w-full p-4 text-lg font-extrabold placeholder-indigo-900 shadow border-2 border-indigo-900 rounded outline-none"
+                type="email"
+                v-model="email"
+                placeholder="your@email.com"
+            />
+          </div>
+          <div class="mb-8">
+            <label class="block mb-2 font-extrabold" for="">Your Innovative Concept</label>
+            <textarea
+                class="w-full p-4 text-lg font-extrabold placeholder-indigo-900 shadow border-2 border-indigo-900 rounded resize-none"
+                name=""
+                id=""
+                cols="30"
+                rows="7"
+                v-model="message"
+                placeholder="Imagine the Possibilities..."
+            ></textarea>
+          </div>
+          </template>
+          <button
+              :class="[ error ? 'bg-red-500 hover:bg-red-700' : (sent ? 'bg-green-500' : 'bg-indigo-500 hover:bg-indigo-700') ]"
+              :disabled="isSending || sent"
+              class="inline-block w-full py-4 px-6 text-center text-lg leading-6 text-white font-extrabold border-3 border-indigo-900 shadow rounded transition duration-200"
+              @click="buttonClickHandler"
+          >
+            <sync-loader v-if="isSending" color="white" />
+            <template v-else>
+              {{  this.buttonText }}
+            </template>
+
+          </button>
         </div>
       </div>
       <div class="mt-10">
@@ -64,7 +68,7 @@ import IconLocation from "@/components/icons/IconLocation.vue";
               <icon-email/>
             </div>
             <h3 class="text-2xl font-extrabold mb-3">Email</h3>
-            <a class="text-xl underline sm:text-2xl font-bold text-gray-400" href= "mailto: contact@makeitlogical.io">contact@makeitlogical.io</a>
+            <a class="text-xl underline sm:text-2xl font-bold text-gray-400" href="mailto: contact@makeitlogical.io">contact@makeitlogical.io</a>
           </div>
           <div class="w-full px-4 mb-12 sm:mb-0">
             <div
@@ -81,3 +85,83 @@ import IconLocation from "@/components/icons/IconLocation.vue";
     </div>
   </div>
 </template>
+
+<script>
+import IconEmail from "@/components/icons/IconEmail.vue";
+import IconLocation from "@/components/icons/IconLocation.vue";
+import axios from "axios";
+import SyncLoader from "vue-spinner/src/SyncLoader.vue";
+
+export default {
+  name: "HomeView",
+  components: {
+    IconEmail,
+    IconLocation,
+    SyncLoader
+  },
+  data() {
+    return {
+      email: '',
+      isSending: false,
+      sent: false,
+      error: false,
+      buttonText: 'Inspire Us',
+      message: '',
+    }
+  },
+  watch: {
+    email() {
+      this.error = false;
+      this.buttonText = 'Inspire Us';
+    },
+    message() {
+      this.error = false;
+      this.buttonText = 'Inspire Us';
+    },
+  },
+  methods: {
+    async buttonClickHandler() {
+      if (!this.email) {
+        this.error = true;
+        this.buttonText = 'Email cannot be empty';
+
+        return;
+      }
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(this.email)) {
+        this.error = true;
+        this.buttonText = 'Invalid email';
+
+        return;
+      }
+
+      if (!this.message) {
+        this.error = true;
+        this.buttonText = 'Message cannot be empty';
+
+        return;
+      }
+
+      this.isSending = true;
+      const response = await axios.post(import.meta.env.VITE_API_URL,
+          {
+            email: this.email,
+            message: this.message,
+            hash: import.meta.env.VITE_SENDGRID_HASH_KEY // not an API key but a hash key for internal API
+          }
+      );
+
+      if (response.status === 200) {
+        this.buttonText = 'We will reply soon!';
+        this.sent = true;
+        this.error = false;
+        this.isSending = false;
+      } else {
+        this.buttonText = 'Something went wrong :( Try again later';
+        this.error = true;
+        this.isSending = false;
+      }
+    }
+  },
+};
+</script>
