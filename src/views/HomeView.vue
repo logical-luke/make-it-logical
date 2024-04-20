@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex flex-col md:gap-2 lg:gap-4 justify-between h-[calc(100vh-165px)] xl:h-auto" >
+    <div class="flex flex-col sm:gap-0 md:gap-2 lg:gap-4 justify-between h-[calc(100vh-9.4rem)] xl:h-auto" >
       <div>
       </div>
       <div>

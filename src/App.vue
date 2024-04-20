@@ -5,7 +5,7 @@ import {RouterView} from 'vue-router'
 <template>
   <div id="content">
     <header>
-      <nav class="flex flex-row items-center py-6 px-10 relative">
+      <nav class="flex flex-row items-center pt-6 pb-2 px-10 relative">
         <a class="flex text-sm lg:text-lg flex-row gap-4" href="#">
           <div>
             <img alt="Make IT Logical Logo" class="h-16" src="@/assets/logo.svg" width="auto"/>
