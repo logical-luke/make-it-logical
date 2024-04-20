@@ -11,7 +11,7 @@ import {RouterView} from 'vue-router'
             <img alt="Make IT Logical Logo" class="h-16" src="@/assets/logo.svg" width="auto"/>
           </div>
           <div class="flex flex-col">
-            <h1>Full-Stack Web and Mobile App Development Agency</h1>
+            <h1>Web and Mobile App Development Agency</h1>
             <h2 class="font-bold">Make IT Logical</h2>
           </div>
         </a>
