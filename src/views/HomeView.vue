@@ -33,7 +33,7 @@ import IconLocation from "@/components/icons/IconLocation.vue";
               <input
                   class="inline-block w-full p-4 text-lg font-extrabold placeholder-indigo-900 shadow border-2 border-indigo-900 rounded outline-none"
                   type="email"
-                  placeholder="youremail@awesomeideas.com"
+                  placeholder="your@email.com"
               />
             </div>
             <div class="mb-8">
