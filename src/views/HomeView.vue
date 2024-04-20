@@ -7,11 +7,11 @@ import IconLocation from "@/components/icons/IconLocation.vue";
   <div>
     <div>
           <span class="text-lg font-extrabold text-indigo-500">
-              Simplifying the Web, Together
+              Simplifying the Expierence, Together
           </span>
 
       <h2 class="text-3xl md:text-4xl font-extrabold font-heading mt-3 mb-3">
-        We want to hear about YOUR vision of web!
+        We want to hear about YOUR VISION OF INTERNET!
       </h2>
       <h2 class="text-xl leading-8 mb-2">
         Have an idea for an app? <span class="font-bold">Tell us about it!</span>
