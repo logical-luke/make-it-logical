@@ -1,5 +1,5 @@
 <template>
-  <div class="h-[calc(100vh-12.4rem)] lg:h-[calc(100vh-10.4rem)] flex flex-col justify-center">
+  <div class="h-[calc(100vh-12.4rem)] lg:h-[calc(100vh-10.9rem)] flex flex-col justify-center">
     <section class="bg-white -mt-72">
       <div class="container items-center mx-auto">
         <div class="max-w-xl mx-auto text-center">
