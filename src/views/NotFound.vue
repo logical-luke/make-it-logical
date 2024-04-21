@@ -1,89 +1,19 @@
 <template>
-  <div>
-    <div>
-          <span class="text-lg font-extrabold text-indigo-500">
-              Simplifying the Expierence, Together
-          </span>
-
-      <h2 class="text-3xl md:text-4xl font-extrabold font-heading mt-3 mb-3">
-        We want to hear YOUR VISION!
-      </h2>
-      <h2 class="text-xl leading-8 mb-2">
-        Have an idea for an app? <span class="font-bold">Tell us about it!</span>
-      </h2>
-      <h3 class="text-xl leading-8">
-        At <span class="font-bold">Make IT Logical</span>, we bridge tech and human insights to bring goals to
-        life as an intuitive online
-        experience for everyone.
-      </h3>
-    </div>
-    <div class="py-2">
-      <div class="w-full mt-4 lg:w-1/2 pt-2 border-3 bg-white border-indigo-900 rounded-2xl shadow-md">
-        <div
-            class="px-6 py-12 md:px-12"
-        >
-          <template v-if="!sent">
-          <div class="mb-8">
-            <label class="block mb-2 font-extrabold" for="">Email You At</label>
-            <input
-                class="inline-block w-full p-4 text-lg font-extrabold placeholder-indigo-900 shadow border-2 border-indigo-900 rounded outline-none"
-                type="email"
-                v-model="email"
-                placeholder="your@email.com"
-            />
-          </div>
-          <div class="mb-8">
-            <label class="block mb-2 font-extrabold" for="">Your Concept</label>
-            <textarea
-                class="w-full p-4 text-lg font-extrabold placeholder-indigo-900 shadow border-2 border-indigo-900 rounded resize-none"
-                name=""
-                id=""
-                cols="30"
-                rows="7"
-                v-model="message"
-                placeholder="Imagine the Possibilities..."
-            ></textarea>
-          </div>
-          </template>
-          <button
-              :class="[ error ? 'bg-red-500 hover:bg-red-700' : (sent ? 'bg-green-500' : 'bg-indigo-500 hover:bg-indigo-700') ]"
-              :disabled="isSending || sent"
-              class="inline-block w-full py-4 px-6 text-center text-lg leading-6 text-white font-extrabold border-3 border-indigo-900 shadow rounded transition duration-200"
-              @click="buttonClickHandler"
-          >
-            <sync-loader v-if="isSending" color="white" />
-            <template v-else>
-              {{  this.buttonText }}
-            </template>
-
-          </button>
+  <div class="h-[calc(100vh-12.4rem)] lg:h-[calc(100vh-10.4rem)] flex flex-col justify-center">
+    <section class="bg-white -mt-72">
+      <div class="container items-center mx-auto">
+        <div class="max-w-xl mx-auto text-center">
+          <span
+              class="inline-flex mb-6 h-6 items-center justify-center text-xs font-extrabold px-2 text-indigo-900 rounded border-2 border-indigo-900 bg-green-200 uppercase shadow-sm">Error 404</span>
+          <h1 class="text-3xl sm:text-4xl xl:text-5xl font-extrabold font-heading mb-3">Page not found</h1>
+          <p class="text-xl font-extrabold leading-7 mb-6">We tried our best, but we couldn't find such page.</p>
+          <div class="flex flex-wrap items-center justify-center">
+            <router-link
+              class="inline-block w-full md:w-auto py-4 px-6 mb-4 md:mb-0 md:mr-6 text-center leading-6 text-lg text-white font-extrabold bg-indigo-800 hover:bg-indigo-900 border-3 border-indigo-900 shadow rounded transition duration-200"
+              to="/">Go back to Homepage</router-link></div>
         </div>
       </div>
-      <div class="mt-10">
-        <div class="flex flex-col lg:flex-row">
-          <div class="w-full items-center flex lg:items-start flex-col mb-12">
-            <div
-                class="inline-flex mb-8 w-20 h-20 items-center justify-center bg-white text-indigo-900 border-3 border-indigo-900 rounded-full shadow-md"
-            >
-              <icon-email/>
-            </div>
-            <p class="text-2xl font-extrabold mb-3">Email</p>
-            <a class="text-xl underline sm:text-2xl font-bold text-gray-400" href="mailto: contact@makeitlogical.io">contact@makeitlogical.io</a>
-          </div>
-          <div class="w-full items-center flex lg:items-start flex-col mb-12 sm:mb-0">
-            <div
-                class="inline-flex mb-8 w-20 h-20 items-center justify-center bg-white text-indigo-900 border-3 border-indigo-900 rounded-full shadow-md"
-            >
-              <icon-location/>
-            </div>
-            <p class="text-2xl font-extrabold mb-3">Office</p>
-            <p class="text-xl sm:text-2xl font-bold text-gray-400">al. Wiśniowa 36a/304</p>
-            <p class="text-xl sm:text-2xl font-bold text-gray-400">53-137 Wrocław</p>
-            <p class="text-xl sm:text-2xl font-bold text-gray-400">Poland</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    </section>
   </div>
 </template>
 
