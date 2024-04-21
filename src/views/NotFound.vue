@@ -1,12 +1,12 @@
 <template>
-  <div class="h-[calc(100vh-12.4rem)] lg:h-[calc(100vh-10.9rem)] flex flex-col justify-center">
+  <div class="h-[calc(100vh-0.4rem)] lg:h-[calc(100vh-10.9rem)] flex flex-col justify-center">
     <section class="bg-white -mt-72">
       <div class="container items-center mx-auto">
         <div class="max-w-xl mx-auto text-center">
           <span
               class="inline-flex mb-6 h-6 items-center justify-center text-xs font-extrabold px-2 text-indigo-900 rounded border-2 border-indigo-900 bg-green-200 uppercase shadow-sm">Error 404</span>
           <h1 class="text-3xl sm:text-4xl xl:text-5xl font-extrabold font-heading mb-3">Page not found</h1>
-          <p class="text-xl font-extrabold leading-7 mb-6">We tried our best, but we couldn't find such page.</p>
+          <p class="text-xl font-extrabold leading-7 lg:mb-6">We tried our best, but we couldn't find such page.</p>
           <div class="flex flex-wrap items-center justify-center">
             <router-link
               class="inline-block w-full md:w-auto py-4 px-6 mb-4 md:mb-0 md:mr-6 text-center leading-6 text-lg text-white font-extrabold bg-indigo-800 hover:bg-indigo-900 border-3 border-indigo-900 shadow rounded transition duration-200"
