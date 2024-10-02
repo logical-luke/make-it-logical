@@ -278,20 +278,20 @@ const getServiceColorClass = (id: number) => {
 <template>
   <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <section id="home" class="py-20 md:py-32 relative overflow-hidden">
-      <div
-        class="absolute inset-0 opacity-30"
-      ></div>
-      <img
-        src="@/assets/hero-image.svg"
-        alt="Digital Transformation"
-        class="absolute top-0 right-0 w-full md:w-3/4 h-full object-cover object-right opacity-70 dark:opacity-50"
-      />
-      <div
-        class="absolute inset-0 bg-white dark:bg-black opacity-60 dark:opacity-70"
-      ></div>
-      <div class="relative z-10 md:w-1/2">
+      <div class="absolute inset-0 bg-honolulu-blue-50 dark:bg-honolulu-blue-900 opacity-30"></div>
+      <div class="absolute inset-0 overflow-hidden">
+        <img
+          src="@/assets/hero-image.svg"
+          alt="Digital Transformation"
+          class="absolute h-full w-auto min-w-full object-cover object-left opacity-70 dark:opacity-50"
+        />
         <div
-          class="bg-white dark:bg-midnight-green-900 bg-opacity-80 dark:bg-opacity-90 p-6 rounded-lg shadow-md"
+          class="absolute inset-0 bg-gradient-to-r from-white to-transparent dark:from-black dark:to-transparent"
+        ></div>
+      </div>
+      <div class="relative z-10 md:w-1/2 lg:w-3/5">
+        <div
+          class="bg-white dark:bg-midnight-green-900 bg-opacity-80 dark:bg-opacity-80 p-6 rounded-lg shadow-md"
         >
           <h1
             class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-honolulu-blue-600 dark:text-honolulu-blue-400 mb-6 transition-all duration-300 transform hover:scale-105"
@@ -299,11 +299,20 @@ const getServiceColorClass = (id: number) => {
             Elevate Your Digital Presence
           </h1>
           <p
-            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-12 transition-opacity duration-300 ease-in-out"
+            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
           >
             At <strong>Make IT Logical</strong>, we don't just build websites and apps.
-            <br/><br/>We craft digital experiences that captivate, engage, and convert.
-            <br/><br/>Your vision, our expertise – together, we'll redefine what's possible in the digital realm.
+          </p>
+          <p
+            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
+          >
+            We craft digital experiences that captivate, engage, and convert.
+          </p>
+          <p
+            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
+          >
+            Your vision, our expertise – together, we'll redefine what's possible in the digital
+            realm.
           </p>
           <Button
             label="Ignite Your Digital Journey"
@@ -315,29 +324,6 @@ const getServiceColorClass = (id: number) => {
       </div>
     </section>
 
-    <section
-      id="about"
-      class="py-20 relative overflow-hidden bg-white dark:bg-midnight-green-900 rounded-lg transition-all duration-300"
-    >
-      <div class="relative z-10 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-8 md:mb-0">
-          <img src="@/assets/team.png" alt="Our Team" class="w-full h-auto rounded-lg shadow" />
-        </div>
-        <div class="md:w-1/2 md:pl-12">
-          <h2
-            class="text-3xl md:text-4xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
-          >
-            About Us
-          </h2>
-          <p
-            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
-          >
-            At <strong>Make IT Logical</strong>, we're more than just developers – we're innovators, problem-solvers, and digital architects. Our passion for technology and commitment to excellence drive us to tackle the most complex challenges head-on.
-          </p>
-        </div>
-      </div>
-    </section>
-
     <section id="services" class="py-20 mt-8">
       <h2
         class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
@@ -345,10 +331,15 @@ const getServiceColorClass = (id: number) => {
         Our Services
       </h2>
       <p
-        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-12 max-w-3xl mx-auto text-center transition-opacity duration-300 ease-in-out"
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
       >
-        From concept to execution, we deliver cutting-edge solutions that drive your business forward.
-        <br/>Our services are tailored to meet the unique challenges of the digital age.
+        From concept to execution, we deliver cutting-edge solutions that drive your business
+        forward.
+      </p>
+      <p
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-12 transition-opacity duration-300 ease-in-out"
+      >
+        Our services are tailored to meet the unique challenges of the digital age.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
@@ -383,50 +374,51 @@ const getServiceColorClass = (id: number) => {
       </div>
     </section>
 
-    <section
-      id="process"
-      class="py-20 mt-8 bg-white dark:bg-midnight-green-900 rounded-lg transition-all duration-300"
-    >
-      <div class="relative z-10 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-8 md:mb-0">
-          <img
-            src="@/assets/process.png"
-            alt="Our Process"
-            class="w-full h-auto rounded-lg shadow"
-          />
-        </div>
-        <div class="md:w-1/2 md:pl-12">
-          <h2
-            class="text-3xl md:text-4xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
+    <section id="process" class="py-20 mt-8 relative">
+      <div class="absolute inset-0 bg-lapis-lazuli-50 dark:bg-lapis-lazuli-900 opacity-70"></div>
+      <div class="absolute inset-0 overflow-hidden">
+        <img
+          src="@/assets/process.png"
+          alt="Our Process"
+          class="w-full h-full object-cover opacity-30 dark:opacity-20"
+        />
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
+        >
+          Our Proven Process
+        </h2>
+        <p
+          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-2 transition-opacity duration-300 ease-in-out"
+        >
+          We've refined our approach to ensure every project is a success.
+        </p>
+        <p
+          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
+        >
+          Our process is designed to maximize efficiency, creativity, and results.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            v-for="(step, index) in processSteps"
+            :key="step.label"
+            class="bg-white dark:bg-midnight-green-800 rounded-lg p-4 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-silver-200 dark:border-midnight-green-700"
           >
-            Our Proven Process
-          </h2>
-          <p
-            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
-          >
-            We've refined our approach to ensure every project is a success.
-            <br/>Our process is designed to maximize efficiency, creativity, and results.
-          </p>
-          <div class="space-y-4">
-            <div
-              v-for="(step, index) in processSteps"
-              :key="step.label"
-              class="bg-white dark:bg-midnight-green-800 rounded-lg p-4 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-silver-200 dark:border-midnight-green-700"
-            >
-              <div class="flex items-center">
-                <div
-                  class="w-10 h-10 bg-honolulu-blue-50 dark:bg-honolulu-blue-900 rounded-full flex items-center justify-center text-honolulu-blue-600 dark:text-honolulu-blue-400 text-xl font-bold mr-4"
-                >
-                  <i :class="step.icon"></i>
-                </div>
-                <h3 class="text-lg font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400">
-                  {{ step.label }}
-                </h3>
+            <div class="flex items-center mb-3">
+              <div
+                class="w-10 h-10 bg-honolulu-blue-50 dark:bg-honolulu-blue-900 rounded-full flex items-center justify-center text-honolulu-blue-600 dark:text-honolulu-blue-400 text-xl font-bold mr-4"
+              >
+                <i :class="step.icon"></i>
               </div>
-              <p class="text-midnight-green-700 dark:text-silver-300 mt-2">
-                {{ step.description }}
-              </p>
+              <h3 class="text-lg font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400">
+                {{ step.label }}
+              </h3>
             </div>
+            <p class="text-midnight-green-700 dark:text-silver-300 mb-2">{{ step.description }}</p>
+            <p class="text-midnight-green-600 dark:text-silver-400 text-sm">
+              {{ step.fullDescription }}
+            </p>
           </div>
         </div>
       </div>
@@ -439,7 +431,19 @@ const getServiceColorClass = (id: number) => {
         Our Team
       </h2>
       <p
-        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-12 max-w-3xl mx-auto text-center transition-opacity duration-300 ease-in-out"
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
+      >
+        At <strong>Make IT Logical</strong>, we're more than just developers – we're innovators,
+        problem-solvers, and digital architects.
+      </p>
+      <p
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
+      >
+        Our passion for technology and commitment to excellence drive us to tackle the most complex
+        challenges head-on.
+      </p>
+      <p
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-12 transition-opacity duration-300 ease-in-out"
       >
         Our team combines diverse skills to deliver exceptional results. Each role is crucial in
         bringing your vision to life:
@@ -460,104 +464,116 @@ const getServiceColorClass = (id: number) => {
       </div>
     </section>
 
-    <section
-      id="contact"
-      class="py-20 mt-8 bg-white dark:bg-midnight-green-900 rounded-lg transition-all duration-300"
-    >
-      <div class="relative z-10 flex flex-col md:flex-row items-center">
-        <div class="md:w-1/2 mb-8 md:mb-0">
-          <img
-            src="@/assets/services.png"
-            alt="Our Services"
-            class="w-full h-auto rounded-lg shadow"
-          />
-        </div>
-        <div class="md:w-1/2 md:pl-12">
-          <h2
-            class="text-3xl md:text-4xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
+    <section id="contact" class="py-20 mt-8 relative">
+      <div class="absolute inset-0 bg-silver-100 dark:bg-midnight-green-900 opacity-70"></div>
+      <div class="absolute inset-0 overflow-hidden">
+        <img
+          src="@/assets/services.png"
+          alt="Our Services"
+          class="w-full h-full object-cover opacity-30 dark:opacity-20"
+        />
+      </div>
+      <div class="relative z-10 max-w-7xl mx-auto">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
+        >
+          Let's Create Something Amazing
+        </h2>
+        <p
+          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
+        >
+          Ready to take your digital presence to the next level?
+        </p>
+        <p
+          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
+        >
+          We're here to turn your vision into reality. Let's start a conversation and explore the
+          possibilities together.
+        </p>
+        <div class="max-w-7xl mx-auto transition-all duration-300 transform hover:scale-105">
+          <Card
+            class="bg-white dark:bg-midnight-green-800 shadow hover:shadow-md rounded-lg overflow-hidden border border-silver-200 dark:border-midnight-green-700"
           >
-            Let's Create Something Amazing
-          </h2>
-          <p
-            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
-          >
-            Ready to take your digital presence to the next level?
-            <br/>We're here to turn your vision into reality.
-            <br/>Let's start a conversation and explore the possibilities together.
-          </p>
-          <div class="transition-all duration-300 transform hover:scale-105">
-            <Card
-              class="bg-white dark:bg-midnight-green-800 shadow hover:shadow-md rounded-lg overflow-hidden border border-silver-200 dark:border-midnight-green-700"
-            >
-              <template #content>
-                <form @submit.prevent="submitForm" class="space-y-6">
-                  <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        for="name"
-                        class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-300"
-                      >
-                        Name
-                      </label>
-                      <InputText
-                        id="name"
-                        v-model="form.name"
-                        class="w-full p-inputtext-lg border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
-                        :class="{ 'p-invalid': v$.name.$invalid && submitted }"
-                      />
-                      <small class="p-error" v-if="v$.name.$invalid && submitted">
-                        Name is required
-                      </small>
-                    </div>
-                    <div>
-                      <label
-                        for="email"
-                        class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-300"
-                        >Email</label
-                      >
-                      <InputText
-                        id="email"
-                        v-model="form.email"
-                        class="w-full p-inputtext-lg border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
-                        :class="{ 'p-invalid': v$.email.$invalid && submitted }"
-                      />
-                      <small class="p-error" v-if="v$.email.$invalid && submitted">{{
-                        v$.email.$errors[0].$message
-                      }}</small>
-                    </div>
+            <template #content>
+              <form @submit.prevent="submitForm" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label
+                      for="name"
+                      class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-300"
+                    >
+                      Name
+                    </label>
+                    <InputText
+                      id="name"
+                      v-model="form.name"
+                      class="w-full p-inputtext-lg border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
+                      :class="{ 'p-invalid': v$.name.$invalid && submitted }"
+                    />
+                    <small class="p-error" v-if="v$.name.$invalid && submitted">
+                      Name is required
+                    </small>
                   </div>
                   <div>
                     <label
-                      for="message"
+                      for="email"
                       class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-300"
+                      >Email</label
                     >
-                      Your Vision
-                    </label>
-                    <Textarea
-                      id="message"
-                      v-model="form.message"
-                      rows="5"
-                      class="w-full p-inputtext-lg border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
-                      :class="{ 'p-invalid': v$.message.$invalid && submitted }"
+                    <InputText
+                      id="email"
+                      v-model="form.email"
+                      class="w-full border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
+                      :class="{ 'p-invalid': v$.email.$invalid && submitted }"
                     />
-                    <small class="p-error" v-if="v$.message.$invalid && submitted"
-                      >Message is required
-                    </small>
+                    <small class="p-error" v-if="v$.email.$invalid && submitted">{{
+                      v$.email.$errors[0].$message
+                    }}</small>
                   </div>
-                  <Button
-                    type="submit"
-                    :label="buttonText"
-                    icon="pi pi-send"
-                    class="w-full p-button-lg p-button-primary text-white bg-honolulu-blue-600 hover:bg-honolulu-blue-700 dark:bg-honolulu-blue-500 dark:hover:bg-honolulu-blue-600 transition-all duration-300 py-3 rounded-full"
-                    :loading="isSending"
-                    :disabled="isSending || sent"
+                </div>
+                <div>
+                  <label
+                    for="message"
+                    class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-300"
+                  >
+                    Message
+                  </label>
+                  <Textarea
+                    id="message"
+                    v-model="form.message"
+                    rows="5"
+                    class="w-full border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
+                    :class="{ 'p-invalid': v$.message.$invalid && submitted }"
                   />
-                </form>
-              </template>
-            </Card>
-          </div>
+                  <small class="p-error" v-if="v$.message.$invalid && submitted"
+                    >Message is required
+                  </small>
+                </div>
+                <Button
+                  type="submit"
+                  :label="buttonText"
+                  icon="pi pi-send"
+                  class="w-full text-white bg-honolulu-blue-600 hover:bg-honolulu-blue-700 dark:bg-honolulu-blue-500 dark:hover:bg-honolulu-blue-600 transition-all duration-300 py-3 rounded-full"
+                  :loading="isSending"
+                  :disabled="isSending || sent"
+                />
+              </form>
+            </template>
+          </Card>
         </div>
       </div>
     </section>
   </div>
 </template>
+
+<style scoped>
+section#home,
+section#about,
+section#process,
+section#contact {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+}
+</style>
