@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import HomeView from '@/views/HomeView.vue'
+import Button from 'primevue/button';
 
 const navItems = ref([
   { id: 1, name: 'Home', href: '#home' },
@@ -9,11 +10,18 @@ const navItems = ref([
   { id: 4, name: 'Contact', href: '#contact' },
 ]);
 
-const scrollTo = (href) => {
+const mobileMenuOpen = ref(false);
+
+const scrollTo = (href: string) => {
   const element = document.querySelector(href);
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' });
   }
+  mobileMenuOpen.value = false;
+};
+
+const toggleMobileMenu = () => {
+  mobileMenuOpen.value = !mobileMenuOpen.value;
 };
 </script>
 
@@ -25,18 +33,35 @@ const scrollTo = (href) => {
           <img src="@/assets/logo.svg" alt="Make IT Logical Logo" class="h-10 w-auto">
           <span class="text-2xl font-bold text-blue-600 dark:text-blue-400">Make IT Logical</span>
         </div>
-        <nav class="flex items-center">
-          <ul class="flex space-x-6 mr-6">
+        <nav class="hidden md:flex items-center">
+          <ul class="flex space-x-6">
             <li v-for="item in navItems" :key="item.id">
               <a :href="item.href" class="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300" @click.prevent="scrollTo(item.href)">{{ item.name }}</a>
             </li>
           </ul>
         </nav>
+        <Button icon="pi pi-bars" class="p-button-text md:hidden" @click="toggleMobileMenu" />
       </div>
     </header>
 
+    <!-- Mobile Menu -->
+    <div v-if="mobileMenuOpen" class="fixed inset-0 z-50 bg-white dark:bg-gray-900 md:hidden">
+      <div class="flex flex-col h-full">
+        <div class="flex justify-end p-4">
+          <Button icon="pi pi-times" class="p-button-text" @click="toggleMobileMenu" />
+        </div>
+        <nav class="flex-grow flex items-center justify-center">
+          <ul class="space-y-6 text-center">
+            <li v-for="item in navItems" :key="item.id">
+              <a :href="item.href" class="text-2xl text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300" @click.prevent="scrollTo(item.href)">{{ item.name }}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+
     <main class="pt-20">
-      <HomeView />
+      <HomeView :scrollTo="scrollTo" />
     </main>
 
     <footer class="bg-blue-600 dark:bg-blue-800 text-white py-8 px-6 transition-colors duration-300">

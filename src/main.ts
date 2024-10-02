@@ -5,6 +5,7 @@ import App from './App.vue'
 import PrimeVue from 'primevue/config'
 import "primeicons/primeicons.css";
 import Lara from '@primevue/themes/lara';
+import Tooltip from 'primevue/tooltip';
 
 const app = createApp(App)
 
@@ -19,4 +20,5 @@ app.use(PrimeVue, {
         }
     }
 });
+app.directive('tooltip', Tooltip);
 app.mount('#app')
