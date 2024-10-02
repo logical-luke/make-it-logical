@@ -299,17 +299,17 @@ const getServiceColorClass = (id: number) => {
             Elevate Your Digital Presence
           </h1>
           <p
-            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
+            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
           >
             At <strong>Make IT Logical</strong>, we don't just build websites and apps.
           </p>
           <p
-            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
+            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
           >
             We craft digital experiences that captivate, engage, and convert.
           </p>
           <p
-            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
+            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-8 transition-opacity duration-300 ease-in-out"
           >
             Your vision, our expertise – together, we'll redefine what's possible in the digital
             realm.
@@ -326,18 +326,18 @@ const getServiceColorClass = (id: number) => {
 
     <section id="services" class="py-20 mt-8">
       <h2
-        class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
+        class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-6 transition-all duration-300 transform hover:scale-105"
       >
         Our Services
       </h2>
       <p
-        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
       >
         From concept to execution, we deliver cutting-edge solutions that drive your business
         forward.
       </p>
       <p
-        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-12 transition-opacity duration-300 ease-in-out"
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-12 transition-opacity duration-300 ease-in-out"
       >
         Our services are tailored to meet the unique challenges of the digital age.
       </p>
@@ -355,10 +355,10 @@ const getServiceColorClass = (id: number) => {
             ></i>
           </div>
           <div class="p-6">
-            <h3 class="text-xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-4">
+            <h3 class="text-xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-4">
               {{ service.title }}
             </h3>
-            <p class="text-midnight-green-700 dark:text-silver-300 mb-4">
+            <p class="text-midnight-green-700 dark:text-silver-200 mb-4">
               {{ service.description }}
             </p>
             <ul class="space-y-2">
@@ -366,7 +366,7 @@ const getServiceColorClass = (id: number) => {
                 <i
                   class="pi pi-check-circle text-honolulu-blue-500 dark:text-honolulu-blue-400 mr-2"
                 ></i>
-                <span class="text-midnight-green-700 dark:text-silver-300">{{ feature }}</span>
+                <span class="text-midnight-green-700 dark:text-silver-200">{{ feature }}</span>
               </li>
             </ul>
           </div>
@@ -385,17 +385,17 @@ const getServiceColorClass = (id: number) => {
       </div>
       <div class="relative z-10 max-w-7xl mx-auto">
         <h2
-          class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
+          class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-6 transition-all duration-300 transform hover:scale-105"
         >
           Our Proven Process
         </h2>
         <p
-          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-2 transition-opacity duration-300 ease-in-out"
+          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-2 transition-opacity duration-300 ease-in-out"
         >
           We've refined our approach to ensure every project is a success.
         </p>
         <p
-          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
+          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-8 transition-opacity duration-300 ease-in-out"
         >
           Our process is designed to maximize efficiency, creativity, and results.
         </p>
@@ -411,11 +411,11 @@ const getServiceColorClass = (id: number) => {
               >
                 <i :class="step.icon"></i>
               </div>
-              <h3 class="text-lg font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400">
+              <h3 class="text-lg font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">
                 {{ step.label }}
               </h3>
             </div>
-            <p class="text-midnight-green-700 dark:text-silver-300 mb-2">{{ step.description }}</p>
+            <p class="text-midnight-green-700 dark:text-silver-200 mb-2">{{ step.description }}</p>
             <p class="text-midnight-green-600 dark:text-silver-400 text-sm">
               {{ step.fullDescription }}
             </p>
@@ -426,24 +426,24 @@ const getServiceColorClass = (id: number) => {
 
     <section id="team" class="py-20 mt-8">
       <h2
-        class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
+        class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-6 transition-all duration-300 transform hover:scale-105"
       >
         Our Team
       </h2>
       <p
-        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
       >
         At <strong>Make IT Logical</strong>, we're more than just developers – we're innovators,
         problem-solvers, and digital architects.
       </p>
       <p
-        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
       >
         Our passion for technology and commitment to excellence drive us to tackle the most complex
         challenges head-on.
       </p>
       <p
-        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-12 transition-opacity duration-300 ease-in-out"
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-12 transition-opacity duration-300 ease-in-out"
       >
         Our team combines diverse skills to deliver exceptional results. Each role is crucial in
         bringing your vision to life:
@@ -455,10 +455,10 @@ const getServiceColorClass = (id: number) => {
           class="bg-white dark:bg-midnight-green-800 rounded-lg shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 p-6 text-center border border-silver-200 dark:border-midnight-green-700"
         >
           <div class="text-5xl mb-4">{{ member.avatar }}</div>
-          <h3 class="text-xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-2">
+          <h3 class="text-xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-2">
             {{ member.name }}
           </h3>
-          <p class="text-midnight-green-700 dark:text-silver-300">{{ member.role }}</p>
+          <p class="text-midnight-green-700 dark:text-silver-200">{{ member.role }}</p>
           <Button icon="pi pi-info-circle" class="mt-4" v-tooltip.top="member.description" />
         </div>
       </div>
@@ -475,17 +475,17 @@ const getServiceColorClass = (id: number) => {
       </div>
       <div class="relative z-10 max-w-7xl mx-auto">
         <h2
-          class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
+          class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-6 transition-all duration-300 transform hover:scale-105"
         >
           Let's Create Something Amazing
         </h2>
         <p
-          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-4 transition-opacity duration-300 ease-in-out"
+          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
         >
           Ready to take your digital presence to the next level?
         </p>
         <p
-          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
+          class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-8 transition-opacity duration-300 ease-in-out"
         >
           We're here to turn your vision into reality. Let's start a conversation and explore the
           possibilities together.
@@ -500,7 +500,7 @@ const getServiceColorClass = (id: number) => {
                   <div>
                     <label
                       for="name"
-                      class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-300"
+                      class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200"
                     >
                       Name
                     </label>
@@ -517,7 +517,7 @@ const getServiceColorClass = (id: number) => {
                   <div>
                     <label
                       for="email"
-                      class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-300"
+                      class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200"
                       >Email</label
                     >
                     <InputText
@@ -534,7 +534,7 @@ const getServiceColorClass = (id: number) => {
                 <div>
                   <label
                     for="message"
-                    class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-300"
+                    class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200"
                   >
                     Message
                   </label>
