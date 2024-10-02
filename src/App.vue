@@ -28,7 +28,7 @@ const toggleMobileMenu = () => {
 
 <template>
   <div class="min-h-screen bg-white dark:bg-midnight-green-800 transition-colors duration-300">
-    <header class="bg-white dark:bg-midnight-green-800 py-4 px-6 fixed w-full z-50 transition-colors duration-300">
+    <header class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-50 transition-colors duration-300">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-2">
           <img src="@/assets/logo.svg" alt="Make IT Logical Logo" class="h-10 w-auto">

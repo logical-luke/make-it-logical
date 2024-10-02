@@ -278,17 +278,14 @@ const getServiceColorClass = (id: number) => {
 <template>
   <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <section id="home" class="py-20 md:py-32 relative overflow-hidden">
-      <div class="absolute inset-0 bg-honolulu-blue-50 dark:bg-honolulu-blue-900 opacity-30"></div>
       <div class="absolute inset-0 overflow-hidden">
-        <img
-          src="@/assets/hero-image.png"
-          alt="Digital Transformation"
-          class="absolute h-full w-auto min-w-full object-cover object-left opacity-70 dark:opacity-50"
-        />
-        <div
-          class="absolute inset-0 bg-gradient-to-r from-white to-transparent dark:from-midnight-green-800 dark:to-transparent"
-        ></div>
+        <picture>
+          <source srcset="@/assets/hero-image.webp" type="image/webp">
+          <source srcset="@/assets/hero-image.png" type="image/png">
+          <img src="@/assets/hero-image.png" alt="Digital Transformation" class="absolute h-full w-auto min-w-full object-cover object-left">
+        </picture>
       </div>
+      <div class="absolute inset-0 bg-honolulu-blue-50 dark:bg-honolulu-blue-900 opacity-30"></div>
       <div class="relative z-10 md:w-1/2 lg:w-3/5">
         <div
           class="bg-white dark:bg-midnight-green-900 bg-opacity-80 dark:bg-opacity-80 p-6 rounded-lg shadow-md"
@@ -377,11 +374,15 @@ const getServiceColorClass = (id: number) => {
     <section id="process" class="py-20 mt-8 relative">
       <div class="absolute inset-0 bg-lapis-lazuli-50 dark:bg-lapis-lazuli-900 opacity-70"></div>
       <div class="absolute inset-0 overflow-hidden">
-        <img
-          src="@/assets/process.png"
-          alt="Our Process"
-          class="w-full h-full object-cover opacity-30 dark:opacity-20"
-        />
+        <picture>
+          <source srcset="@/assets/process.webp" type="image/webp" />
+          <source srcset="@/assets/process.png" type="image/png" />
+          <img
+            src="@/assets/process.png"
+            alt="Our Process"
+            class="w-full h-full object-cover opacity-30 dark:opacity-20"
+          />
+        </picture>
       </div>
       <div class="relative z-10 max-w-7xl mx-auto">
         <h2
@@ -467,11 +468,15 @@ const getServiceColorClass = (id: number) => {
     <section id="contact" class="py-20 mt-8 relative">
       <div class="absolute inset-0 bg-silver-100 dark:bg-midnight-green-900 opacity-70"></div>
       <div class="absolute inset-0 overflow-hidden">
-        <img
-          src="@/assets/services.png"
-          alt="Our Services"
-          class="w-full h-full object-cover opacity-30 dark:opacity-20"
-        />
+        <picture>
+          <source srcset="@/assets/services.webp" type="image/webp" />
+          <source srcset="@/assets/services.png" type="image/png" />
+          <img
+            src="@/assets/services.png"
+            alt="Our Services"
+            class="w-full h-full object-cover opacity-30 dark:opacity-20"
+          />
+        </picture>
       </div>
       <div class="relative z-10 max-w-7xl mx-auto">
         <h2
