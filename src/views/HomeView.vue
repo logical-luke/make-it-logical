@@ -253,27 +253,23 @@ const submitForm = async () => {
 
 const getColorClass = (index: number) => {
   const colors = [
-    'bg-gradient-to-br from-blue-500 to-blue-700',
-    'bg-gradient-to-br from-green-500 to-green-700',
-    'bg-gradient-to-br from-yellow-500 to-yellow-700',
-    'bg-gradient-to-br from-red-500 to-red-700',
-    'bg-gradient-to-br from-purple-500 to-purple-700',
-    'bg-gradient-to-br from-indigo-500 to-indigo-700',
-    'bg-gradient-to-br from-pink-500 to-pink-700',
-    'bg-gradient-to-br from-teal-500 to-teal-700',
-    'bg-gradient-to-br from-orange-500 to-orange-700'
+    'bg-honolulu-blue-100',
+    'bg-lapis-lazuli-100',
+    'bg-midnight-green-100',
+    'bg-cinereous-100',
+    'bg-silver-100'
   ]
   return colors[index % colors.length]
 }
 
 const getServiceColorClass = (id: number) => {
   const colors = [
-    'bg-gradient-to-br from-blue-500 to-blue-700',
-    'bg-gradient-to-br from-green-500 to-green-700',
-    'bg-gradient-to-br from-yellow-500 to-yellow-700',
-    'bg-gradient-to-br from-red-500 to-red-700',
-    'bg-gradient-to-br from-purple-500 to-purple-700',
-    'bg-gradient-to-br from-indigo-500 to-indigo-700'
+    'bg-honolulu-blue-100',
+    'bg-lapis-lazuli-100',
+    'bg-midnight-green-100',
+    'bg-cinereous-100',
+    'bg-silver-100',
+    'bg-honolulu-blue-100'
   ]
   return colors[id % colors.length]
 }
@@ -281,276 +277,286 @@ const getServiceColorClass = (id: number) => {
 
 <template>
   <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-    <section id="home" class="py-20 md:py-32">
-      <div class="text-center">
-        <h1
-          class="text-5xl md:text-7xl font-extrabold text-blue-600 dark:text-blue-400 mb-6 transition-all duration-300 transform hover:scale-105"
-        >
-          Elevate Your Digital Presence
-        </h1>
-        <p
-          class="text-xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto transition-opacity duration-300 ease-in-out"
-        >
-          At Make IT Logical, we don't just build websites and apps.
-          <br />We craft digital experiences that captivate, engage, and convert. <br />Your vision,
-          our expertise – together, we'll redefine what's possible in the digital realm.
-        </p>
-        <Button
-          label="Ignite Your Digital Journey"
-          icon="pi pi-rocket"
-          class="text-lg bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
-          @click="props.scrollTo('#contact')"
-        />
-      </div>
-      <div class="mt-12 flex justify-center">
-        <!-- <img src="@/assets/hero-image.svg" alt="Digital Transformation" class="w-full max-w-2xl rounded-lg shadow-lg"> -->
-        <!-- todo-luke Insert image: relevant keywords for image: "futuristic digital landscape, innovative technology, vibrant colors" -->
-        <!-- todo-luke AI prompt: Create a vibrant, futuristic cityscape with holographic displays and flying vehicles, showcasing advanced technology and innovation -->
-      </div>
-    </section>
-
-    <section id="about" class="py-20 bg-gray-100 dark:bg-gray-800 rounded-lg shadow">
-      <h2
-        class="text-4xl font-bold text-center text-blue-600 dark:text-blue-400 mb-6 transition-all duration-300 transform hover:scale-105"
-      >
-        About Us
-      </h2>
-      <p
-        class="text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto text-center transition-opacity duration-300 ease-in-out"
-      >
-        At Make IT Logical, we're more than just developers – we're innovators, problem-solvers, and
-        digital architects. Our passion for technology and commitment to excellence drive us to
-        tackle the most complex challenges head-on.
-      </p>
-      <!-- <img src="@/assets/about-us.svg" alt="Our Team" class="w-full max-w-2xl mx-auto rounded-lg shadow-lg"> -->
-      <!-- todo-luke Insert image: relevant keywords for image: "diverse team, collaboration, innovation, technology" -->
-      <!-- todo-luke AI prompt: Illustrate a diverse team of professionals working together on futuristic holographic displays, showcasing collaboration and innovation -->
-    </section>
-
-    <section id="tech-stack" class="py-20 bg-white dark:bg-gray-900 rounded-lg shadow">
-      <h2
-        class="text-4xl font-bold text-center text-blue-600 dark:text-blue-400 mb-6 transition-all duration-300 transform hover:scale-105"
-      >
-        Our Tech Stack
-      </h2>
-      <p
-        class="text-xl text-gray-700 dark:text-gray-300 mb-8 max-w-3xl mx-auto text-center transition-opacity duration-300 ease-in-out"
-      >
-        We leverage a wide array of cutting-edge technologies to build powerful, scalable solutions:
-      </p>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+    <section id="home" class="py-20 md:py-32 relative overflow-hidden">
+      <div
+        class="absolute inset-0 opacity-30"
+      ></div>
+      <img
+        src="@/assets/hero-image.svg"
+        alt="Digital Transformation"
+        class="absolute top-0 right-0 w-full md:w-3/4 h-full object-cover object-right opacity-70 dark:opacity-50"
+      />
+      <div
+        class="absolute inset-0 bg-white dark:bg-black opacity-60 dark:opacity-70"
+      ></div>
+      <div class="relative z-10 md:w-1/2">
         <div
-          v-for="tech in techStack"
-          :key="tech.name"
-          class="group relative w-40 h-40 mx-auto rounded-full overflow-hidden shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+          class="bg-white dark:bg-midnight-green-900 bg-opacity-80 dark:bg-opacity-90 p-6 rounded-lg shadow-md"
         >
-          <div
-            :class="`absolute inset-0 ${tech.color} bg-gradient-to-br from-${tech.color.split('-')[1]}-500 to-${tech.color.split('-')[1]}-700 flex items-center justify-center transition-all duration-300 group-hover:scale-110`"
+          <h1
+            class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-honolulu-blue-600 dark:text-honolulu-blue-400 mb-6 transition-all duration-300 transform hover:scale-105"
           >
-            <i
-              :class="`${tech.icon} text-5xl text-white transition-all duration-300 group-hover:scale-125`"
-            ></i>
-          </div>
-          <div
-            class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 flex items-center justify-center transition-all duration-300"
+            Elevate Your Digital Presence
+          </h1>
+          <p
+            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-12 transition-opacity duration-300 ease-in-out"
           >
-            <h3
-              class="text-lg font-semibold text-white opacity-0 group-hover:opacity-100 transition-all duration-300 text-center px-2"
-            >
-              {{ tech.name }}
-            </h3>
-          </div>
+            At <strong>Make IT Logical</strong>, we don't just build websites and apps.
+            <br/><br/>We craft digital experiences that captivate, engage, and convert.
+            <br/><br/>Your vision, our expertise – together, we'll redefine what's possible in the digital realm.
+          </p>
+          <Button
+            label="Ignite Your Digital Journey"
+            icon="pi pi-rocket"
+            class="text-lg bg-honolulu-blue-600 hover:bg-honolulu-blue-700 dark:bg-honolulu-blue-500 dark:hover:bg-honolulu-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-md"
+            @click="props.scrollTo('#contact')"
+          />
         </div>
       </div>
     </section>
 
-    <section id="services" class="py-20">
+    <section
+      id="about"
+      class="py-20 relative overflow-hidden bg-white dark:bg-midnight-green-900 rounded-lg transition-all duration-300"
+    >
+      <div class="relative z-10 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <img src="@/assets/team.png" alt="Our Team" class="w-full h-auto rounded-lg shadow" />
+        </div>
+        <div class="md:w-1/2 md:pl-12">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
+          >
+            About Us
+          </h2>
+          <p
+            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
+          >
+            At <strong>Make IT Logical</strong>, we're more than just developers – we're innovators, problem-solvers, and digital architects. Our passion for technology and commitment to excellence drive us to tackle the most complex challenges head-on.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="py-20 mt-8">
       <h2
-        class="text-4xl font-bold text-center text-blue-600 dark:text-blue-400 mb-6 transition-all duration-300 transform hover:scale-105"
+        class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
       >
-        Our Expertise
+        Our Services
       </h2>
       <p
-        class="text-xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto text-center transition-opacity duration-300 ease-in-out"
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-12 max-w-3xl mx-auto text-center transition-opacity duration-300 ease-in-out"
       >
-        From concept to execution, we deliver cutting-edge solutions that drive your business
-        forward.
-        <br />Our services are tailored to meet the unique challenges of the digital age.
+        From concept to execution, we deliver cutting-edge solutions that drive your business forward.
+        <br/>Our services are tailored to meet the unique challenges of the digital age.
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
           v-for="service in services"
           :key="service.id"
-          class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105"
+          class="bg-white dark:bg-midnight-green-800 rounded-lg shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 overflow-hidden border border-silver-200 dark:border-midnight-green-700"
         >
-          <div :class="`${getServiceColorClass(service.id)} p-6 flex justify-center items-center`">
-            <i :class="[service.icon, 'text-6xl text-white']"></i>
+          <div
+            class="p-6 flex justify-center items-center bg-honolulu-blue-50 dark:bg-honolulu-blue-900"
+          >
+            <i
+              :class="[service.icon, 'text-6xl text-honolulu-blue-600 dark:text-honolulu-blue-400']"
+            ></i>
           </div>
           <div class="p-6">
-            <h3 class="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">
+            <h3 class="text-xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-4">
               {{ service.title }}
             </h3>
-            <p class="text-gray-700 dark:text-gray-300 mb-4">{{ service.description }}</p>
+            <p class="text-midnight-green-700 dark:text-silver-300 mb-4">
+              {{ service.description }}
+            </p>
             <ul class="space-y-2">
               <li v-for="feature in service.features" :key="feature" class="flex items-center">
-                <i class="pi pi-check-circle text-green-500 mr-2"></i>
-                <span class="text-gray-700 dark:text-gray-300">{{ feature }}</span>
+                <i
+                  class="pi pi-check-circle text-honolulu-blue-500 dark:text-honolulu-blue-400 mr-2"
+                ></i>
+                <span class="text-midnight-green-700 dark:text-silver-300">{{ feature }}</span>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <!-- <img src="@/assets/services.svg" alt="Our Services" class="w-full max-w-2xl mx-auto mt-12 rounded-lg shadow-lg"> -->
-      <!-- todo-luke Insert image: relevant keywords for image: "digital services, web development, mobile apps, cloud solutions" -->
-      <!-- todo-luke AI prompt: Create a collage of digital devices and interfaces representing various digital services, including web development, mobile apps, and cloud solutions -->
     </section>
 
-    <section id="process" class="py-20 bg-gray-100 dark:bg-gray-900 rounded-lg shadow">
-      <h2
-        class="text-4xl font-bold text-center text-blue-600 dark:text-blue-400 mb-6 transition-all duration-300 transform hover:scale-105"
-      >
-        Our Proven Process
-      </h2>
-      <p
-        class="text-xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto text-center transition-opacity duration-300 ease-in-out"
-      >
-        We've refined our approach to ensure every project is a success.
-        <br />Our process is designed to maximize efficiency, creativity, and results.
-      </p>
-      <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div
-            v-for="(step, index) in processSteps"
-            :key="step.label"
-            class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+    <section
+      id="process"
+      class="py-20 mt-8 bg-white dark:bg-midnight-green-900 rounded-lg transition-all duration-300"
+    >
+      <div class="relative z-10 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <img
+            src="@/assets/process.png"
+            alt="Our Process"
+            class="w-full h-auto rounded-lg shadow"
+          />
+        </div>
+        <div class="md:w-1/2 md:pl-12">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
           >
-            <div class="flex items-center mb-4">
-              <div
-                :class="`w-12 h-12 ${getColorClass(index)} rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4`"
-              >
-                <i :class="step.icon"></i>
+            Our Proven Process
+          </h2>
+          <p
+            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
+          >
+            We've refined our approach to ensure every project is a success.
+            <br/>Our process is designed to maximize efficiency, creativity, and results.
+          </p>
+          <div class="space-y-4">
+            <div
+              v-for="(step, index) in processSteps"
+              :key="step.label"
+              class="bg-white dark:bg-midnight-green-800 rounded-lg p-4 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-silver-200 dark:border-midnight-green-700"
+            >
+              <div class="flex items-center">
+                <div
+                  class="w-10 h-10 bg-honolulu-blue-50 dark:bg-honolulu-blue-900 rounded-full flex items-center justify-center text-honolulu-blue-600 dark:text-honolulu-blue-400 text-xl font-bold mr-4"
+                >
+                  <i :class="step.icon"></i>
+                </div>
+                <h3 class="text-lg font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400">
+                  {{ step.label }}
+                </h3>
               </div>
-              <h3 class="text-xl font-bold text-blue-600 dark:text-blue-400">{{ step.label }}</h3>
+              <p class="text-midnight-green-700 dark:text-silver-300 mt-2">
+                {{ step.description }}
+              </p>
             </div>
-            <p class="text-gray-700 dark:text-gray-300">{{ step.description }}</p>
-            <p class="text-gray-600 dark:text-gray-400 mt-4 text-sm">{{ step.fullDescription }}</p>
           </div>
         </div>
       </div>
-      <!-- <img src="@/assets/process.svg" alt="Our Process" class="w-full max-w-2xl mx-auto mt-12 rounded-lg shadow-lg"> -->
-      <!-- todo-luke Insert image: relevant keywords for image: "development process, workflow, project management" -->
-      <!-- todo-luke AI prompt: Design an infographic showing a circular development process with interconnected stages, representing a modern project management workflow -->
     </section>
 
-    <section id="team" class="py-20">
+    <section id="team" class="py-20 mt-8">
       <h2
-        class="text-4xl font-bold text-center text-blue-600 dark:text-blue-400 mb-6 transition-all duration-300 transform hover:scale-105"
+        class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
       >
-        Our Expertise
+        Our Team
       </h2>
       <p
-        class="text-xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto text-center transition-opacity duration-300 ease-in-out"
+        class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-12 max-w-3xl mx-auto text-center transition-opacity duration-300 ease-in-out"
       >
-        Our team combines diverse skills to deliver exceptional results.
-        <br />Each role is crucial in bringing your vision to life:
+        Our team combines diverse skills to deliver exceptional results. Each role is crucial in
+        bringing your vision to life:
       </p>
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
         <div
           v-for="member in teamMembers"
           :key="member.name"
-          class="bg-white dark:bg-gray-800 rounded-lg shadow p-6 text-center hover:shadow-md transition-all duration-300 transform hover:-translate-y-1"
+          class="bg-white dark:bg-midnight-green-800 rounded-lg shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 p-6 text-center border border-silver-200 dark:border-midnight-green-700"
         >
           <div class="text-5xl mb-4">{{ member.avatar }}</div>
-          <h3 class="text-xl font-bold text-blue-600 dark:text-blue-400 mb-2">{{ member.name }}</h3>
-          <p class="text-gray-700 dark:text-gray-300">{{ member.role }}</p>
+          <h3 class="text-xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-2">
+            {{ member.name }}
+          </h3>
+          <p class="text-midnight-green-700 dark:text-silver-300">{{ member.role }}</p>
           <Button icon="pi pi-info-circle" class="mt-4" v-tooltip.top="member.description" />
         </div>
       </div>
-      <!-- <img src="@/assets/team.svg" alt="Our Team" class="w-full max-w-2xl mx-auto mt-12 rounded-lg shadow-lg"> -->
-      <!-- todo-luke Insert image: relevant keywords for image: "diverse tech team, collaboration, expertise" -->
-      <!-- todo-luke AI prompt: Illustrate a diverse group of tech professionals collaborating in a modern office setting, showcasing various roles and expertise -->
     </section>
 
-    <section id="contact" class="py-20">
-      <h2
-        class="text-4xl font-bold text-center text-blue-600 dark:text-blue-400 mb-6 animate__animated animate__fadeIn"
-      >
-        Let's Create Something Amazing
-      </h2>
-      <p
-        class="text-xl text-gray-700 dark:text-gray-300 mb-12 max-w-3xl mx-auto text-center animate__animated animate__fadeIn animate__delay-1s"
-      >
-        Ready to take your digital presence to the next level? We're here to turn your vision into
-        reality. Let's start a conversation and explore the possibilities together.
-      </p>
-      <div class="max-w-2xl mx-auto animate__animated animate__fadeIn animate__delay-2s">
-        <Card class="bg-white dark:bg-gray-800 shadow rounded-lg overflow-hidden">
-          <template #content>
-            <form @submit.prevent="submitForm" class="space-y-6">
-              <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    for="name"
-                    class="block mb-2 font-semibold text-gray-700 dark:text-gray-300"
-                  >
-                    Name
-                  </label>
-                  <InputText
-                    id="name"
-                    v-model="form.name"
-                    class="w-full p-inputtext-lg border-2 border-gray-300 dark:border-gray-600 rounded-md focus:border-blue-500 dark:focus:border-blue-400 transition-colors duration-300"
-                    :class="{ 'p-invalid': v$.name.$invalid && submitted }"
+    <section
+      id="contact"
+      class="py-20 mt-8 bg-white dark:bg-midnight-green-900 rounded-lg transition-all duration-300"
+    >
+      <div class="relative z-10 flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+          <img
+            src="@/assets/services.png"
+            alt="Our Services"
+            class="w-full h-auto rounded-lg shadow"
+          />
+        </div>
+        <div class="md:w-1/2 md:pl-12">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-400 mb-6 transition-all duration-300 transform hover:scale-105"
+          >
+            Let's Create Something Amazing
+          </h2>
+          <p
+            class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-300 mb-8 transition-opacity duration-300 ease-in-out"
+          >
+            Ready to take your digital presence to the next level?
+            <br/>We're here to turn your vision into reality.
+            <br/>Let's start a conversation and explore the possibilities together.
+          </p>
+          <div class="transition-all duration-300 transform hover:scale-105">
+            <Card
+              class="bg-white dark:bg-midnight-green-800 shadow hover:shadow-md rounded-lg overflow-hidden border border-silver-200 dark:border-midnight-green-700"
+            >
+              <template #content>
+                <form @submit.prevent="submitForm" class="space-y-6">
+                  <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label
+                        for="name"
+                        class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-300"
+                      >
+                        Name
+                      </label>
+                      <InputText
+                        id="name"
+                        v-model="form.name"
+                        class="w-full p-inputtext-lg border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
+                        :class="{ 'p-invalid': v$.name.$invalid && submitted }"
+                      />
+                      <small class="p-error" v-if="v$.name.$invalid && submitted">
+                        Name is required
+                      </small>
+                    </div>
+                    <div>
+                      <label
+                        for="email"
+                        class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-300"
+                        >Email</label
+                      >
+                      <InputText
+                        id="email"
+                        v-model="form.email"
+                        class="w-full p-inputtext-lg border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
+                        :class="{ 'p-invalid': v$.email.$invalid && submitted }"
+                      />
+                      <small class="p-error" v-if="v$.email.$invalid && submitted">{{
+                        v$.email.$errors[0].$message
+                      }}</small>
+                    </div>
+                  </div>
+                  <div>
+                    <label
+                      for="message"
+                      class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-300"
+                    >
+                      Your Vision
+                    </label>
+                    <Textarea
+                      id="message"
+                      v-model="form.message"
+                      rows="5"
+                      class="w-full p-inputtext-lg border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
+                      :class="{ 'p-invalid': v$.message.$invalid && submitted }"
+                    />
+                    <small class="p-error" v-if="v$.message.$invalid && submitted"
+                      >Message is required
+                    </small>
+                  </div>
+                  <Button
+                    type="submit"
+                    :label="buttonText"
+                    icon="pi pi-send"
+                    class="w-full p-button-lg p-button-primary text-white bg-honolulu-blue-600 hover:bg-honolulu-blue-700 dark:bg-honolulu-blue-500 dark:hover:bg-honolulu-blue-600 transition-all duration-300 py-3 rounded-full"
+                    :loading="isSending"
+                    :disabled="isSending || sent"
                   />
-                  <small class="p-error" v-if="v$.name.$invalid && submitted">
-                    Name is required
-                  </small>
-                </div>
-                <div>
-                  <label
-                    for="email"
-                    class="block mb-2 font-semibold text-gray-700 dark:text-gray-300"
-                    >Email</label
-                  >
-                  <InputText
-                    id="email"
-                    v-model="form.email"
-                    class="w-full p-inputtext-lg border-2 border-gray-300 dark:border-gray-600 rounded-md focus:border-blue-500 dark:focus:border-blue-400 transition-colors duration-300"
-                    :class="{ 'p-invalid': v$.email.$invalid && submitted }"
-                  />
-                  <small class="p-error" v-if="v$.email.$invalid && submitted">{{
-                    v$.email.$errors[0].$message
-                  }}</small>
-                </div>
-              </div>
-              <div>
-                <label
-                  for="message"
-                  class="block mb-2 font-semibold text-gray-700 dark:text-gray-300"
-                >
-                  Your Vision
-                </label>
-                <Textarea
-                  id="message"
-                  v-model="form.message"
-                  rows="5"
-                  class="w-full p-inputtext-lg border-2 border-gray-300 dark:border-gray-600 rounded-md focus:border-blue-500 dark:focus:border-blue-400 transition-colors duration-300"
-                  :class="{ 'p-invalid': v$.message.$invalid && submitted }"
-                />
-                <small class="p-error" v-if="v$.message.$invalid && submitted"
-                  >Message is required
-                </small>
-              </div>
-              <Button
-                type="submit"
-                :label="buttonText"
-                icon="pi pi-send"
-                class="w-full p-button-lg p-button-primary text-white bg-blue-600 hover:bg-blue-700 transition-all duration-300 py-3"
-                :loading="isSending"
-                :disabled="isSending || sent"
-              />
-            </form>
-          </template>
-        </Card>
+                </form>
+              </template>
+            </Card>
+          </div>
+        </div>
       </div>
     </section>
   </div>
