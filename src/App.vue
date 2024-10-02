@@ -1,5 +1,24 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import HomeView from '@/views/HomeView.vue'
+
+const navItems = ref([
+  { id: 1, name: 'Home', href: '#home' },
+  { id: 2, name: 'Services', href: '#services' },
+  { id: 3, name: 'Process', href: '#process' },
+  { id: 4, name: 'Contact', href: '#contact' },
+]);
+
+const scrollTo = (href) => {
+  const element = document.querySelector(href);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+};
+</script>
+
 <template>
-  <div :class="{ 'dark': isDarkTheme }" class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+  <div class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
     <header class="bg-white dark:bg-gray-800 shadow py-4 px-6 fixed w-full z-50 transition-colors duration-300">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-2">
@@ -28,22 +47,3 @@
     </footer>
   </div>
 </template>
-
-<script setup>
-import { ref } from 'vue';
-import HomeView from '@/views/HomeView.vue'
-
-const navItems = ref([
-  { id: 1, name: 'Home', href: '#home' },
-  { id: 2, name: 'Services', href: '#services' },
-  { id: 3, name: 'Process', href: '#process' },
-  { id: 4, name: 'Contact', href: '#contact' },
-]);
-
-const scrollTo = (href) => {
-  const element = document.querySelector(href);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
-  }
-};
-</script>
