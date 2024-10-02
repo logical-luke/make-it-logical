@@ -5,11 +5,10 @@ import Button from 'primevue/button';
 
 const navItems = ref([
   { id: 1, name: 'Home', href: '#home' },
-  { id: 2, name: 'About', href: '#about' },
-  { id: 3, name: 'Services', href: '#services' },
-  { id: 4, name: 'Process', href: '#process' },
-  { id: 5, name: 'Team', href: '#team' },
-  { id: 6, name: 'Contact', href: '#contact' },
+  { id: 2, name: 'Services', href: '#services' },
+  { id: 3, name: 'Process', href: '#process' },
+  { id: 4, name: 'Team', href: '#team' },
+  { id: 5, name: 'Contact', href: '#contact' },
 ]);
 
 const mobileMenuOpen = ref(false);

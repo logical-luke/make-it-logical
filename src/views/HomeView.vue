@@ -281,12 +281,12 @@ const getServiceColorClass = (id: number) => {
       <div class="absolute inset-0 bg-honolulu-blue-50 dark:bg-honolulu-blue-900 opacity-30"></div>
       <div class="absolute inset-0 overflow-hidden">
         <img
-          src="@/assets/hero-image.svg"
+          src="@/assets/hero-image.png"
           alt="Digital Transformation"
           class="absolute h-full w-auto min-w-full object-cover object-left opacity-70 dark:opacity-50"
         />
         <div
-          class="absolute inset-0 bg-gradient-to-r from-white to-transparent dark:from-black dark:to-transparent"
+          class="absolute inset-0 bg-gradient-to-r from-white to-transparent dark:from-midnight-green-800 dark:to-transparent"
         ></div>
       </div>
       <div class="relative z-10 md:w-1/2 lg:w-3/5">
