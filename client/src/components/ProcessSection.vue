@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
-import { ref } from 'vue';
+import {useI18n} from 'vue-i18n';
+import {ref} from 'vue';
 
-const { t } = useI18n();
+const {t} = useI18n();
 
 const processSteps = ref([
   {
@@ -69,7 +69,7 @@ const processSteps = ref([
     <div class="absolute inset-0 overflow-hidden">
       <picture>
         <source
-type="image/avif" srcset="
+            type="image/avif" srcset="
           ../assets/process-640x960.avif 640w,
           ../assets/process-1024x768.avif 1024w,
           ../assets/process-1920x1080.avif 1920w,
@@ -77,7 +77,7 @@ type="image/avif" srcset="
           ../assets/process-3840x2160.avif 3840w
         ">
         <source
-type="image/webp" srcset="
+            type="image/webp" srcset="
           ../assets/process-640x960.webp 640w,
           ../assets/process-1024x768.webp 1024w,
           ../assets/process-1920x1080.webp 1920w,
@@ -85,18 +85,18 @@ type="image/webp" srcset="
           ../assets/process-3840x2160.webp 3840w
         ">
         <img
-          src="../assets/process-1920x1080.png"
-          srcset="
+            src="../assets/process-1920x1080.png"
+            srcset="
             ../assets/process-640x960.png 640w,
             ../assets/process-1024x768.png 1024w,
             ../assets/process-1920x1080.png 1920w,
             ../assets/process-2560x1440.png 2560w,
             ../assets/process-3840x2160.png 3840w
           "
-          sizes="100vw"
-          alt="Our Process"
-          class="w-full h-full object-cover opacity-30 dark:opacity-20"
-          loading="lazy"
+            sizes="100vw"
+            alt="Our Process"
+            class="w-full h-full object-cover opacity-30 dark:opacity-20"
+            loading="lazy"
         >
       </picture>
     </div>
@@ -112,11 +112,11 @@ type="image/webp" srcset="
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div
-          v-for="(step) in processSteps" :key="step.label"
-          class="bg-white dark:bg-midnight-green-800 rounded-lg p-4 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-silver-200 dark:border-midnight-green-700">
+            v-for="(step) in processSteps" :key="step.label"
+            class="bg-white dark:bg-midnight-green-800 rounded-lg p-4 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-silver-200 dark:border-midnight-green-700">
           <div class="flex items-center mb-3">
             <div
-              class="w-10 h-10 bg-honolulu-blue-50 dark:bg-honolulu-blue-900 rounded-full flex items-center justify-center text-honolulu-blue-600 dark:text-honolulu-blue-400 text-xl font-bold mr-4">
+                class="w-10 h-10 bg-honolulu-blue-50 dark:bg-honolulu-blue-900 rounded-full flex items-center justify-center text-honolulu-blue-600 dark:text-honolulu-blue-400 text-xl font-bold mr-4">
               <i :class="step.icon"></i>
             </div>
             <h3 class="text-lg font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">

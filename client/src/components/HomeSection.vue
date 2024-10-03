@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
+import {useI18n} from 'vue-i18n';
 import Button from 'primevue/button';
-import { ref, onMounted } from 'vue';
+import {ref, onMounted} from 'vue';
 
-const { t } = useI18n();
-const { scrollTo } = defineProps(['scrollTo']);
+const {t} = useI18n();
+const {scrollTo} = defineProps(['scrollTo']);
 
 const imageLoaded = ref(false);
 
@@ -27,7 +27,7 @@ const onImageLoad = () => {
     <div class="absolute inset-0 overflow-hidden">
       <picture>
         <source
-type="image/avif" srcset="
+            type="image/avif" srcset="
           ../assets/hero-image-640x960.avif 640w,
           ../assets/hero-image-1024x768.avif 1024w,
           ../assets/hero-image-1920x1080.avif 1920w,
@@ -35,7 +35,7 @@ type="image/avif" srcset="
           ../assets/hero-image-3840x2160.avif 3840w
         ">
         <source
-type="image/webp" srcset="
+            type="image/webp" srcset="
           ../assets/hero-image-640x960.webp 640w,
           ../assets/hero-image-1024x768.webp 1024w,
           ../assets/hero-image-1920x1080.webp 1920w,
@@ -43,18 +43,18 @@ type="image/webp" srcset="
           ../assets/hero-image-3840x2160.webp 3840w
         ">
         <img
-          src="../assets/hero-image-1920x1080.png"
-          srcset="
+            src="../assets/hero-image-1920x1080.png"
+            srcset="
             ../assets/hero-image-640x960.png 640w,
             ../assets/hero-image-1024x768.png 1024w,
             ../assets/hero-image-1920x1080.png 1920w,
             ../assets/hero-image-2560x1440.png 2560w,
             ../assets/hero-image-3840x2160.png 3840w
           "
-          sizes="100vw"
-          alt="Digital Transformation"
-          class="absolute h-full w-auto min-w-full object-cover object-left"
-          loading="eager"
+            sizes="100vw"
+            alt="Digital Transformation"
+            class="absolute h-full w-auto min-w-full object-cover object-left"
+            loading="eager"
         >
       </picture>
     </div>
@@ -73,10 +73,10 @@ type="image/webp" srcset="
           {{ t('Your vision, our expertise – together, we\'ll redefine what\'s possible in the digital realm.') }}
         </p>
         <Button
-          :label="t('Ignite Your Digital Journey')"
-          icon="pi pi-rocket"
-          class="text-lg bg-honolulu-blue-600 hover:bg-honolulu-blue-700 dark:bg-honolulu-blue-500 dark:hover:bg-honolulu-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-md"
-          @click="scrollTo('#contact', '/contact')"
+            :label="t('Ignite Your Digital Journey')"
+            icon="pi pi-rocket"
+            class="text-lg bg-honolulu-blue-600 hover:bg-honolulu-blue-700 dark:bg-honolulu-blue-500 dark:hover:bg-honolulu-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-md"
+            @click="scrollTo('#contact', '/contact')"
         />
       </div>
     </div>

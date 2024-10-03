@@ -167,14 +167,14 @@ const toggleMobileMenu = () => {
 <template>
   <div class="min-h-screen bg-white dark:bg-midnight-green-800 transition-colors duration-300">
     <div
-v-if="isLoading"
-         class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-midnight-green-800">
+        v-if="isLoading"
+        class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-midnight-green-800">
       <i class="pi pi-spinner animate-spin text-6xl text-honolulu-blue-600 dark:text-honolulu-blue-400"></i>
     </div>
 
     <header
-v-show="!isLoading"
-            class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-40 transition-colors duration-300 h-20">
+        v-show="!isLoading"
+        class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-40 transition-colors duration-300 h-20">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-2">
           <img src="@/assets/logo.svg" alt="Make IT Logical Logo" class="h-10 w-auto">
@@ -237,8 +237,8 @@ v-show="!isLoading"
     </main>
 
     <footer
-v-show="!isLoading"
-            class="bg-honolulu-blue-600 dark:bg-lapis-lazuli-800 text-white py-8 px-6 transition-colors duration-300">
+        v-show="!isLoading"
+        class="bg-honolulu-blue-600 dark:bg-lapis-lazuli-800 text-white py-8 px-6 transition-colors duration-300">
       <div class="max-w-7xl mx-auto text-center">
         <p>&copy; {{ new Date().getFullYear() }} Make IT Logical. All rights reserved.</p>
         <p class="mt-2 text-sm">Empowering businesses with innovative digital solutions.</p>
