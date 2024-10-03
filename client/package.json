@@ -25,7 +25,6 @@
     "@rushstack/eslint-patch": "^1.*",
     "@vitejs/plugin-vue": "^5.*",
     "@vitejs/plugin-vue-jsx": "^3.0.0",
-    "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/eslint-config-prettier": "^9.*",
     "@vue/test-utils": "^2.*",
     "autoprefixer": "^10.*",

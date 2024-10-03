@@ -60,6 +60,20 @@ const processSteps = ref([
     fullDescription: t('The Continuous Improvement phase involves ongoing analysis, feedback collection, and iterative enhancements. We stay proactive in implementing new features, optimizing performance, and adapting to changing market needs.')
   }
 ]);
+
+const imageSizes = [
+  {width: 640, height: 960},
+  {width: 768, height: 1024},
+  {width: 1024, height: 768},
+  {width: 1920, height: 1080},
+  {width: 2560, height: 1440},
+  {width: 3440, height: 1440},
+  {width: 3840, height: 2160}
+];
+
+const getImageUrl = (name: string, width: number, height: number, format: string) => {
+  return new URL(`../assets/${name}-${width}x${height}.${format}`, import.meta.url).href;
+};
 </script>
 
 <template>
@@ -69,67 +83,24 @@ const processSteps = ref([
       <picture>
         <!-- AVIF format -->
         <source
-            media="(max-width: 640px)"
-            srcset="@/assets/process-640x960.avif"
             type="image/avif"
-        >
-        <source
-            media="(max-width: 768px)"
-            srcset="@/assets/process-768x1024.avif"
-            type="image/avif"
-        >
-        <source
-            media="(max-width: 1024px)"
-            srcset="@/assets/process-1024x768.avif"
-            type="image/avif"
-        >
-        <source
-            srcset="@/assets/process-1920x1080.avif 1920w,
-            @/assets/process-2560x1440.avif 2560w,
-            @/assets/process-3440x1440.avif 3440w,
-            @/assets/process-3840x2160.avif 3840w"
+            :srcset="imageSizes.map(size => `${getImageUrl('process', size.width, size.height, 'avif')} ${size.width}w`).join(', ')"
             sizes="100vw"
-            type="image/avif"
         >
-
-        <!-- WebP format (fallback for browsers that don't support AVIF) -->
+        <!-- WebP format -->
         <source
-            media="(max-width: 640px)"
-            srcset="@/assets/process-640x960.webp"
             type="image/webp"
-        >
-        <source
-            media="(max-width: 768px)"
-            srcset="@/assets/process-768x1024.webp"
-            type="image/webp"
-        >
-        <source
-            media="(max-width: 1024px)"
-            srcset="@/assets/process-1024x768.webp"
-            type="image/webp"
-        >
-        <source
-            srcset="@/assets/process-1920x1080.webp 1920w,
-            @/assets/process-2560x1440.webp 2560w,
-            @/assets/process-3440x1440.webp 3440w,
-            @/assets/process-3840x2160.webp 3840w"
+            :srcset="imageSizes.map(size => `${getImageUrl('process', size.width, size.height, 'webp')} ${size.width}w`).join(', ')"
             sizes="100vw"
-            type="image/webp"
         >
-
-        <!-- PNG format (final fallback) -->
+        <!-- PNG format (fallback) -->
         <img
-            src="@/assets/process-1024x768.png"
-            srcset="@/assets/process-640x960.png 640w,
-            @/assets/process-768x1024.png 768w,
-            @/assets/process-1024x768.png 1024w,
-            @/assets/process-1920x1080.png 1920w,
-            @/assets/process-2560x1440.png 2560w,
-            @/assets/process-3440x1440.png 3440w,
-            @/assets/process-3840x2160.png 3840w"
+            :src="getImageUrl('process', 1024, 768, 'png')"
+            :srcset="imageSizes.map(size => `${getImageUrl('process', size.width, size.height, 'png')} ${size.width}w`).join(', ')"
             sizes="100vw"
             alt="Our Process"
             class="w-full h-full object-cover opacity-30 dark:opacity-20"
+            loading="lazy"
         >
       </picture>
     </div>

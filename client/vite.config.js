@@ -1,51 +1,37 @@
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import vueJsx from '@vitejs/plugin-vue-jsx';
+import EnvironmentPlugin from 'vite-plugin-environment';
 import { fileURLToPath, URL } from "node:url";
 
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import vueJsx from "@vitejs/plugin-vue-jsx";
-import EnvironmentPlugin from "vite-plugin-environment";
-
-function useCredentials() {
-  return {
-    name: "use-credentials",
-    transformIndexHtml(html) {
-      return html.replace("crossorigin", 'crossorigin="anonymous"');
-    },
-  };
-}
-
 export default defineConfig({
-  server: {
-    port: 5173,
-  },
-  plugins: [
-    vue(),
-    vueJsx(),
-    useCredentials(),
-    EnvironmentPlugin({
-      API_BASE_URL: 'https://api.makeitlogical.io/v1',
-      NODE_ENV: process.env.NODE_ENV || 'development'
-    }),
-  ],
-  assetsPublicPath: "/",
-  resolve: {
-    alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+    server: {
+        port: 5173,
     },
-  },
-  build: {
-    rollupOptions: {
-      output: {
-        // replace feature flag globals with boolean literals
-        manualChunks(id) {
-          if (id.includes("vue-i18n")) {
-            return "vue-i18n";
-          }
+    plugins: [
+        vue(),
+        vueJsx(),
+        EnvironmentPlugin({
+            API_BASE_URL: 'https://api.makeitlogical.io/v1',
+            NODE_ENV: process.env.NODE_ENV || 'development'
+        }),
+    ],
+    resolve: {
+        alias: {
+            "@": fileURLToPath(new URL("./src", import.meta.url)),
         },
-        globals: {
-          "vue-i18n": "vue-i18n",
-        },
-      },
     },
-  },
+    build: {
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    'vue-i18n': ['vue-i18n'],
+                    'primevue': ['primevue/config'],
+                },
+                globals: {
+                    "vue-i18n": "VueI18n",
+                },
+            },
+        },
+    },
 });

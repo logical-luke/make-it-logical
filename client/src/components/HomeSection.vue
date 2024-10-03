@@ -1,10 +1,23 @@
 <script setup lang="ts">
 import {useI18n} from 'vue-i18n';
-
-const {t} = useI18n();
 import Button from 'primevue/button';
 
+const {t} = useI18n();
 const {scrollTo} = defineProps(['scrollTo']);
+
+const imageSizes = [
+  {width: 640, height: 960},
+  {width: 768, height: 1024},
+  {width: 1024, height: 768},
+  {width: 1920, height: 1080},
+  {width: 2560, height: 1440},
+  {width: 3440, height: 1440},
+  {width: 3840, height: 2160}
+];
+
+const getImageUrl = (name: string, width: number, height: number, format: string) => {
+  return new URL(`../assets/${name}-${width}x${height}.${format}`, import.meta.url).href;
+};
 </script>
 
 <template>
@@ -13,64 +26,20 @@ const {scrollTo} = defineProps(['scrollTo']);
       <picture>
         <!-- AVIF format -->
         <source
-            media="(max-width: 640px)"
-            srcset="@/assets/hero-image-640x960.avif"
             type="image/avif"
-        >
-        <source
-            media="(max-width: 768px)"
-            srcset="@/assets/hero-image-768x1024.avif"
-            type="image/avif"
-        >
-        <source
-            media="(max-width: 1024px)"
-            srcset="@/assets/hero-image-1024x768.avif"
-            type="image/avif"
-        >
-        <source
-            srcset="@/assets/hero-image-1920x1080.avif 1920w,
-            @/assets/hero-image-2560x1440.avif 2560w,
-            @/assets/hero-image-3440x1440.avif 3440w,
-            @/assets/hero-image-3840x2160.avif 3840w"
+            :srcset="imageSizes.map(size => `${getImageUrl('hero-image', size.width, size.height, 'avif')} ${size.width}w`).join(', ')"
             sizes="100vw"
-            type="image/avif"
         >
-
-        <!-- WebP format (fallback for browsers that don't support AVIF) -->
+        <!-- WebP format -->
         <source
-            media="(max-width: 640px)"
-            srcset="@/assets/hero-image-640x960.webp"
             type="image/webp"
-        >
-        <source
-            media="(max-width: 768px)"
-            srcset="@/assets/hero-image-768x1024.webp"
-            type="image/webp"
-        >
-        <source
-            media="(max-width: 1024px)"
-            srcset="@/assets/hero-image-1024x768.webp"
-            type="image/webp"
-        >
-        <source
-            srcset="@/assets/hero-image-1920x1080.webp 1920w,
-            @/assets/hero-image-2560x1440.webp 2560w,
-            @/assets/hero-image-3440x1440.webp 3440w,
-            @/assets/hero-image-3840x2160.webp 3840w"
+            :srcset="imageSizes.map(size => `${getImageUrl('hero-image', size.width, size.height, 'webp')} ${size.width}w`).join(', ')"
             sizes="100vw"
-            type="image/webp"
         >
-
-        <!-- PNG format (final fallback) -->
+        <!-- PNG format (fallback) -->
         <img
-            src="@/assets/hero-image-1024x768.png"
-            srcset="@/assets/hero-image-640x960.png 640w,
-            @/assets/hero-image-768x1024.png 768w,
-            @/assets/hero-image-1024x768.png 1024w,
-            @/assets/hero-image-1920x1080.png 1920w,
-            @/assets/hero-image-2560x1440.png 2560w,
-            @/assets/hero-image-3440x1440.png 3440w,
-            @/assets/hero-image-3840x2160.png 3840w"
+            :src="getImageUrl('hero-image', 1024, 768, 'png')"
+            :srcset="imageSizes.map(size => `${getImageUrl('hero-image', size.width, size.height, 'png')} ${size.width}w`).join(', ')"
             sizes="100vw"
             alt="Digital Transformation"
             class="absolute h-full w-auto min-w-full object-cover object-left"

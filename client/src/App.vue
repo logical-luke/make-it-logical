@@ -47,7 +47,7 @@ const scrollTo = (href: string, path: string) => {
     document.querySelectorAll('section').forEach((section) => {
       observer.observe(section);
     });
-  }, 1000);
+  }, 1000); // Adjust this delay if needed
 };
 
 const observer = new IntersectionObserver(
