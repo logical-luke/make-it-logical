@@ -1,5 +1,6 @@
-import App from "@/App.vue";
 import { createRouter, createWebHistory } from "vue-router";
+
+const App = () => import("@/App.vue");
 
 const routes = [
   { path: '/', component: App, meta: { scrollTo: 0 } },
@@ -12,7 +13,10 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
-  scrollBehavior(to) {
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    }
     if (to.meta.scrollTo !== undefined) {
       if (typeof to.meta.scrollTo === 'number') {
         return { top: to.meta.scrollTo, behavior: 'smooth' };

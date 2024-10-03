@@ -1,14 +1,58 @@
 <script setup lang="ts">
-import {onMounted, onUnmounted, ref} from 'vue';
-import {useRouter} from 'vue-router';
+import {defineAsyncComponent, nextTick, onMounted, onUnmounted, ref, watch} from 'vue';
+import {useRoute, useRouter} from 'vue-router';
 import Button from 'primevue/button';
-import TeamSection from "@/components/TeamSection.vue";
-import ContactSection from "@/components/ContactSection.vue";
-import ServicesSection from "@/components/ServicesSection.vue";
-import HomeSection from "@/components/HomeSection.vue";
-import ProcessSection from "@/components/ProcessSection.vue";
+
+const isLoading = ref(true);
+const componentsLoaded = ref(0);
+const totalComponents = 5; // Update this if you add or remove components
+
+const incrementLoadedComponents = () => {
+  componentsLoaded.value++;
+  if (componentsLoaded.value === totalComponents) {
+    isLoading.value = false;
+  }
+};
+
+// Async component imports
+const HomeSection = defineAsyncComponent({
+  loader: () => import("@/components/HomeSection.vue").then((module) => {
+    incrementLoadedComponents();
+    return module;
+  }),
+  loadingComponent: {template: '<div></div>'},
+});
+const ServicesSection = defineAsyncComponent({
+  loader: () => import("@/components/ServicesSection.vue").then((module) => {
+    incrementLoadedComponents();
+    return module;
+  }),
+  loadingComponent: {template: '<div></div>'},
+});
+const ProcessSection = defineAsyncComponent({
+  loader: () => import("@/components/ProcessSection.vue").then((module) => {
+    incrementLoadedComponents();
+    return module;
+  }),
+  loadingComponent: {template: '<div></div>'},
+});
+const TeamSection = defineAsyncComponent({
+  loader: () => import("@/components/TeamSection.vue").then((module) => {
+    incrementLoadedComponents();
+    return module;
+  }),
+  loadingComponent: {template: '<div></div>'},
+});
+const ContactSection = defineAsyncComponent({
+  loader: () => import("@/components/ContactSection.vue").then((module) => {
+    incrementLoadedComponents();
+    return module;
+  }),
+  loadingComponent: {template: '<div></div>'},
+});
 
 const router = useRouter();
+const route = useRoute();
 
 const navItems = ref([
   {id: 1, name: 'Home', href: '/', path: '/'},
@@ -70,12 +114,35 @@ const observer = new IntersectionObserver(
     {threshold: 0.7}
 );
 
-onMounted(() => {
+onMounted(async () => {
+  // Set up observer
   document.querySelectorAll('section').forEach((section) => {
     observer.observe(section);
   });
+
+  // Scroll to the appropriate section on initial load
+  await nextTick();
+  if (route.meta.scrollTo) {
+    const target = typeof route.meta.scrollTo === 'string'
+        ? document.querySelector(route.meta.scrollTo)
+        : null;
+    if (target) {
+      target.scrollIntoView({behavior: 'smooth'});
+    } else if (typeof route.meta.scrollTo === 'number') {
+      window.scrollTo({top: route.meta.scrollTo, behavior: 'smooth'});
+    }
+  }
 });
 
+// Watch for all components to load
+watch(componentsLoaded, (newValue) => {
+  if (newValue === totalComponents) {
+    // Add a small delay to ensure smooth transition
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 300);
+  }
+});
 onUnmounted(() => {
   observer.disconnect();
 });
@@ -94,7 +161,12 @@ const toggleMobileMenu = () => {
 
 <template>
   <div class="min-h-screen bg-white dark:bg-midnight-green-800 transition-colors duration-300">
-    <header class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-50 transition-colors duration-300 h-20">
+    <div v-if="isLoading"
+         class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-midnight-green-800">
+      <i class="pi pi-spinner animate-spin text-6xl text-honolulu-blue-600 dark:text-honolulu-blue-400"></i>
+    </div>
+
+    <header class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-40 transition-colors duration-300 h-20">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-2">
           <img src="@/assets/logo.svg" alt="Make IT Logical Logo" class="h-10 w-auto">
@@ -173,5 +245,18 @@ section#contact {
   margin-right: calc(-50vw + 50%);
   padding-left: calc(50vw - 50%);
   padding-right: calc(50vw - 50%);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 </style>
