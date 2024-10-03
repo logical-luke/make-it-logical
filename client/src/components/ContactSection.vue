@@ -1,14 +1,11 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
-const { t } = useI18n();
 import { ref, reactive } from 'vue';
 import { useVuelidate } from '@vuelidate/core';
 import { required, email } from '@vuelidate/validators';
 import axios from 'axios';
-import Card from 'primevue/card';
-import InputText from 'primevue/inputtext';
-import Textarea from 'primevue/textarea';
-import Button from 'primevue/button';
+
+const { t } = useI18n();
 
 const form = reactive({
   name: '',
@@ -48,7 +45,7 @@ const submitForm = async () => {
     } else {
       buttonText.value = t('Error. Please try again.');
     }
-  } catch (error: unknown) {
+  } catch (error) {
     console.log(error);
     buttonText.value = t('Error. Please try again.');
   } finally {
@@ -58,62 +55,58 @@ const submitForm = async () => {
 </script>
 
 <template>
-  <section id="contact" class="py-20 mt-8 relative">
+  <section id="contact" class="py-20 mt-8 relative bg-gradient-to-b from-silver-100 to-silver-200 dark:from-midnight-green-800 dark:to-midnight-green-900">
     <div class="absolute inset-0 bg-silver-100 dark:bg-midnight-green-900 opacity-70"></div>
-    <div class="absolute inset-0 overflow-hidden">
-      <picture>
-        <source srcset="@/assets/services.webp" type="image/webp" />
-        <source srcset="@/assets/services.png" type="image/png" />
-        <img src="@/assets/services.png" alt="Our Services" class="w-full h-full object-cover opacity-30 dark:opacity-20" />
-      </picture>
-    </div>
-    <div class="relative z-10 max-w-7xl mx-auto">
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-6 transition-all duration-300 transform hover:scale-105">
         {{ t('Let\'s Create Something Amazing') }}
       </h2>
-      <p class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out">
-        {{ t('Ready to take your digital presence to the next level?') }}
-      </p>
-      <p class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-8 transition-opacity duration-300 ease-in-out">
-        {{ t('We\'re here to turn your vision into reality. Let\'s start a conversation and explore the possibilities together.') }}
-      </p>
-      <div class="max-w-7xl mx-auto transition-all duration-300 transform hover:scale-105">
-        <Card class="bg-white dark:bg-midnight-green-800 shadow hover:shadow-md rounded-lg overflow-hidden border border-silver-200 dark:border-midnight-green-700">
-          <template #content>
-            <form class="space-y-6" @submit.prevent="submitForm">
-              <div class="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label for="name" class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200">
-                    {{ t('Name') }}
-                  </label>
-                  <InputText id="name" v-model="form.name" class="w-full p-inputtext-lg border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300" :class="{ 'p-invalid': v$.name.$invalid && submitted }" />
-                  <small v-if="v$.name.$invalid && submitted" class="p-error">
-                    {{ t('Name is required') }}
-                  </small>
-                </div>
-                <div>
-                  <label for="email" class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200">
-                    {{ t('Email') }}
-                  </label>
-                  <InputText id="email" v-model="form.email" class="w-full border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300" :class="{ 'p-invalid': v$.email.$invalid && submitted }" />
-                  <small v-if="v$.email.$invalid && submitted" class="p-error">
-                    {{ v$.email.$errors[0].$message }}
-                  </small>
-                </div>
-              </div>
-              <div>
-                <label for="message" class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200">
-                  {{ t('Message') }}
-                </label>
-                <Textarea id="message" v-model="form.message" rows="5" class="w-full border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300" :class="{ 'p-invalid': v$.message.$invalid && submitted }" />
-                <small v-if="v$.message.$invalid && submitted" class="p-error">
-                  {{ t('Message is required') }}
-                </small>
-              </div>
-              <Button type="submit" :label="buttonText" icon="pi pi-send" class="w-full text-white bg-honolulu-blue-600 hover:bg-honolulu-blue-700 dark:bg-honolulu-blue-500 dark:hover:bg-honolulu-blue-600 transition-all duration-300 py-3 rounded-full" :loading="isSending" :disabled="isSending || sent" />
-            </form>
-          </template>
-        </Card>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4">
+            {{ t('Ready to take your digital presence to the next level? We\'re here to turn your vision into reality.') }}
+          </p>
+          <p class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4">
+            {{ t('Our team of experts is passionate about crafting tailored solutions that meet your unique needs and exceed your expectations.') }}
+          </p>
+          <p class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4">
+            {{ t('Whether you\'re looking to build a cutting-edge web application, optimize your existing systems, or need guidance on your digital strategy, we\'re here to help.') }}
+          </p>
+          <p class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4">
+            {{ t('Let\'s start a conversation and explore the possibilities together. Your success is our priority, and we\'re excited to be part of your journey.') }}
+          </p>
+          <p class="text-lg md:text-xl font-semibold text-honolulu-blue-600 dark:text-honolulu-blue-300 mb-4">
+            {{ t('Fill out the form, and let\'s begin crafting your digital success story!') }}
+          </p>
+        </div>
+        <div class="bg-white dark:bg-midnight-green-700 shadow-xl rounded-lg p-6">
+          <form class="space-y-6" @submit.prevent="submitForm">
+            <div>
+              <label for="name" class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200">
+                {{ t('Name') }}
+              </label>
+              <input id="name" v-model="form.name" type="text" class="w-full p-2 border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 bg-silver-50 dark:bg-midnight-green-800 text-midnight-green-800 dark:text-silver-100" :class="{ 'border-red-500': v$.name.$error }" />
+              <small v-if="v$.name.$error" class="text-red-500">{{ t('Name is required') }}</small>
+            </div>
+            <div>
+              <label for="email" class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200">
+                {{ t('Email') }}
+              </label>
+              <input id="email" v-model="form.email" type="email" class="w-full p-2 border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 bg-silver-50 dark:bg-midnight-green-800 text-midnight-green-800 dark:text-silver-100" :class="{ 'border-red-500': v$.email.$error }" />
+              <small v-if="v$.email.$error" class="text-red-500">{{ t('Valid email is required') }}</small>
+            </div>
+            <div>
+              <label for="message" class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200">
+                {{ t('Message') }}
+              </label>
+              <textarea id="message" v-model="form.message" rows="5" class="w-full p-2 border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 bg-silver-50 dark:bg-midnight-green-800 text-midnight-green-800 dark:text-silver-100" :class="{ 'border-red-500': v$.message.$error }"></textarea>
+              <small v-if="v$.message.$error" class="text-red-500">{{ t('Message is required') }}</small>
+            </div>
+            <button type="submit" class="w-full py-3 px-4 bg-honolulu-blue-600 hover:bg-honolulu-blue-700 dark:bg-honolulu-blue-500 dark:hover:bg-honolulu-blue-600 text-white font-bold rounded-full transition-colors duration-300" :disabled="isSending || sent">
+              {{ buttonText }}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </section>

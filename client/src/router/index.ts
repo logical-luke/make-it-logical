@@ -2,7 +2,7 @@ import App from "@/App.vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
-  { path: '/', component: App },
+  { path: '/', component: App, meta: { scrollTo: 0 } },
   { path: '/services', component: App, meta: { scrollTo: '#services' } },
   { path: '/process', component: App, meta: { scrollTo: '#process' } },
   { path: '/team', component: App, meta: { scrollTo: '#team' } },
@@ -13,7 +13,10 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
   scrollBehavior(to) {
-    if (to.meta.scrollTo) {
+    if (to.meta.scrollTo !== undefined) {
+      if (typeof to.meta.scrollTo === 'number') {
+        return { top: to.meta.scrollTo, behavior: 'smooth' };
+      }
       return { el: to.meta.scrollTo, behavior: 'smooth' };
     }
     return { top: 0 };

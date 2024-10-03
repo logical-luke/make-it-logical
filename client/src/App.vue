@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {ref} from 'vue';
-import { useRouter } from 'vue-router';
+import {onMounted, onUnmounted, ref, computed} from 'vue';
+import {useRouter} from 'vue-router';
 import Button from 'primevue/button';
 import TeamSection from "@/components/TeamSection.vue";
 import ContactSection from "@/components/ContactSection.vue";
@@ -8,55 +8,101 @@ import ServicesSection from "@/components/ServicesSection.vue";
 import HomeSection from "@/components/HomeSection.vue";
 import ProcessSection from "@/components/ProcessSection.vue";
 
+const router = useRouter();
+
 const navItems = ref([
-  {id: 1, name: 'Home', href: '#home', path: '/'},
+  {id: 1, name: 'Home', href: '/', path: '/'},
   {id: 2, name: 'Services', href: '#services', path: '/services'},
   {id: 3, name: 'Process', href: '#process', path: '/process'},
   {id: 4, name: 'Team', href: '#team', path: '/team'},
   {id: 5, name: 'Contact', href: '#contact', path: '/contact'},
 ]);
 
+const activeSection = ref<string | null>(null);
+
 const mobileMenuOpen = ref(false);
 
-const router = useRouter();
 
 const scrollTo = (href: string, path: string) => {
-  const element = document.querySelector(href);
-  if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
-    router.push(path).catch(() => {}); // Update the URL without reloading the page
+  if (href === '/') {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    activeSection.value = null;
+  } else {
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({behavior: 'smooth'});
+      activeSection.value = href.slice(1);
+    }
   }
+  router.push(path).catch(() => {});
   mobileMenuOpen.value = false;
 };
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value;
 };
+
+const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          activeSection.value = entry.target.id === 'home' ? null : entry.target.id;
+          const navItem = navItems.value.find(item => item.href === `#${entry.target.id}` || (item.href === '/' && entry.target.id === 'home'));
+          if (navItem) {
+            router.replace(navItem.path);
+          }
+        }
+      });
+    },
+    {threshold: 0.5}
+);
+
+onMounted(() => {
+  document.querySelectorAll<HTMLElement>('section').forEach((section) => {
+    observer.observe(section);
+  });
+});
+
+onUnmounted(() => {
+  observer.disconnect();
+});
+
+const isActive = computed(() => (href: string) => {
+  if (href === '/') {
+    return activeSection.value === null || activeSection.value === 'home';
+  }
+  return activeSection.value === href.slice(1);
+});
 </script>
 
 <template>
   <div class="min-h-screen bg-white dark:bg-midnight-green-800 transition-colors duration-300">
-    <header class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-50 transition-colors duration-300">
+    <header class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-50 transition-colors duration-300 h-20">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-2">
           <img src="@/assets/logo.svg" alt="Make IT Logical Logo" class="h-10 w-auto">
           <span class="text-2xl font-bold text-honolulu-blue-600 dark:text-honolulu-blue-400">Make IT Logical</span>
         </div>
-        <nav class="hidden md:flex items-center">
-          <ul class="flex space-x-6">
+        <nav :class="{'hidden': !mobileMenuOpen, 'md:flex': true}">
+          <ul class="flex md:flex-row flex-col space-y-6 md:space-y-0 md:space-x-6 items-center">
             <li v-for="item in navItems" :key="item.id">
-              <a
-:href="item.href"
-                 class="text-midnight-green-600 dark:text-silver-300 hover:text-honolulu-blue-600 dark:hover:text-honolulu-blue-400 transition-colors duration-300"
-                 @click.prevent="scrollTo(item.href, item.path)">{{ item.name }}</a>
+              <RouterLink
+                  :to="item.path"
+                  class="text-2xl md:text-base transition-colors duration-300 text-midnight-green-600 dark:text-silver-300 hover:text-honolulu-blue-600 dark:hover:text-honolulu-blue-400"
+                  :class="{ 'font-bold text-honolulu-blue-400': isActive(item.href) }"
+                  @click.prevent="scrollTo(item.href, item.path)"
+              >
+                {{ item.name }}
+              </RouterLink>
             </li>
           </ul>
         </nav>
         <Button
-icon="pi pi-bars" class="p-button-text md:hidden text-midnight-green-600 dark:text-silver-300"
-                @click="toggleMobileMenu"/>
+            icon="pi pi-bars"
+            class="p-button-text md:hidden text-midnight-green-600 dark:text-silver-300"
+            @click="toggleMobileMenu"
+        />
       </div>
     </header>
-
     <div v-if="mobileMenuOpen" class="fixed inset-0 z-50 bg-white dark:bg-midnight-green-900 md:hidden">
       <div class="flex flex-col h-full">
         <div class="flex justify-end p-4">
@@ -70,8 +116,10 @@ icon="pi pi-bars" class="p-button-text md:hidden text-midnight-green-600 dark:te
             <li v-for="item in navItems" :key="item.id">
               <RouterLink
                   :to="item.path"
-                  class="text-2xl text-midnight-green-600 dark:text-silver-300 hover:text-honolulu-blue-600 dark:hover:text-honolulu-blue-400 transition-colors duration-300"
-                  @click.prevent="scrollTo(item.href, item.path)">
+                  class="text-2xl transition-colors duration-300 text-midnight-green-600 dark:text-silver-300 hover:text-honolulu-blue-600 dark:hover:text-honolulu-blue-400"
+                  :class="{ 'font-bold text-honolulu-blue-400': isActive(item.href) }"
+                  @click.prevent="scrollTo(item.href, item.path)"
+              >
                 {{ item.name }}
               </RouterLink>
             </li>
