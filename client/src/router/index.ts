@@ -1,18 +1,23 @@
-import {createRouter, createWebHistory} from "vue-router";
-import HomePage from "@/views/HomePage.vue";
+import App from "@/App.vue";
+import { createRouter, createWebHistory } from "vue-router";
+
+const routes = [
+  { path: '/', component: App },
+  { path: '/services', component: App, meta: { scrollTo: '#services' } },
+  { path: '/process', component: App, meta: { scrollTo: '#process' } },
+  { path: '/team', component: App, meta: { scrollTo: '#team' } },
+  { path: '/contact', component: App, meta: { scrollTo: '#contact' } },
+];
 
 const router = createRouter({
-    history: createWebHistory(),
-    scrollBehavior() {
-        return {top: 0};
-    },
-    routes: [
-        {
-            path: "/",
-            name: "HomePage",
-            component: HomePage,
-        }
-    ]
+  history: createWebHistory(),
+  routes,
+  scrollBehavior(to) {
+    if (to.meta.scrollTo) {
+      return { el: to.meta.scrollTo, behavior: 'smooth' };
+    }
+    return { top: 0 };
+  },
 });
 
 export default router;
