@@ -3,6 +3,7 @@ import {useI18n} from 'vue-i18n';
 
 const {t} = useI18n();
 import {ref} from 'vue';
+import VLazyImage from "v-lazy-image";
 
 const processSteps = ref([
   {
@@ -74,35 +75,26 @@ const imageSizes = [
 const getImageUrl = (name: string, width: number, height: number, format: string) => {
   return new URL(`../assets/${name}-${width}x${height}.${format}`, import.meta.url).href;
 };
+
+const generateSrcSet = (imageName: string, format: string) => {
+  return imageSizes.map(size =>
+      `${getImageUrl(imageName, size.width, size.height, format)} ${size.width}w`
+  ).join(', ');
+};
 </script>
 
 <template>
   <section id="process" class="py-20 mt-8 relative">
     <div class="absolute inset-0 bg-lapis-lazuli-50 dark:bg-lapis-lazuli-900 opacity-70"></div>
     <div class="absolute inset-0 overflow-hidden">
-      <picture>
-        <!-- AVIF format -->
-        <source
-            type="image/avif"
-            :srcset="imageSizes.map(size => `${getImageUrl('process', size.width, size.height, 'avif')} ${size.width}w`).join(', ')"
-            sizes="100vw"
-        >
-        <!-- WebP format -->
-        <source
-            type="image/webp"
-            :srcset="imageSizes.map(size => `${getImageUrl('process', size.width, size.height, 'webp')} ${size.width}w`).join(', ')"
-            sizes="100vw"
-        >
-        <!-- PNG format (fallback) -->
-        <img
-            :src="getImageUrl('process', 1024, 768, 'png')"
-            :srcset="imageSizes.map(size => `${getImageUrl('process', size.width, size.height, 'png')} ${size.width}w`).join(', ')"
-            sizes="100vw"
-            alt="Our Process"
-            class="w-full h-full object-cover opacity-30 dark:opacity-20"
-            loading="lazy"
-        >
-      </picture>
+      <VLazyImage
+          :src="getImageUrl('process', 1024, 768, 'png')"
+          :src-placeholder="getImageUrl('process', 32, 24, 'png')"
+          :srcset="generateSrcSet('process', 'png')"
+          sizes="100vw"
+          alt="Our Process"
+          class="w-full h-full object-cover opacity-30 dark:opacity-20"
+      />
     </div>
     <div class="relative z-10 max-w-7xl mx-auto">
       <h2 class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-6 transition-all duration-300 transform hover:scale-105">

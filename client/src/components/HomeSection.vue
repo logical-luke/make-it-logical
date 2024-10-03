@@ -1,51 +1,43 @@
 <script setup lang="ts">
-import {useI18n} from 'vue-i18n';
+import { useI18n } from 'vue-i18n';
 import Button from 'primevue/button';
+import VLazyImage from "v-lazy-image";
 
-const {t} = useI18n();
-const {scrollTo} = defineProps(['scrollTo']);
+const { t } = useI18n();
+const { scrollTo } = defineProps(['scrollTo']);
 
 const imageSizes = [
-  {width: 640, height: 960},
-  {width: 768, height: 1024},
-  {width: 1024, height: 768},
-  {width: 1920, height: 1080},
-  {width: 2560, height: 1440},
-  {width: 3440, height: 1440},
-  {width: 3840, height: 2160}
+  { width: 640, height: 960 },
+  { width: 768, height: 1024 },
+  { width: 1024, height: 768 },
+  { width: 1920, height: 1080 },
+  { width: 2560, height: 1440 },
+  { width: 3440, height: 1440 },
+  { width: 3840, height: 2160 }
 ];
 
 const getImageUrl = (name: string, width: number, height: number, format: string) => {
   return new URL(`../assets/${name}-${width}x${height}.${format}`, import.meta.url).href;
+};
+
+const generateSrcSet = (imageName: string, format: string) => {
+  return imageSizes.map(size =>
+    `${getImageUrl(imageName, size.width, size.height, format)} ${size.width}w`
+  ).join(', ');
 };
 </script>
 
 <template>
   <section id="home" class="py-20 md:py-32 relative overflow-hidden">
     <div class="absolute inset-0 overflow-hidden">
-      <picture>
-        <!-- AVIF format -->
-        <source
-            type="image/avif"
-            :srcset="imageSizes.map(size => `${getImageUrl('hero-image', size.width, size.height, 'avif')} ${size.width}w`).join(', ')"
-            sizes="100vw"
-        >
-        <!-- WebP format -->
-        <source
-            type="image/webp"
-            :srcset="imageSizes.map(size => `${getImageUrl('hero-image', size.width, size.height, 'webp')} ${size.width}w`).join(', ')"
-            sizes="100vw"
-        >
-        <!-- PNG format (fallback) -->
-        <img
-            :src="getImageUrl('hero-image', 1024, 768, 'png')"
-            :srcset="imageSizes.map(size => `${getImageUrl('hero-image', size.width, size.height, 'png')} ${size.width}w`).join(', ')"
-            sizes="100vw"
-            alt="Digital Transformation"
-            loading="lazy"
-            class="absolute h-full w-auto min-w-full object-cover object-left"
-        >
-      </picture>
+      <VLazyImage
+        :src="getImageUrl('hero-image', 1024, 768, 'png')"
+        :src-placeholder="getImageUrl('hero-image', 32, 24, 'png')"
+        :srcset="generateSrcSet('hero-image', 'png')"
+        sizes="100vw"
+        alt="Digital Transformation"
+        class="absolute h-full w-auto min-w-full object-cover object-left"
+      />
     </div>
     <div class="relative z-10 md:w-1/2 lg:w-3/5">
       <div class="bg-white dark:bg-midnight-green-900 bg-opacity-80 dark:bg-opacity-80 p-6 rounded-lg shadow-md">
