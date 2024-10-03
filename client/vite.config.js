@@ -22,7 +22,10 @@ export default defineConfig({
     vue(),
     vueJsx(),
     useCredentials(),
-    EnvironmentPlugin(["API_BASE_URL", "NODE_ENV"]),
+    EnvironmentPlugin({
+      API_BASE_URL: 'https://api.makeitlogical.io/v1',
+      NODE_ENV: process.env.NODE_ENV || 'development'
+    }),
   ],
   assetsPublicPath: "/",
   resolve: {
