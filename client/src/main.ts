@@ -5,9 +5,7 @@ import {createApp} from 'vue'
 import App from './App.vue'
 import PrimeVue from 'primevue/config'
 import Lara from '@primevue/themes/lara';
-import Tooltip from 'primevue/tooltip';
 import router from "@/router";
-import VueLazyload from "vue-lazyload";
 
 const app = createApp(App)
 
@@ -33,9 +31,5 @@ app.use(PrimeVue, {
         }
     }
 });
-
-app.use(VueLazyload);
-
-app.directive('tooltip', Tooltip);
 
 app.mount('#app')
