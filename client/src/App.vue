@@ -1,3 +1,4 @@
+I apologize for the confusion. The spinning loader should only be visible while the page is loading. Let's modify the App.vue to ensure the loader disappears once everything is loaded. Here's an updated version of the App.vue file:
 <script setup lang="ts">
 import {defineAsyncComponent, nextTick, onMounted, onUnmounted, ref, watch} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
@@ -5,12 +6,20 @@ import Button from 'primevue/button';
 
 const isLoading = ref(true);
 const componentsLoaded = ref(0);
-const totalComponents = 5; // Update this if you add or remove components
+const totalComponents = 5;
+const heroImageLoaded = ref(false);
 
 const incrementLoadedComponents = () => {
   componentsLoaded.value++;
-  if (componentsLoaded.value === totalComponents) {
-    isLoading.value = false;
+  checkAllLoaded();
+};
+
+const checkAllLoaded = () => {
+  if (componentsLoaded.value === totalComponents && heroImageLoaded.value) {
+    // Add a small delay to ensure smooth transition
+    setTimeout(() => {
+      isLoading.value = false;
+    }, 300);
   }
 };
 
@@ -65,7 +74,6 @@ const navItems = ref([
 const activeSection = ref<string | null>(null);
 const mobileMenuOpen = ref(false);
 const isScrolling = ref(false);
-
 
 const scrollTo = (href: string, path: string) => {
   isScrolling.value = true;
@@ -134,15 +142,12 @@ onMounted(async () => {
   }
 });
 
-// Watch for all components to load
-watch(componentsLoaded, (newValue) => {
-  if (newValue === totalComponents) {
-    // Add a small delay to ensure smooth transition
-    setTimeout(() => {
-      isLoading.value = false;
-    }, 300);
+watch(() => heroImageLoaded.value, (newValue) => {
+  if (newValue) {
+    checkAllLoaded();
   }
 });
+
 onUnmounted(() => {
   observer.disconnect();
 });
@@ -161,12 +166,15 @@ const toggleMobileMenu = () => {
 
 <template>
   <div class="min-h-screen bg-white dark:bg-midnight-green-800 transition-colors duration-300">
-    <div v-if="isLoading"
+    <div
+v-if="isLoading"
          class="fixed inset-0 z-50 flex items-center justify-center bg-white dark:bg-midnight-green-800">
       <i class="pi pi-spinner animate-spin text-6xl text-honolulu-blue-600 dark:text-honolulu-blue-400"></i>
     </div>
 
-    <header class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-40 transition-colors duration-300 h-20">
+    <header
+v-show="!isLoading"
+            class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-40 transition-colors duration-300 h-20">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
         <div class="flex items-center space-x-2">
           <img src="@/assets/logo.svg" alt="Make IT Logical Logo" class="h-10 w-auto">
@@ -218,9 +226,9 @@ const toggleMobileMenu = () => {
       </div>
     </div>
 
-    <main class="pt-20">
+    <main v-show="!isLoading" class="pt-20">
       <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <HomeSection id="home" :scroll-to="scrollTo"/>
+        <HomeSection id="home" :scroll-to="scrollTo" @hero-image-loaded="heroImageLoaded = true"/>
         <ServicesSection/>
         <ProcessSection/>
         <TeamSection/>
@@ -228,7 +236,9 @@ const toggleMobileMenu = () => {
       </div>
     </main>
 
-    <footer class="bg-honolulu-blue-600 dark:bg-lapis-lazuli-800 text-white py-8 px-6 transition-colors duration-300">
+    <footer
+v-show="!isLoading"
+            class="bg-honolulu-blue-600 dark:bg-lapis-lazuli-800 text-white py-8 px-6 transition-colors duration-300">
       <div class="max-w-7xl mx-auto text-center">
         <p>&copy; {{ new Date().getFullYear() }} Make IT Logical. All rights reserved.</p>
         <p class="mt-2 text-sm">Empowering businesses with innovative digital solutions.</p>

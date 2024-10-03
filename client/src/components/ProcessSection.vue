@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import {useI18n} from 'vue-i18n';
+import { useI18n } from 'vue-i18n';
+import { ref } from 'vue';
 
-const {t} = useI18n();
-import {ref} from 'vue';
-import VLazyImage from "v-lazy-image";
+const { t } = useI18n();
 
 const processSteps = ref([
   {
@@ -62,39 +61,44 @@ const processSteps = ref([
   }
 ]);
 
-const imageSizes = [
-  {width: 640, height: 960},
-  {width: 768, height: 1024},
-  {width: 1024, height: 768},
-  {width: 1920, height: 1080},
-  {width: 2560, height: 1440},
-  {width: 3440, height: 1440},
-  {width: 3840, height: 2160}
-];
-
-const getImageUrl = (name: string, width: number, height: number, format: string) => {
-  return new URL(`../assets/${name}-${width}x${height}.${format}`, import.meta.url).href;
-};
-
-const generateSrcSet = (imageName: string, format: string) => {
-  return imageSizes.map(size =>
-      `${getImageUrl(imageName, size.width, size.height, format)} ${size.width}w`
-  ).join(', ');
-};
 </script>
 
 <template>
   <section id="process" class="py-20 mt-8 relative">
     <div class="absolute inset-0 bg-lapis-lazuli-50 dark:bg-lapis-lazuli-900 opacity-70"></div>
     <div class="absolute inset-0 overflow-hidden">
-      <VLazyImage
-          :src="getImageUrl('process', 1024, 768, 'png')"
-          :src-placeholder="getImageUrl('process', 32, 24, 'png')"
-          :srcset="generateSrcSet('process', 'png')"
+      <picture>
+        <source
+type="image/avif" srcset="
+          ../assets/process-640x960.avif 640w,
+          ../assets/process-1024x768.avif 1024w,
+          ../assets/process-1920x1080.avif 1920w,
+          ../assets/process-2560x1440.avif 2560w,
+          ../assets/process-3840x2160.avif 3840w
+        ">
+        <source
+type="image/webp" srcset="
+          ../assets/process-640x960.webp 640w,
+          ../assets/process-1024x768.webp 1024w,
+          ../assets/process-1920x1080.webp 1920w,
+          ../assets/process-2560x1440.webp 2560w,
+          ../assets/process-3840x2160.webp 3840w
+        ">
+        <img
+          src="../assets/process-1920x1080.png"
+          srcset="
+            ../assets/process-640x960.png 640w,
+            ../assets/process-1024x768.png 1024w,
+            ../assets/process-1920x1080.png 1920w,
+            ../assets/process-2560x1440.png 2560w,
+            ../assets/process-3840x2160.png 3840w
+          "
           sizes="100vw"
           alt="Our Process"
           class="w-full h-full object-cover opacity-30 dark:opacity-20"
-      />
+          loading="lazy"
+        >
+      </picture>
     </div>
     <div class="relative z-10 max-w-7xl mx-auto">
       <h2 class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-6 transition-all duration-300 transform hover:scale-105">
@@ -108,11 +112,11 @@ const generateSrcSet = (imageName: string, format: string) => {
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div
-            v-for="(step) in processSteps" :key="step.label"
-            class="bg-white dark:bg-midnight-green-800 rounded-lg p-4 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-silver-200 dark:border-midnight-green-700">
+          v-for="(step) in processSteps" :key="step.label"
+          class="bg-white dark:bg-midnight-green-800 rounded-lg p-4 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-silver-200 dark:border-midnight-green-700">
           <div class="flex items-center mb-3">
             <div
-                class="w-10 h-10 bg-honolulu-blue-50 dark:bg-honolulu-blue-900 rounded-full flex items-center justify-center text-honolulu-blue-600 dark:text-honolulu-blue-400 text-xl font-bold mr-4">
+              class="w-10 h-10 bg-honolulu-blue-50 dark:bg-honolulu-blue-900 rounded-full flex items-center justify-center text-honolulu-blue-600 dark:text-honolulu-blue-400 text-xl font-bold mr-4">
               <i :class="step.icon"></i>
             </div>
             <h3 class="text-lg font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">
