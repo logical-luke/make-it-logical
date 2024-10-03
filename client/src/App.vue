@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import HomeView from '@/views/HomeView.vue'
+import HomeView from '@/views/HomePage.vue'
 import Button from 'primevue/button';
 
 const navItems = ref([

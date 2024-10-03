@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
 import { ref, reactive } from 'vue'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
@@ -29,200 +33,172 @@ const v$ = useVuelidate(rules, form)
 
 const isSending = ref(false)
 const sent = ref(false)
-const buttonText = ref('Send Message')
+const buttonText = ref(t('Send Message'))
 const submitted = ref(false)
 
 const services = [
   {
     id: 1,
     icon: 'pi pi-desktop',
-    title: 'Web Development',
-    description:
-      'Craft stunning, high-performance web applications that leave a lasting impression and drive conversions.',
+    title: t('Web Development'),
+    description: t('Craft stunning, high-performance web applications that leave a lasting impression and drive conversions.'),
     features: [
-      'Responsive Design',
-      'SEO Optimization',
-      'Lightning Fast Load Times',
-      'Intuitive User Experience'
+      t('Responsive Design'),
+      t('SEO Optimization'),
+      t('Lightning Fast Load Times'),
+      t('Intuitive User Experience')
     ]
   },
   {
     id: 2,
     icon: 'pi pi-mobile',
-    title: 'Mobile Apps',
-    description:
-      'Create seamless, cross-platform mobile experiences that users love and keep coming back to.',
+    title: t('Mobile Apps'),
+    description: t('Create seamless, cross-platform mobile experiences that users love and keep coming back to.'),
     features: [
-      'Native Performance',
-      'Offline Functionality',
-      'Push Notifications',
-      'Seamless Updates'
+      t('Native Performance'),
+      t('Offline Functionality'),
+      t('Push Notifications'),
+      t('Seamless Updates')
     ]
   },
   {
     id: 3,
     icon: 'pi pi-cog',
-    title: 'API Development',
-    description:
-      'Build robust, scalable APIs that connect systems and unlock new possibilities for your business.',
+    title: t('API Development'),
+    description: t('Build robust, scalable APIs that connect systems and unlock new possibilities for your business.'),
     features: [
-      'RESTful Design',
-      'GraphQL Support',
-      'Authentication & Security',
-      'Comprehensive Documentation'
+      t('RESTful Design'),
+      t('GraphQL Support'),
+      t('Authentication & Security'),
+      t('Comprehensive Documentation')
     ]
   },
   {
     id: 4,
     icon: 'pi pi-server',
-    title: 'DevOps Solutions',
-    description:
-      'Streamline your development process with cutting-edge DevOps practices and tools.',
+    title: t('DevOps Solutions'),
+    description: t('Streamline your development process with cutting-edge DevOps practices and tools.'),
     features: [
-      'CI/CD Pipelines',
-      'Infrastructure as Code',
-      'Monitoring & Logging',
-      'Scalable Cloud Architectures'
+      t('CI/CD Pipelines'),
+      t('Infrastructure as Code'),
+      t('Monitoring & Logging'),
+      t('Scalable Cloud Architectures')
     ]
   },
   {
     id: 5,
     icon: 'pi pi-chart-line',
-    title: 'Data Analytics',
-    description:
-      'Harness the power of your data with advanced analytics and visualization solutions.',
+    title: t('Data Analytics'),
+    description: t('Harness the power of your data with advanced analytics and visualization solutions.'),
     features: [
-      'Real-time Dashboards',
-      'Predictive Analytics',
-      'Big Data Processing',
-      'Machine Learning Integration'
+      t('Real-time Dashboards'),
+      t('Predictive Analytics'),
+      t('Big Data Processing'),
+      t('Machine Learning Integration')
     ]
   },
   {
     id: 6,
     icon: 'pi pi-bolt',
-    title: 'Performance Optimization',
-    description:
-      'Enhance the speed, responsiveness, and efficiency of your web applications for an optimal user experience.',
+    title: t('Performance Optimization'),
+    description: t('Enhance the speed, responsiveness, and efficiency of your web applications for an optimal user experience.'),
     features: [
-      'Load Time Reduction',
-      'Resource Optimization',
-      'Caching Strategies',
-      'Code Splitting and Lazy Loading'
+      t('Load Time Reduction'),
+      t('Resource Optimization'),
+      t('Caching Strategies'),
+      t('Code Splitting and Lazy Loading')
     ]
   }
 ]
 
 const processSteps = [
   {
-    label: 'Discovery',
+    label: t('Discovery'),
     icon: 'pi pi-search',
-    description: 'We dive deep into your business goals and requirements.',
-    fullDescription:
-      'In the Discovery phase, we conduct thorough research to understand your business, target audience, and project objectives. We analyze your competitors and identify opportunities for innovation.'
+    description: t('We dive deep into your business goals and requirements.'),
+    fullDescription: t('In the Discovery phase, we conduct thorough research to understand your business, target audience, and project objectives. We analyze your competitors and identify opportunities for innovation.')
   },
   {
-    label: 'Planning',
+    label: t('Planning'),
     icon: 'pi pi-file',
-    description: 'We create a detailed roadmap for your project.',
-    fullDescription:
-      'During Planning, we outline the project scope, create timelines, and allocate resources. We define key milestones and deliverables to ensure a smooth development process.'
+    description: t('We create a detailed roadmap for your project.'),
+    fullDescription: t('During Planning, we outline the project scope, create timelines, and allocate resources. We define key milestones and deliverables to ensure a smooth development process.')
   },
   {
-    label: 'Design',
+    label: t('Design'),
     icon: 'pi pi-palette',
-    description: 'We craft intuitive and visually appealing interfaces.',
-    fullDescription:
-      'In the Design phase, we create wireframes and prototypes to visualize the user interface. We focus on user experience (UX) principles to ensure your application is both beautiful and functional.'
+    description: t('We craft intuitive and visually appealing interfaces.'),
+    fullDescription: t('In the Design phase, we create wireframes and prototypes to visualize the user interface. We focus on user experience (UX) principles to ensure your application is both beautiful and functional.')
   },
   {
-    label: 'Development',
+    label: t('Development'),
     icon: 'pi pi-cog',
-    description: 'We bring your vision to life with clean, efficient code.',
-    fullDescription:
-      'During Development, our expert programmers write high-quality, scalable code. We follow best practices and use cutting-edge technologies to build robust and performant applications.'
+    description: t('We bring your vision to life with clean, efficient code.'),
+    fullDescription: t('During Development, our expert programmers write high-quality, scalable code. We follow best practices and use cutting-edge technologies to build robust and performant applications.')
   },
   {
-    label: 'Testing',
+    label: t('Testing'),
     icon: 'pi pi-check-square',
-    description: 'We rigorously test to ensure quality and reliability.',
-    fullDescription:
-      'In the Testing phase, we conduct thorough quality assurance checks. This includes functional testing, performance testing, and security audits to ensure your application is bug-free and secure.'
+    description: t('We rigorously test to ensure quality and reliability.'),
+    fullDescription: t('In the Testing phase, we conduct thorough quality assurance checks. This includes functional testing, performance testing, and security audits to ensure your application is bug-free and secure.')
   },
   {
-    label: 'Deployment',
+    label: t('Deployment'),
     icon: 'pi pi-upload',
-    description: 'We launch your application and ensure smooth operation.',
-    fullDescription:
-      'During Deployment, we carefully launch your application to production servers. We monitor the process closely to ensure a seamless transition and minimal downtime.'
+    description: t('We launch your application and ensure smooth operation.'),
+    fullDescription: t('During Deployment, we carefully launch your application to production servers. We monitor the process closely to ensure a seamless transition and minimal downtime.')
   },
   {
-    label: 'Maintenance',
+    label: t('Maintenance'),
     icon: 'pi pi-refresh',
-    description: 'We provide ongoing support and updates.',
-    fullDescription:
-      'In the Maintenance phase, we offer continuous support and regular updates. We monitor performance, implement new features, and ensure your application stays up-to-date with the latest technologies and security standards.'
+    description: t('We provide ongoing support and updates.'),
+    fullDescription: t('In the Maintenance phase, we offer continuous support and regular updates. We monitor performance, implement new features, and ensure your application stays up-to-date with the latest technologies and security standards.')
   },
   {
-    label: 'Scaling',
+    label: t('Scaling'),
     icon: 'pi pi-arrow-up',
-    description: 'We ensure your solution can grow with your business.',
-    fullDescription:
-      'In the Scaling phase, we optimize your application to handle increased load and user base. We implement strategies for horizontal and vertical scaling, ensuring your solution remains performant as your business grows.'
+    description: t('We ensure your solution can grow with your business.'),
+    fullDescription: t('In the Scaling phase, we optimize your application to handle increased load and user base. We implement strategies for horizontal and vertical scaling, ensuring your solution remains performant as your business grows.')
   },
   {
-    label: 'Continuous Improvement',
+    label: t('Continuous Improvement'),
     icon: 'pi pi-chart-line',
-    description: 'We constantly refine and enhance your digital solution.',
-    fullDescription:
-      'The Continuous Improvement phase involves ongoing analysis, feedback collection, and iterative enhancements. We stay proactive in implementing new features, optimizing performance, and adapting to changing market needs.'
+    description: t('We constantly refine and enhance your digital solution.'),
+    fullDescription: t('The Continuous Improvement phase involves ongoing analysis, feedback collection, and iterative enhancements. We stay proactive in implementing new features, optimizing performance, and adapting to changing market needs.')
   }
 ]
 
 const teamMembers = [
   {
-    name: 'The Architect',
-    role: 'Full-stack Mastermind',
+    name: t('The Architect'),
+    role: t('Full-stack Mastermind'),
     avatar: '🧙‍♂️',
-    description:
-      'Designs and implements robust, scalable solutions across the entire technology stack.'
+    description: t('Designs and implements robust, scalable solutions across the entire technology stack.')
   },
   {
-    name: 'The Visionary',
-    role: 'UX/UI Wizard',
+    name: t('The Visionary'),
+    role: t('UX/UI Wizard'),
     avatar: '🎨',
-    description: 'Crafts intuitive and visually stunning user interfaces that captivate and engage.'
+    description: t('Crafts intuitive and visually stunning user interfaces that captivate and engage.')
   },
   {
-    name: 'The Guardian',
-    role: 'Security Specialist',
+    name: t('The Guardian'),
+    role: t('Security Specialist'),
     avatar: '🛡️',
-    description:
-      'Ensures the highest level of security and data protection in all our applications.'
+    description: t('Ensures the highest level of security and data protection in all our applications.')
   },
   {
-    name: 'The Accelerator',
-    role: 'Performance Guru',
+    name: t('The Accelerator'),
+    role: t('Performance Guru'),
     avatar: '🚀',
-    description:
-      'Optimizes applications for lightning-fast performance and seamless user experiences.'
+    description: t('Optimizes applications for lightning-fast performance and seamless user experiences.')
   },
   {
-    name: 'The Connector',
-    role: 'API Virtuoso',
+    name: t('The Connector'),
+    role: t('API Virtuoso'),
     avatar: '🔗',
-    description:
-      'Creates powerful, efficient APIs that connect systems and unlock new possibilities.'
+    description: t('Creates powerful, efficient APIs that connect systems and unlock new possibilities.')
   }
-]
-
-const techStack = [
-  { name: 'Frontend Frameworks', icon: 'pi pi-desktop', color: 'bg-blue-500' },
-  { name: 'Backend Technologies', icon: 'pi pi-server', color: 'bg-green-500' },
-  { name: 'Database Systems', icon: 'pi pi-database', color: 'bg-yellow-500' },
-  { name: 'DevOps Tools', icon: 'pi pi-cog', color: 'bg-red-500' },
-  { name: 'Cloud Platforms', icon: 'pi pi-cloud', color: 'bg-purple-500' },
-  { name: 'Mobile Development', icon: 'pi pi-mobile', color: 'bg-indigo-500' }
 ]
 
 const submitForm = async () => {
@@ -239,39 +215,16 @@ const submitForm = async () => {
     })
 
     if (response.status === 200) {
-      buttonText.value = 'Message Sent!'
+      buttonText.value = t('Message Sent!')
       sent.value = true
     } else {
-      buttonText.value = 'Error. Please try again.'
+      buttonText.value = t('Error. Please try again.')
     }
   } catch (error) {
-    buttonText.value = 'Error. Please try again.'
+    buttonText.value = t('Error. Please try again.')
   } finally {
     isSending.value = false
   }
-}
-
-const getColorClass = (index: number) => {
-  const colors = [
-    'bg-honolulu-blue-100',
-    'bg-lapis-lazuli-100',
-    'bg-midnight-green-100',
-    'bg-cinereous-100',
-    'bg-silver-100'
-  ]
-  return colors[index % colors.length]
-}
-
-const getServiceColorClass = (id: number) => {
-  const colors = [
-    'bg-honolulu-blue-100',
-    'bg-lapis-lazuli-100',
-    'bg-midnight-green-100',
-    'bg-cinereous-100',
-    'bg-silver-100',
-    'bg-honolulu-blue-100'
-  ]
-  return colors[id % colors.length]
 }
 </script>
 
@@ -293,26 +246,25 @@ const getServiceColorClass = (id: number) => {
           <h1
             class="text-4xl md:text-6xl lg:text-7xl font-extrabold text-honolulu-blue-600 dark:text-honolulu-blue-400 mb-6 transition-all duration-300 transform hover:scale-105"
           >
-            Elevate Your Digital Presence
+            {{ t('Elevate Your Digital Presence') }}
           </h1>
           <p
             class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
           >
-            At <strong>Make IT Logical</strong>, we don't just build websites and apps.
+            {{ t('At Make IT Logical, we don\'t just build websites and apps.') }}
           </p>
           <p
             class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
           >
-            We craft digital experiences that captivate, engage, and convert.
+            {{ t('We craft digital experiences that captivate, engage, and convert.') }}
           </p>
           <p
             class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-8 transition-opacity duration-300 ease-in-out"
           >
-            Your vision, our expertise – together, we'll redefine what's possible in the digital
-            realm.
+            {{ t('Your vision, our expertise – together, we\'ll redefine what\'s possible in the digital realm.') }}
           </p>
           <Button
-            label="Ignite Your Digital Journey"
+            :label="t('Ignite Your Digital Journey')"
             icon="pi pi-rocket"
             class="text-lg bg-honolulu-blue-600 hover:bg-honolulu-blue-700 dark:bg-honolulu-blue-500 dark:hover:bg-honolulu-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-md"
             @click="props.scrollTo('#contact')"
@@ -325,18 +277,17 @@ const getServiceColorClass = (id: number) => {
       <h2
         class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-6 transition-all duration-300 transform hover:scale-105"
       >
-        Our Services
+        {{ t('Our Services') }}
       </h2>
       <p
         class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
       >
-        From concept to execution, we deliver cutting-edge solutions that drive your business
-        forward.
+        {{ t('From concept to execution, we deliver cutting-edge solutions that drive your business forward.') }}
       </p>
       <p
         class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-12 transition-opacity duration-300 ease-in-out"
       >
-        Our services are tailored to meet the unique challenges of the digital age.
+        {{ t('Our services are tailored to meet the unique challenges of the digital age.') }}
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <div
@@ -353,17 +304,17 @@ const getServiceColorClass = (id: number) => {
           </div>
           <div class="p-6">
             <h3 class="text-xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-4">
-              {{ service.title }}
+              {{ t(service.title) }}
             </h3>
             <p class="text-midnight-green-700 dark:text-silver-200 mb-4">
-              {{ service.description }}
+              {{ t(service.description) }}
             </p>
             <ul class="space-y-2">
               <li v-for="feature in service.features" :key="feature" class="flex items-center">
                 <i
                   class="pi pi-check-circle text-honolulu-blue-500 dark:text-honolulu-blue-400 mr-2"
                 ></i>
-                <span class="text-midnight-green-700 dark:text-silver-200">{{ feature }}</span>
+                <span class="text-midnight-green-700 dark:text-silver-200">{{ t(feature) }}</span>
               </li>
             </ul>
           </div>
@@ -388,21 +339,21 @@ const getServiceColorClass = (id: number) => {
         <h2
           class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-6 transition-all duration-300 transform hover:scale-105"
         >
-          Our Proven Process
+          {{ t('Our Proven Process') }}
         </h2>
         <p
           class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-2 transition-opacity duration-300 ease-in-out"
         >
-          We've refined our approach to ensure every project is a success.
+          {{ t('We\'ve refined our approach to ensure every project is a success.') }}
         </p>
         <p
           class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-8 transition-opacity duration-300 ease-in-out"
         >
-          Our process is designed to maximize efficiency, creativity, and results.
+          {{ t('Our process is designed to maximize efficiency, creativity, and results.') }}
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div
-            v-for="(step, index) in processSteps"
+            v-for="(step) in processSteps"
             :key="step.label"
             class="bg-white dark:bg-midnight-green-800 rounded-lg p-4 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-silver-200 dark:border-midnight-green-700"
           >
@@ -413,12 +364,12 @@ const getServiceColorClass = (id: number) => {
                 <i :class="step.icon"></i>
               </div>
               <h3 class="text-lg font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">
-                {{ step.label }}
+                {{ t(step.label) }}
               </h3>
             </div>
-            <p class="text-midnight-green-700 dark:text-silver-200 mb-2">{{ step.description }}</p>
+            <p class="text-midnight-green-700 dark:text-silver-200 mb-2">{{ t(step.description) }}</p>
             <p class="text-midnight-green-600 dark:text-silver-400 text-sm">
-              {{ step.fullDescription }}
+              {{ t(step.fullDescription) }}
             </p>
           </div>
         </div>
@@ -429,25 +380,22 @@ const getServiceColorClass = (id: number) => {
       <h2
         class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-6 transition-all duration-300 transform hover:scale-105"
       >
-        Our Team
+        {{ t('Our Team') }}
       </h2>
       <p
         class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
       >
-        At <strong>Make IT Logical</strong>, we're more than just developers – we're innovators,
-        problem-solvers, and digital architects.
+        {{ t('At Make IT Logical, we\'re more than just developers – we\'re innovators, problem-solvers, and digital architects.') }}
       </p>
       <p
         class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
       >
-        Our passion for technology and commitment to excellence drive us to tackle the most complex
-        challenges head-on.
+        {{ t('Our passion for technology and commitment to excellence drive us to tackle the most complex challenges head-on.') }}
       </p>
       <p
         class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-12 transition-opacity duration-300 ease-in-out"
       >
-        Our team combines diverse skills to deliver exceptional results. Each role is crucial in
-        bringing your vision to life:
+        {{ t('Our team combines diverse skills to deliver exceptional results. Each role is crucial in bringing your vision to life:') }}
       </p>
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
         <div
@@ -457,10 +405,10 @@ const getServiceColorClass = (id: number) => {
         >
           <div class="text-5xl mb-4">{{ member.avatar }}</div>
           <h3 class="text-xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-2">
-            {{ member.name }}
+            {{ t(member.name) }}
           </h3>
-          <p class="text-midnight-green-700 dark:text-silver-200">{{ member.role }}</p>
-          <Button icon="pi pi-info-circle" class="mt-4" v-tooltip.top="member.description" />
+          <p class="text-midnight-green-700 dark:text-silver-200">{{ t(member.role) }}</p>
+          <Button v-tooltip.top="t(member.description)" icon="pi pi-info-circle" class="mt-4" />
         </div>
       </div>
     </section>
@@ -482,32 +430,31 @@ const getServiceColorClass = (id: number) => {
         <h2
           class="text-3xl md:text-4xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-6 transition-all duration-300 transform hover:scale-105"
         >
-          Let's Create Something Amazing
+          {{ t('Let\'s Create Something Amazing') }}
         </h2>
         <p
           class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-4 transition-opacity duration-300 ease-in-out"
         >
-          Ready to take your digital presence to the next level?
+          {{ t('Ready to take your digital presence to the next level?') }}
         </p>
         <p
           class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-8 transition-opacity duration-300 ease-in-out"
         >
-          We're here to turn your vision into reality. Let's start a conversation and explore the
-          possibilities together.
+          {{ t('We\'re here to turn your vision into reality. Let\'s start a conversation and explore the possibilities together.') }}
         </p>
         <div class="max-w-7xl mx-auto transition-all duration-300 transform hover:scale-105">
           <Card
             class="bg-white dark:bg-midnight-green-800 shadow hover:shadow-md rounded-lg overflow-hidden border border-silver-200 dark:border-midnight-green-700"
           >
             <template #content>
-              <form @submit.prevent="submitForm" class="space-y-6">
+              <form class="space-y-6" @submit.prevent="submitForm">
                 <div class="grid md:grid-cols-2 gap-6">
                   <div>
                     <label
                       for="name"
                       class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200"
                     >
-                      Name
+                      {{ t('Name') }}
                     </label>
                     <InputText
                       id="name"
@@ -515,15 +462,15 @@ const getServiceColorClass = (id: number) => {
                       class="w-full p-inputtext-lg border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
                       :class="{ 'p-invalid': v$.name.$invalid && submitted }"
                     />
-                    <small class="p-error" v-if="v$.name.$invalid && submitted">
-                      Name is required
+                    <small v-if="v$.name.$invalid && submitted" class="p-error">
+                      {{ t('Name is required') }}
                     </small>
                   </div>
                   <div>
                     <label
                       for="email"
                       class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200"
-                      >Email</label
+                      >{{ t('Email') }}</label
                     >
                     <InputText
                       id="email"
@@ -531,7 +478,7 @@ const getServiceColorClass = (id: number) => {
                       class="w-full border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
                       :class="{ 'p-invalid': v$.email.$invalid && submitted }"
                     />
-                    <small class="p-error" v-if="v$.email.$invalid && submitted">{{
+                    <small v-if="v$.email.$invalid && submitted" class="p-error">{{
                       v$.email.$errors[0].$message
                     }}</small>
                   </div>
@@ -541,7 +488,7 @@ const getServiceColorClass = (id: number) => {
                     for="message"
                     class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200"
                   >
-                    Message
+                    {{ t('Message') }}
                   </label>
                   <Textarea
                     id="message"
@@ -550,8 +497,8 @@ const getServiceColorClass = (id: number) => {
                     class="w-full border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 transition-colors duration-300"
                     :class="{ 'p-invalid': v$.message.$invalid && submitted }"
                   />
-                  <small class="p-error" v-if="v$.message.$invalid && submitted"
-                    >Message is required
+                  <small v-if="v$.message.$invalid && submitted" class="p-error"
+                    >{{ t('Message is required') }}
                   </small>
                 </div>
                 <Button
@@ -573,7 +520,6 @@ const getServiceColorClass = (id: number) => {
 
 <style scoped>
 section#home,
-section#about,
 section#process,
 section#contact {
   margin-left: calc(-50vw + 50%);
