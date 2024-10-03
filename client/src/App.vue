@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {onMounted, onUnmounted, ref, computed} from 'vue';
+import {onMounted, onUnmounted, ref} from 'vue';
 import {useRouter} from 'vue-router';
 import Button from 'primevue/button';
 import TeamSection from "@/components/TeamSection.vue";
@@ -19,11 +19,19 @@ const navItems = ref([
 ]);
 
 const activeSection = ref<string | null>(null);
-
 const mobileMenuOpen = ref(false);
-
+const isScrolling = ref(false);
 
 const scrollTo = (href: string, path: string) => {
+  isScrolling.value = true;
+
+  const scrollEndHandler = () => {
+    isScrolling.value = false;
+    window.removeEventListener('scrollend', scrollEndHandler);
+  };
+
+  window.addEventListener('scrollend', scrollEndHandler);
+
   if (href === '/') {
     window.scrollTo({top: 0, behavior: 'smooth'});
     activeSection.value = null;
@@ -34,30 +42,44 @@ const scrollTo = (href: string, path: string) => {
       activeSection.value = href.slice(1);
     }
   }
-  router.push(path).catch(() => {});
-  mobileMenuOpen.value = false;
-};
-const toggleMobileMenu = () => {
-  mobileMenuOpen.value = !mobileMenuOpen.value;
+
+  router.push(path).then(() => {
+  }).catch((err) => {
+    console.error('Router update failed:', err);
+  });
+
+  setTimeout(() => {
+    if (isScrolling.value) {
+      scrollEndHandler();
+    }
+  }, 1000);
 };
 
 const observer = new IntersectionObserver(
     (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          activeSection.value = entry.target.id === 'home' ? null : entry.target.id;
-          const navItem = navItems.value.find(item => item.href === `#${entry.target.id}` || (item.href === '/' && entry.target.id === 'home'));
-          if (navItem) {
-            router.replace(navItem.path);
+      if (!isScrolling.value) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            activeSection.value = sectionId === 'home' ? null : sectionId;
+            const navItem = navItems.value.find(item =>
+                item.href === `#${sectionId}` || (item.href === '/' && sectionId === 'home')
+            );
+            if (navItem) {
+              router.replace(navItem.path).then(() => {
+              }).catch((err) => {
+                console.error('Router replace failed:', err);
+              });
+            }
           }
-        }
-      });
+        });
+      }
     },
     {threshold: 0.5}
 );
 
 onMounted(() => {
-  document.querySelectorAll<HTMLElement>('section').forEach((section) => {
+  document.querySelectorAll('section').forEach((section) => {
     observer.observe(section);
   });
 });
@@ -66,12 +88,16 @@ onUnmounted(() => {
   observer.disconnect();
 });
 
-const isActive = computed(() => (href: string) => {
+const isActive = (href: string) => {
   if (href === '/') {
-    return activeSection.value === null || activeSection.value === 'home';
+    return activeSection.value === null;
   }
   return activeSection.value === href.slice(1);
-});
+};
+
+const toggleMobileMenu = () => {
+  mobileMenuOpen.value = !mobileMenuOpen.value;
+};
 </script>
 
 <template>

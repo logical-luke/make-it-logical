@@ -28,7 +28,11 @@ import Button from 'primevue/button';
         <p class="text-lg md:text-xl text-midnight-green-700 dark:text-silver-200 mb-8 transition-opacity duration-300 ease-in-out">
           {{ t('Your vision, our expertise – together, we\'ll redefine what\'s possible in the digital realm.') }}
         </p>
-        <Button :label="t('Ignite Your Digital Journey')" icon="pi pi-rocket" class="text-lg bg-honolulu-blue-600 hover:bg-honolulu-blue-700 dark:bg-honolulu-blue-500 dark:hover:bg-honolulu-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-md" @click="props.scrollTo('#contact')" />
+        <RouterLink
+            to="/contact"
+        >
+          <Button :label="t('Ignite Your Digital Journey')" icon="pi pi-rocket" class="text-lg bg-honolulu-blue-600 hover:bg-honolulu-blue-700 dark:bg-honolulu-blue-500 dark:hover:bg-honolulu-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-md" />
+        </RouterLink>
       </div>
     </div>
   </section>
