@@ -67,7 +67,7 @@ const navigateToContact = () => {
         {{ t('Our cutting-edge services are designed to solve your toughest challenges and unlock new opportunities.') }}
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Panel v-for="service in services" :key="service.title" :header="service.title" class="shadow-lg">
+        <Panel v-for="service in services" :key="service.title" :header="service.title" class="shadow">
           <template #icons>
             <i :class="[service.icon, 'text-2xl text-honolulu-blue-500 dark:text-honolulu-blue-400']"></i>
           </template>
@@ -90,7 +90,7 @@ const navigateToContact = () => {
 
   <section class="full-width-section bg-gradient-to-r from-silver-100 to-cinereous-100 dark:from-midnight-green-900 dark:to-lapis-lazuli-900 py-16">
     <div class="container mx-auto">
-      <Card class="shadow-lg">
+      <Card class="shadow">
         <template #title>
           <div class="flex items-center">
             <i class="pi pi-star mr-2 text-honolulu-blue-500"></i>

@@ -51,7 +51,7 @@ const navigateToServices = () => {
         {{ t('Our razor-sharp process cuts through complexity, delivering solutions that ignite growth and user engagement.') }}
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card v-for="(step, index) in processSteps" :key="step.label" class="shadow-lg">
+        <Card v-for="(step, index) in processSteps" :key="step.label" class="shadow">
           <template #header>
             <div class="flex items-center p-4 bg-honolulu-blue-50 dark:bg-honolulu-blue-900">
               <div class="w-12 h-12 bg-honolulu-blue-500 dark:bg-honolulu-blue-700 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">

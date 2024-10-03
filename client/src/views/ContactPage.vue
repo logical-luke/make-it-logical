@@ -64,7 +64,7 @@ const submitForm = async () => {
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div>
-          <Card class="mb-6 shadow-lg">
+          <Card class="mb-6 shadow">
             <template #title>
               <h3 class="text-2xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">{{
                   t('Why Choose Us?')
@@ -88,7 +88,7 @@ const submitForm = async () => {
             }}
           </p>
         </div>
-        <div class="bg-white dark:bg-midnight-green-700 shadow-lg rounded-lg p-6">
+        <div class="bg-white dark:bg-midnight-green-700 shadow rounded-lg p-6">
           <form class="space-y-6" @submit.prevent="submitForm">
             <div>
               <label for="name" class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200">

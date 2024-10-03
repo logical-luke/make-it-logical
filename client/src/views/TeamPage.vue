@@ -63,7 +63,7 @@ const navigateToContact = () => {
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card v-for="member in teamMembers" :key="member.name" class="shadow-lg">
+        <Card v-for="member in teamMembers" :key="member.name" class="shadow">
           <template #header>
             <div :class="[member.color, 'p-6 flex items-center justify-center']">
               <Avatar :label="member.avatar" size="xlarge" shape="circle" class="text-4xl" />
@@ -100,7 +100,7 @@ const navigateToContact = () => {
 
   <section class="full-width-section bg-gradient-to-r from-silver-100 to-cinereous-100 dark:from-midnight-green-900 dark:to-lapis-lazuli-900 py-16">
     <div class="container mx-auto">
-      <Card class="shadow-lg">
+      <Card class="shadow">
         <template #title>
           <div class="flex items-center">
             <i class="pi pi-bolt mr-2 text-honolulu-blue-500"></i>

@@ -120,4 +120,27 @@ const toggleMobileMenu = () => {
 .fade-leave-to {
   opacity: 0;
 }
+
+.p-button {
+  @apply font-bold py-2 px-4 rounded transition-colors duration-300;
+}
+
+.p-button-lg {
+  @apply text-lg py-3 px-6;
+}
+
+.p-button-primary {
+  @apply bg-honolulu-blue-600 text-white hover:bg-honolulu-blue-700;
+  @apply dark:bg-lapis-lazuli-500 dark:text-white dark:hover:bg-lapis-lazuli-600;
+}
+
+.p-button-secondary {
+  @apply bg-midnight-green-600 text-white hover:bg-midnight-green-700;
+  @apply dark:bg-silver-700 dark:text-midnight-green-100 dark:hover:bg-silver-600;
+}
+
+.p-button-outlined {
+  @apply border-2 border-honolulu-blue-600 text-honolulu-blue-600 hover:bg-honolulu-blue-100 hover:text-honolulu-blue-700;
+  @apply dark:border-lapis-lazuli-200 dark:text-lapis-lazuli-200 dark:hover:bg-lapis-lazuli-600 dark:hover:text-lapis-lazuli-100;
+}
 </style>
