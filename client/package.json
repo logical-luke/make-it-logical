@@ -18,12 +18,9 @@
     "npm": "^10.8.3",
     "primeicons": "^7.*",
     "primevue": "^4.*",
-    "v-lazy-image": "^2.1.1",
     "vue": "^3.*",
     "vue-i18n": "^9.2.2",
-    "vue-lazyload": "^3.0.0",
-    "vue-router": "^4.1.6",
-    "vue-scrollto": "^2.20.0"
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.*",
