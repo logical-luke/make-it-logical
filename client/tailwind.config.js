@@ -1,7 +1,9 @@
+import tailwindcss_primeui from "tailwindcss-primeui";
+
 /** @type {import('tailwindcss').Config} */
 export default {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  content: [],
+  content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
+  plugins: [tailwindcss_primeui],
   theme: {
     extend: {
       colors: {
