@@ -22,15 +22,12 @@ const activeSection = ref<string | null>(null);
 const mobileMenuOpen = ref(false);
 const isScrolling = ref(false);
 
+
 const scrollTo = (href: string, path: string) => {
   isScrolling.value = true;
+  mobileMenuOpen.value = false;
 
-  const scrollEndHandler = () => {
-    isScrolling.value = false;
-    window.removeEventListener('scrollend', scrollEndHandler);
-  };
-
-  window.addEventListener('scrollend', scrollEndHandler);
+  observer.disconnect();
 
   if (href === '/') {
     window.scrollTo({top: 0, behavior: 'smooth'});
@@ -43,15 +40,13 @@ const scrollTo = (href: string, path: string) => {
     }
   }
 
-  router.push(path).then(() => {
-  }).catch((err) => {
-    console.error('Router update failed:', err);
-  });
-
   setTimeout(() => {
-    if (isScrolling.value) {
-      scrollEndHandler();
-    }
+    router.push(path).catch(err => console.error('Router update failed:', err));
+    isScrolling.value = false;
+
+    document.querySelectorAll('section').forEach((section) => {
+      observer.observe(section);
+    });
   }, 1000);
 };
 
@@ -66,16 +61,13 @@ const observer = new IntersectionObserver(
                 item.href === `#${sectionId}` || (item.href === '/' && sectionId === 'home')
             );
             if (navItem) {
-              router.replace(navItem.path).then(() => {
-              }).catch((err) => {
-                console.error('Router replace failed:', err);
-              });
+              router.replace(navItem.path).catch(err => console.error('Router replace failed:', err));
             }
           }
         });
       }
     },
-    {threshold: 0.5}
+    {threshold: 0.7}
 );
 
 onMounted(() => {
@@ -142,7 +134,7 @@ const toggleMobileMenu = () => {
             <li v-for="item in navItems" :key="item.id">
               <RouterLink
                   :to="item.path"
-                  class="text-2xl transition-colors duration-300 text-midnight-green-600 dark:text-silver-300 hover:text-honolulu-blue-600 dark:hover:text-honolulu-blue-400"
+                  class="text-2xl md:text-base transition-colors duration-300 text-midnight-green-600 dark:text-silver-300 hover:text-honolulu-blue-600 dark:hover:text-honolulu-blue-400"
                   :class="{ 'font-bold text-honolulu-blue-400': isActive(item.href) }"
                   @click.prevent="scrollTo(item.href, item.path)"
               >
@@ -156,7 +148,7 @@ const toggleMobileMenu = () => {
 
     <main class="pt-20">
       <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
-        <HomeSection/>
+        <HomeSection id="home" :scroll-to="scrollTo"/>
         <ServicesSection/>
         <ProcessSection/>
         <TeamSection/>
