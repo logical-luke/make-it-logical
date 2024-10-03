@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+      args:
+        APP_ENV: dev
+        ALLOW_ORIGIN: http://localhost:5173
+    environment:
+      APP_ENV: dev
+      FE_APP_BASE_URL: http://localhost:5173
+      PHP_IDE_CONFIG: serverName=make-it-logical
+    ports:
+      - 8080:80
+    volumes:
+      - ./api:/var/www/api
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+      args:
+        APP_ENV: dev
+    environment:
+      APP_ENV: dev
+      API_BASE_URL: http://127.0.0.1:8080/api/v1
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api
+    volumes:
+      - ./client:/app

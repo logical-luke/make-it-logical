@@ -1,0 +1,100 @@
+# Choose the base image
+FROM php:8.3-fpm
+
+# Set the APP_ENV argument with a default value of 'prod'
+ARG APP_ENV=prod
+# Set the ALLOW_ORIGIN argument with a default value
+ARG ALLOW_ORIGIN="https://app.smartfreelancer.io"
+
+# Set the working directory
+WORKDIR /var/www/api
+
+# Copy the app source code
+COPY api .
+
+# Remove app
+RUN rm -rf client/
+
+# Update the package lists and install necessary packages
+RUN apt-get update \
+    && apt-get install -y \
+        nginx \
+        libcurl4-openssl-dev \
+        git \
+        unzip \
+        gettext-base \
+        supervisor \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Update PEAR to version 1.10.12
+RUN if [ "$APP_ENV" = "dev" ]; then \
+    curl -sSL https://pear.php.net/install-pear-nozlib.phar -o /tmp/install-pear-nozlib.phar \
+        && php /tmp/install-pear-nozlib.phar \
+        && pear upgrade --force PEAR-1.10.12 \
+        && rm /tmp/install-pear-nozlib.phar \
+    ;fi
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql opcache sockets curl
+
+# Copy the Nginx configuration file to the container
+COPY docker/api/nginx.conf /etc/nginx/sites-available/default
+
+# Replace the placeholder with the environment variable in the Nginx configuration file
+RUN envsubst '${ALLOW_ORIGIN}' < /etc/nginx/sites-available/default > /etc/nginx/sites-available/default_temp && mv /etc/nginx/sites-available/default_temp /etc/nginx/sites-available/default
+
+# Copy the PHP configuration files to the container
+COPY docker/api/php.ini /usr/local/etc/php/php.ini
+
+# Copy the FPM configuration files to the container
+COPY docker/api/www.conf /usr/local/etc/php-fpm.d/www.conf
+
+# Copy the JWT keys
+COPY docker/api/private.pem /var/www/api/config/jwt/private.pem
+COPY docker/api/public.pem /var/www/api/config/jwt/public.pem
+
+# Copy the supervisor configuration file to the container
+COPY docker/api/supervisor.conf /etc/supervisor/conf.d/
+
+# Install the Symfony application dependencies
+RUN if [ "$APP_ENV" = "dev" ]; then \
+        php composer.phar install --no-interaction --no-progress --optimize-autoloader; \
+    else \
+        php composer.phar install --no-dev --optimize-autoloader --prefer-dist --no-scripts --classmap-authoritative ; \
+    fi
+
+
+# Create the cache and log directories and make them writable
+RUN mkdir -p /var/cache /var/log var/log var/cache \
+    && chmod -R 777 /var/cache \
+    && chmod -R 777 /var/log \
+    && chmod -R 777 var/log \
+    && chmod -R 777 var/cache
+
+# If the environment is set to development, enable xdebug
+RUN if [ "$APP_ENV" = "dev" ]; then \
+        pecl install xdebug \
+            && docker-php-ext-enable xdebug \
+            && echo "xdebug.mode=debug" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+            && echo "xdebug.client_host=172.17.0.1" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+            && echo "xdebug.client_port=9003" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+            && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    ;fi
+
+
+# Clear cache
+RUN if [ "$APP_ENV" = "dev" ]; then \
+        php bin/console cache:clear --env=dev \
+            && php bin/console cache:warmup --env=dev; \
+    else \
+        php bin/console cache:clear --env=prod \
+            && php bin/console cache:warmup --env=prod; \
+    fi
+
+
+# Expose the port 80 for Nginx
+EXPOSE 80
+
+# Start supervisor, which will start both PHP-FPM and Nginx services
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisor.conf"]
