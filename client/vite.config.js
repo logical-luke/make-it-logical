@@ -25,11 +25,7 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 manualChunks: {
-                    'vue-i18n': ['vue-i18n'],
                     'primevue': ['primevue/config'],
-                },
-                globals: {
-                    "vue-i18n": "VueI18n",
                 },
             },
         },

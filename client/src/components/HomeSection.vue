@@ -42,6 +42,7 @@ const getImageUrl = (name: string, width: number, height: number, format: string
             :srcset="imageSizes.map(size => `${getImageUrl('hero-image', size.width, size.height, 'png')} ${size.width}w`).join(', ')"
             sizes="100vw"
             alt="Digital Transformation"
+            loading="lazy"
             class="absolute h-full w-auto min-w-full object-cover object-left"
         >
       </picture>
