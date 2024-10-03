@@ -46,6 +46,7 @@ const teamMembers = ref([
     skills: [t('Load Balancing'), t('Caching Strategies'), t('Database Optimization')]
   }
 ]);
+
 const navigateToContact = () => {
   router.push('/contact');
 };
@@ -55,14 +56,14 @@ const navigateToContact = () => {
   <section id="team">
     <div class="container mx-auto py-16">
       <h2 class="text-4xl md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
-        Meet Your <span class="highlight">Digital Dream Team</span>
+        Meet Your <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Digital Dream Team</span>
       </h2>
       <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-12 text-center max-w-3xl mx-auto">
         {{ t('Our experts combine diverse skills and relentless passion to deliver solutions that don\'t just meet expectations – they shatter them.') }}
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card v-for="member in teamMembers" :key="member.name" class="shadow-md hover:shadow-lg transition-shadow duration-300">
+        <Card v-for="member in teamMembers" :key="member.name" class="shadow-lg">
           <template #header>
             <div :class="[member.color, 'p-6 flex items-center justify-center']">
               <Avatar :label="member.avatar" size="xlarge" shape="circle" class="text-4xl" />
@@ -85,12 +86,21 @@ const navigateToContact = () => {
 
       <div class="mt-12 text-center">
         <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-6 max-w-3xl mx-auto">
-          Our team doesn't just build apps – we craft <span class="highlight">digital experiences</span> that transform businesses and delight users.
+          Our team doesn't just build apps – we craft <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">digital experiences</span> that transform businesses and delight users.
         </p>
-        <Button label="Work With Us" icon="pi pi-users" class="p-button-lg" @click="navigateToContact" />
+        <Button
+          label="Work With Us"
+          icon="pi pi-users"
+          class="p-button-lg bg-midnight-green-700 text-white hover:bg-midnight-green-600 dark:bg-lapis-lazuli-600 dark:text-white dark:hover:bg-lapis-lazuli-500"
+          @click="navigateToContact"
+        />
       </div>
+    </div>
+  </section>
 
-      <Card class="mt-16 shadow-md">
+  <section class="full-width-section bg-gradient-to-r from-silver-100 to-cinereous-100 dark:from-midnight-green-900 dark:to-lapis-lazuli-900 py-16">
+    <div class="container mx-auto">
+      <Card class="shadow-lg">
         <template #title>
           <div class="flex items-center">
             <i class="pi pi-bolt mr-2 text-honolulu-blue-500"></i>
@@ -99,13 +109,20 @@ const navigateToContact = () => {
         </template>
         <template #content>
           <ul class="list-disc pl-5">
-            <li class="mb-2"><span class="highlight">Diverse</span> skillsets for comprehensive solutions</li>
-            <li class="mb-2"><span class="highlight">Innovative</span> approach to problem-solving</li>
-            <li class="mb-2"><span class="highlight">Passionate</span> about delivering excellence</li>
-            <li><span class="highlight">Committed</span> to your long-term success</li>
+            <li class="mb-2"><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Diverse</span> skillsets for comprehensive solutions</li>
+            <li class="mb-2"><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Innovative</span> approach to problem-solving</li>
+            <li class="mb-2"><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Passionate</span> about delivering excellence</li>
+            <li><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Committed</span> to your long-term success</li>
           </ul>
         </template>
       </Card>
     </div>
   </section>
 </template>
+
+<style scoped>
+:deep(.p-button) {
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+}
+</style>

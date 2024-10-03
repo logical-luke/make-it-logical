@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import {useI18n} from 'vue-i18n';
-import {ref} from 'vue';
+import { useI18n } from 'vue-i18n';
+import { ref } from 'vue';
 import Panel from 'primevue/panel';
 import Button from 'primevue/button';
-import router from "@/router";
 import Card from 'primevue/card';
+import { useRouter } from 'vue-router';
 
-const {t} = useI18n();
+const { t } = useI18n();
+const router = useRouter();
 
 const services = ref([
   {
@@ -60,17 +61,13 @@ const navigateToContact = () => {
   <section id="services">
     <div class="container mx-auto py-16">
       <h2 class="text-4xl md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
-        Ignite Your <span class="highlight">Digital Potential</span>
+        Ignite Your <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Digital Potential</span>
       </h2>
       <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-12 text-center max-w-3xl mx-auto">
-        {{
-          t('Our cutting-edge services are designed to solve your toughest challenges and unlock new opportunities.')
-        }}
+        {{ t('Our cutting-edge services are designed to solve your toughest challenges and unlock new opportunities.') }}
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Panel
-v-for="service in services" :key="service.title" :header="service.title"
-               class="shadow-md hover:shadow-lg transition-shadow duration-300">
+        <Panel v-for="service in services" :key="service.title" :header="service.title" class="shadow-lg">
           <template #icons>
             <i :class="[service.icon, 'text-2xl text-honolulu-blue-500 dark:text-honolulu-blue-400']"></i>
           </template>
@@ -81,26 +78,41 @@ v-for="service in services" :key="service.title" :header="service.title"
         </Panel>
       </div>
       <div class="mt-12 text-center">
-        <Button label="Get in Touch" icon="pi pi-send" class="p-button-lg" @click="navigateToContact"/>
+        <Button
+          label="Get in Touch"
+          icon="pi pi-send"
+          class="p-button-lg bg-midnight-green-700 text-white hover:bg-midnight-green-600 dark:bg-lapis-lazuli-600 dark:text-white dark:hover:bg-lapis-lazuli-500"
+          @click="navigateToContact"
+        />
       </div>
+    </div>
+  </section>
 
-      <Card class="mt-16 shadow-md">
+  <section class="full-width-section bg-gradient-to-r from-silver-100 to-cinereous-100 dark:from-midnight-green-900 dark:to-lapis-lazuli-900 py-16">
+    <div class="container mx-auto">
+      <Card class="shadow-lg">
         <template #title>
           <div class="flex items-center">
             <i class="pi pi-star mr-2 text-honolulu-blue-500"></i>
-            <h3 class="text-2xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">Why Choose Our
-              Services?</h3>
+            <h3 class="text-2xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">Why Choose Our Services?</h3>
           </div>
         </template>
         <template #content>
           <ul class="list-disc pl-5">
-            <li class="mb-2"><span class="highlight">Tailored</span> solutions for your unique challenges</li>
-            <li class="mb-2"><span class="highlight">Cutting-edge</span> technology to keep you ahead</li>
-            <li class="mb-2"><span class="highlight">Scalable</span> architecture for future growth</li>
-            <li><span class="highlight">User-centric</span> design for maximum engagement</li>
+            <li class="mb-2"><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Tailored</span> solutions for your unique challenges</li>
+            <li class="mb-2"><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Cutting-edge</span> technology to keep you ahead</li>
+            <li class="mb-2"><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Scalable</span> architecture for future growth</li>
+            <li><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">User-centric</span> design for maximum engagement</li>
           </ul>
         </template>
       </Card>
     </div>
   </section>
 </template>
+
+<style scoped>
+:deep(.p-button) {
+  padding: 1rem 2rem;
+  font-size: 1.25rem;
+}
+</style>
