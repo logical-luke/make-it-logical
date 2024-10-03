@@ -69,7 +69,8 @@ const processSteps = ref([
       <picture>
         <source srcset="@/assets/process.webp" type="image/webp"/>
         <source srcset="@/assets/process.png" type="image/png"/>
-        <img src="@/assets/process.png" alt="Our Process"
+        <img
+src="@/assets/process.png" alt="Our Process"
              class="w-full h-full object-cover opacity-30 dark:opacity-20"/>
       </picture>
     </div>
@@ -84,7 +85,8 @@ const processSteps = ref([
         {{ t('Our process is designed to maximize efficiency, creativity, and results.') }}
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div v-for="(step) in processSteps" :key="step.label"
+        <div
+v-for="(step) in processSteps" :key="step.label"
              class="bg-white dark:bg-midnight-green-800 rounded-lg p-4 shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 border border-silver-200 dark:border-midnight-green-700">
           <div class="flex items-center mb-3">
             <div

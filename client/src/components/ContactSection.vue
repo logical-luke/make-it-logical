@@ -48,7 +48,8 @@ const submitForm = async () => {
     } else {
       buttonText.value = t('Error. Please try again.');
     }
-  } catch (error) {
+  } catch (error: unknown) {
+    console.log(error);
     buttonText.value = t('Error. Please try again.');
   } finally {
     isSending.value = false;

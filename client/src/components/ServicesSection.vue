@@ -92,7 +92,8 @@ const services = ref([
       {{ t('Our services are tailored to meet the unique challenges of the digital age.') }}
     </p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div v-for="service in services" :key="service.id"
+      <div
+v-for="service in services" :key="service.id"
            class="bg-white dark:bg-midnight-green-800 rounded-lg shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 overflow-hidden border border-silver-200 dark:border-midnight-green-700">
         <div class="p-6 flex justify-center items-center bg-honolulu-blue-50 dark:bg-honolulu-blue-900">
           <i :class="[service.icon, 'text-6xl text-honolulu-blue-600 dark:text-honolulu-blue-400']"></i>

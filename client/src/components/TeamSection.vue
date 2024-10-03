@@ -60,8 +60,10 @@ const teamMembers = ref([
       }}
     </p>
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
-      <div v-for="member in teamMembers" :key="member.name"
-           class="bg-white dark:bg-midnight-green-800 rounded-lg shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 p-6 text-center border border-silver-200 dark:border-midnight-green-700">
+      <div
+          v-for="member in teamMembers" :key="member.name"
+          class="bg-white dark:bg-midnight-green-800 rounded-lg shadow hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 p-6 text-center border border-silver-200 dark:border-midnight-green-700"
+      >
         <div class="text-5xl mb-4">{{ member.avatar }}</div>
         <h3 class="text-xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-2">
           {{ t(member.name) }}

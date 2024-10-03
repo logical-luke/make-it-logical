@@ -44,13 +44,15 @@ const toggleMobileMenu = () => {
         <nav class="hidden md:flex items-center">
           <ul class="flex space-x-6">
             <li v-for="item in navItems" :key="item.id">
-              <a :href="item.href"
+              <a
+:href="item.href"
                  class="text-midnight-green-600 dark:text-silver-300 hover:text-honolulu-blue-600 dark:hover:text-honolulu-blue-400 transition-colors duration-300"
                  @click.prevent="scrollTo(item.href, item.path)">{{ item.name }}</a>
             </li>
           </ul>
         </nav>
-        <Button icon="pi pi-bars" class="p-button-text md:hidden text-midnight-green-600 dark:text-silver-300"
+        <Button
+icon="pi pi-bars" class="p-button-text md:hidden text-midnight-green-600 dark:text-silver-300"
                 @click="toggleMobileMenu"/>
       </div>
     </header>
