@@ -91,7 +91,7 @@ const toggleMobileMenu = () => {
     </main>
 
     <footer
-        class="bg-honolulu-blue-600 dark:bg-lapis-lazuli-800 text-white py-8 px-6 transition-colors duration-300"
+        class="bg-honolulu-blue-500 dark:bg-lapis-lazuli-600 text-white py-8 px-6 transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto text-center">
         <p>&copy; {{ new Date().getFullYear() }} <strong>Make IT Logical</strong>. All rights reserved.</p>

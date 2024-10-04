@@ -60,7 +60,7 @@ const navigateTo = (path: string) => {
             v-for="feature in features" :key="feature.title"
             class="outline-2 dark:outline-silver-200 outline-honolulu-blue-500 outline text-center shadow bg-white dark:bg-midnight-green-800">
           <template #header>
-            <div class="bg-honolulu-blue-100 dark:bg-honolulu-blue-800 rounded-md p-4 flex items-center justify-center">
+            <div class="bg-gradient-to-r from-honolulu-blue-100 to-honolulu-blue-200 dark:from-honolulu-blue-800 dark:to-honolulu-blue-700 rounded-md p-6 flex items-center justify-center">
               <i :class="[feature.icon, 'text-6xl text-honolulu-blue-500 dark:text-honolulu-blue-300']"></i>
             </div>
           </template>
