@@ -6,6 +6,12 @@ export default {
   plugins: [tailwindcss_primeui],
   theme: {
     extend: {
+      inset: {
+        '-1/5': '-20%',
+      },
+      scale: {
+        '120': '1.2',
+      },
       colors: {
         cinereous: {
           DEFAULT: '#8a716a',

@@ -62,27 +62,12 @@ const submitForm = async () => {
         Let's Craft Your <span
           class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Digital Masterpiece</span>
       </h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
         <div>
-          <Card class="mb-6 shadow">
-            <template #title>
-              <h3 class="text-2xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">{{
-                  t('Why Choose Us?')
-                }}</h3>
-            </template>
-            <template #content>
-              <ul class="list-disc pl-5 text-midnight-green-700 dark:text-silver-200">
-                <li class="mb-2">{{ t('Tailored solutions that address your unique challenges') }}</li>
-                <li class="mb-2">{{ t('Cutting-edge technology that keeps you ahead of the curve') }}</li>
-                <li class="mb-2">{{ t('Transparent communication throughout the development process') }}</li>
-                <li>{{ t('Ongoing support to ensure your continued success') }}</li>
-              </ul>
-            </template>
-          </Card>
           <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-6">
             {{ t('We\'re here to turn your boldest ideas into reality.') }}
           </p>
-          <p class="text-xl md:text-2xl font-semibold text-honolulu-blue-600 dark:text-honolulu-blue-300 mb-6">
+          <p class="text-xl md:text-2xl font-semibold text-honolulu-blue-600 dark:text-honolulu-blue-300">
             {{
               t('Let\'s start your digital success story today. Reach out and let\'s create something extraordinary together.')
             }}

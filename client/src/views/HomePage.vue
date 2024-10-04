@@ -4,6 +4,7 @@ import {useRouter} from 'vue-router';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
 import Panel from 'primevue/panel';
+import StartupImage from "@/components/StartupImage.vue";
 
 const {t} = useI18n();
 const router = useRouter();
@@ -22,13 +23,22 @@ const navigateTo = (path: string) => {
 
 <template>
   <section
-      class="mb-20 text-center px-4 full-width-section bg-gradient-to-r from-honolulu-blue-100 to-lapis-lazuli-100 dark:from-honolulu-blue-800 dark:to-lapis-lazuli-800">
-    <div class="container mx-auto py-20">
-      <h1 class="text-5xl md:text-7xl font-bold text-midnight-green-800 dark:text-silver-100 mb-8">
-        {{ t('Web Simplified, Humanity Amplified') }}
+      class="relative mb-20 text-center px-4 full-width-section bg-gradient-to-r from-silver-100 to-silver-300 dark:from-honolulu-blue-800 dark:to-lapis-lazuli-800 overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <StartupImage class="w-full h-full object-left"/>
+    </div>
+    <div class="container mx-auto py-20 relative z-10">
+      <h1 class="text-5xl md:text-7xl flex flex-col font-bold text-midnight-green-800 dark:text-silver-100 mb-8">
+        {{ t('Web') }}
+        <span class="highlight">{{ t('Simplified') }}</span>
+        {{ t('Humanity') }}
+        <span class="highlight">{{ t('Amplified') }}</span>
       </h1>
       <p class="text-2xl md:text-3xl mb-12 text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
-        {{ t('Bridging technology and human understanding. Simplifying the web, for the people.') }}
+        {{ t('Bridging technology and human understanding.') }}
+      </p>
+      <p class="text-2xl md:text-3xl mb-12 text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
+        {{ t('Simplifying the web, for the people.') }}
       </p>
       <Button
           :label="t('Embark on Digital Evolution')"
@@ -47,7 +57,7 @@ const navigateTo = (path: string) => {
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <Card v-for="feature in features" :key="feature.title"
-              class="outline-1 dark:outline-silver-200 outline-honolulu-blue-500 outline text-center shadow bg-white dark:bg-midnight-green-800">
+              class="outline-2 dark:outline-silver-200 outline-honolulu-blue-500 outline text-center shadow bg-white dark:bg-midnight-green-800">
           <template #header>
             <div class="bg-honolulu-blue-100 dark:bg-honolulu-blue-800 rounded-md p-4 flex items-center justify-center">
               <i :class="[feature.icon, 'text-6xl text-honolulu-blue-500 dark:text-honolulu-blue-300']"></i>

@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
-import { ref } from 'vue';
+import {useI18n} from 'vue-i18n';
+import {ref} from 'vue';
 import Card from 'primevue/card';
 import Button from 'primevue/button';
-import { useRouter } from 'vue-router';
+import {useRouter} from 'vue-router';
+import CodingImage from "@/components/CodingImage.vue";
 
 const router = useRouter();
 
-const { t } = useI18n();
+const {t} = useI18n();
 
 const processSteps = ref([
   {
@@ -42,14 +43,21 @@ const navigateToServices = () => {
 </script>
 
 <template>
-  <section id="process">
-    <div class="container mx-auto py-16">
-      <h2 class="text-4xl md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
-        Transforming Vision into <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Digital Reality</span>
-      </h2>
-      <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-12 text-center max-w-3xl mx-auto">
-        {{ t('Our razor-sharp process cuts through complexity, delivering solutions that ignite growth and user engagement.') }}
-      </p>
+  <section id="process" class="relative">
+    <div class="absolute inset-0 overflow-visible">
+      <div class="absolute inset-0 opacity-30 dark:opacity-20 -left-1/5 -top-[100vh] md:-top-[50vh] lg:-top-[30vh]">
+        <CodingImage id="coding-image" class="w-full h-full object-cover object-top scale-[2] md:scale-[1.75] lg:scale-150" />
+      </div>
+    </div>
+    <div class="container mx-auto py-16 relative z-10">
+      <div class="mb-16">
+        <h2 class="text-4xl md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
+          Transforming Vision into <span class="highlight">Digital Reality</span>
+        </h2>
+        <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-12 text-center max-w-3xl mx-auto">
+          {{ t('Our razor-sharp process cuts through complexity, delivering solutions that ignite growth and user engagement.') }}
+        </p>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Card v-for="(step, index) in processSteps" :key="step.label" class="shadow">
           <template #header>
@@ -89,5 +97,22 @@ const navigateToServices = () => {
 :deep(.p-button) {
   padding: 1rem 2rem;
   font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .absolute.inset-0 {
+    left: -20%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .absolute.inset-0 {
+    left: -15%;
+  }
+}
+
+#process {
+  overflow-x: visible;
+  overflow-y: clip;
 }
 </style>

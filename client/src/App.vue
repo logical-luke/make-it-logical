@@ -27,10 +27,12 @@ const toggleMobileMenu = () => {
         class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-40 transition-colors duration-300 h-20"
     >
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <div class="flex items-center space-x-2">
-          <img src="@/assets/logo.svg" height="40" width="27" alt="Make IT Logical Logo" class="h-10 w-auto">
-          <span class="text-2xl font-bold text-honolulu-blue-600 dark:text-honolulu-blue-400">Make IT Logical</span>
-        </div>
+        <RouterLink to="/">
+          <div class="flex items-center space-x-2">
+            <img src="@/assets/logo.svg" height="40" width="27" alt="Make IT Logical Logo" class="h-10 w-auto">
+            <span class="text-2xl font-bold">Make IT Logical</span>
+          </div>
+        </RouterLink>
         <nav :class="{'hidden': !mobileMenuOpen, 'md:flex': true}">
           <ul class="flex md:flex-row flex-col space-y-6 md:space-y-0 md:space-x-6 items-center">
             <li v-for="item in navItems" :key="item.id">
@@ -108,7 +110,7 @@ const toggleMobileMenu = () => {
 }
 
 .highlight {
-  @apply text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold;
+  @apply text-honolulu-blue-400 dark:text-midnight-green-200 font-bold;
 }
 
 .fade-enter-active,
@@ -140,7 +142,7 @@ const toggleMobileMenu = () => {
 }
 
 .p-button-outlined {
-  @apply border-2 border-honolulu-blue-600 text-honolulu-blue-600 hover:bg-honolulu-blue-100 hover:text-honolulu-blue-700;
+  @apply border-2 border-honolulu-blue-600 text-honolulu-blue-600 hover:bg-honolulu-blue-100 hover:text-honolulu-blue-800;
   @apply dark:border-lapis-lazuli-200 dark:text-lapis-lazuli-200 dark:hover:bg-lapis-lazuli-600 dark:hover:text-lapis-lazuli-100;
 }
 </style>
