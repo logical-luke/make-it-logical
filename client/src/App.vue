@@ -86,6 +86,7 @@ watch(
               <Button
                   :icon="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
                   class="p- text-silver-100 dark:text-midnight-green-800 dark:bg-silver-100 bg-midnight-green-800"
+                  aria-label="Toggle Theme"
                   @click="toggleTheme"
               />
             </li>
@@ -93,6 +94,7 @@ watch(
         </nav>
         <Button
             icon="pi pi-bars"
+            aria-label="Menu"
             class="md:hidden"
             @click="toggleMobileMenu"
         />
@@ -103,6 +105,7 @@ watch(
         <div class="flex justify-end p-6">
           <Button
               icon="pi pi-times"
+              aria-label="Toggle Theme"
               @click="toggleMobileMenu"
           />
         </div>

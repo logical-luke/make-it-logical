@@ -138,7 +138,7 @@ const navigateTo = (path: string) => {
   </section>
 
   <section
-      class="full-width-section bg-lapis-lazuli-200 dark:bg-lapis-lazuli-800 py-20">
+      class="full-width-section bg-silver-100 dark:bg-lapis-lazuli-800 py-20">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-4xl md:text-5xl font-bold mb-8 text-midnight-green-800 dark:text-silver-100">
         {{ t('Ready for a Journey?') }}
@@ -153,7 +153,7 @@ const navigateTo = (path: string) => {
           t('Your vision, our expertise: a perfect')
         }}
       </p>
-      <p class="text-2xl md:text-4xl mb-12 text-white font-bold dark:text-silver-200 max-w-4xl mx-auto">
+      <p class="text-2xl md:text-4xl mb-12 text-honolulu-blue-600 font-bold dark:text-lapis-lazuli-200 max-w-4xl mx-auto">
         {{
           t('digital symphony')
         }}
