@@ -2,7 +2,6 @@
 import {ref, onMounted, watch} from 'vue';
 import {useRoute} from 'vue-router';
 import Button from 'primevue/button';
-import ToggleSwitch from 'primevue/toggleswitch';
 
 const route = useRoute();
 
