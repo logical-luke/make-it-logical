@@ -13,23 +13,11 @@ const {t} = useI18n();
 const form = reactive({
   name: '',
   email: '',
-  phone: ''
 });
 
 const rules = {
   name: {required},
-  $lazy: true,
-  $externalResults: helpers.withMessage(
-      t('Either email or phone is required'),
-      (value) => (value.email === null || value.email === '') || (value.phone === '' || value.phone === null)
-  ),
-  email: {email: helpers.withMessage(t('Please enter a valid email'), email)},
-  phone: {
-    phoneNumber: helpers.withMessage(
-        t('Please enter a valid phone number'),
-        helpers.regex(/^[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}$/)
-    )
-  }
+  email: {required, email: helpers.withMessage(t('Please enter a valid email'), email)}
 };
 
 const v$ = useVuelidate(rules, form);
@@ -130,24 +118,10 @@ const submitForm = async () => {
                   id="email" v-model="form.email" type="email"
                   class="w-full p-2 border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 bg-silver-50 dark:bg-midnight-green-800 text-midnight-green-800 dark:text-silver-100"
                   :class="{ 'border-red-500': v$.email.$error }"/>
-              <small v-if="v$.email.$error" class="text-red-500">{{ v$.email.$errors[0].$message }}</small>
+              <small v-if="v$.email.$error" class="text-red-500 block">
+                {{ t('Email is required') }}
+              </small>
             </div>
-            <div class="w-full">
-              <Divider type="solid" layout="horizontal"><b>OR</b></Divider>
-            </div>
-            <div>
-              <label for="phone" class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200">
-                {{ t('Phone') }}
-              </label>
-              <input
-                  id="phone" v-model="form.phone" type="tel"
-                  class="w-full p-2 border-2 border-silver-300 dark:border-silver-700 rounded-md focus:border-honolulu-blue-500 dark:focus:border-honolulu-blue-400 bg-silver-50 dark:bg-midnight-green-800 text-midnight-green-800 dark:text-silver-100"
-                  :class="{ 'border-red-500': v$.phone.$error }"/>
-              <small v-if="v$.phone.$error" class="text-red-500">{{ v$.phone.$errors[0].$message }}</small>
-            </div>
-            <small v-if="v$.$error && !form.email && !form.phone" class="text-red-500 block">
-              {{ t('Either email or phone is required') }}
-            </small>
             <div class="flex items-center space-x-2 gap-2 text-midnight-green-700 dark:text-silver-200">
               <i class="pi pi-info-circle text-2xl"></i>
               <div class="flex flex-col gap-2">
