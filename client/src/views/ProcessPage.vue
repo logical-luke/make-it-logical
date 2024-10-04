@@ -43,10 +43,10 @@ const navigateToServices = () => {
 </script>
 
 <template>
-  <section id="process" class="relative">
+  <section id="process" class="relative overflow-clip-y">
     <div class="absolute inset-0 overflow-visible">
-      <div class="absolute inset-0 opacity-30 dark:opacity-20 -left-1/5 -top-[100vh] md:-top-[50vh] lg:-top-[30vh]">
-        <CodingImage id="coding-image" class="w-full h-full object-cover object-top scale-[2] md:scale-[1.75] lg:scale-150" />
+      <div class="absolute inset-0 opacity-20 -left-1/5 -top-[120vh] md:-top-[50vh] lg:-top-[30vh]">
+        <CodingImage class="w-full h-full object-cover object-top scale-[2] md:scale-[1.75] lg:scale-150" />
       </div>
     </div>
     <div class="container mx-auto py-16 relative z-10">
@@ -92,27 +92,3 @@ const navigateToServices = () => {
     </div>
   </section>
 </template>
-
-<style scoped>
-:deep(.p-button) {
-  padding: 1rem 2rem;
-  font-size: 1.25rem;
-}
-
-@media (min-width: 768px) {
-  .absolute.inset-0 {
-    left: -20%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .absolute.inset-0 {
-    left: -15%;
-  }
-}
-
-#process {
-  overflow-x: visible;
-  overflow-y: clip;
-}
-</style>

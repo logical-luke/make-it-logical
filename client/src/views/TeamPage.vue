@@ -9,6 +9,7 @@ import Button from 'primevue/button';
 const { t } = useI18n();
 
 import { useRouter } from 'vue-router';
+import TeamAssembleImage from "@/components/TeamAssembleImage.vue";
 
 const router = useRouter();
 
@@ -53,8 +54,13 @@ const navigateToContact = () => {
 </script>
 
 <template>
-  <section id="team">
-    <div class="container mx-auto py-16">
+  <section id="team" class="relative overflow-clip-y">
+        <div class="absolute inset-0 overflow-visible">
+      <div class="absolute inset-0 opacity-20 -top-[140vh] md:-top-[90vh] lg:-top-[70vh]">
+        <TeamAssembleImage class="w-full h-full object-cover object-left scale-[2] md:scale-[1.75] lg:scale-150" />
+      </div>
+    </div>
+    <div class="container mx-auto py-16 relative z-10">
       <h2 class="text-4xl md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
         Meet Your <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Digital Dream Team</span>
       </h2>
@@ -86,7 +92,7 @@ const navigateToContact = () => {
 
       <div class="mt-12 text-center">
         <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-6 max-w-3xl mx-auto">
-          Our team doesn't just build apps – we craft <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">digital experiences</span> that transform businesses and delight users.
+          Our team doesn't just build apps – we craft <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">experiences</span> that transform businesses and delight users.
         </p>
         <Button
           label="Work With Us"
@@ -119,10 +125,3 @@ const navigateToContact = () => {
     </div>
   </section>
 </template>
-
-<style scoped>
-:deep(.p-button) {
-  padding: 1rem 2rem;
-  font-size: 1.25rem;
-}
-</style>

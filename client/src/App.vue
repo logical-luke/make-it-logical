@@ -94,8 +94,8 @@ const toggleMobileMenu = () => {
         class="bg-honolulu-blue-600 dark:bg-lapis-lazuli-800 text-white py-8 px-6 transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto text-center">
-        <p>&copy; {{ new Date().getFullYear() }} Make IT Logical. All rights reserved.</p>
-        <p class="mt-2 text-sm">Empowering businesses with innovative digital solutions.</p>
+        <p>&copy; {{ new Date().getFullYear() }} <strong>Make IT Logical</strong>. All rights reserved.</p>
+        <p class="mt-2 text-sm">Empowering businesses with innovative solutions.</p>
       </div>
     </footer>
   </div>
@@ -144,5 +144,26 @@ const toggleMobileMenu = () => {
 .p-button-outlined {
   @apply border-2 border-honolulu-blue-600 text-honolulu-blue-600 hover:bg-honolulu-blue-100 hover:text-honolulu-blue-800;
   @apply dark:border-lapis-lazuli-200 dark:text-lapis-lazuli-200 dark:hover:bg-lapis-lazuli-600 dark:hover:text-lapis-lazuli-100;
+}
+
+:deep(.p-button) {
+  @apply text-lg py-3 px-6;
+}
+
+@media (min-width: 768px) {
+  .absolute.inset-0 {
+    left: -20%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .absolute.inset-0 {
+    left: -15%;
+  }
+}
+
+.overflow-clip-y {
+  overflow-x: visible;
+  overflow-y: clip;
 }
 </style>

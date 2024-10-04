@@ -23,9 +23,9 @@ const navigateTo = (path: string) => {
 
 <template>
   <section
-      class="relative mb-20 text-center px-4 full-width-section bg-gradient-to-r from-silver-100 to-silver-300 dark:from-honolulu-blue-800 dark:to-lapis-lazuli-800 overflow-hidden">
-    <div class="absolute inset-0 opacity-20">
-      <StartupImage class="w-full h-full object-left"/>
+      class="relative text-center px-4 full-width-section bg-gradient-to-r from-silver-100 to-silver-300 dark:from-honolulu-blue-800 dark:to-lapis-lazuli-800 overflow-hidden">
+    <div class="absolute inset-1 opacity-20">
+      <StartupImage class="w-full h-full"/>
     </div>
     <div class="container mx-auto py-20 relative z-10">
       <h1 class="text-5xl md:text-7xl flex flex-col font-bold text-midnight-green-800 dark:text-silver-100 mb-8">
@@ -50,14 +50,15 @@ const navigateTo = (path: string) => {
     </div>
   </section>
 
-  <section class="mb-20 py-16">
+  <section class="py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-4xl md:text-5xl font-bold mb-12 text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300">
         {{ t('Our Digital Alchemy') }}
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        <Card v-for="feature in features" :key="feature.title"
-              class="outline-2 dark:outline-silver-200 outline-honolulu-blue-500 outline text-center shadow bg-white dark:bg-midnight-green-800">
+        <Card
+            v-for="feature in features" :key="feature.title"
+            class="outline-2 dark:outline-silver-200 outline-honolulu-blue-500 outline text-center shadow bg-white dark:bg-midnight-green-800">
           <template #header>
             <div class="bg-honolulu-blue-100 dark:bg-honolulu-blue-800 rounded-md p-4 flex items-center justify-center">
               <i :class="[feature.icon, 'text-6xl text-honolulu-blue-500 dark:text-honolulu-blue-300']"></i>
@@ -75,11 +76,11 @@ const navigateTo = (path: string) => {
   </section>
 
   <section
-      class="mb-20 px-4 full-width-section bg-gradient-to-r from-silver-200 to-cinereous-200 dark:from-midnight-green-800 dark:to-lapis-lazuli-800">
+      class="px-4 full-width-section bg-gradient-to-r from-silver-200 to-cinereous-200 dark:from-midnight-green-800 dark:to-lapis-lazuli-800">
     <div class="container mx-auto py-16">
       <Panel header="Our Craft" class="text-center p-4 bg-white dark:bg-midnight-green-900 shadow">
         <template #icons>
-          <Button icon="pi pi-star" class="p-panel-header-icon p-link"/>
+          <i class="pi pi-star"></i>
         </template>
         <h2 class="text-4xl md:text-5xl font-bold mb-8 text-lapis-lazuli-600 dark:text-lapis-lazuli-300">
           {{ t('Digital Experiences That Resonate') }}
@@ -98,14 +99,19 @@ const navigateTo = (path: string) => {
     </div>
   </section>
 
-  <section class="mb-20 py-16">
+  <section class="py-16">
     <div class="container mx-auto px-4">
       <h2 class="text-4xl md:text-5xl font-bold mb-8 text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300">
         {{ t('Our Symphony of Innovation') }}
       </h2>
+      <p class="text-xl md:text-2xl mb-4 text-center text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
+        {{
+          t('A harmonious blend of creativity, technology, and human-centric design.')
+        }}
+      </p>
       <p class="text-xl md:text-2xl mb-12 text-center text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
         {{
-          t('A harmonious blend of creativity, technology, and human-centric design. See how we orchestrate digital success.')
+          t('See how we orchestrate digital success.')
         }}
       </p>
       <div class="text-center">
@@ -124,11 +130,21 @@ const navigateTo = (path: string) => {
       class="full-width-section bg-gradient-to-r from-lapis-lazuli-200 to-midnight-green-200 dark:from-lapis-lazuli-800 dark:to-midnight-green-800 py-20">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-4xl md:text-5xl font-bold mb-8 text-midnight-green-800 dark:text-silver-100">
-        {{ t('Ready to Redefine Digital?') }}
+        {{ t('Ready for a Journey?') }}
       </h2>
-      <p class="text-xl md:text-2xl mb-12 text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
+      <p class="text-xl md:text-2xl mb-6 text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
         {{
-          t('Let\'s create digital experiences that don\'t just work – they wow. Your vision, our expertise: a perfect digital symphony.')
+          t('Let\'s create experiences that don\'t just work – they wow.')
+        }}
+      </p>
+      <p class="text-xl md:text-2xl mb-4 text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
+        {{
+          t('Your vision, our expertise: a perfect')
+        }}
+      </p>
+      <p class="text-2xl md:text-4xl mb-12 text-white font-bold dark:text-silver-200 max-w-4xl mx-auto">
+        {{
+          t('digital symphony')
         }}
       </p>
       <Button
