@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import {ref} from 'vue';
+import {ref, onMounted, watch} from 'vue';
 import {useRoute} from 'vue-router';
 import Button from 'primevue/button';
+import ToggleSwitch from 'primevue/toggleswitch';
 
 const route = useRoute();
 
@@ -18,8 +19,47 @@ const mobileMenuOpen = ref(false);
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value;
 };
-</script>
 
+const isDarkTheme = ref(false);
+
+const setDarkTheme = (value: boolean) => {
+  isDarkTheme.value = value;
+  localStorage.setItem('darkTheme', value.toString());
+  if (value) {
+    document.documentElement.classList.add('dark');
+  } else {
+    document.documentElement.classList.remove('dark');
+  }
+};
+
+const toggleTheme = () => {
+  setDarkTheme(!isDarkTheme.value);
+};
+
+const initializeTheme = () => {
+  const storedTheme = localStorage.getItem('darkTheme');
+  if (storedTheme !== null) {
+    setDarkTheme(storedTheme === 'true');
+  } else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setDarkTheme(prefersDark);
+  }
+};
+
+onMounted(() => {
+  initializeTheme();
+});
+
+// Watch for system theme changes
+watch(
+    () => window.matchMedia('(prefers-color-scheme: dark)').matches,
+    (newValue) => {
+      if (localStorage.getItem('darkTheme') === null) {
+        setDarkTheme(newValue);
+      }
+    }
+);
+</script>
 <template>
   <div class="min-h-screen overflow-hidden bg-white dark:bg-midnight-green-800 transition-colors duration-300">
     <header
@@ -43,20 +83,27 @@ const toggleMobileMenu = () => {
                 {{ item.name }}
               </RouterLink>
             </li>
+            <li>
+              <Button
+                  :icon="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
+                  class="p- text-silver-100 dark:text-midnight-green-800 dark:bg-silver-100 bg-midnight-green-800"
+                  @click="toggleTheme"
+              />
+            </li>
           </ul>
         </nav>
         <Button
             icon="pi pi-bars"
-            class="p-button-text md:hidden text-midnight-green-600 dark:text-silver-300"
+            class="md:hidden"
             @click="toggleMobileMenu"
         />
       </div>
     </header>
     <div v-if="mobileMenuOpen" class="fixed inset-0 z-50 bg-white dark:bg-midnight-green-900 md:hidden">
       <div class="flex flex-col h-full">
-        <div class="flex justify-end p-4">
+        <div class="flex justify-end p-6">
           <Button
-              icon="pi pi-times" class="p-button-text text-midnight-green-600 dark:text-silver-300"
+              icon="pi pi-times"
               @click="toggleMobileMenu"
           />
         </div>
@@ -71,6 +118,13 @@ const toggleMobileMenu = () => {
               >
                 {{ item.name }}
               </RouterLink>
+            </li>
+            <li>
+              <Button
+                  :icon="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
+                  class="p- text-silver-100 dark:text-midnight-green-800 dark:bg-silver-100 bg-midnight-green-800"
+                  @click="toggleTheme"
+              />
             </li>
           </ul>
         </nav>

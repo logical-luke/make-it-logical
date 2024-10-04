@@ -24,6 +24,7 @@ app.use(PrimeVue, {
     theme: {
         preset: Lara,
         options: {
+            darkModeSelector: '.dark',
             cssLayer: {
                 name: 'primevue',
                 order: 'tailwind-base, primevue, tailwind-utilities'
