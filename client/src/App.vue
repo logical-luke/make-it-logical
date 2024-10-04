@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import {computed, ref} from 'vue';
+import {ref} from 'vue';
 import {useRoute} from 'vue-router';
 import Button from 'primevue/button';
 
 const route = useRoute();
-const path = computed<string | undefined>(() => route.name as string | undefined);
 
 const navItems = ref([
   {id: 1, name: 'Home', path: '/'},
@@ -81,11 +80,7 @@ const toggleMobileMenu = () => {
     <main class="pt-20">
       <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <RouterView v-slot="{ Component }">
-          <Transition name="fade" mode="out-in">
-            <div :key="path">
-              <Component :is="Component"></Component>
-            </div>
-          </Transition>
+          <Component :is="Component"></Component>
         </RouterView>
       </div>
     </main>

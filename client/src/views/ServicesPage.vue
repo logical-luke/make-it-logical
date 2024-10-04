@@ -99,13 +99,13 @@ const navigateToContact = () => {
   </section>
 
   <section
-      class="full-width-section bg-gradient-to-r from-silver-100 to-cinereous-100 dark:from-midnight-green-900 dark:to-lapis-lazuli-900 py-16">
+      class="full-width-section bg-cinereous-100 dark:bg-midnight-green-600 py-16">
     <div class="container mx-auto">
       <Card class="shadow">
         <template #title>
           <div class="flex items-center">
-            <i class="pi pi-star mr-2 text-honolulu-blue-500"></i>
-            <h3 class="text-2xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">Why Choose Our
+            <i class="pi pi-star mr-2"></i>
+            <h3 class="text-2xl font-bold">Why Choose Our
               Services?</h3>
           </div>
         </template>
