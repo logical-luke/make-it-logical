@@ -5,7 +5,6 @@ import Panel from 'primevue/panel';
 import Button from 'primevue/button';
 import Card from 'primevue/card';
 import {useRouter} from 'vue-router';
-import TeamAssembleImage from "@/components/TeamAssembleImage.vue";
 import TestingImage from "@/components/TestingImage.vue";
 
 const {t} = useI18n();

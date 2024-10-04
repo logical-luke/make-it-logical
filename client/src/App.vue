@@ -22,7 +22,7 @@ const toggleMobileMenu = () => {
 </script>
 
 <template>
-  <div class="min-h-screen bg-white dark:bg-midnight-green-800 transition-colors duration-300">
+  <div class="min-h-screen overflow-hidden bg-white dark:bg-midnight-green-800 transition-colors duration-300">
     <header
         class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-40 transition-colors duration-300 h-20"
     >
