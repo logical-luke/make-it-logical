@@ -98,7 +98,7 @@ const submitForm = async () => {
             </a>
           </div>
         </div>
-        <div class="bg-white dark:bg-midnight-green-700 shadow rounded-lg p-6">
+        <div class="bg-white dark:bg-midnight-green-700 shadow rounded-lg p-6 outline outline-2 dark:outline-silver-200 outline-honolulu-blue-500">
           <form class="space-y-6" @submit.prevent="submitForm">
             <div>
               <label for="name" class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200">
