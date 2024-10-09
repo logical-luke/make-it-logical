@@ -117,70 +117,67 @@ const navigateToContact = () => {
 <template>
   <section
       id="services"
-      class="full-width-section bg-gradient-to-b from-silver-50 to-silver-100 dark:from-midnight-green-800 dark:to-midnight-green-900">
-    <div class="container py-16">
+      class="full-width-section bg-gradient-to-b from-silver-50 to-silver-100 dark:from-midnight-green-800 dark:to-midnight-green-900 py-16">
+    <div class="container">
       <h2 class="text-4xl md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
-        Powerful <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Solutions</span>
+        Powerful <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300">Solutions</span>
       </h2>
       <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-4 text-center max-w-3xl mx-auto">
-        {{
-          t('We deliver scalable, efficient solutions that solve real business challenges.')
-        }}
+        {{ t('We deliver scalable, efficient solutions that solve real business challenges.') }}
       </p>
-      <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-12 text-center max-w-3xl mx-auto">
-        {{
-          t('Our focus is on creating value through innovative technology and streamlined processes.')
-        }}
+      <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-16 text-center max-w-3xl mx-auto">
+        {{ t('Our focus is on creating value through innovative technology and streamlined processes.') }}
       </p>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Panel
-            v-for="(service, index) in services"
-            :key="service.title"
-            :header="service.title"
-            class="shadow hover:shadow-md bg-white"
-        >
-          <template #icons>
-            <i :class="[service.icon, 'text-2xl text-honolulu-blue-500 dark:text-honolulu-blue-400']"></i>
-          </template>
-          <p class="text-lg text-midnight-green-700 dark:text-silver-200 mb-4">{{ service.description }}</p>
-          <p class="text-md text-midnight-green-600 dark:text-silver-300 mb-4">
-            <strong class="text-honolulu-blue-500 dark:text-honolulu-blue-400">{{ t('Suitable for:') }}</strong>
-            {{ service.suitableFor }}
-          </p>
-          <Button
-              :label="service.expanded ? 'Show Less' : 'Discover More'"
-              :icon="service.expanded ? 'pi pi-minus' : 'pi pi-plus'"
-              class="p-button-text text-honolulu-blue-500 dark:text-honolulu-blue-400"
-              @click="toggleExpand(index)"
-          />
-          <div v-if="service.expanded" class="mt-4">
-            <Divider/>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div v-for="(service, index) in services" :key="service.title"
+             class="bg-white dark:bg-midnight-green-700 rounded-lg shadow overflow-hidden transition-all duration-300 hover:shadow-md">
+          <div class="p-6">
+            <i :class="[service.icon, 'text-4xl text-honolulu-blue-500 dark:text-honolulu-blue-400 mb-4']"></i>
+            <h3 class="text-2xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-4">{{
+                service.title
+              }}</h3>
+            <p class="text-lg text-midnight-green-700 dark:text-silver-200 mb-4">{{ service.description }}</p>
+            <p class="text-md text-midnight-green-600 dark:text-silver-300 mb-6">
+              <strong class="text-honolulu-blue-500 dark:text-honolulu-blue-400">{{ t('Suitable for:') }}</strong>
+              {{ service.suitableFor }}
+            </p>
+            <Button
+                :label="service.expanded ? 'Show Less' : 'Discover More'"
+                :icon="service.expanded ? 'pi pi-minus' : 'pi pi-plus'"
+                class="p-button-outlined p-button-rounded text-honolulu-blue-500 dark:text-honolulu-blue-400"
+                @click="toggleExpand(index)"
+            />
+          </div>
+          <div v-if="service.expanded" class="p-6 bg-silver-50 dark:bg-midnight-green-800">
             <p class="text-midnight-green-700 dark:text-silver-200 mb-4">{{ service.details }}</p>
-            <h4 class="font-bold mb-2 text-lapis-lazuli-600 dark:text-lapis-lazuli-300">Key Benefits:</h4>
-            <ul class="space-y-2">
+            <h4 class="font-bold mb-4 text-lapis-lazuli-600 dark:text-lapis-lazuli-300">Key Benefits:</h4>
+            <ul class="space-y-3">
               <li v-for="benefit in service.benefits" :key="benefit.text"
                   class="flex items-center text-midnight-green-600 dark:text-silver-300">
-                <i :class="[benefit.icon, 'mr-2 text-honolulu-blue-500 dark:text-honolulu-blue-400']"></i>
+                <i :class="[benefit.icon, 'mr-3 text-honolulu-blue-500 dark:text-honolulu-blue-400']"></i>
                 {{ benefit.text }}
               </li>
             </ul>
-            <div v-if="service.galleryImages.length > 0" class="mt-4">
-              <div class="flex flex-wrap gap-2">
+            <div v-if="service.galleryImages.length > 0" class="mt-6">
+              <div class="flex flex-wrap gap-3">
                 <Image v-for="(img, imgIndex) in service.galleryImages"
                        :key="imgIndex"
                        :src="img"
                        width="100"
-                       preview/>
+                       preview
+                       class="rounded-md shadow-sm hover:shadow-md transition-shadow duration-300"
+                />
               </div>
             </div>
           </div>
-        </Panel>
+        </div>
       </div>
-      <div class="mt-12 text-center">
+
+      <div class="mt-16 text-center">
         <Button
             label="Get in Touch"
-            icon="pi pi-send"
-            class="p-button-lg bg-honolulu-blue-500 text-white hover:bg-honolulu-blue-600 dark:bg-lapis-lazuli-600 dark:text-white dark:hover:bg-lapis-lazuli-500"
+            class="p-button-lg bg-honolulu-blue-500 text-white hover:bg-honolulu-blue-600 dark:bg-lapis-lazuli-600 dark:text-white dark:hover:bg-lapis-lazuli-500 shadow-lg hover:shadow-xl transition-all duration-300"
             @click="navigateToContact"
         />
       </div>
@@ -200,43 +197,48 @@ const navigateToContact = () => {
     </div>
   </section>
 
-  <section class="full-width-section bg-cinereous-100 dark:bg-midnight-green-800 py-16">
-    <div class="container mx-auto">
-      <Card class="shadow">
-        <template #title>
-          <div class="flex items-center">
-            <h3 class="text-2xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">Why Choose Our
-              Services?</h3>
-          </div>
-        </template>
-        <template #content>
-          <ul class="space-y-2">
-            <li class="flex items-center"><i
-                class="pi pi-check-circle mr-2 text-honolulu-blue-500 dark:text-honolulu-blue-400"></i><span
-                class="text-midnight-green-700 dark:text-silver-200"><span
-                class="font-bold">Comprehensive Solutions:</span> We cover all aspects of your digital needs, from planning to maintenance</span>
-            </li>
-            <li class="flex items-center"><i
-                class="pi pi-chart-line mr-2 text-honolulu-blue-500 dark:text-honolulu-blue-400"></i><span
-                class="text-midnight-green-700 dark:text-silver-200"><span
-                class="font-bold">Results-Driven Approach:</span> Our solutions directly address your business challenges and drive measurable outcomes</span>
-            </li>
-            <li class="flex items-center"><i
-                class="pi pi-sitemap mr-2 text-honolulu-blue-500 dark:text-honolulu-blue-400"></i><span
-                class="text-midnight-green-700 dark:text-silver-200"><span
-                class="font-bold">Scalable Architecture:</span> We build solutions that grow with your business, preventing future bottlenecks</span>
-            </li>
-            <li class="flex items-center"><i
-                class="pi pi-cog mr-2 text-honolulu-blue-500 dark:text-honolulu-blue-400"></i><span
-                class="text-midnight-green-700 dark:text-silver-200"><span class="font-bold">Efficiency-Focused:</span> Our development process emphasizes simplicity and effectiveness, saving you time and resources</span>
-            </li>
-            <li class="flex items-center"><i
-                class="pi pi-bolt mr-2 text-honolulu-blue-500 dark:text-honolulu-blue-400"></i><span
-                class="text-midnight-green-700 dark:text-silver-200"><span class="font-bold">Innovation-Led:</span> We leverage cutting-edge technologies to give you a competitive edge in your market</span>
-            </li>
-          </ul>
-        </template>
-      </Card>
+  <section class="full-width-section bg-cinereous-100 dark:bg-midnight-green-800 py-12 md:py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8 text-center">
+        Why Choose Our Services?
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div
+            class="bg-white dark:bg-midnight-green-700 rounded-lg shadow p-6 transition-transform duration-300 hover:shadow-md">
+          <i class="pi pi-check-circle text-3xl text-honolulu-blue-500 dark:text-honolulu-blue-400 mb-4"></i>
+          <h3 class="text-xl font-bold text-midnight-green-700 dark:text-silver-200 mb-2">Comprehensive Solutions</h3>
+          <p class="text-midnight-green-600 dark:text-silver-300">We cover all aspects of your digital needs, from
+            planning to maintenance</p>
+        </div>
+        <div
+            class="bg-white dark:bg-midnight-green-700 rounded-lg shadow p-6 transition-transform duration-300 hover:shadow-md">
+          <i class="pi pi-chart-line text-3xl text-honolulu-blue-500 dark:text-honolulu-blue-400 mb-4"></i>
+          <h3 class="text-xl font-bold text-midnight-green-700 dark:text-silver-200 mb-2">Results-Driven Approach</h3>
+          <p class="text-midnight-green-600 dark:text-silver-300">Our solutions directly address your business
+            challenges and drive measurable outcomes</p>
+        </div>
+        <div
+            class="bg-white dark:bg-midnight-green-700 rounded-lg shadow p-6 transition-transform duration-300 hover:shadow-md">
+          <i class="pi pi-sitemap text-3xl text-honolulu-blue-500 dark:text-honolulu-blue-400 mb-4"></i>
+          <h3 class="text-xl font-bold text-midnight-green-700 dark:text-silver-200 mb-2">Scalable Architecture</h3>
+          <p class="text-midnight-green-600 dark:text-silver-300">We build solutions that grow with your business,
+            preventing future bottlenecks</p>
+        </div>
+        <div
+            class="bg-white dark:bg-midnight-green-700 rounded-lg shadow p-6 transition-transform duration-300 hover:shadow-md">
+          <i class="pi pi-cog text-3xl text-honolulu-blue-500 dark:text-honolulu-blue-400 mb-4"></i>
+          <h3 class="text-xl font-bold text-midnight-green-700 dark:text-silver-200 mb-2">Efficiency-Focused</h3>
+          <p class="text-midnight-green-600 dark:text-silver-300">Our development process emphasizes simplicity and
+            effectiveness, saving you time and resources</p>
+        </div>
+        <div
+            class="bg-white dark:bg-midnight-green-700 rounded-lg shadow p-6 transition-transform duration-300 hover:shadow-md">
+          <i class="pi pi-bolt text-3xl text-honolulu-blue-500 dark:text-honolulu-blue-400 mb-4"></i>
+          <h3 class="text-xl font-bold text-midnight-green-700 dark:text-silver-200 mb-2">Innovation-Led</h3>
+          <p class="text-midnight-green-600 dark:text-silver-300">We leverage cutting-edge technologies to give you a
+            competitive edge in your market</p>
+        </div>
+      </div>
     </div>
   </section>
 </template>

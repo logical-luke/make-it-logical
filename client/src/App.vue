@@ -122,7 +122,7 @@ onUnmounted(() => {
               @click="toggleMobileMenu"
           />
         </div>
-        <nav class="flex-grow flex items-center justify-center">
+        <nav class="flex-grow flex justify-center">
           <ul class="space-y-6 text-center">
             <li v-for="item in navItems" :key="item.id">
               <RouterLink
@@ -189,7 +189,7 @@ onUnmounted(() => {
 }
 
 .p-button-lg {
-  @apply text-lg py-3 px-6;
+  @apply py-3 px-6;
 }
 
 .p-button-primary {
@@ -205,10 +205,6 @@ onUnmounted(() => {
 .p-button-outlined {
   @apply border-2 border-honolulu-blue-600 text-honolulu-blue-600 hover:bg-honolulu-blue-100 hover:text-honolulu-blue-800;
   @apply dark:border-lapis-lazuli-200 dark:text-lapis-lazuli-200 dark:hover:bg-lapis-lazuli-600 dark:hover:text-lapis-lazuli-100;
-}
-
-:deep(.p-button) {
-  @apply text-lg py-3 px-6;
 }
 
 @media (min-width: 768px) {
