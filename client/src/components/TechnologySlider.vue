@@ -20,26 +20,38 @@ import openaiLogo from '@/assets/tech/openai-logo.svg';
 import symfonyLogo from '@/assets/tech/symfony-logo.svg';
 import laravelLogo from '@/assets/tech/laravel-logo.svg';
 import cloudflareLogo from '@/assets/tech/cloudflare-logo.svg';
+import sentryLogo from '@/assets/tech/sentry-logo.svg';
+import rabbitMqLogo from '@/assets/tech/rabbitmq-logo.svg';
+import dockerLogo from '@/assets/tech/docker-logo.svg';
+import mysqlLogo from '@/assets/tech/mysql-logo.svg';
+import analyticsLogo from '@/assets/tech/analytics-logo.svg';
+import cypressLogo from '@/assets/tech/cypress-logo.svg';
 
 const technologies = [
   {name: 'TypeScript', logo: typescriptLogo},
   {name: 'Vue.js', logo: vueLogo},
   {name: 'PHP', logo: phpLogo},
-  {name: 'Apache Kafka', logo: kafkaLogo},
+  {name: 'Docker', logo: dockerLogo},
   {name: 'GitHub Actions', logo: githubActionsLogo},
   {name: 'AWS', logo: awsLogo},
   {name: 'GCP', logo: gcpLogo},
+  {name: 'Symfony', logo: symfonyLogo},
   {name: 'Python', logo: pythonLogo},
+  {name: 'MySQL', logo: mysqlLogo},
+  {name: 'Apache Kafka', logo: kafkaLogo},
   {name: 'Node.js', logo: nodejsLogo},
+  {name: 'Laravel', logo: laravelLogo},
   {name: 'Tailwind CSS', logo: tailwindLogo},
+  {name: 'Google Analytics', logo: analyticsLogo},
   {name: 'Git', logo: gitLogo},
   {name: 'Grafana', logo: grafanaLogo},
   {name: 'Uptime Kuma', logo: kumaLogo},
   {name: 'Prometheus', logo: prometheusLogo},
   {name: 'OpenAI', logo: openaiLogo},
-  {name: 'Symfony', logo: symfonyLogo},
-  {name: 'Laravel', logo: laravelLogo},
   {name: 'Cloudflare', logo: cloudflareLogo},
+  {name: 'Sentry', logo: sentryLogo},
+  {name: 'Cypress', logo: cypressLogo},
+  {name: 'RabbitMQ', logo: rabbitMqLogo},
 ];
 
 const position = ref(0);
@@ -104,7 +116,7 @@ onUnmounted(() => {
   stopAutoSlide();
 });
 
-const blackLogos = ['git', 'kafka', 'github-actions', 'aws', 'symfony', 'openai'];
+const blackLogos = ['git', 'kafka', 'github-actions', 'aws', 'cypress', 'sentry', 'symfony', 'openai'];
 
 const isBlackLogo = (name: string) => blackLogos.some(logo => name.toLowerCase().includes(logo));
 </script>
