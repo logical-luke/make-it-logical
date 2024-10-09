@@ -131,7 +131,7 @@ const navigateToContact = () => {
             v-for="(service, index) in services"
             :key="service.title"
             :header="service.title"
-            class="shadow hover:shadow-md bg-white dark:bg-midnight-green-700 border-l-4 border-honolulu-blue-500 dark:border-honolulu-blue-400"
+            class="shadow hover:shadow-md bg-white outline outline-2 dark:outline-silver-200 outline-honolulu-blue-500 dark:bg-midnight-green-700"
         >
           <template #icons>
             <i :class="[service.icon, 'text-2xl text-honolulu-blue-500 dark:text-honolulu-blue-400']"></i>
