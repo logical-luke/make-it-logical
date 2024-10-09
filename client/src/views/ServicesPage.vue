@@ -128,7 +128,7 @@ const navigateToContact = () => {
           v-for="(service, index) in services"
           :key="service.title"
           :header="service.title"
-          class="shadow-lg bg-white dark:bg-midnight-green-700 border-l-4 border-honolulu-blue-500 dark:border-honolulu-blue-400"
+          class="shadow hover:shadow-md bg-white dark:bg-midnight-green-700 border-l-4 border-honolulu-blue-500 dark:border-honolulu-blue-400"
         >
           <template #icons>
             <i :class="[service.icon, 'text-2xl text-honolulu-blue-500 dark:text-honolulu-blue-400']"></i>
@@ -178,7 +178,7 @@ const navigateToContact = () => {
 
   <section class="full-width-section bg-cinereous-100 dark:bg-midnight-green-800 py-16">
     <div class="container mx-auto">
-      <Card class="shadow-lg">
+      <Card class="shadow">
         <template #title>
           <div class="flex items-center">
             <i class="pi pi-star mr-2 text-honolulu-blue-500 dark:text-honolulu-blue-400"></i>
