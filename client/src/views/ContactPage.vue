@@ -5,8 +5,6 @@ import {useVuelidate} from '@vuelidate/core';
 import {required, email, helpers} from '@vuelidate/validators';
 import axios from 'axios';
 import Button from 'primevue/button';
-import Divider from 'primevue/divider';
-import SuccessImage from "@/components/SuccessImage.vue";
 
 const {t} = useI18n();
 
@@ -35,7 +33,6 @@ const submitForm = async () => {
     const response = await axios.post(import.meta.env.VITE_API_URL, {
       name: form.name,
       email: form.email,
-      phone: form.phone,
       hash: import.meta.env.VITE_SENDGRID_HASH_KEY
     });
 
@@ -57,16 +54,11 @@ const submitForm = async () => {
 <template>
   <section
       id="contact"
-      class="full-width-section relative overflow-clip-y bg-gradient-to-b from-silver-100 to-silver-200 dark:from-midnight-green-800 dark:to-midnight-green-900">
-    <div class="absolute inset-0 overflow-visible">
-      <div class="absolute inset-0 opacity-20 dark:opacity-10 -left-1/5 -top-[50vh] md:-top-[20vh] lg:-top-[5vh]">
-        <SuccessImage class="w-full h-full scale-[2] md:scale-[1.75] lg:scale-150"/>
-      </div>
-    </div>
-    <div class="container mx-auto py-16 relative z-10">
-      <h2 class="text-4xl md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
-        Your <span class="text-honolulu-blue-500 dark:text-honolulu-blue-200 font-bold">Vision</span>, Our <span
-          class="text-honolulu-blue-500 dark:text-honolulu-blue-200 font-bold">Expertise</span>
+      class="full-width-section bg-gradient-to-b from-silver-100 to-silver-200 dark:from-midnight-green-800 dark:to-midnight-green-900">
+    <div class="container py-16">
+      <h2 class="text-4xl flex flex-col gap-2 md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
+        <span class="text-honolulu-blue-500 dark:text-honolulu-blue-200 font-bold">Your Vision</span>
+        <span class="font-bold">Our Expertise</span>
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
         <div>
@@ -98,7 +90,8 @@ const submitForm = async () => {
             </a>
           </div>
         </div>
-        <div class="bg-white dark:bg-midnight-green-700 shadow rounded-lg p-6 outline outline-2 dark:outline-silver-200 outline-honolulu-blue-500">
+        <div
+            class="bg-white dark:bg-midnight-green-700 shadow rounded-lg p-6 outline outline-2 dark:outline-silver-200 outline-honolulu-blue-500">
           <form class="space-y-6" @submit.prevent="submitForm">
             <div>
               <label for="name" class="block mb-2 font-semibold text-midnight-green-700 dark:text-silver-200">

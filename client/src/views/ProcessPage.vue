@@ -4,7 +4,6 @@ import {ref} from 'vue';
 import Card from 'primevue/card';
 import Button from 'primevue/button';
 import {useRouter} from 'vue-router';
-import CodingImage from "@/components/CodingImage.vue";
 
 const router = useRouter();
 
@@ -43,26 +42,26 @@ const navigateToServices = () => {
 </script>
 
 <template>
-  <section id="process" class="relative overflow-clip-y">
-    <div class="absolute inset-0 overflow-visible">
-      <div class="absolute inset-0 opacity-20 -left-1/5 -top-[120vh] md:-top-[50vh] lg:-top-[30vh]">
-        <CodingImage class="w-full h-full object-cover object-top scale-[2] md:scale-[1.75] lg:scale-150" />
-      </div>
-    </div>
+  <section id="process">
     <div class="container mx-auto py-16 relative z-10">
       <div class="mb-16">
         <h2 class="text-4xl md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
           Transforming Vision into <span class="highlight">Digital Reality</span>
         </h2>
         <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-12 text-center max-w-3xl mx-auto">
-          {{ t('Our razor-sharp process cuts through complexity, delivering solutions that ignite growth and user engagement.') }}
+          {{
+            t('Our razor-sharp process cuts through complexity, delivering solutions that ignite growth and user engagement.')
+          }}
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card v-for="(step, index) in processSteps" :key="step.label" class="shadow outline outline-2 dark:outline-silver-200 outline-honolulu-blue-500">
+        <Card
+            v-for="(step, index) in processSteps" :key="step.label"
+            class="shadow hover:shadow-md">
           <template #header>
             <div class="flex items-center p-4 bg-honolulu-blue-50 dark:bg-honolulu-blue-900">
-              <div class="w-12 h-12 bg-honolulu-blue-500 dark:bg-honolulu-blue-700 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
+              <div
+                  class="w-12 h-12 bg-honolulu-blue-500 dark:bg-honolulu-blue-700 rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4">
                 {{ index + 1 }}
               </div>
               <h3 class="text-2xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">
@@ -83,10 +82,10 @@ const navigateToServices = () => {
       </div>
       <div class="mt-12 text-center">
         <Button
-          label="Explore Our Services"
-          icon="pi pi-arrow-right"
-          class="p-button-lg bg-midnight-green-700 text-white hover:bg-midnight-green-600 dark:bg-lapis-lazuli-600 dark:text-white dark:hover:bg-lapis-lazuli-500"
-          @click="navigateToServices"
+            label="Explore Our Services"
+            icon="pi pi-arrow-right"
+            class="p-button-lg bg-midnight-green-700 text-white hover:bg-midnight-green-600 dark:bg-lapis-lazuli-600 dark:text-white dark:hover:bg-lapis-lazuli-500"
+            @click="navigateToServices"
         />
       </div>
     </div>

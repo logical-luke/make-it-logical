@@ -5,8 +5,6 @@ import Button from 'primevue/button';
 import Card from 'primevue/card';
 import Panel from 'primevue/panel';
 import StartupImage from "@/components/StartupImage.vue";
-import TestingImage from "@/components/TestingImage.vue";
-import GoodIdeaImage from "@/components/GoodIdeaImage.vue";
 
 const {t} = useI18n();
 const router = useRouter();
@@ -60,7 +58,7 @@ const navigateTo = (path: string) => {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <Card
             v-for="feature in features" :key="feature.title"
-            class="outline-2 dark:outline-silver-200 outline-honolulu-blue-500 outline text-center shadow bg-white dark:bg-midnight-green-800">
+            class="text-center shadow hover:shadow-md bg-white dark:bg-midnight-green-800">
           <template #header>
             <div
                 class="bg-gradient-to-r from-honolulu-blue-100 to-honolulu-blue-200 dark:from-honolulu-blue-800 dark:to-honolulu-blue-700 rounded-md p-6 flex items-center justify-center">
@@ -80,16 +78,8 @@ const navigateTo = (path: string) => {
 
   <section
       class="px-4 full-width-section relative overflow-clip-y bg-cinereous-200 dark:bg-midnight-green-500">
-    <div class="absolute inset-0 overflow-visible">
-      <div class="absolute inset-0 opacity-10 -top-[10vh]">
-        <GoodIdeaImage class="w-full h-full object-cover object-left scale-[2] md:scale-[1.75] lg:scale-150"/>
-      </div>
-    </div>
     <div class="container mx-auto py-16">
-      <Panel header="Our Craft" class="text-center p-4 bg-white dark:bg-midnight-green-800 shadow">
-        <template #icons>
-          <i class="pi pi-star"></i>
-        </template>
+      <Panel class="text-center p-4 bg-white dark:bg-midnight-green-800 shadow">
         <h2 class="text-4xl md:text-5xl font-bold mb-8 text-lapis-lazuli-600 dark:text-lapis-lazuli-300">
           {{ t('Solutions That Resonate') }}
         </h2>
@@ -100,9 +90,7 @@ const navigateTo = (path: string) => {
           {{ t('We craft experiences that connect, engage, and inspire.') }}
         </p>
         <Button
-            :label="t('Discover Our Magic')"
-            icon="pi pi-star"
-            icon-pos="right"
+            :label="t('Discover Magic')"
             class="p-button-outlined p-button-rounded p-button-lg"
             @click="navigateTo('/services')"
         />
@@ -127,10 +115,8 @@ const navigateTo = (path: string) => {
       </p>
       <div class="text-center">
         <Button
-            :label="t('Unveil Our Process')"
-            icon="pi pi-chart-line"
-            icon-pos="right"
-            class="p-button-outlined p-button-rounded p-button-lg"
+            :label="t('Unveil Process')"
+            class="p-button-outlined p-button-rounded"
             @click="navigateTo('/process')"
         />
       </div>
@@ -143,19 +129,24 @@ const navigateTo = (path: string) => {
       <h2 class="text-4xl md:text-5xl font-bold mb-8 text-midnight-green-800 dark:text-silver-100">
         {{ t('Ready for a Journey?') }}
       </h2>
-      <p class="text-xl md:text-2xl mb-6 text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
+      <p class="text-xl md:text-2xl mb-8 text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
         {{
           t('Let\'s create experiences that don\'t just work – they wow.')
         }}
       </p>
-      <p class="text-xl md:text-2xl mb-4 text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
+      <p class="text-xl md:text-2xl mb-6 text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
         {{
-          t('Your vision, our expertise: a perfect')
+          t('Your vision, our expertise')
+        }}
+      </p>
+      <p class="text-xl md:text-2xl mb-4text-midnight-green-700 dark:text-silver-200 max-w-4xl mx-auto">
+        {{
+          t('a perfect')
         }}
       </p>
       <p class="text-2xl md:text-4xl mb-12 text-honolulu-blue-600 font-bold dark:text-lapis-lazuli-200 max-w-4xl mx-auto">
         {{
-          t('digital symphony')
+          t('symphony')
         }}
       </p>
       <Button

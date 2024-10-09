@@ -1,15 +1,14 @@
 <script setup lang="ts">
-import { useI18n } from 'vue-i18n';
-import { ref } from 'vue';
+import {useI18n} from 'vue-i18n';
+import {ref} from 'vue';
 import Avatar from 'primevue/avatar';
 import Card from 'primevue/card';
 import Chip from 'primevue/chip';
 import Button from 'primevue/button';
 
-const { t } = useI18n();
+const {t} = useI18n();
 
-import { useRouter } from 'vue-router';
-import TeamAssembleImage from "@/components/TeamAssembleImage.vue";
+import {useRouter} from 'vue-router';
 
 const router = useRouter();
 
@@ -55,24 +54,23 @@ const navigateToContact = () => {
 
 <template>
   <section id="team" class="relative overflow-clip-y">
-        <div class="absolute inset-0 overflow-visible">
-      <div class="absolute inset-0 opacity-20 -top-[140vh] md:-top-[90vh] lg:-top-[70vh]">
-        <TeamAssembleImage class="w-full h-full object-cover object-left scale-[2] md:scale-[1.75] lg:scale-150" />
-      </div>
-    </div>
     <div class="container mx-auto py-16 relative z-10">
       <h2 class="text-4xl md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
         Meet Your <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Digital Dream Team</span>
       </h2>
       <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-12 text-center max-w-3xl mx-auto">
-        {{ t('Our experts combine diverse skills and relentless passion to deliver solutions that don\'t just meet expectations – they shatter them.') }}
+        {{
+          t('Our experts combine diverse skills and relentless passion to deliver solutions that don\'t just meet expectations – they shatter them.')
+        }}
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card v-for="member in teamMembers" :key="member.name" class="shadow rounded-lg outline outline-2 dark:outline-silver-200 outline-honolulu-blue-500 overflow-hidden">
+        <Card
+            v-for="member in teamMembers" :key="member.name"
+            class="shadow hover:shadow-md rounded-lg  overflow-hidden">
           <template #header>
             <div :class="[member.color, 'p-6 flex items-center justify-center']">
-              <Avatar :label="member.avatar" size="xlarge" shape="circle" class="text-4xl" />
+              <Avatar :label="member.avatar" size="xlarge" shape="circle" class="text-4xl"/>
             </div>
           </template>
           <template #title>
@@ -84,7 +82,7 @@ const navigateToContact = () => {
           <template #content>
             <p class="text-midnight-green-600 dark:text-silver-300 mb-4">{{ member.description }}</p>
             <div class="flex flex-wrap gap-2">
-              <Chip v-for="skill in member.skills" :key="skill" :label="skill" />
+              <Chip v-for="skill in member.skills" :key="skill" :label="skill"/>
             </div>
           </template>
         </Card>
@@ -92,13 +90,15 @@ const navigateToContact = () => {
 
       <div class="mt-12 text-center">
         <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-6 max-w-3xl mx-auto">
-          Our team doesn't just build apps – we craft <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">experiences</span> that transform businesses and delight users.
+          Our team doesn't just build apps – we craft <span
+            class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">experiences</span> that transform
+          businesses and delight users.
         </p>
         <Button
-          label="Work With Us"
-          icon="pi pi-users"
-          class="p-button-lg bg-midnight-green-700 text-white hover:bg-midnight-green-600 dark:bg-lapis-lazuli-600 dark:text-white dark:hover:bg-lapis-lazuli-500"
-          @click="navigateToContact"
+            label="Work With Us"
+            icon="pi pi-users"
+            class="p-button-lg bg-midnight-green-700 text-white hover:bg-midnight-green-600 dark:bg-lapis-lazuli-600 dark:text-white dark:hover:bg-lapis-lazuli-500"
+            @click="navigateToContact"
         />
       </div>
     </div>
@@ -109,16 +109,25 @@ const navigateToContact = () => {
       <Card class="shadow">
         <template #title>
           <div class="flex items-center">
-            <i class="pi pi-bolt mr-2"></i>
             <h3 class="text-2xl font-bold">Why Our Team Stands Out</h3>
           </div>
         </template>
         <template #content>
           <ul class="list-disc pl-5">
-            <li class="mb-2"><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Diverse</span> skillsets for comprehensive solutions</li>
-            <li class="mb-2"><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Innovative</span> approach to problem-solving</li>
-            <li class="mb-2"><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Passionate</span> about delivering excellence</li>
-            <li><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Committed</span> to your long-term success</li>
+            <li class="mb-2"><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Diverse</span>
+              skillsets for comprehensive solutions
+            </li>
+            <li class="mb-2"><span
+                class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Innovative</span> approach to
+              problem-solving
+            </li>
+            <li class="mb-2"><span
+                class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Passionate</span> about delivering
+              excellence
+            </li>
+            <li><span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Committed</span> to your
+              long-term success
+            </li>
           </ul>
         </template>
       </Card>

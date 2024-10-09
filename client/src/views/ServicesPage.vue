@@ -115,15 +115,21 @@ const navigateToContact = () => {
 </script>
 
 <template>
-  <section id="services"
-           class="full-width-section relative bg-gradient-to-b from-silver-50 to-silver-100 dark:from-midnight-green-800 dark:to-midnight-green-900">
-    <div class="container mx-auto py-16 relative z-10">
+  <section
+      id="services"
+      class="full-width-section bg-gradient-to-b from-silver-50 to-silver-100 dark:from-midnight-green-800 dark:to-midnight-green-900">
+    <div class="container py-16">
       <h2 class="text-4xl md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
-        Powerful <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Digital Solutions</span>
+        Powerful <span class="text-honolulu-blue-500 dark:text-honolulu-blue-300 font-bold">Solutions</span>
       </h2>
+      <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-4 text-center max-w-3xl mx-auto">
+        {{
+          t('We deliver scalable, efficient solutions that solve real business challenges.')
+        }}
+      </p>
       <p class="text-xl md:text-2xl text-midnight-green-700 dark:text-silver-200 mb-12 text-center max-w-3xl mx-auto">
         {{
-          t('We deliver scalable, efficient solutions that solve real business challenges. Our focus is on creating value through innovative technology and streamlined processes.')
+          t('Our focus is on creating value through innovative technology and streamlined processes.')
         }}
       </p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -131,7 +137,7 @@ const navigateToContact = () => {
             v-for="(service, index) in services"
             :key="service.title"
             :header="service.title"
-            class="shadow hover:shadow-md bg-white outline outline-2 dark:outline-silver-200 outline-honolulu-blue-500 dark:bg-midnight-green-700"
+            class="shadow hover:shadow-md bg-white"
         >
           <template #icons>
             <i :class="[service.icon, 'text-2xl text-honolulu-blue-500 dark:text-honolulu-blue-400']"></i>
@@ -199,7 +205,6 @@ const navigateToContact = () => {
       <Card class="shadow">
         <template #title>
           <div class="flex items-center">
-            <i class="pi pi-star mr-2 text-honolulu-blue-500 dark:text-honolulu-blue-400"></i>
             <h3 class="text-2xl font-bold text-lapis-lazuli-600 dark:text-lapis-lazuli-300">Why Choose Our
               Services?</h3>
           </div>

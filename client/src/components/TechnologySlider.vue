@@ -148,17 +148,6 @@ const isBlackLogo = (name: string) => blackLogos.some(logo => name.toLowerCase()
       </div>
     </div>
 
-    <Button
-        icon="pi pi-chevron-left"
-        class="p-button-rounded p-button-text slider-nav-button slider-nav-button-left"
-        @click="handleNavigation('prev')"
-    />
-    <Button
-        icon="pi pi-chevron-right"
-        class="p-button-rounded p-button-text slider-nav-button slider-nav-button-right"
-        @click="handleNavigation('next')"
-    />
-
     <div class="mt-4 text-xs text-gray-500 text-center px-4">
       {{ disclaimer }}
     </div>
@@ -232,31 +221,11 @@ const isBlackLogo = (name: string) => blackLogos.some(logo => name.toLowerCase()
   transition: all 0.3s ease;
 }
 
-.logo-wrapper:hover {
-  background-color: rgba(138, 113, 106, 0.1);
-}
-
-:root.dark .logo-wrapper:hover {
-  background-color: rgba(231, 227, 224, 0.2);
-}
-
 .logo-svg {
   transition: all 0.3s ease;
 }
 
-.logo-wrapper:hover .logo-svg {
-  transform: scale(1.05);
-}
-
 :root.dark .dark-mode-white-fill {
   filter: brightness(0) invert(1);
-}
-
-:root.dark .logo-wrapper:hover .dark-mode-white-fill {
-  filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
-}
-
-:root.dark .logo-wrapper:hover .logo-svg:not(.dark-mode-white-fill) {
-  filter: brightness(1.1);
 }
 </style>

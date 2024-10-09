@@ -99,7 +99,6 @@ onUnmounted(() => {
             <li>
               <Button
                   :icon="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
-                  class="p- text-silver-100 dark:text-midnight-green-800 dark:bg-silver-100 bg-midnight-green-800"
                   aria-label="Toggle Theme"
                   @click="toggleTheme"
               />
@@ -138,7 +137,6 @@ onUnmounted(() => {
             <li>
               <Button
                   :icon="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
-                  class="p- text-silver-100 dark:text-midnight-green-800 dark:bg-silver-100 bg-midnight-green-800"
                   @click="toggleTheme"
               />
             </li>
