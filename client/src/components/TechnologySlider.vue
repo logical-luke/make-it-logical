@@ -103,26 +103,39 @@ onUnmounted(() => {
   window.removeEventListener('resize', handleResize);
   stopAutoSlide();
 });
+
+const blackLogos = ['git', 'kafka', 'github-actions', 'aws', 'symfony', 'openai'];
+
+const isBlackLogo = (name: string) => blackLogos.some(logo => name.toLowerCase().includes(logo));
 </script>
+
 
 <template>
   <div class="technology-slider-container relative px-4 md:px-6 lg:px-8">
     <div class="technology-slider overflow-hidden">
-      <div class="flex transition-transform duration-500 ease-in-out"
-           :style="{ transform: `translateX(-${position * 100}%)` }">
-        <div v-for="tech in technologies" :key="tech.name"
-             class="flex-none w-1/2 md:w-1/4 lg:w-1/6 px-2 md:px-3 lg:px-4">
+      <div
+          class="flex transition-transform duration-500 ease-in-out"
+          :style="{ transform: `translateX(-${position * 100}%)` }">
+        <div
+            v-for="tech in technologies" :key="tech.name"
+            class="flex-none w-1/2 md:w-1/4 lg:w-1/6 px-2 md:px-3 lg:px-4">
           <div class="text-center">
-            <img
-                :src="tech.logo"
-                :alt="tech.name"
-                class="w-full h-12 md:h-14 lg:h-16 object-contain filter grayscale opacity-50 hover:opacity-100 transition-opacity duration-300"
-            >
-            <p class="mt-2 text-xs md:text-sm font-medium text-gray-600 truncate">{{ tech.name }}</p>
+            <div class="logo-wrapper">
+              <img
+                  :src="tech.logo"
+                  :alt="tech.name"
+                  :class="[
+                  'w-full h-12 md:h-14 lg:h-16 object-contain transition-all duration-300 logo-svg',
+                  { 'dark-mode-white-fill': isBlackLogo(tech.name) }
+                ]"
+              >
+            </div>
+            <p class="mt-2 text-xs md:text-sm font-medium text-gray-600 dark:text-gray-300 truncate">{{ tech.name }}</p>
           </div>
         </div>
       </div>
     </div>
+
     <Button
         icon="pi pi-chevron-left"
         class="p-button-rounded p-button-text slider-nav-button slider-nav-button-left"
@@ -134,7 +147,6 @@ onUnmounted(() => {
         @click="handleNavigation('next')"
     />
 
-    <!-- Disclaimer -->
     <div class="mt-4 text-xs text-gray-500 text-center px-4">
       {{ disclaimer }}
     </div>
@@ -199,5 +211,40 @@ onUnmounted(() => {
   :deep(.p-button .p-button-icon) {
     font-size: 1.5rem;
   }
+}
+
+.logo-wrapper {
+  position: relative;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.logo-wrapper:hover {
+  background-color: rgba(138, 113, 106, 0.1);
+}
+
+:root.dark .logo-wrapper:hover {
+  background-color: rgba(231, 227, 224, 0.2);
+}
+
+.logo-svg {
+  transition: all 0.3s ease;
+}
+
+.logo-wrapper:hover .logo-svg {
+  transform: scale(1.05);
+}
+
+:root.dark .dark-mode-white-fill {
+  filter: brightness(0) invert(1);
+}
+
+:root.dark .logo-wrapper:hover .dark-mode-white-fill {
+  filter: brightness(0) invert(1) drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+}
+
+:root.dark .logo-wrapper:hover .logo-svg:not(.dark-mode-white-fill) {
+  filter: brightness(1.1);
 }
 </style>
