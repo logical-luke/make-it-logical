@@ -69,7 +69,7 @@ const navigateToContact = () => {
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <Card v-for="member in teamMembers" :key="member.name" class="shadow">
+        <Card v-for="member in teamMembers" :key="member.name" class="shadow rounded-lg outline outline-2 dark:outline-silver-200 outline-honolulu-blue-500 overflow-hidden">
           <template #header>
             <div :class="[member.color, 'p-6 flex items-center justify-center']">
               <Avatar :label="member.avatar" size="xlarge" shape="circle" class="text-4xl" />

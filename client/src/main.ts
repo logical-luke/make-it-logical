@@ -3,9 +3,6 @@ import './tailwind/main.css'
 
 import {createApp} from 'vue'
 import App from './App.vue'
-import PrimeVue from 'primevue/config'
-import Lara from '@primevue/themes/lara';
-import router from "@/router";
 
 const app = createApp(App)
 
@@ -20,6 +17,9 @@ const i18n = createI18n({
 
 app.use(i18n);
 app.use(router);
+import router from "@/router";
+import Lara from '@primevue/themes/lara';
+import PrimeVue from 'primevue/config'
 app.use(PrimeVue, {
     theme: {
         preset: Lara,
