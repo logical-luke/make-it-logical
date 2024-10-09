@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, onMounted, watch} from 'vue';
+import {ref, onMounted, watch, onUnmounted} from 'vue';
 import {useRoute} from 'vue-router';
 import Button from 'primevue/button';
 
@@ -14,6 +14,7 @@ const navItems = ref([
 ]);
 
 const mobileMenuOpen = ref(false);
+const showScrollTopButton = ref(false);
 
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value;
@@ -47,6 +48,7 @@ const initializeTheme = () => {
 
 onMounted(() => {
   initializeTheme();
+  window.addEventListener('scroll', checkScroll);
 });
 
 // Watch for system theme changes
@@ -58,6 +60,18 @@ watch(
       }
     }
 );
+
+const checkScroll = () => {
+  showScrollTopButton.value = window.scrollY > 500;
+};
+
+const scrollToTop = () => {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+};
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', checkScroll);
+});
 </script>
 <template>
   <div class="min-h-screen overflow-hidden bg-white dark:bg-midnight-green-800 transition-colors duration-300">
@@ -149,6 +163,14 @@ watch(
         <p class="mt-2 text-sm">Empowering businesses with innovative solutions.</p>
       </div>
     </footer>
+
+    <Button
+        v-show="showScrollTopButton"
+        icon="pi pi-arrow-up"
+        class="scroll-top-button p-button-rounded p-button-secondary"
+        aria-label="Scroll to Top"
+        @click="scrollToTop"
+    />
   </div>
 </template>
 
@@ -162,16 +184,6 @@ watch(
 
 .highlight {
   @apply text-honolulu-blue-400 dark:text-midnight-green-200 font-bold;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.4s ease-in-out;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 
 .p-button {
@@ -216,5 +228,12 @@ watch(
 .overflow-clip-y {
   overflow-x: visible;
   overflow-y: clip;
+}
+
+.scroll-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
 }
 </style>
