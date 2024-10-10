@@ -25,7 +25,6 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 manualChunks: {
-                    'primevue': ['primevue/config'],
                 },
             },
         },
