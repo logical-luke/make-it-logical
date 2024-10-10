@@ -82,7 +82,7 @@ const features = [
               ]"
             ></i>
             <h3 class="text-2xl font-bold mb-4">{{ feature.title }}</h3>
-            <p class="text-lg dark:text-honolulu-blue-300">
+            <p class="text-lg">
               {{ feature.description }}
             </p>
           </div>

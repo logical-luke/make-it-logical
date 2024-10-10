@@ -4,21 +4,23 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 
+const lastScrollTop = ref(0);
+const isNavVisible = ref(true);
+const scrollThreshold = 10;
+const isDarkTheme = ref(false);
+const path = computed<string | undefined>(
+  () => route.path as string | undefined,
+);
+const mobileMenuOpen = ref(false);
 const navItems = ref([
   { id: 1, name: "Services", path: "/services" },
   { id: 2, name: "Process", path: "/process" },
   { id: 3, name: "Contact", path: "/contact" },
 ]);
 
-const mobileMenuOpen = ref(false);
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value;
 };
-
-const isDarkTheme = ref(false);
-const path = computed<string | undefined>(
-  () => route.path as string | undefined,
-);
 
 const setDarkTheme = (value: boolean) => {
   isDarkTheme.value = value;
@@ -46,18 +48,18 @@ const initializeTheme = () => {
   }
 };
 
-const lastScrollTop = ref(0);
-const isNavVisible = ref(true);
-
 const handleScroll = () => {
   const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const scrollDifference = scrollTop - lastScrollTop.value;
+
   if (scrollTop === 0) {
     isNavVisible.value = true;
-  } else if (scrollTop > lastScrollTop.value) {
+  } else if (scrollDifference > scrollThreshold) {
     isNavVisible.value = false;
-  } else {
+  } else if (scrollDifference < -scrollThreshold) {
     isNavVisible.value = true;
   }
+
   lastScrollTop.value = scrollTop <= 0 ? 0 : scrollTop;
 };
 
@@ -88,7 +90,7 @@ watch(
     >
       <header
         v-if="isNavVisible"
-        class="backdrop-blur-lg bg-white/30 dark:bg-black/30 py-6 px-6 fixed w-full z-40 h-20 transition-all duration-300"
+        class="backdrop-blur-xl bg-white/50 dark:bg-zinc-900/50 py-6 px-6 fixed w-full z-40 h-20 transition-all duration-300"
       >
         <div class="container mx-auto flex justify-between items-center">
           <RouterLink to="/">
@@ -124,6 +126,7 @@ watch(
                   type="button"
                   aria-label="Toggle Theme"
                   @click="toggleTheme"
+                  class="flex items-center"
                 >
                   <i
                     class="text-xl"
@@ -154,7 +157,7 @@ watch(
     >
       <div
         v-if="mobileMenuOpen"
-        class="fixed inset-0 z-50 bg-white dark:bg-honolulu-blue-900 md:hidden transition-all duration-300"
+        class="fixed inset-0 z-50 bg-white dark:bg-zinc-900 md:hidden transition-all duration-300"
       >
         <div class="flex flex-col h-full">
           <div class="flex justify-end py-7 px-6">
@@ -199,13 +202,13 @@ watch(
               </li>
               <li>
                 <button
-                    type="button"
-                    aria-label="Toggle Theme"
-                    @click="toggleTheme"
+                  type="button"
+                  aria-label="Toggle Theme"
+                  @click="toggleTheme"
                 >
                   <i
-                      class="text-xl"
-                      :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
+                    class="text-xl"
+                    :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
                   ></i>
                 </button>
               </li>
@@ -233,7 +236,7 @@ watch(
       </div>
     </main>
   </div>
-  <footer class="bg-white/30 dark:bg-black/30 py-6 px-6">
+  <footer class="bg-white/50 dark:bg-zinc-900/50 py-6 px-6">
     <div class="container mx-auto">
       <p>
         &copy; {{ new Date().getFullYear() }} <strong>Make IT Logical</strong>.
