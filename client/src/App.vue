@@ -139,7 +139,7 @@ watch(
         <div class="flex flex-col h-full">
           <div class="flex justify-end py-7 px-6">
             <div class="flex-1">
-              <RouterLink class="flex items-center space-x-2" to="/">
+              <RouterLink class="flex items-center space-x-2" to="/" @click="toggleMobileMenu">
                 <img src="@/assets/logo.svg" height="40" width="27" alt="Make IT Logical Logo" class="h-10 w-auto">
                 <span class="text-2xl text-black hidden md:block dark:text-white font-bold">Make IT Logical</span>
               </RouterLink>
