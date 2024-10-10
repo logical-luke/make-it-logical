@@ -11,23 +11,23 @@ const features = [
   {
     icon: "pi pi-comments",
     title: t("Listen"),
-    description: t("Your vision is decoded into actionable tech plans."),
+    description: t("Your vision is decoded into actionable tech plans.")
   },
   {
     icon: "pi pi-pencil",
     title: t("Design"),
-    description: t("Intuitive solutions that users love are crafted."),
+    description: t("Intuitive solutions that users love are crafted.")
   },
   {
     icon: "pi pi-cog",
     title: t("Build"),
-    description: t("Concepts are transformed into powerful digital realities."),
+    description: t("Concepts are transformed into powerful digital realities.")
   },
   {
     icon: "pi pi-check-circle",
     title: t("Deliver"),
-    description: t("Solutions that drive tangible results are launched."),
-  },
+    description: t("Solutions that drive tangible results are launched.")
+  }
 ];
 </script>
 
@@ -43,12 +43,12 @@ const features = [
               <span>{{ t("Web") }}</span>
               <span
                 class="text-honolulu-blue-500 dark:text-honolulu-blue-300"
-                >{{ t("Simplified") }}</span
+              >{{ t("Simplified") }}</span
               >
               <span>{{ t("Humanity") }}</span>
               <span
                 class="text-honolulu-blue-500 dark:text-honolulu-blue-300"
-                >{{ t("Amplified") }}</span
+              >{{ t("Amplified") }}</span
               >
             </h2>
           </BottomToTopSlideTransition>
@@ -108,49 +108,51 @@ const features = [
         </div>
       </BottomToTopSlideTransition>
     </section>
-
-    <section class="mt-16">
-      <h2
-        class="text-gray-800 dark:text-gray-100 text-4xl md:text-5xl font-bold mb-12 max-w-3xl"
-      >
-        {{ t("Solutions That Resonate") }}
-      </h2>
-      <p class="text-xl md:text-2xl mb-4 max-w-3xl">
-        {{ t("We don't just build apps.") }}
-      </p>
-      <p class="text-xl md:text-2xl mb-12 max-w-3xl">
-        {{ t("We craft experiences that connect, engage, and inspire.") }}
-      </p>
-      <div class="flex justify-center">
-        <LinkItem to="/services">
-          {{ t("Discover Magic") }}
-        </LinkItem>
-      </div>
-    </section>
-
-    <section class="mt-16">
-      <h2
-        class="text-gray-800 dark:text-gray-100 text-4xl md:text-5xl font-bold mb-12 max-w-3xl"
-      >
-        {{ t("Ready for a Journey?") }}
-      </h2>
-      <p class="text-xl md:text-2xl mb-8 max-w-3xl">
-        {{ t("Let's create experiences that don't just work – they wow.") }}
-      </p>
-      <p class="text-xl md:text-2xl mb-6 max-w-3xl">
-        {{ t("Your vision, our expertise") }}
-      </p>
-      <p class="text-xl md:text-2xl mb-4 max-w-3xl">
-        {{ t("a perfect") }}
-      </p>
-      <p class="text-2xl md:text-4xl mb-12 font-bold max-w-3xl">
-        {{ t("symphony") }}
-      </p>
-      <div class="flex justify-center">
-        <LinkItem to="/contact">
-          {{ t("Ignite Journey") }}
-        </LinkItem>
-      </div>
-    </section>
+    <BottomToTopSlideTransition>
+      <section class="mt-16">
+        <h2
+          class="text-gray-800 dark:text-gray-100 text-4xl md:text-5xl font-bold mb-12 max-w-3xl"
+        >
+          {{ t("Solutions That Resonate") }}
+        </h2>
+        <p class="text-xl md:text-2xl mb-4 max-w-3xl">
+          {{ t("We don't just build apps.") }}
+        </p>
+        <p class="text-xl md:text-2xl mb-12 max-w-3xl">
+          {{ t("We craft experiences that connect, engage, and inspire.") }}
+        </p>
+        <div class="flex justify-center">
+          <LinkItem to="/services">
+            {{ t("Discover Magic") }}
+          </LinkItem>
+        </div>
+      </section>
+    </BottomToTopSlideTransition>
+    <BottomToTopSlideTransition>
+      <section class="mt-16">
+        <h2
+          class="text-gray-800 dark:text-gray-100 text-4xl md:text-5xl font-bold mb-12 max-w-3xl"
+        >
+          {{ t("Ready for a Journey?") }}
+        </h2>
+        <p class="text-xl md:text-2xl mb-8 max-w-3xl">
+          {{ t("Let's create experiences that don't just work – they wow.") }}
+        </p>
+        <p class="text-xl md:text-2xl mb-6 max-w-3xl">
+          {{ t("Your vision, our expertise") }}
+        </p>
+        <p class="text-xl md:text-2xl mb-4 max-w-3xl">
+          {{ t("a perfect") }}
+        </p>
+        <p class="text-2xl md:text-4xl mb-12 font-bold max-w-3xl">
+          {{ t("symphony") }}
+        </p>
+        <div class="flex justify-center">
+          <LinkItem to="/contact">
+            {{ t("Ignite Journey") }}
+          </LinkItem>
+        </div>
+      </section>
+    </BottomToTopSlideTransition>
   </div>
 </template>

@@ -7,7 +7,7 @@ const route = useRoute();
 
 const lastScrollTop = ref(0);
 const isNavVisible = ref(true);
-const scrollThreshold = 10;
+const scrollThreshold = 3;
 const isDarkTheme = ref(false);
 const mobileMenuOpen = ref(false);
 const navItems = ref([
