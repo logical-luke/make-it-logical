@@ -62,7 +62,7 @@ const handleScroll = () => {
 };
 
 onMounted(() => {
-  // initializeTheme();
+  initializeTheme();
   window.addEventListener("scroll", handleScroll);
 });
 
@@ -119,18 +119,18 @@ watch(
                   {{ item.name }}
                 </RouterLink>
               </li>
-<!--              <li>-->
-<!--                <button-->
-<!--                  type="button"-->
-<!--                  aria-label="Toggle Theme"-->
-<!--                  @click="toggleTheme"-->
-<!--                >-->
-<!--                  <i-->
-<!--                    class="text-xl"-->
-<!--                    :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"-->
-<!--                  ></i>-->
-<!--                </button>-->
-<!--              </li>-->
+              <li>
+                <button
+                  type="button"
+                  aria-label="Toggle Theme"
+                  @click="toggleTheme"
+                >
+                  <i
+                    class="text-xl"
+                    :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
+                  ></i>
+                </button>
+              </li>
             </ul>
           </nav>
           <button
@@ -197,18 +197,18 @@ watch(
                   {{ item.name }}
                 </RouterLink>
               </li>
-<!--              <li>-->
-<!--                <button-->
-<!--                  type="button"-->
-<!--                  aria-label="Toggle Theme"-->
-<!--                  @click="toggleTheme"-->
-<!--                >-->
-<!--                  <i-->
-<!--                    class="text-xl"-->
-<!--                    :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"-->
-<!--                  ></i>-->
-<!--                </button>-->
-<!--              </li>-->
+              <li>
+                <button
+                    type="button"
+                    aria-label="Toggle Theme"
+                    @click="toggleTheme"
+                >
+                  <i
+                      class="text-xl"
+                      :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
+                  ></i>
+                </button>
+              </li>
             </ul>
           </nav>
         </div>
