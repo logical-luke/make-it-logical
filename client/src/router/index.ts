@@ -5,18 +5,18 @@ import ProcessPage from "@/views/ProcessPage.vue";
 import ContactPage from "@/views/ContactPage.vue";
 
 const routes = [
-    { path: '/', component: HomePage },
-    { path: '/services', component: ServicesPage },
-    { path: '/process', component: ProcessPage },
-    { path: '/contact', component: ContactPage },
+  { path: "/", component: HomePage },
+  { path: "/services", component: ServicesPage },
+  { path: "/process", component: ProcessPage },
+  { path: "/contact", component: ContactPage },
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
-    scrollBehavior() {
-        return {top: 0};
-    },
+  history: createWebHistory(),
+  routes,
+  scrollBehavior() {
+    return { top: 0 };
+  },
 });
 
 export default router;
