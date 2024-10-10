@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted, computed, watch } from "vue";
+import { ref, onMounted, watch, provide } from "vue";
 import { useRoute } from "vue-router";
+import router from "@/router";
 
 const route = useRoute();
 
@@ -8,15 +9,15 @@ const lastScrollTop = ref(0);
 const isNavVisible = ref(true);
 const scrollThreshold = 10;
 const isDarkTheme = ref(false);
-const path = computed<string | undefined>(
-  () => route.path as string | undefined,
-);
 const mobileMenuOpen = ref(false);
 const navItems = ref([
   { id: 1, name: "Services", path: "/services" },
   { id: 2, name: "Process", path: "/process" },
   { id: 3, name: "Contact", path: "/contact" },
 ]);
+const transitionTrigger = ref(0);
+
+provide("transitionTrigger", transitionTrigger);
 
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value;
@@ -76,10 +77,14 @@ watch(
     }
   },
 );
+
+router.afterEach(() => {
+  transitionTrigger.value++;
+});
 </script>
 
 <template>
-  <div class="min-h-[calc(100vh-100px)]">
+  <div class="min-h-[calc(100vh-44px)]">
     <Transition
       enter-active-class="duration-300 ease-out"
       enter-from-class="transform -translate-y-full"
@@ -125,8 +130,8 @@ watch(
                 <button
                   type="button"
                   aria-label="Toggle Theme"
-                  @click="toggleTheme"
                   class="flex items-center"
+                  @click="toggleTheme"
                 >
                   <i
                     class="text-xl"
@@ -148,10 +153,10 @@ watch(
       </header>
     </Transition>
     <Transition
-      enter-active-class="duration-300 ease-out"
+      enter-active-class="duration-200 ease-out"
       enter-from-class="transform -translate-y-full"
       enter-to-class="transform translate-y-0"
-      leave-active-class="duration-200 ease-in"
+      leave-active-class="duration-100 ease-in"
       leave-from-class="transform translate-y-0"
       leave-to-class="transform -translate-y-full"
     >
@@ -218,31 +223,19 @@ watch(
       </div>
     </Transition>
     <main>
-      <div class="container mx-auto py-32 px-8">
+      <div class="container mx-auto py-32 px-6 md:px-0">
         <RouterView v-slot="{ Component }">
-          <Transition
-            enter-active-class="duration-500 ease-out"
-            enter-from-class="transform opacity-0"
-            enter-to-class="opacity-100"
-            leave-active-class="duration-300 ease-in"
-            leave-from-class="opacity-100"
-            leave-to-class="transform opacity-0"
-          >
-            <div :key="path">
-              <Component :is="Component"></Component>
-            </div>
-          </Transition>
+          <Component :is="Component"></Component>
         </RouterView>
       </div>
     </main>
   </div>
-  <footer class="bg-white/50 dark:bg-zinc-900/50 py-6 px-6">
+  <footer class="bg-white/50 dark:bg-zinc-900/50 pb-6 px-6 md:px-0">
     <div class="container mx-auto">
-      <p>
-        &copy; {{ new Date().getFullYear() }} <strong>Make IT Logical</strong>.
-        All rights reserved.
+      <p class="text-gray-600 dark:text-gray-300 text-sm">
+        &copy; {{ new Date().getFullYear() }}
+        <strong>Make IT Logical</strong>.
       </p>
-      <p class="mt-2 text-sm">Empowering businesses.</p>
     </div>
   </footer>
 </template>

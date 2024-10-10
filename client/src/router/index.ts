@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
-import HomePage from "@/views/HomePage.vue";
-import ServicesPage from "@/views/ServicesPage.vue";
-import ProcessPage from "@/views/ProcessPage.vue";
-import ContactPage from "@/views/ContactPage.vue";
+const HomePage = () => import("@/views/HomePage.vue");
+const ServicesPage = () => import("@/views/ServicesPage.vue");
+const ProcessPage = () => import("@/views/ProcessPage.vue");
+const ContactPage = () => import("@/views/ContactPage.vue");
 
 const routes = [
   { path: "/", component: HomePage },

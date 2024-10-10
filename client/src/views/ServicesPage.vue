@@ -2,6 +2,9 @@
 import { useI18n } from "vue-i18n";
 import { ref } from "vue";
 import TechnologySlider from "@/components/TechnologySlider.vue";
+import MainHeader from "@/components/MainHeader.vue";
+import SubHeader from "@/components/SubHeader.vue";
+import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 
 const { t } = useI18n();
 
@@ -254,111 +257,94 @@ const toggleExpand = (index: number) => {
 
 <template>
   <section id="services">
-    <h1 class="text-6xl leading-1 md:leading-24 font-bold mb-8 max-w-xl">
+    <MainHeader>
       {{ t("Powerful Solutions At Reach of Your Hand") }}
-    </h1>
-    <div class="flex flex-col gap-6 mb-16">
-      <p class="text-xl md:text-2xl">
-        {{
-          t(
-            "We deliver scalable, efficient solutions that solve real business challenges.",
-          )
-        }}
-      </p>
-      <p class="text-xl md:text-2xl">
-        {{
-          t(
-            "Our focus is on creating value through innovative technology and streamlined processes.",
-          )
-        }}
-      </p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <div v-for="(service, index) in services" :key="service.title">
-        <div>
-          <i
-            :class="[
-              service.icon,
-              'text-4xl text-honolulu-blue-500 dark:text-honolulu-blue-400 mb-4',
-            ]"
-          ></i>
-          <h3 class="text-2xl font-bold mb-4">{{ service.title }}</h3>
-          <p class="text-lg mb-4">{{ service.description }}</p>
-          <p class="text-md mb-6">
-            <strong
-              class="text-honolulu-blue-500 dark:text-honolulu-blue-400"
-              >{{ t("Suitable for:") }}</strong
-            >
-            {{ service.suitableFor }}
-          </p>
-          <button
-            type="button"
-            class="p-button-outlined text-sm p-button-rounded text-honolulu-blue-500 dark:text-honolulu-blue-400"
-            @click="toggleExpand(index)"
-          >
-            {{ service.expanded ? "Show Less" : "Discover More" }}
-          </button>
-        </div>
-        <div v-if="service.expanded" class="p-6">
-          <p class="mb-4">{{ service.details }}</p>
-          <h4
-            class="font-bold mb-4 text-honolulu-blue-600 dark:text-honolulu-blue-300"
-          >
-            Key Benefits:
-          </h4>
-          <ul class="space-y-3">
-            <li
-              v-for="benefit in service.benefits"
-              :key="benefit.text"
-              class="flex items-center"
-            >
-              <i
-                :class="[
-                  benefit.icon,
-                  'mr-3 text-honolulu-blue-500 dark:text-honolulu-blue-400',
-                ]"
-              ></i>
-              {{ benefit.text }}
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="py-16">
-    <h2 class="text-3xl md:text-4xl font-bold mb-8">
-      {{ t("Technologies We Work With") }}
-    </h2>
-    <p class="text-xl mb-8">
+    </MainHeader>
+    <SubHeader>
       {{
         t(
-          "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs.",
+          "We deliver scalable, efficient solutions that solve real business challenges.",
         )
       }}
-    </p>
-    <TechnologySlider />
-  </section>
-
-  <section class="py-12 md:py-16">
-    <h2 class="text-3xl md:text-4xl font-bold mb-8">
-      {{ t("Why Choose Our Services ?") }}
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div
-        v-for="(item, index) in sectionItems"
-        :key="index"
-        class="rounded-lg p-6"
-      >
-        <i
-          :class="[
-            item.icon,
-            'text-3xl text-honolulu-blue-500 dark:text-honolulu-blue-400 mb-4',
-          ]"
-        ></i>
-        <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
+      <template #second>
+        {{
+          t(
+            "Our focus is on creating value through technology and streamlined processes.",
+          )
+        }}
+      </template>
+    </SubHeader>
+    <BottomToTopSlideTransition duration="500">
+      <div class="flex flex-col gap-8 max-w-3xl mt-16">
+        <div v-for="(service, index) in services" :key="service.title">
+          <div>
+            <h3 class="text-2xl font-bold mb-4">{{ service.title }}</h3>
+            <p class="text-lg mb-4">{{ service.description }}</p>
+            <p class="text-md mb-6">
+              <span class="font-bold">{{ t("Suitable for:") }}</span>
+              {{ service.suitableFor }}
+            </p>
+            <button
+              type="button"
+              class="text-sm underline underline-offset-8 hover:decoration-2"
+              @click="toggleExpand(index)"
+            >
+              {{ service.expanded ? "Show Less" : "Discover More" }}
+            </button>
+          </div>
+          <div v-if="service.expanded" class="p-6">
+            <p class="mb-4">{{ service.details }}</p>
+            <h4 class="font-bold mb-4">Key Benefits:</h4>
+            <ul class="space-y-3">
+              <li
+                v-for="benefit in service.benefits"
+                :key="benefit.text"
+                class="flex items-center"
+              >
+                <i class="mx-3 pi pi-minus"></i>
+                {{ benefit.text }}
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
+    </BottomToTopSlideTransition>
   </section>
+  <BottomToTopSlideTransition>
+    <section class="py-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8">
+        {{ t("Technologies We Work With") }}
+      </h2>
+      <p class="text-xl mb-8 max-w-3xl">
+        {{
+          t(
+            "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs.",
+          )
+        }}
+      </p>
+      <TechnologySlider />
+    </section>
+
+    <section class="py-12 md:py-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-8">
+        {{ t("Why Choose Our Services ?") }}
+      </h2>
+      <div class="flex flex-col gap-6">
+        <div
+          v-for="(item, index) in sectionItems"
+          :key="index"
+          class="py-6 max-w-3xl"
+        >
+          <i
+            :class="[
+              item.icon,
+              'text-3xl text-gray-600 dark:text-gray-400 mb-4',
+            ]"
+          ></i>
+          <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    </section>
+  </BottomToTopSlideTransition>
 </template>

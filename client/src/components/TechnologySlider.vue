@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 import { ref, onMounted, onUnmounted, computed } from "vue";
 
 import typescriptLogo from "@/assets/tech/typescript-logo.svg";
@@ -91,16 +94,6 @@ onUnmounted(() => {
   stopAutoSlide();
 });
 
-const handleNavigation = (direction: "next" | "prev") => {
-  stopAutoSlide();
-  slide(direction);
-  startAutoSlide();
-};
-
-const disclaimer =
-  ref(`The logos displayed are trademarks or registered trademarks of their respective owners.
-Their use here does not imply endorsement of our website or service by the trademark owners.`);
-
 const handleResize = () => {
   if (window.innerWidth >= 1024) {
     visibleLogos.value = 6;
@@ -155,7 +148,7 @@ const isBlackLogo = (name: string) =>
                 :src="tech.logo"
                 :alt="tech.name"
                 :class="[
-                  'w-full h-12 md:h-14 lg:h-16 object-contain transition-all duration-300 logo-svg',
+                  'w-full h-12 md:h-14 lg:h-16 object-contain transition-all grayscale opacity-70 duration-300 logo-svg',
                   { 'dark-mode-white-fill': isBlackLogo(tech.name) },
                 ]"
               />
@@ -171,7 +164,11 @@ const isBlackLogo = (name: string) =>
     </div>
 
     <div class="mt-6 text-xs text-gray-500 dark:text-gray-300 text-center px-4">
-      {{ disclaimer }}
+      {{
+        t(
+          "The logos displayed are trademarks or registered trademarks of their respective owners. Their use here does not imply endorsement of our website or service by the trademark owners.",
+        )
+      }}
     </div>
   </div>
 </template>
