@@ -1,26 +1,22 @@
 <script setup lang="ts">
-import {ref, onMounted, watch, onUnmounted} from 'vue';
+import {ref, onMounted, computed, watch} from 'vue';
 import {useRoute} from 'vue-router';
-import Button from 'primevue/button';
 
 const route = useRoute();
 
 const navItems = ref([
-  {id: 1, name: 'Home', path: '/'},
-  {id: 2, name: 'Services', path: '/services'},
-  {id: 3, name: 'Process', path: '/process'},
-  {id: 4, name: 'Team', path: '/team'},
-  {id: 5, name: 'Contact', path: '/contact'},
+  {id: 1, name: 'Services', path: '/services'},
+  {id: 2, name: 'Process', path: '/process'},
+  {id: 3, name: 'Contact', path: '/contact'},
 ]);
 
 const mobileMenuOpen = ref(false);
-const showScrollTopButton = ref(false);
-
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value;
 };
 
 const isDarkTheme = ref(false);
+const path = computed<string | undefined>(() => route.path as string | undefined);
 
 const setDarkTheme = (value: boolean) => {
   isDarkTheme.value = value;
@@ -46,12 +42,26 @@ const initializeTheme = () => {
   }
 };
 
+const lastScrollTop = ref(0);
+const isNavVisible = ref(true);
+
+const handleScroll = () => {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  if (scrollTop === 0) {
+    isNavVisible.value = true;
+  } else if (scrollTop > lastScrollTop.value) {
+    isNavVisible.value = false;
+  } else {
+    isNavVisible.value = true;
+  }
+  lastScrollTop.value = scrollTop <= 0 ? 0 : scrollTop;
+};
+
 onMounted(() => {
   initializeTheme();
-  window.addEventListener('scroll', checkScroll);
+  window.addEventListener('scroll', handleScroll);
 });
 
-// Watch for system theme changes
 watch(
     () => window.matchMedia('(prefers-color-scheme: dark)').matches,
     (newValue) => {
@@ -60,174 +70,137 @@ watch(
       }
     }
 );
-
-const checkScroll = () => {
-  showScrollTopButton.value = window.scrollY > 500;
-};
-
-const scrollToTop = () => {
-  window.scrollTo({top: 0, behavior: 'smooth'});
-};
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', checkScroll);
-});
 </script>
-<template>
-  <div class="min-h-screen overflow-hidden bg-white dark:bg-midnight-green-800 transition-colors duration-300">
-    <header
-        class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-40 transition-colors duration-300 h-20"
-    >
-      <div class="container mx-auto flex justify-between items-center">
-        <RouterLink to="/">
-          <div class="flex items-center space-x-2">
-            <img src="@/assets/logo.svg" height="40" width="27" alt="Make IT Logical Logo" class="h-10 w-auto">
-            <span class="text-2xl font-bold">Make IT Logical</span>
-          </div>
-        </RouterLink>
-        <nav :class="{'hidden': !mobileMenuOpen, 'md:flex': true}">
-          <ul class="flex md:flex-row flex-col space-y-6 md:space-y-0 md:space-x-6 items-center">
-            <li v-for="item in navItems" :key="item.id">
-              <RouterLink
-                  :to="item.path"
-                  class="text-2xl md:text-base transition-colors duration-300 text-midnight-green-600 dark:text-silver-300 hover:text-honolulu-blue-600 dark:hover:text-honolulu-blue-400"
-                  :class="{ 'font-bold text-honolulu-blue-400': route.path === item.path }"
-              >
-                {{ item.name }}
-              </RouterLink>
-            </li>
-            <li>
-              <Button
-                  :icon="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
-                  aria-label="Toggle Theme"
-                  @click="toggleTheme"
-              />
-            </li>
-          </ul>
-        </nav>
-        <Button
-            icon="pi pi-bars"
-            aria-label="Menu"
-            class="md:hidden"
-            @click="toggleMobileMenu"
-        />
-      </div>
-    </header>
-    <div v-if="mobileMenuOpen" class="fixed inset-0 z-50 bg-white dark:bg-midnight-green-900 md:hidden">
-      <div class="flex flex-col h-full">
-        <div class="flex justify-end p-6">
-          <Button
-              icon="pi pi-times"
-              aria-label="Toggle Theme"
-              @click="toggleMobileMenu"
-          />
-        </div>
-        <nav class="flex-grow flex justify-center">
-          <ul class="space-y-6 text-center">
-            <li v-for="item in navItems" :key="item.id">
-              <RouterLink
-                  :to="item.path"
-                  class="text-2xl md:text-base transition-colors duration-300 text-midnight-green-600 dark:text-silver-300 hover:text-honolulu-blue-600 dark:hover:text-honolulu-blue-400"
-                  :class="{ 'font-bold text-honolulu-blue-400': route.path === item.path }"
-                  @click="toggleMobileMenu"
-              >
-                {{ item.name }}
-              </RouterLink>
-            </li>
-            <li>
-              <Button
-                  :icon="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
-                  @click="toggleTheme"
-              />
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
 
-    <main class="pt-20">
-      <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+<template>
+  <div class="min-h-[calc(100vh-100px)]">
+    <Transition
+        enter-active-class="duration-300 ease-out"
+        enter-from-class="transform -translate-y-full"
+        enter-to-class="transform translate-y-0"
+        leave-active-class="duration-200 ease-in"
+        leave-from-class="transform translate-y-0"
+        leave-to-class="transform -translate-y-full"
+    >
+      <header
+          v-if="isNavVisible"
+          class="backdrop-blur-lg bg-white/30 dark:bg-black/30 py-6 px-6 fixed w-full z-40 h-20 transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center">
+          <RouterLink to="/">
+            <div class="flex items-center space-x-2">
+              <img src="@/assets/logo.svg" height="40" width="27" alt="Make IT Logical Logo" class="h-10 w-auto">
+              <span class="text-2xl  hidden md:block text-black dark:text-white font-bold">Make IT Logical</span>
+            </div>
+          </RouterLink>
+          <nav :class="{'hidden': !mobileMenuOpen, 'md:flex': true}">
+            <ul class="flex md:flex-row flex-col space-y-6 md:space-y-0 md:space-x-6 items-center">
+              <li v-for="item in navItems" :key="item.id">
+                <RouterLink
+                    :to="item.path"
+                    class="text-2xl md:text-base transition-colors duration-300 hover:underline underline-offset-8"
+                    :class="{ 'underline': route.path === item.path }"
+                >
+                  {{ item.name }}
+                </RouterLink>
+              </li>
+              <li>
+                <button
+                    type="button"
+                    aria-label="Toggle Theme"
+                    @click="toggleTheme"
+                >
+                  <i class="text-xl" :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"></i>
+                </button>
+              </li>
+            </ul>
+          </nav>
+          <button
+              type="button"
+              aria-label="Open Menu"
+              class="md:hidden"
+              @click="toggleMobileMenu"
+          >
+            <i class="pi pi-bars text-xl"></i>
+          </button>
+        </div>
+      </header>
+    </Transition>
+    <Transition
+        enter-active-class="duration-300 ease-out"
+        enter-from-class="transform -translate-y-full"
+        enter-to-class="transform translate-y-0"
+        leave-active-class="duration-200 ease-in"
+        leave-from-class="transform translate-y-0"
+        leave-to-class="transform -translate-y-full"
+    >
+      <div
+          v-if="mobileMenuOpen"
+          class="fixed inset-0 z-50 bg-white dark:bg-honolulu-blue-900 md:hidden transition-all duration-300">
+        <div class="flex flex-col h-full">
+          <div class="flex justify-end py-7 px-6">
+            <div class="flex-1">
+              <RouterLink class="flex items-center space-x-2" to="/">
+                <img src="@/assets/logo.svg" height="40" width="27" alt="Make IT Logical Logo" class="h-10 w-auto">
+                <span class="text-2xl text-black hidden md:block dark:text-white font-bold">Make IT Logical</span>
+              </RouterLink>
+            </div>
+            <button
+                type="button"
+                aria-label="Close Menu"
+                @click="toggleMobileMenu"
+            >
+              <i class="pi pi-times text-xl"></i>
+            </button>
+          </div>
+          <nav class="flex-grow flex px-6">
+            <ul class="space-y-6">
+              <li v-for="item in navItems" :key="item.id">
+                <RouterLink
+                    :to="item.path"
+                    class="text-2xl md:text-base transition-colors duration-300 underline-offset-8 hover:underline"
+                    :class="{ 'underline': route.path === item.path }"
+                    @click="toggleMobileMenu"
+                >
+                  {{ item.name }}
+                </RouterLink>
+              </li>
+              <li>
+                <button
+                    type="button"
+                    aria-label="Toggle Theme"
+                    @click="toggleTheme"
+                >
+                  <i class="text-xl" :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"></i>
+                </button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </Transition>
+    <main>
+      <div class="container mx-auto py-32 px-8">
         <RouterView v-slot="{ Component }">
-          <Component :is="Component"></Component>
+          <Transition
+              enter-active-class="duration-500 ease-out"
+              enter-from-class="transform opacity-0"
+              enter-to-class="opacity-100"
+              leave-active-class="duration-300 ease-in"
+              leave-from-class="opacity-100"
+              leave-to-class="transform opacity-0"
+          >
+            <div :key="path">
+              <Component :is="Component"></Component>
+            </div>
+          </Transition>
         </RouterView>
       </div>
     </main>
-
-    <footer
-        class="bg-honolulu-blue-500 dark:bg-lapis-lazuli-600 text-white py-8 px-6 transition-colors duration-300"
-    >
-      <div class="max-w-7xl mx-auto text-center">
-        <p>&copy; {{ new Date().getFullYear() }} <strong>Make IT Logical</strong>. All rights reserved.</p>
-        <p class="mt-2 text-sm">Empowering businesses with innovative solutions.</p>
-      </div>
-    </footer>
-
-    <Button
-        v-show="showScrollTopButton"
-        icon="pi pi-arrow-up"
-        class="scroll-top-button p-button-rounded p-button-secondary"
-        aria-label="Scroll to Top"
-        @click="scrollToTop"
-    />
   </div>
+  <footer class="bg-white/30 dark:bg-black/30 py-6 px-6">
+    <div class="container mx-auto">
+      <p>&copy; {{ new Date().getFullYear() }} <strong>Make IT Logical</strong>. All rights reserved.</p>
+      <p class="mt-2 text-sm">Empowering businesses.</p>
+    </div>
+  </footer>
 </template>
-
-<style>
-.full-width-section {
-  margin-left: calc(-50vw + 50%);
-  margin-right: calc(-50vw + 50%);
-  padding-left: calc(50vw - 50%);
-  padding-right: calc(50vw - 50%);
-}
-
-.highlight {
-  @apply text-honolulu-blue-400 dark:text-midnight-green-200 font-bold;
-}
-
-.p-button {
-  @apply font-bold py-2 px-4 rounded transition-colors duration-300;
-}
-
-.p-button-lg {
-  @apply py-3 px-6;
-}
-
-.p-button-primary {
-  @apply bg-honolulu-blue-600 text-white hover:bg-honolulu-blue-700;
-  @apply dark:bg-lapis-lazuli-500 dark:text-white dark:hover:bg-lapis-lazuli-600;
-}
-
-.p-button-secondary {
-  @apply bg-midnight-green-600 text-white hover:bg-midnight-green-700;
-  @apply dark:bg-silver-700 dark:text-midnight-green-100 dark:hover:bg-silver-600;
-}
-
-.p-button-outlined {
-  @apply border-2 border-honolulu-blue-600 text-honolulu-blue-600 hover:bg-honolulu-blue-100 hover:text-honolulu-blue-800;
-  @apply dark:border-lapis-lazuli-200 dark:text-lapis-lazuli-200 dark:hover:bg-lapis-lazuli-600 dark:hover:text-lapis-lazuli-100;
-}
-
-@media (min-width: 768px) {
-  .absolute.inset-0 {
-    left: -20%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .absolute.inset-0 {
-    left: -15%;
-  }
-}
-
-.overflow-clip-y {
-  overflow-x: visible;
-  overflow-y: clip;
-}
-
-.scroll-top-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-</style>

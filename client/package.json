@@ -10,14 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@primevue/themes": "^4.*",
-    "@vuelidate/core": "^2.*",
-    "@vuelidate/validators": "^2.*",
-    "globals": "^15.9.0",
     "install": "^0.13.0",
     "npm": "^10.8.3",
     "primeicons": "^7.*",
-    "primevue": "^4.*",
     "vue": "^3.*",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6"

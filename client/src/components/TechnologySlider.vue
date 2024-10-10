@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import {ref, onMounted, onUnmounted, computed} from 'vue';
-import Button from 'primevue/button';
 
 import typescriptLogo from '@/assets/tech/typescript-logo.svg';
 import phpLogo from '@/assets/tech/php-logo.svg';
@@ -148,7 +147,7 @@ const isBlackLogo = (name: string) => blackLogos.some(logo => name.toLowerCase()
       </div>
     </div>
 
-    <div class="mt-4 text-xs text-gray-500 text-center px-4">
+    <div class="mt-6 text-xs text-gray-500 dark:text-gray-300 text-center px-4">
       {{ disclaimer }}
     </div>
   </div>
