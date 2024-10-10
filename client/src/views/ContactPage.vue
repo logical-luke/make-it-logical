@@ -54,7 +54,7 @@ const submitForm = async () => {
 <template>
   <section
       id="contact"
-      class="min-h-[calc(100vh-150px)] full-width-section bg-gradient-to-b from-silver-100 to-silver-200 dark:from-midnight-green-800 dark:to-midnight-green-900">
+      class="min-h-[calc(100vh-196px)] full-width-section bg-gradient-to-b from-silver-100 to-silver-200 dark:from-midnight-green-800 dark:to-midnight-green-900">
     <div class="container py-16">
       <h2 class="text-4xl flex flex-col gap-2 md:text-5xl font-bold text-center text-lapis-lazuli-600 dark:text-lapis-lazuli-300 mb-8">
         <span class="text-honolulu-blue-500 dark:text-honolulu-blue-200 font-bold">Your Vision</span>

@@ -45,9 +45,7 @@ const navigateTo = (path: string) => {
             {{ t('Simplifying the web, for the people.') }}
           </p>
           <Button
-              :label="t('Embark on Digital Evolution')"
-              icon="pi pi-arrow-right"
-              icon-pos="right"
+              :label="t('Embark on Evolution')"
               class="p-button-lg p-button-primary"
               @click="navigateTo('/contact')"
           />
@@ -157,9 +155,7 @@ const navigateTo = (path: string) => {
         }}
       </p>
       <Button
-          :label="t('Ignite Your Digital Journey')"
-          icon="pi pi-send"
-          icon-pos="right"
+          :label="t('Ignite Journey')"
           class="p-button-lg p-button-primary"
           @click="navigateTo('/contact')"
       />

@@ -144,8 +144,7 @@ const navigateToContact = () => {
             </p>
             <Button
                 :label="service.expanded ? 'Show Less' : 'Discover More'"
-                :icon="service.expanded ? 'pi pi-minus' : 'pi pi-plus'"
-                class="p-button-outlined p-button-rounded text-honolulu-blue-500 dark:text-honolulu-blue-400"
+                class="p-button-outlined text-sm p-button-rounded text-honolulu-blue-500 dark:text-honolulu-blue-400"
                 @click="toggleExpand(index)"
             />
           </div>

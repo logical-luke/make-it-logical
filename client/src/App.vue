@@ -78,7 +78,7 @@ onUnmounted(() => {
     <header
         class="bg-white dark:bg-midnight-green-800 py-6 px-6 fixed w-full z-40 transition-colors duration-300 h-20"
     >
-      <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="container mx-auto flex justify-between items-center">
         <RouterLink to="/">
           <div class="flex items-center space-x-2">
             <img src="@/assets/logo.svg" height="40" width="27" alt="Make IT Logical Logo" class="h-10 w-auto">
