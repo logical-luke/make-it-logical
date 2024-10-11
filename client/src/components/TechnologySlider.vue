@@ -2,7 +2,7 @@
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
-import { ref, onMounted, onUnmounted, computed } from "vue";
+import { ref, onMounted, computed } from "vue";
 
 import typescriptLogo from "@/assets/tech/typescript-logo.svg";
 import phpLogo from "@/assets/tech/php-logo.svg";
@@ -55,64 +55,29 @@ const technologies = [
   { name: "Cypress", logo: cypressLogo },
   { name: "RabbitMQ", logo: rabbitMqLogo },
 ];
+const containerRef = ref<HTMLDivElement | null>(null);
+const sliderRef = ref<HTMLDivElement | null>(null);
+const scrollPosition = ref(0);
+const scrollSpeed = 0.2; // Reduced speed (adjust as needed)
 
-const position = ref(0);
-const intervalId = ref<number | null>(null);
-const visibleLogos = ref(2);
+const clonedTechnologies = computed(() => [...technologies, ...technologies]);
 
-const totalSlides = computed(() =>
-  Math.ceil(technologies.length / visibleLogos.value),
-);
-
-const slide = (direction: "next" | "prev") => {
-  if (direction === "next") {
-    position.value = (position.value + 1) % totalSlides.value;
-  } else {
-    position.value =
-      (position.value - 1 + totalSlides.value) % totalSlides.value;
-  }
-};
-
-const startAutoSlide = () => {
-  intervalId.value = setInterval(
-    () => slide("next"),
-    7000,
-  ) as unknown as number;
-};
-
-const stopAutoSlide = () => {
-  if (intervalId.value) {
-    clearInterval(intervalId.value);
-  }
+const startAutoScroll = () => {
+  const animate = () => {
+    if (containerRef.value && sliderRef.value) {
+      scrollPosition.value += scrollSpeed;
+      if (scrollPosition.value >= sliderRef.value.scrollWidth / 2) {
+        scrollPosition.value = 0;
+      }
+      containerRef.value.scrollLeft = scrollPosition.value;
+    }
+    requestAnimationFrame(animate);
+  };
+  requestAnimationFrame(animate);
 };
 
 onMounted(() => {
-  startAutoSlide();
-});
-
-onUnmounted(() => {
-  stopAutoSlide();
-});
-
-const handleResize = () => {
-  if (window.innerWidth >= 1024) {
-    visibleLogos.value = 6;
-  } else if (window.innerWidth >= 768) {
-    visibleLogos.value = 4;
-  } else {
-    visibleLogos.value = 2;
-  }
-};
-
-onMounted(() => {
-  handleResize();
-  window.addEventListener("resize", handleResize);
-  startAutoSlide();
-});
-
-onUnmounted(() => {
-  window.removeEventListener("resize", handleResize);
-  stopAutoSlide();
+  startAutoScroll();
 });
 
 const blackLogos = [
@@ -132,35 +97,36 @@ const isBlackLogo = (name: string) =>
 
 <template>
   <div class="technology-slider-container relative px-4 md:px-6 lg:px-8">
-    <div class="technology-slider overflow-hidden">
-      <div
-        class="flex transition-transform duration-500 ease-in-out"
-        :style="{ transform: `translateX(-${position * 100}%)` }"
-      >
-        <div
-          v-for="tech in technologies"
-          :key="tech.name"
-          class="flex-none w-1/2 md:w-1/4 lg:w-1/6 px-2 md:px-3 lg:px-4"
-        >
-          <div class="text-center">
-            <div class="logo-wrapper">
+    <div class="relative">
+      <div ref="containerRef" class="technology-slider overflow-x-hidden">
+        <div ref="sliderRef" class="flex whitespace-nowrap">
+          <div
+            v-for="tech in clonedTechnologies"
+            :key="tech.name"
+            class="inline-flex flex-col items-center justify-center w-40 mx-4"
+          >
+            <div
+              class="logo-wrapper w-24 h-24 flex items-center justify-center"
+            >
               <img
                 :src="tech.logo"
                 :alt="tech.name"
                 :class="[
-                  'w-full h-12 md:h-14 lg:h-16 object-contain transition-all grayscale opacity-70 duration-300 logo-svg',
+                  'max-w-full max-h-full object-contain transition-all grayscale opacity-70 duration-300 logo-svg',
                   { 'dark-mode-white-fill': isBlackLogo(tech.name) },
                 ]"
               />
             </div>
             <p
-              class="mt-2 text-xs md:text-sm font-medium text-gray-600 dark:text-gray-300 truncate"
+              class="mt-2 text-xs md:text-sm font-medium text-gray-600 dark:text-gray-300 truncate w-full text-center"
             >
               {{ tech.name }}
             </p>
           </div>
         </div>
       </div>
+      <div class="fade-left"></div>
+      <div class="fade-right"></div>
     </div>
 
     <div class="mt-6 text-xs text-gray-500 dark:text-gray-300 text-center px-4">
@@ -183,56 +149,6 @@ const isBlackLogo = (name: string) =>
   overflow: hidden;
 }
 
-.slider-nav-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.7) !important;
-  color: #333 !important;
-  border: none !important;
-  z-index: 10;
-}
-
-.slider-nav-button:hover {
-  background-color: rgba(255, 255, 255, 0.9) !important;
-}
-
-.slider-nav-button-left {
-  left: 0;
-}
-
-.slider-nav-button-right {
-  right: 0;
-}
-
-:deep(.p-button) {
-  padding: 0.3rem !important;
-}
-
-:deep(.p-button .p-button-icon) {
-  font-size: 1rem;
-}
-
-@media (min-width: 768px) {
-  :deep(.p-button) {
-    padding: 0.4rem !important;
-  }
-
-  :deep(.p-button .p-button-icon) {
-    font-size: 1.25rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  :deep(.p-button) {
-    padding: 0.5rem !important;
-  }
-
-  :deep(.p-button .p-button-icon) {
-    font-size: 1.5rem;
-  }
-}
-
 .logo-wrapper {
   position: relative;
   padding: 8px;
@@ -246,5 +162,34 @@ const isBlackLogo = (name: string) =>
 
 :root.dark .dark-mode-white-fill {
   filter: brightness(0) invert(1);
+}
+
+.fade-left,
+.fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.fade-left {
+  left: 0;
+  background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
+}
+
+.fade-right {
+  right: 0;
+  background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+}
+
+/* Dark mode styles */
+:root.dark .fade-left {
+  background: linear-gradient(to right, rgb(24 24 27), rgba(24, 24, 27, 0));
+}
+
+:root.dark .fade-right {
+  background: linear-gradient(to left, rgb(24 24 27), rgba(24, 24, 27, 0));
 }
 </style>
