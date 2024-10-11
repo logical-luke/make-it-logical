@@ -33,40 +33,33 @@ const features = [
 
 <template>
   <div class="flex flex-col gap-24">
-    <section class="md:min-h-[calc(100vh-280px)]">
-      <div class="flex flex-col md:flex-row items-center">
-        <div class="w-full md:w-1/2">
-          <BottomToTopSlideTransition duration="300">
-            <h2
-              class="flex flex-col text-5xl md:text-6xl lg:text-7xl font-bold mb-8"
-            >
-              <span>{{ t("Web") }}</span>
-              <span
-                class="text-honolulu-blue-500 dark:text-honolulu-blue-300"
-              >{{ t("Simplified") }}</span
-              >
-              <span>{{ t("Humanity") }}</span>
-              <span
-                class="text-honolulu-blue-500 dark:text-honolulu-blue-300"
-              >{{ t("Amplified") }}</span
-              >
-            </h2>
-          </BottomToTopSlideTransition>
-          <BottomToTopSlideTransition duration="500">
-            <p class="text-xl sm:text-2xl md:text-3xl mb-6">
-              {{ t("Bridging technology and human understanding.") }}
-            </p>
-            <p class="text-xl sm:text-2xl md:text-3xl mb-12">
-              {{ t("Simplifying the web, for the people.") }}
-            </p>
-            <LinkItem to="/contact">
-              {{ t("Embark on Evolution") }}
-            </LinkItem>
-          </BottomToTopSlideTransition>
+    <section class="md:min-h-[calc(100vh-280px)] flex flex-col">
+      <div class="flex flex-col md:flex-row items-center flex-grow">
+        <div class="w-full md:w-1/2 flex flex-col justify-between h-full">
+          <div>
+            <BottomToTopSlideTransition duration="300">
+              <h2 class="flex flex-col text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
+                <span>{{ t("Web") }}</span>
+                <span class="text-honolulu-blue-400 dark:text-honolulu-blue-300">{{ t("Simplified") }}</span>
+                <span>{{ t("Humanity") }}</span>
+                <span class="text-honolulu-blue-400 dark:text-honolulu-blue-300">{{ t("Amplified") }}</span>
+              </h2>
+            </BottomToTopSlideTransition>
+          </div>
+          <div class="mt-auto">
+            <BottomToTopSlideTransition duration="500">
+              <p class="text-xl sm:text-2xl md:text-3xl mb-6">
+                {{ t("Bridging technology and human understanding.") }}
+              </p>
+              <p class="text-xl sm:text-2xl md:text-3xl mb-12">
+                {{ t("Simplifying the web, for the people.") }}
+              </p>
+            </BottomToTopSlideTransition>
+          </div>
         </div>
-        <div class="w-full md:w-1/2 mt-12">
+        <div class="w-full md:w-1/2 md:mt-12">
           <div
-            class="aspect-w-16 opacity-80 dark:opacity-70 aspect-h-9 md:aspect-w-1 md:aspect-h-1 overflow-hidden"
+            class="aspect-w-16 opacity-80 dark:opacity-70 aspect-h-9 md:aspect-w-1 md:aspect-h-1"
           >
             <FadeTransition>
               <StartupImage class="w-full h-full object-cover" />
@@ -79,9 +72,9 @@ const features = [
     <section class="mt-20">
       <BottomToTopSlideTransition>
         <h2
-          class="text-gray-800 dark:text-gray-100 text-4xl md:text-5xl font-bold mb-12"
+          class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12"
         >
-          {{ t("Our Digital Alchemy") }}
+          {{ t("Digital Alchemy") }}
         </h2>
       </BottomToTopSlideTransition>
       <BottomToTopSlideTransition>
@@ -111,7 +104,7 @@ const features = [
     <BottomToTopSlideTransition>
       <section class="mt-16">
         <h2
-          class="text-gray-800 dark:text-gray-100 text-4xl md:text-5xl font-bold mb-12 max-w-3xl"
+          class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12 max-w-3xl"
         >
           {{ t("Solutions That Resonate") }}
         </h2>
@@ -131,22 +124,25 @@ const features = [
     <BottomToTopSlideTransition>
       <section class="mt-16">
         <h2
-          class="text-gray-800 dark:text-gray-100 text-4xl md:text-5xl font-bold mb-12 max-w-3xl"
+          class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12 max-w-3xl"
         >
           {{ t("Ready for a Journey?") }}
         </h2>
-        <p class="text-xl md:text-2xl mb-8 max-w-3xl">
-          {{ t("Let's create experiences that don't just work – they wow.") }}
-        </p>
-        <p class="text-xl md:text-2xl mb-6 max-w-3xl">
-          {{ t("Your vision, our expertise") }}
-        </p>
-        <p class="text-xl md:text-2xl mb-4 max-w-3xl">
-          {{ t("a perfect") }}
-        </p>
-        <p class="text-2xl md:text-4xl mb-12 font-bold max-w-3xl">
-          {{ t("symphony") }}
-        </p>
+        <div class="flex flex-col gap-4">
+          <p class="text-xl md:text-2xl mb-8 max-w-3xl">
+            {{ t("Create experiences that don't just work – they") }} <span
+            class="font-semibold">{{ t("wow") }}</span>.
+          </p>
+          <p class="text-xl md:text-2xl max-w-3xl">
+            {{ t("Your vision, our expertise") }}
+          </p>
+          <p class="text-xl md:text-2xl max-w-3xl">
+            {{ t("a perfect") }}
+          </p>
+          <p class="text-2xl md:text-4xl mb-12 font-bold max-w-3xl">
+            {{ t("symphony") }}
+          </p>
+        </div>
         <div class="flex justify-center">
           <LinkItem to="/contact">
             {{ t("Ignite Journey") }}

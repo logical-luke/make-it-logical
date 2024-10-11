@@ -27,15 +27,16 @@ watch(
 <template>
   <section id="contact">
     <MainHeader>
-      {{ t("Let's Connect") }}
+      {{ t("Results are Driven by Action") }}
     </MainHeader>
     <SubHeader>
-      {{ t("We're here to listen and bring your boldest ideas to life.") }}
+      {{ t("We just listen and transform your visions into reality.") }}
       <template #second>
-        {{ t("Let's start your success story.") }}
+        <span class="font-normal">{{ t("Start your success story.") }}</span>
+        {{ t("Here and now.") }}
       </template>
       <template #third>
-        {{ t("Share contact, and we'll reach out.") }}
+        <span class="font-normal">{{ t("It's that simple. Share contact, and we'll reach out.") }}</span>
       </template>
     </SubHeader>
     <BottomToTopSlideTransition>
@@ -44,12 +45,9 @@ watch(
           <LinkItem
             :disable-icon="true"
             :external="true"
-            to="mailto:office@makeitlogical.io"
+            to="mailto:vision@makeitlogical.io"
           >
-            office@makeitlogical.io
-          </LinkItem>
-          <LinkItem :disable-icon="true" :external="true" to="tel:+48696606391">
-            +48 696 606 391
+            vision@makeitlogical.io
           </LinkItem>
         </div>
       </div>

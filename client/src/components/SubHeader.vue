@@ -4,7 +4,7 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
 
 <template>
   <BottomToTopSlideTransition duration="500">
-    <div class="flex flex-col gap-4 py-6">
+    <div class="flex flex-col gap-6 py-6">
       <p class="text-xl md:text-2xl mb-4 max-w-3xl">
         <slot></slot>
       </p>

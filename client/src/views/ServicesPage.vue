@@ -258,7 +258,7 @@ const toggleExpand = (index: number) => {
 <template>
   <section id="services">
     <MainHeader>
-      {{ t("Powerful Solutions At Reach of Your Hand") }}
+      {{ t("Empowering Businesses") }}
     </MainHeader>
     <SubHeader>
       {{
@@ -269,7 +269,7 @@ const toggleExpand = (index: number) => {
       <template #second>
         {{
           t(
-            "Our focus is on creating value through technology and streamlined processes.",
+            "Creating value through technology and streamlined processes.",
           )
         }}
       </template>

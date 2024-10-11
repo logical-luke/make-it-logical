@@ -51,7 +51,7 @@ const processSteps = ref([
     <SubHeader>
       {{
         t(
-          "Our razor-sharp process cuts through complexity, delivering solutions that ignite growth and user engagement.",
+          "Razor-sharp process cuts through complexity, delivering solutions that ignite growth and user engagement.",
         )
       }}
     </SubHeader>

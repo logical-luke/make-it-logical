@@ -15,7 +15,7 @@ defineProps<Props>();
     class="flex duration-300 transition-all gap-2 hover:gap-4 items-center text-xl text-gray-400 hover:text-black dark:hover:text-white"
   >
     <span
-      class="underline text-black dark:text-white decoration-gray-400 dark:hover:decoration-white hover:decoration-black underline-offset-8 hover:decoration-3"
+      class="underline text-black dark:text-gray-200 decoration-gray-400 dark:hover:decoration-white hover:decoration-black underline-offset-8 hover:decoration-3"
       ><slot></slot
     ></span>
     <i v-if="!disableIcon" class="pi pi-arrow-right"></i>
@@ -28,7 +28,7 @@ defineProps<Props>();
     class="flex duration-300 transition-all gap-2 hover:gap-4 items-center text-xl text-gray-400 hover:text-black dark:hover:text-white"
   >
     <span
-      class="underline text-black dark:text-white decoration-gray-400 dark:hover:decoration-white hover:decoration-black underline-offset-8 hover:decoration-3"
+      class="underline text-black dark:text-gray-200 decoration-gray-400 dark:hover:decoration-white hover:decoration-black underline-offset-8 hover:decoration-3"
       ><slot></slot
     ></span>
     <i v-if="!disableIcon" class="pi pi-external-link"></i>
