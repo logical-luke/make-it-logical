@@ -4,6 +4,7 @@ import "primeicons/primeicons.css";
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "@/router";
+import VueGtag from "vue-gtag";
 
 const app = createApp(App);
 
@@ -14,6 +15,10 @@ const i18n = createI18n({
   locale: "en-US",
   messages: messages,
   silentTranslationWarn: true,
+});
+
+app.use(VueGtag, {
+  config: { id: "G-CYEFZ0M938" }
 });
 
 app.use(i18n);
