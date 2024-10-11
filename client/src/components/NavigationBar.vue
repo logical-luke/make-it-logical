@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
 import ThemeToggleButton from "@/components/ThemeToggleButton.vue";
+import LinkItem from "@/components/LinkItem.vue";
 
 const route = useRoute();
 const lastScrollTop = ref(0);
@@ -11,7 +12,7 @@ const mobileMenuOpen = ref(false);
 const navItems = ref([
   { id: 1, name: "Services", path: "/services" },
   { id: 2, name: "Process", path: "/process" },
-  { id: 3, name: "Contact", path: "/contact" },
+  { id: 3, name: "Contact", path: "/contact" }
 ]);
 
 const toggleMobileMenu = () => {
@@ -32,6 +33,8 @@ const handleScroll = () => {
 
   lastScrollTop.value = scrollTop <= 0 ? 0 : scrollTop;
 };
+
+const isMainPage = computed(() => route.path === "/");
 
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
@@ -61,10 +64,12 @@ onMounted(() => {
               alt="Make IT Logical Logo"
               class="h-10 w-auto"
             />
-            <span
+            <Component
+              :is="isMainPage ? 'h1' : 'span'"
               class="text-2xl hidden md:block text-black dark:text-gray-200 font-bold"
-              >Make IT Logical</span
             >
+              Make IT Logical
+            </Component>
           </div>
         </RouterLink>
         <nav :class="{ hidden: !mobileMenuOpen, 'md:flex': true }">
@@ -109,10 +114,10 @@ onMounted(() => {
       class="fixed inset-0 z-50 bg-white dark:bg-zinc-900 md:hidden transition-all duration-300"
     >
       <div class="flex flex-col h-full">
-        <div class="flex justify-end py-8 px-6">
-          <div class="flex-1">
+        <div class="py-6 px-6">
+          <div class="flex justify-between items-center">
             <RouterLink
-              class="flex items-center space-x-2"
+              class="flex items-center"
               to="/"
               @click="toggleMobileMenu"
             >
@@ -123,27 +128,7 @@ onMounted(() => {
                 alt="Make IT Logical Logo"
                 class="h-10 w-auto"
               />
-              <span
-                class="text-2xl text-black hidden md:block dark:text-gray-200 font-bold"
-                >Make IT Logical</span
-              >
             </RouterLink>
-            <nav class="flex-grow flex mt-6">
-              <ul class="space-y-6">
-                <li v-for="item in navItems" :key="item.id">
-                  <RouterLink
-                    :to="item.path"
-                    class="text-2xl md:text-base transition-colors duration-300 underline-offset-8 hover:underline"
-                    :class="{ underline: route.path === item.path }"
-                    @click="toggleMobileMenu"
-                  >
-                    {{ item.name }}
-                  </RouterLink>
-                </li>
-              </ul>
-            </nav>
-          </div>
-          <div class="flex flex-col gap-8">
             <button
               type="button"
               aria-label="Close Menu"
@@ -151,12 +136,34 @@ onMounted(() => {
             >
               <i class="pi pi-times text-2xl"></i>
             </button>
-            <ThemeToggleButton />
           </div>
+          <nav class="mt-8">
+            <ul class="space-y-6">
+              <li v-for="item in navItems" :key="item.id">
+                <RouterLink
+                  :to="item.path"
+                  class="text-2xl transition-colors duration-300 underline-offset-8 hover:underline"
+                  :class="{ underline: route.path === item.path }"
+                  @click="toggleMobileMenu"
+                >
+                  {{ item.name }}
+                </RouterLink>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="mt-auto pb-6 px-6 flex justify-between items-center">
+          <LinkItem
+            :disable-icon="true"
+            :external="true"
+            to="mailto:vision@makeitlogical.io"
+            class="text-sm"
+          >
+            vision@makeitlogical.io
+          </LinkItem>
+          <ThemeToggleButton />
         </div>
       </div>
     </div>
   </Transition>
 </template>
-
-<style scoped></style>
