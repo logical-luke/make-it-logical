@@ -11,7 +11,7 @@ const mobileMenuOpen = ref(false);
 const navItems = ref([
   { id: 1, name: "Services", path: "/services" },
   { id: 2, name: "Process", path: "/process" },
-  { id: 3, name: "Contact", path: "/contact" }
+  { id: 3, name: "Contact", path: "/contact" },
 ]);
 
 const toggleMobileMenu = () => {
@@ -63,7 +63,7 @@ onMounted(() => {
             />
             <span
               class="text-2xl hidden md:block text-black dark:text-gray-200 font-bold"
-            >Make IT Logical</span
+              >Make IT Logical</span
             >
           </div>
         </RouterLink>
@@ -125,7 +125,7 @@ onMounted(() => {
               />
               <span
                 class="text-2xl text-black hidden md:block dark:text-gray-200 font-bold"
-              >Make IT Logical</span
+                >Make IT Logical</span
               >
             </RouterLink>
             <nav class="flex-grow flex mt-6">
@@ -154,12 +154,9 @@ onMounted(() => {
             <ThemeToggleButton />
           </div>
         </div>
-
       </div>
     </div>
   </Transition>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

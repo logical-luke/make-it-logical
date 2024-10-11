@@ -4,43 +4,81 @@ import { ref } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
+import ExpandableList from "@/components/ExpandableList.vue";
 
 const { t } = useI18n();
 
 const processSteps = ref([
   {
     label: t("Listen"),
-    icon: "pi pi-comments",
-    description: t("We decode your vision into actionable tech plans."),
+    descriptionPoints: [
+      t("Dive deep into business goals and objectives"),
+      t("Analyze target audience and market positioning"),
+      t("Identify pain points and growth opportunities"),
+      t("Translate vision into concrete technical requirements"),
+    ],
     details: t(
-      "Our experts dive deep into your business goals, target audience, and pain points. We ask the right questions to uncover the core of your digital needs.",
+      "This stage transforms vision into concrete, actionable technology plans. Every aspect of the business needs is understood and addressed.",
     ),
   },
   {
     label: t("Design"),
-    icon: "pi pi-pencil",
-    description: t("We craft intuitive solutions that users love."),
+    descriptionPoints: [
+      t("Create user-centric interface designs"),
+      t("Develop intuitive information architecture"),
+      t("Optimize user flows for maximum engagement"),
+      t("Ensure consistency across all touchpoints"),
+    ],
     details: t(
-      "Our UX wizards create interfaces that captivate and convert. We blend aesthetics with functionality to deliver experiences that keep users coming back.",
+      "The design phase focuses on creating interfaces that not only look great but also work seamlessly. User experience is prioritized to keep the audience engaged and coming back.",
     ),
   },
   {
     label: t("Build"),
-    icon: "pi pi-cog",
-    description: t("We transform concepts into powerful digital realities."),
+    description: t("Transform concepts into powerful digital realities."),
+    descriptionPoints: [
+      t("Develop robust and scalable software solutions"),
+      t("Implement secure and efficient backend systems"),
+      t("Create responsive and performant frontend interfaces"),
+      t("Integrate third-party services and APIs as needed"),
+    ],
     details: t(
-      "Our developers breathe life into designs, using cutting-edge tech to build robust, scalable solutions that grow with your business.",
+      "During this phase, designs are brought to life, creating powerful digital solutions. The focus is on building systems that can grow and adapt with business needs.",
     ),
   },
   {
     label: t("Deliver"),
-    icon: "pi pi-check-circle",
-    description: t("We launch solutions that drive tangible results."),
+    descriptionPoints: [
+      t("Conduct thorough testing and quality assurance"),
+      t("Implement smooth deployment processes"),
+      t("Provide comprehensive user training and documentation"),
+      t("Ensure seamless transition and launch support"),
+    ],
     details: t(
-      "We don't just deliver code; we deliver impact. Our launch process ensures your solution hits the ground running, driving immediate value for your business.",
+      "The delivery stage focuses on impactful launches, ensuring the solution is ready to deliver value from day one. The process is designed to maximize the immediate and long-term benefits of the digital investment.",
+    ),
+  },
+  {
+    label: t("Improve"),
+    descriptionPoints: [
+      t("Continuously monitor system performance and user behavior"),
+      t("Gather and analyze user feedback for improvements"),
+      t("Implement data-driven optimizations and new features"),
+      t("Provide ongoing maintenance and security updates"),
+    ],
+    details: t(
+      "The commitment extends beyond the initial launch. Continuous refinement and optimization ensure the solution remains effective and at the cutting edge of technology.",
     ),
   },
 ]);
+
+const processItems = processSteps.value.map((step) => ({
+  title: step.label,
+  sublists: [
+    { items: step.descriptionPoints.map((point) => ({ text: point })) },
+  ],
+  additionalInfo: step.details,
+}));
 </script>
 
 <template>
@@ -54,21 +92,17 @@ const processSteps = ref([
           "Razor-sharp process cuts through complexity, delivering solutions that ignite growth and user engagement.",
         )
       }}
+      <template #second>
+        {{
+          t(
+            "Translating goals into tangible, measurable success through efficient delivery.",
+          )
+        }}
+      </template>
     </SubHeader>
     <BottomToTopSlideTransition>
-      <div class="flex flex-col gap-4 max-w-3xl">
-        <div v-for="(step, index) in processSteps" :key="step.label">
-          <div class="flex py-4">
-            <div class="text-2xl font-bold mr-2">{{ index + 1 }}.</div>
-            <h3 class="text-2xl font-bold">
-              {{ t(step.label) }}
-            </h3>
-          </div>
-          <div class="py-6">
-            <p class="text-lg mb-4">{{ t(step.description) }}</p>
-            <p>{{ t(step.details) }}</p>
-          </div>
-        </div>
+      <div class="flex flex-col gap-4 max-w-4xl">
+        <ExpandableList :items="processItems" :show-numbers="true" />
       </div>
     </BottomToTopSlideTransition>
   </section>

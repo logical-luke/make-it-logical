@@ -11,23 +11,28 @@ const features = [
   {
     icon: "pi pi-comments",
     title: t("Listen"),
-    description: t("Your vision is decoded into actionable tech plans.")
+    description: t("Your vision is decoded into actionable tech plans."),
   },
   {
     icon: "pi pi-pencil",
     title: t("Design"),
-    description: t("Intuitive solutions that users love are crafted.")
+    description: t("Intuitive solutions that users love are crafted."),
   },
   {
     icon: "pi pi-cog",
     title: t("Build"),
-    description: t("Concepts are transformed into powerful digital realities.")
+    description: t("Concepts are transformed into powerful digital realities."),
   },
   {
     icon: "pi pi-check-circle",
     title: t("Deliver"),
-    description: t("Solutions that drive tangible results are launched.")
-  }
+    description: t("Solutions that drive tangible results are launched."),
+  },
+  {
+    icon: "pi pi-chart-line",
+    title: t("Improve"),
+    description: t("Optimize and refine for ongoing success."),
+  },
 ];
 </script>
 
@@ -38,11 +43,13 @@ const features = [
         <div class="w-full md:w-1/2 flex flex-col justify-between h-full">
           <div>
             <BottomToTopSlideTransition duration="300">
-              <h2 class="flex flex-col text-5xl md:text-6xl lg:text-7xl font-bold mb-8">
-                <span>{{ t("Web") }}</span>
-                <span class="text-honolulu-blue-400 dark:text-honolulu-blue-300">{{ t("Simplified") }}</span>
-                <span>{{ t("Humanity") }}</span>
-                <span class="text-honolulu-blue-400 dark:text-honolulu-blue-300">{{ t("Amplified") }}</span>
+              <h2
+                class="flex flex-col text-5xl md:text-6xl lg:text-7xl mb-8 font-bold leading-1"
+              >
+                <span class="font-normal">{{ t("Web") }}</span>
+                <span>{{ t("Simplified") }}</span>
+                <span class="font-normal">{{ t("Humanity") }}</span>
+                <span>{{ t("Amplified") }}</span>
               </h2>
             </BottomToTopSlideTransition>
           </div>
@@ -52,12 +59,14 @@ const features = [
                 {{ t("Bridging technology and human understanding.") }}
               </p>
               <p class="text-xl sm:text-2xl md:text-3xl mb-12">
-                {{ t("Simplifying the web, for the people.") }}
+                {{ t("Simplifying the") }}
+                <span class="font-semibold">{{ t("web, for the people") }}</span
+                >.
               </p>
             </BottomToTopSlideTransition>
           </div>
         </div>
-        <div class="w-full md:w-1/2 md:mt-12">
+        <div class="w-full md:w-1/2">
           <div
             class="aspect-w-16 opacity-80 dark:opacity-70 aspect-h-9 md:aspect-w-1 md:aspect-h-1"
           >
@@ -104,14 +113,14 @@ const features = [
     <BottomToTopSlideTransition>
       <section class="mt-16">
         <h2
-          class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12 max-w-3xl"
+          class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12 max-w-4xl"
         >
           {{ t("Solutions That Resonate") }}
         </h2>
-        <p class="text-xl md:text-2xl mb-4 max-w-3xl">
+        <p class="text-xl md:text-2xl mb-4 max-w-4xl">
           {{ t("We don't just build apps.") }}
         </p>
-        <p class="text-xl md:text-2xl mb-12 max-w-3xl">
+        <p class="text-xl md:text-2xl mb-12 max-w-4xl">
           {{ t("We craft experiences that connect, engage, and inspire.") }}
         </p>
         <div class="flex justify-center">
@@ -124,22 +133,23 @@ const features = [
     <BottomToTopSlideTransition>
       <section class="mt-16">
         <h2
-          class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12 max-w-3xl"
+          class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12 max-w-4xl"
         >
           {{ t("Ready for a Journey?") }}
         </h2>
         <div class="flex flex-col gap-4">
-          <p class="text-xl md:text-2xl mb-8 max-w-3xl">
-            {{ t("Create experiences that don't just work – they") }} <span
-            class="font-semibold">{{ t("wow") }}</span>.
+          <p class="text-xl md:text-2xl mb-8 max-w-4xl">
+            {{ t("Create experiences that don't just work – they") }}
+            <span class="font-semibold">{{ t("wow") }}</span
+            >.
           </p>
-          <p class="text-xl md:text-2xl max-w-3xl">
+          <p class="text-xl md:text-2xl max-w-4xl">
             {{ t("Your vision, our expertise") }}
           </p>
-          <p class="text-xl md:text-2xl max-w-3xl">
+          <p class="text-xl md:text-2xl max-w-4xl">
             {{ t("a perfect") }}
           </p>
-          <p class="text-2xl md:text-4xl mb-12 font-bold max-w-3xl">
+          <p class="text-2xl md:text-4xl mb-12 font-bold max-w-4xl">
             {{ t("symphony") }}
           </p>
         </div>

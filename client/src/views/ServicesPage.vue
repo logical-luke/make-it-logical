@@ -5,254 +5,260 @@ import TechnologySlider from "@/components/TechnologySlider.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
+import ExpandableList from "@/components/ExpandableList.vue";
 
 const { t } = useI18n();
 
 const services = ref([
   {
-    icon: "pi pi-compass",
-    title: t("Strategic Planning & Design"),
-    description: t(
-      "We create the blueprint for your digital success. Our team analyzes your business needs, defines clear objectives, and designs intuitive user interfaces that drive engagement.",
-    ),
-    expanded: false,
-    details: t(
-      "Our strategic planning process involves in-depth market research, competitor analysis, and user behavior studies. We translate these insights into actionable plans and user-centric designs that set the foundation for successful digital products.",
-    ),
+    title: t("Project Planning & Management"),
+    descriptionPoints: [
+      t("Defining clear project roadmaps and milestones"),
+      t("Aligning digital projects with business goals"),
+      t("Coordinating cross-functional teams for seamless delivery"),
+      t("Ensuring efficient and secure software development"),
+    ],
     benefits: [
-      {
-        icon: "pi pi-check-circle",
-        text: t("Clearly defined project roadmap aligned with business goals"),
-      },
-      {
-        icon: "pi pi-users",
-        text: t(
-          "User interfaces designed for maximum engagement and conversion",
-        ),
-      },
-      {
-        icon: "pi pi-clock",
-        text: t("Reduced development time and costs through thorough planning"),
-      },
-      {
-        icon: "pi pi-shield",
-        text: t("Mitigation of potential risks and roadblocks"),
-      },
+      { text: t("Clear project plan that meets business objectives") },
+      { text: t("Streamlined collaboration across teams") },
+      { text: t("Optimized performance and reliability of the software") },
+      { text: t("Faster time-to-market for new products and features") },
+    ],
+    deliverables: [
+      { text: t("Comprehensive project plan and timeline") },
+      { text: t("Effective communication and coordination between teams") },
+      { text: t("Detailed technical specifications and architecture") },
+      { text: t("Streamlined software development and deployment processes") },
     ],
     suitableFor: t(
-      "Startups launching new products, enterprises undertaking digital transformation, and businesses looking to revamp their existing digital presence.",
+      "Launching a new digital product or overhauling existing systems.",
     ),
   },
   {
-    icon: "pi pi-cog",
-    title: t("Full-Stack Development"),
-    description: t(
-      "We build robust, scalable applications that work flawlessly from front-end to back-end. Our development team uses cutting-edge technologies to create responsive, feature-rich solutions that solve real business challenges.",
-    ),
-    expanded: false,
-    details: t(
-      "Our full-stack development approach ensures seamless integration between all layers of your application. We employ best practices in code architecture, security, and performance optimization to deliver high-quality, maintainable software.",
-    ),
+    title: t("User Experience Design"),
+    descriptionPoints: [
+      t("Creating intuitive and visually appealing user interfaces"),
+      t("Conducting user research to understand needs and pain points"),
+      t("Iterating on designs based on user feedback"),
+      t("Ensuring seamless interactions across all touchpoints"),
+    ],
     benefits: [
+      { text: t("Improved customer satisfaction and engagement") },
+      { text: t("Reduced development time and costs") },
+      { text: t("Increased user adoption and retention") },
+      { text: t("Competitive advantage through superior user experience") },
+    ],
+    deliverables: [
+      { text: t("Wireframes, mockups, and high-fidelity prototypes") },
+      { text: t("Comprehensive user research insights and personas") },
+      { text: t("Detailed design specifications and style guides") },
+      { text: t("Seamless user flows and interaction patterns") },
+    ],
+    suitableFor: t(
+      "Designing a website or app to boost user engagement and conversions.",
+    ),
+  },
+  {
+    title: t("Software Development"),
+    descriptionPoints: [
+      t("Building reliable and scalable software solutions"),
+      t("Leveraging the latest technologies and best practices"),
+      t("Ensuring smooth integration of all application components"),
+      t("Delivering high-quality code with thorough testing"),
+    ],
+    benefits: [
+      { text: t("Robust and adaptable software that grows with the business") },
+      { text: t("Optimized performance and reduced maintenance costs") },
+      { text: t("Faster time-to-market for new features and updates") },
+      { text: t("Improved security and compliance with industry standards") },
+    ],
+    deliverables: [
+      { text: t("Scalable and maintainable codebase") },
+      { text: t("Comprehensive testing and quality assurance reports") },
+      { text: t("Detailed documentation and training materials") },
+      { text: t("Seamless integration with the client's existing systems") },
+    ],
+    suitableFor: t(
+      "Building custom software to automate processes or create new revenue streams.",
+    ),
+  },
+  {
+    title: t("Technical Operations"),
+    descriptionPoints: [
+      t("Setting up efficient systems for software delivery and updates"),
+      t("Improving infrastructure reliability and resource utilization"),
+      t("Implementing tools and processes to catch and fix issues quickly"),
+      t("Ensuring seamless integration with existing IT environments"),
+    ],
+    benefits: [
+      { text: t("Faster, more reliable software updates and deployments") },
+      { text: t("Improved system uptime, performance, and security") },
+      { text: t("Reduced operational costs and enhanced productivity") },
+      { text: t("Smooth integration with the client's technology stack") },
+    ],
+    deliverables: [
+      { text: t("Automated software delivery and deployment pipelines") },
+      { text: t("Comprehensive monitoring and incident response processes") },
       {
-        icon: "pi pi-link",
         text: t(
-          "Cohesive end-to-end solutions that reduce integration headaches",
+          "Optimized infrastructure configuration and resource utilization",
         ),
       },
+      { text: t("Seamless integration with the client's existing IT systems") },
+    ],
+    suitableFor: t(
+      "Improving system reliability and reducing downtime in critical operations.",
+    ),
+  },
+  {
+    title: t("Application Improvements"),
+    descriptionPoints: [
+      t("Ongoing enhancements to keep software running smoothly"),
+      t(
+        "Regular updates for better performance, security, and user experience",
+      ),
+      t("Improving existing code for efficiency and maintainability"),
+      t("Implementing proactive monitoring and issue prevention"),
+    ],
+    benefits: [
+      { text: t("Faster and more responsive applications") },
+      { text: t("Reduced downtime and maintenance costs") },
+      { text: t("Improved user satisfaction and loyalty") },
+      { text: t("Proactive problem-solving before issues affect users") },
+    ],
+    deliverables: [
+      { text: t("Optimized application performance and stability") },
+      { text: t("Improved security and compliance with industry standards") },
+      { text: t("Enhanced user interface and experience") },
+      { text: t("Proactive monitoring and issue prevention strategies") },
+    ],
+    suitableFor: t(
+      "Enhancing existing software to handle increased user load or add new features.",
+    ),
+  },
+  {
+    title: t("Software Modernization"),
+    descriptionPoints: [
+      t("Refreshing outdated software systems with modern technologies"),
+      t("Preserving critical business processes and data"),
+      t("Improving user experience and productivity"),
+      t("Ensuring seamless integration with new systems and tools"),
+    ],
+    benefits: [
+      { text: t("Improved system performance, reliability, and scalability") },
+      { text: t("Better compatibility with current and future technologies") },
       {
-        icon: "pi pi-bolt",
-        text: t("Optimized performance across all application layers"),
-      },
-      {
-        icon: "pi pi-chart-line",
         text: t(
-          "Flexible and scalable architecture that grows with your business",
+          "Reduced maintenance costs and increased operational efficiency",
         ),
       },
+      { text: t("Enhanced user experience and productivity gains") },
+    ],
+    deliverables: [
+      { text: t("Modernized software architecture and technology stack") },
+      { text: t("Seamless migration of critical business data and processes") },
       {
-        icon: "pi pi-calendar",
+        text: t("Improved user interfaces and productivity-enhancing features"),
+      },
+      {
         text: t(
-          "Shorter time-to-market with our efficient development processes",
+          "Smooth integration with the client's existing and future systems",
         ),
       },
     ],
     suitableFor: t(
-      "Businesses of all sizes needing custom software solutions, from startups building their MVP to enterprises developing complex, mission-critical applications.",
+      "Upgrading outdated systems to improve efficiency, security and reduce maintenance costs.",
     ),
   },
   {
-    icon: "pi pi-server",
-    title: t("DevOps & Infrastructure"),
-    description: t(
-      "We streamline your development workflow and optimize your infrastructure. Our DevOps practices and cloud solutions accelerate deployment cycles, enhance system reliability, and maximize resource efficiency.",
-    ),
-    expanded: false,
-    details: t(
-      "We implement robust CI/CD pipelines, set up comprehensive monitoring and alerting systems, and manage cloud infrastructure to ensure high availability and performance. Our approach emphasizes security, scalability, and cost-effectiveness.",
-    ),
-    benefits: [
-      {
-        icon: "pi pi-sync",
-        text: t("Faster, more reliable software releases"),
-      },
-      {
-        icon: "pi pi-chart-bar",
-        text: t("Improved system uptime and performance"),
-      },
-      {
-        icon: "pi pi-wallet",
-        text: t(
-          "Reduced operational costs through optimized resource utilization",
-        ),
-      },
-      {
-        icon: "pi pi-lock",
-        text: t(
-          "Enhanced security posture with best practices and regular audits",
-        ),
-      },
+    title: t("Search Engine Optimization"),
+    descriptionPoints: [
+      t("Improving website visibility and ranking in search results"),
+      t("Optimizing content and website structure for better discoverability"),
+      t("Implementing strategies to attract more qualified website visitors"),
+      t(
+        "Analyzing and acting on data-driven insights to drive continuous improvements",
+      ),
     ],
-    suitableFor: t(
-      "Companies looking to accelerate their development cycles, improve system reliability, or optimize their cloud infrastructure.",
-    ),
-  },
-  {
-    icon: "pi pi-sliders-h",
-    title: t("Application Optimization & Maintenance"),
-    description: t(
-      "We keep your applications running at peak performance. Our team provides ongoing maintenance, performance tuning, security updates, and feature enhancements to ensure your software remains efficient and aligned with your evolving business needs.",
-    ),
-    expanded: false,
-    details: t(
-      "Our optimization process involves thorough code reviews, performance profiling, and systematic refactoring. We implement automated testing and monitoring to proactively identify and resolve issues, ensuring your applications remain robust and efficient.",
-    ),
     benefits: [
       {
-        icon: "pi pi-bolt",
-        text: t("Improved application speed and responsiveness"),
-      },
-      {
-        icon: "pi pi-clock",
-        text: t("Reduced downtime and maintenance costs"),
-      },
-      {
-        icon: "pi pi-star",
-        text: t("Enhanced user satisfaction through continuous improvements"),
-      },
-      {
-        icon: "pi pi-shield",
-        text: t("Proactive issue resolution before they impact users"),
-      },
-    ],
-    suitableFor: t(
-      "Businesses with existing applications looking to improve performance, enhance security, or add new features.",
-    ),
-  },
-  {
-    icon: "pi pi-refresh",
-    title: t("Legacy System Modernization"),
-    description: t(
-      "We breathe new life into outdated systems. Our team specializes in refactoring and modernizing legacy applications, making them more efficient, secure, and compatible with current technologies.",
-    ),
-    expanded: false,
-    details: t(
-      "Our modernization approach focuses on preserving critical business logic while improving overall system architecture. We employ modern design patterns, update technology stacks, and enhance user interfaces to extend the lifespan and value of your existing software investments.",
-    ),
-    benefits: [
-      {
-        icon: "pi pi-bolt",
-        text: t("Improved system performance and reliability"),
-      },
-      {
-        icon: "pi pi-link",
-        text: t(
-          "Enhanced compatibility with modern technologies and third-party integrations",
-        ),
-      },
-      {
-        icon: "pi pi-wallet",
-        text: t("Reduced maintenance costs and technical debt"),
-      },
-      {
-        icon: "pi pi-users",
-        text: t("Improved user experience and productivity"),
-      },
-    ],
-    suitableFor: t(
-      "Organizations with aging software systems that are becoming difficult to maintain or are hindering business growth.",
-    ),
-  },
-  {
-    icon: "pi pi-chart-line",
-    title: t("SEO & Performance Optimization"),
-    description: t(
-      "We boost your digital presence and application efficiency. Our team optimizes your web applications for search engines and performance, ensuring faster load times, better user experience, and improved search rankings.",
-    ),
-    expanded: false,
-    details: t(
-      "Our SEO and performance optimization process involves technical SEO audits, content optimization, site structure improvements, and performance tuning. We use advanced tools and techniques to identify and resolve issues that impact your search rankings and user experience.",
-    ),
-    benefits: [
-      {
-        icon: "pi pi-arrow-up",
         text: t("Higher search engine rankings and increased organic traffic"),
       },
       {
-        icon: "pi pi-bolt",
-        text: t("Faster page load times and improved Core Web Vitals scores"),
+        text: t(
+          "Better user engagement, lower bounce rates, and improved conversion rates",
+        ),
       },
       {
-        icon: "pi pi-users",
-        text: t("Enhanced user engagement and lower bounce rates"),
+        text: t(
+          "Increased return on investment from the website and digital marketing efforts",
+        ),
       },
       {
-        icon: "pi pi-chart-bar",
-        text: t("Increased conversions and ROI from your digital assets"),
+        text: t(
+          "Actionable data and insights to guide future marketing and content strategies",
+        ),
+      },
+    ],
+    deliverables: [
+      { text: t("Optimized website structure and content for search engines") },
+      {
+        text: t(
+          "Targeted strategies to attract more qualified website visitors",
+        ),
+      },
+      { text: t("Comprehensive performance reports and data-driven insights") },
+      {
+        text: t("Ongoing recommendations for continuous website improvements"),
       },
     ],
     suitableFor: t(
-      "E-commerce businesses, content-driven websites, and any company looking to improve their online visibility and web application performance.",
+      "Increasing organic traffic and improving online visibility for products or services.",
     ),
   },
 ]);
-
 const sectionItems = [
   {
     icon: "pi pi-check-circle",
     title: "Comprehensive Solutions",
     description:
-      "We cover all aspects of your digital needs, from planning to maintenance",
+      "Cover all aspects of your digital needs, from planning to maintenance",
   },
   {
     icon: "pi pi-chart-line",
     title: "Results-Driven Approach",
     description:
-      "Our solutions directly address your business challenges and drive measurable outcomes",
+      "Address directly your business challenges and drive measurable outcomes",
   },
   {
     icon: "pi pi-sitemap",
     title: "Scalable Architecture",
     description:
-      "We build solutions that grow with your business, preventing future bottlenecks",
+      "Own solutions that grow with your business, preventing future bottlenecks",
   },
   {
     icon: "pi pi-cog",
-    title: "Efficiency-Focused",
+    title: "Efficiency-Focused Process",
     description:
-      "Our development process emphasizes simplicity and effectiveness, saving you time and resources",
+      "Enjoy a development process that emphasizes simplicity and effectiveness, saving you time and resources",
   },
   {
     icon: "pi pi-bolt",
-    title: "Innovation-Led",
+    title: "Innovation-Led Craft",
     description:
-      "We leverage cutting-edge technologies to give you a competitive edge in your market",
+      "Gain a competitive edge in your market with leveraging of cutting-edge technologies",
   },
 ];
 
-const toggleExpand = (index: number) => {
-  services.value[index].expanded = !services.value[index].expanded;
-};
+const serviceItems = services.value.map((service) => ({
+  title: service.title,
+  sublists: [
+    { items: service.descriptionPoints.map((point) => ({ text: point })) },
+    { title: "Deliverables", items: service.deliverables },
+    { title: "Key Benefits", items: service.benefits },
+  ],
+  additionalInfo: service.suitableFor,
+}));
 </script>
 
 <template>
@@ -267,47 +273,15 @@ const toggleExpand = (index: number) => {
         )
       }}
       <template #second>
-        {{
-          t(
-            "Creating value through technology and streamlined processes.",
-          )
-        }}
+        {{ t("Creating value through technology and streamlined processes.") }}
       </template>
     </SubHeader>
     <BottomToTopSlideTransition duration="500">
-      <div class="flex flex-col gap-8 max-w-3xl mt-16">
-        <div v-for="(service, index) in services" :key="service.title">
-          <div>
-            <h3 class="text-2xl font-bold mb-4">{{ service.title }}</h3>
-            <p class="text-lg mb-4">{{ service.description }}</p>
-            <p class="text-md mb-6">
-              <span class="font-bold">{{ t("Suitable for:") }}</span>
-              {{ service.suitableFor }}
-            </p>
-            <button
-              type="button"
-              class="text-sm underline underline-offset-8 hover:decoration-2"
-              @click="toggleExpand(index)"
-            >
-              {{ service.expanded ? "Show Less" : "Discover More" }}
-            </button>
-          </div>
-          <div v-if="service.expanded" class="p-6">
-            <p class="mb-4">{{ service.details }}</p>
-            <h4 class="font-bold mb-4">Key Benefits:</h4>
-            <ul class="space-y-3">
-              <li
-                v-for="benefit in service.benefits"
-                :key="benefit.text"
-                class="flex items-center"
-              >
-                <i class="mx-3 pi pi-minus"></i>
-                {{ benefit.text }}
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+      <ExpandableList
+        :items="serviceItems"
+        :show-numbers="false"
+        additional-info-label="Best for:"
+      />
     </BottomToTopSlideTransition>
   </section>
   <BottomToTopSlideTransition>
@@ -315,7 +289,7 @@ const toggleExpand = (index: number) => {
       <h2 class="text-3xl md:text-4xl font-bold mb-8">
         {{ t("Technologies We Work With") }}
       </h2>
-      <p class="text-xl mb-8 max-w-3xl">
+      <p class="text-xl mb-8 max-w-4xl">
         {{
           t(
             "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs.",
@@ -333,7 +307,7 @@ const toggleExpand = (index: number) => {
         <div
           v-for="(item, index) in sectionItems"
           :key="index"
-          class="py-6 max-w-3xl"
+          class="py-6 max-w-4xl"
         >
           <i
             :class="[

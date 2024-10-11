@@ -36,7 +36,8 @@ watch(
         {{ t("Here and now.") }}
       </template>
       <template #third>
-        <span class="font-normal">{{ t("It's that simple. Share contact, and we'll reach out.") }}</span>
+        <span class="font-normal">{{ t("It's that simple.") }}</span>
+        {{ t("Share contact.") }}
       </template>
     </SubHeader>
     <BottomToTopSlideTransition>

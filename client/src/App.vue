@@ -2,6 +2,7 @@
 import { ref, provide } from "vue";
 import router from "@/router";
 import NavigationBar from "@/components/NavigationBar.vue";
+import FooterSection from "@/components/FooterSection.vue";
 
 const transitionTrigger = ref(0);
 
@@ -14,7 +15,7 @@ router.afterEach(() => {
 
 <template>
   <div class="min-h-[calc(100vh-44px)]">
-    <NavigationBar/>
+    <NavigationBar />
     <main>
       <div class="container mx-auto py-32 px-6 md:px-0">
         <RouterView v-slot="{ Component }">
@@ -23,12 +24,5 @@ router.afterEach(() => {
       </div>
     </main>
   </div>
-  <footer class="pb-6 px-6 md:px-0">
-    <div class="container mx-auto">
-      <p class="text-gray-600 dark:text-gray-300 text-sm">
-        &copy; {{ new Date().getFullYear() }}
-        <strong>Make IT Logical</strong>.
-      </p>
-    </div>
-  </footer>
+  <FooterSection />
 </template>
