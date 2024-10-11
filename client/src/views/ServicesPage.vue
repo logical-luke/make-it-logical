@@ -11,7 +11,7 @@ const { t } = useI18n();
 
 const services = ref([
   {
-    title: t("Project Planning & Management"),
+    title: t("Planning & Leadership"),
     descriptionPoints: [
       t("Defining clear project roadmaps and milestones"),
       t("Aligning digital projects with business goals"),
