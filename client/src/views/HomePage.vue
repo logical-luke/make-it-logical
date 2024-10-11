@@ -33,7 +33,7 @@ const features = [
 
 <template>
   <div class="flex flex-col gap-24">
-    <section>
+    <section class="md:min-h-[calc(100vh-280px)]">
       <div class="flex flex-col md:flex-row items-center">
         <div class="w-full md:w-1/2">
           <BottomToTopSlideTransition duration="300">
