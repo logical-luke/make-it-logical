@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, watch } from "vue";
+import { ref, onMounted, watch, inject } from "vue";
 import { useRoute } from "vue-router";
 import ThemeToggleButton from "@/components/ThemeToggleButton.vue";
 import LinkItem from "@/components/LinkItem.vue";
@@ -10,6 +10,15 @@ const isNavVisible = ref(true);
 const scrollThreshold = 3;
 const mobileMenuOpen = ref(false);
 const isAtTop = ref(true);
+const transitionTrigger = inject("transitionTrigger", ref(0));
+
+watch(
+  transitionTrigger,
+  () => {
+    mobileMenuOpen.value = false;
+  },
+  { immediate: true },
+);
 
 const checkScrollPosition = () => {
   isAtTop.value = window.scrollY === 0;
@@ -146,7 +155,6 @@ watch(mobileMenuOpen, (newValue) => {
                 :to="item.path"
                 class="text-2xl transition-colors duration-300 underline-offset-8 hover:underline"
                 :class="{ underline: route.path === item.path }"
-                @click="toggleMobileMenu"
               >
                 {{ item.name }}
               </RouterLink>
