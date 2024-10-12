@@ -63,23 +63,21 @@ const isExpanded = (itemTitle: string, index: number) => {
             {{ item.additionalInfo }}
           </p>
           <div
-            v-for="(sublist, index) in item.sublists"
+            v-for="(sublist, subIndex) in item.sublists"
             :key="sublist.title"
             class="flex flex-col gap-6"
           >
             <div
               v-if="sublist.title"
               class="group flex items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
-              @click="
-                sublist.expandable && toggleExpand(item.title, index)
-              "
+              @click="sublist.expandable && toggleExpand(item.title, subIndex)"
             >
               <ArrowChevronRightIcon
                 v-if="sublist.expandable"
                 class="h-4 w-4 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
                 :class="[
-                  { 'rotate-180': isExpanded(item.title, index) },
-                  isExpanded(item.title, index)
+                  { 'rotate-180': isExpanded(item.title, subIndex) },
+                  isExpanded(item.title, subIndex)
                     ? 'group-hover:translate-y-0.5'
                     : 'group-hover:translate-y-0.5',
                 ]"
@@ -99,9 +97,7 @@ const isExpanded = (itemTitle: string, index: number) => {
               leave-to-class="transform translate-y-4 opacity-0"
             >
               <ul
-                v-if="
-                  !sublist.expandable || isExpanded(item.title, index)
-                "
+                v-if="!sublist.expandable || isExpanded(item.title, index)"
                 class="space-y-3 list-disc px-4 ml-6"
               >
                 <li v-for="subItem in sublist.items" :key="subItem.text">

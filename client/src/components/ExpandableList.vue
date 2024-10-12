@@ -69,7 +69,7 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
           <div v-if="isExpanded(index)" class="flex flex-col gap-6 mt-4 ml-6">
             <p v-if="item.additionalInfo">
               <span v-if="additionalInfoLabel" class="font-bold"
-              >{{ additionalInfoLabel }}
+                >{{ additionalInfoLabel }}
               </span>
               {{ item.additionalInfo }}
             </p>
