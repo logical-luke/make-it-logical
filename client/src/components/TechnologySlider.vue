@@ -53,7 +53,7 @@ const technologies = [
   { name: "Cloudflare", logo: cloudflareLogo },
   { name: "Sentry", logo: sentryLogo },
   { name: "Cypress", logo: cypressLogo },
-  { name: "RabbitMQ", logo: rabbitMqLogo }
+  { name: "RabbitMQ", logo: rabbitMqLogo },
 ];
 
 const containerRef = ref<HTMLDivElement | null>(null);
@@ -227,7 +227,7 @@ onMounted(() => {
   startBlinkEffect();
   if (containerRef.value) {
     containerRef.value.addEventListener("wheel", handleWheel, {
-      passive: false
+      passive: false,
     });
   }
 });
@@ -255,7 +255,7 @@ const blackLogos = [
   "cypress",
   "sentry",
   "symfony",
-  "openai"
+  "openai",
 ];
 
 const isBlackLogo = (name: string) =>
@@ -295,7 +295,9 @@ const isBlackLogo = (name: string) =>
                 :class="[
                   'max-w-full max-h-full object-contain transition-all opacity-70 duration-300 logo-svg',
                   {
-                    'grayscale hover:grayscale-0': !activeTechnologies.has(tech.name),
+                    'grayscale hover:grayscale-0': !activeTechnologies.has(
+                      tech.name,
+                    ),
                     'dark-mode-white-fill': isBlackLogo(tech.name),
                   },
                 ]"
@@ -317,7 +319,7 @@ const isBlackLogo = (name: string) =>
     <div class="mt-6 text-xs text-gray-500 dark:text-gray-300 text-center px-4">
       {{
         t(
-          "The logos displayed are trademarks or registered trademarks of their respective owners. Their use here does not imply endorsement of our website or service by the trademark owners."
+          "The logos displayed are trademarks or registered trademarks of their respective owners. Their use here does not imply endorsement of our website or service by the trademark owners.",
         )
       }}
     </div>
@@ -347,7 +349,8 @@ const isBlackLogo = (name: string) =>
 }
 
 @keyframes blink {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.7;
   }
