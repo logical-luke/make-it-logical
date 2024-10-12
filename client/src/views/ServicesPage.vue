@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import { ref } from "vue";
-import TechnologySlider from "@/components/TechnologySlider.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
@@ -280,19 +279,6 @@ const serviceItems = services.value.map((service) => ({
     </BottomToTopSlideTransition>
   </section>
   <BottomToTopSlideTransition>
-    <section class="py-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-8">
-        {{ t("Technologies We Work With") }}
-      </h2>
-      <p class="text-xl mb-8 max-w-4xl">
-        {{
-          t(
-            "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs.",
-          )
-        }}
-      </p>
-      <TechnologySlider />
-    </section>
     <section class="py-12 md:py-16">
       <h2 class="text-3xl md:text-4xl font-bold mb-8">
         {{ t("Why Choose Our Services ?") }}

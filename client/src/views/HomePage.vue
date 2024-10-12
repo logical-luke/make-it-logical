@@ -5,6 +5,7 @@ import LinkItem from "@/components/LinkItem.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 import BulbShape from "@/components/BulbShape.vue";
 import ExpandableList from "@/components/ExpandableList.vue";
+import TechnologySlider from "@/components/TechnologySlider.vue";
 
 const { t } = useI18n();
 
@@ -140,7 +141,21 @@ const processItems = processSteps.value.map((step) => ({
         </div>
       </section>
     </BottomToTopSlideTransition>
-
+    <BottomToTopSlideTransition>
+      <section>
+        <h2 class="text-3xl md:text-4xl font-bold mb-8">
+          {{ t("Technologies We Work With") }}
+        </h2>
+        <p class="text-xl mb-8 max-w-4xl">
+          {{
+            t(
+              "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs.",
+            )
+          }}
+        </p>
+        <TechnologySlider />
+      </section>
+    </BottomToTopSlideTransition>
     <BottomToTopSlideTransition duration="200">
       <section>
         <h2
