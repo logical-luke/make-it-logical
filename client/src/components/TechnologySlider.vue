@@ -55,21 +55,128 @@ const technologies = [
   { name: "Cypress", logo: cypressLogo },
   { name: "RabbitMQ", logo: rabbitMqLogo },
 ];
+
 const containerRef = ref<HTMLDivElement | null>(null);
 const sliderRef = ref<HTMLDivElement | null>(null);
 const scrollPosition = ref(0);
-const scrollSpeed = 0.2;
+const scrollSpeed = 0.5;
 
 const clonedTechnologies = computed(() => [...technologies, ...technologies]);
 
+const isMouseDown = ref(false);
+const startX = ref(0);
+const scrollLeft = ref(0);
+const isAutoScrolling = ref(true);
+let autoScrollTimeout: number | null = null;
+let animationFrameId: number | null = null;
+
+const targetScrollLeft = ref(0);
+const velocity = ref(0);
+const lastScrollLeft = ref(0);
+const lastTimestamp = ref(0);
+const autoScrollDelay = 3000;
+
+const handleInteractionStart = (e: MouseEvent | TouchEvent) => {
+  isMouseDown.value = true;
+  isAutoScrolling.value = false;
+  const pageX = "touches" in e ? e.touches[0].pageX : e.pageX;
+  startX.value = pageX - (containerRef.value?.offsetLeft || 0);
+  scrollLeft.value = containerRef.value?.scrollLeft || 0;
+  lastScrollLeft.value = scrollLeft.value;
+  lastTimestamp.value = Date.now();
+  velocity.value = 0;
+
+  if (animationFrameId !== null) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
+  }
+
+  if (autoScrollTimeout) {
+    clearTimeout(autoScrollTimeout);
+  }
+};
+
+const handleInteractionEnd = () => {
+  isMouseDown.value = false;
+  if (autoScrollTimeout) clearTimeout(autoScrollTimeout);
+  autoScrollTimeout = window.setTimeout(() => {
+    isAutoScrolling.value = true;
+    if (containerRef.value) {
+      scrollPosition.value = containerRef.value.scrollLeft;
+    }
+  }, autoScrollDelay);
+
+  animateScroll();
+};
+
+const handleMouseMove = (e: MouseEvent | TouchEvent) => {
+  if (!isMouseDown.value) return;
+  e.preventDefault();
+  const pageX = "touches" in e ? e.touches[0].pageX : e.pageX;
+  const x = pageX - (containerRef.value?.offsetLeft || 0);
+  const walk = (x - startX.value) * 2;
+  if (containerRef.value) {
+    const newScrollLeft = scrollLeft.value - walk;
+    containerRef.value.scrollLeft = newScrollLeft;
+    targetScrollLeft.value = newScrollLeft;
+
+    const now = Date.now();
+    const dt = now - lastTimestamp.value;
+    const dx = newScrollLeft - lastScrollLeft.value;
+    velocity.value = dx / dt;
+
+    lastScrollLeft.value = newScrollLeft;
+    lastTimestamp.value = now;
+  }
+};
+
+const handleWheel = (e: WheelEvent) => {
+  e.preventDefault();
+  if (containerRef.value) {
+    targetScrollLeft.value += e.deltaY;
+    isAutoScrolling.value = false;
+    if (autoScrollTimeout) clearTimeout(autoScrollTimeout);
+    autoScrollTimeout = window.setTimeout(() => {
+      isAutoScrolling.value = true;
+    }, 5000);
+
+    if (animationFrameId === null) {
+      animateScroll();
+    }
+  }
+};
+
+const animateScroll = () => {
+  if (!containerRef.value) return;
+
+  const currentScrollLeft = containerRef.value.scrollLeft;
+  const diff = targetScrollLeft.value - currentScrollLeft;
+
+  if (Math.abs(diff) > 0.5 || Math.abs(velocity.value) > 0.1) {
+    containerRef.value.scrollLeft += diff * 0.1 + velocity.value * 10;
+    velocity.value *= 0.95;
+
+    animationFrameId = requestAnimationFrame(animateScroll);
+  } else {
+    containerRef.value.scrollLeft = targetScrollLeft.value;
+    velocity.value = 0;
+    animationFrameId = null;
+  }
+};
+
 const startAutoScroll = () => {
-  const animate = () => {
-    if (containerRef.value && sliderRef.value) {
-      scrollPosition.value += scrollSpeed;
-      if (scrollPosition.value >= sliderRef.value.scrollWidth / 2) {
-        scrollPosition.value = 0;
+  let lastTime = 0;
+  const animate = (time: number) => {
+    if (isAutoScrolling.value && time - lastTime > 16) {
+      if (containerRef.value && sliderRef.value) {
+        scrollPosition.value += scrollSpeed;
+        if (scrollPosition.value >= sliderRef.value.scrollWidth / 2) {
+          scrollPosition.value -= sliderRef.value.scrollWidth / 2;
+        }
+        containerRef.value.scrollLeft = scrollPosition.value;
+        targetScrollLeft.value = scrollPosition.value;
       }
-      containerRef.value.scrollLeft = scrollPosition.value;
+      lastTime = time;
     }
     requestAnimationFrame(animate);
   };
@@ -83,7 +190,6 @@ const startBlinkEffect = () => {
   const blinkLogo = () => {
     const visibleLogos = getVisibleLogos();
     if (visibleLogos.length > 0 && Math.random() < 0.3) {
-      // 30% chance to blink
       const randomIndex = Math.floor(Math.random() * visibleLogos.length);
       const techToActivate = visibleLogos[randomIndex];
       activeTechnologies.value.add(techToActivate);
@@ -93,7 +199,7 @@ const startBlinkEffect = () => {
     }
   };
 
-  blinkInterval = window.setInterval(blinkLogo, 3000); // Increased interval to 3 seconds
+  blinkInterval = window.setInterval(blinkLogo, 3000);
 };
 
 const getVisibleLogos = () => {
@@ -119,11 +225,25 @@ const getVisibleLogos = () => {
 onMounted(() => {
   startAutoScroll();
   startBlinkEffect();
+  if (containerRef.value) {
+    containerRef.value.addEventListener("wheel", handleWheel, {
+      passive: false,
+    });
+  }
 });
 
 onUnmounted(() => {
   if (blinkInterval) {
     clearInterval(blinkInterval);
+  }
+  if (containerRef.value) {
+    containerRef.value.removeEventListener("wheel", handleWheel);
+  }
+  if (autoScrollTimeout) {
+    clearTimeout(autoScrollTimeout);
+  }
+  if (animationFrameId !== null) {
+    cancelAnimationFrame(animationFrameId);
   }
 });
 
@@ -145,7 +265,17 @@ const isBlackLogo = (name: string) =>
 <template>
   <div class="technology-slider-container relative px-4 md:px-6 lg:px-8">
     <div class="relative">
-      <div ref="containerRef" class="technology-slider overflow-x-hidden">
+      <div
+        ref="containerRef"
+        class="technology-slider overflow-x-hidden cursor-grab active:cursor-grabbing no-select"
+        @mousedown="handleInteractionStart"
+        @touchstart="handleInteractionStart"
+        @mouseup="handleInteractionEnd"
+        @mouseleave="handleInteractionEnd"
+        @touchend="handleInteractionEnd"
+        @mousemove="handleMouseMove"
+        @touchmove="handleMouseMove"
+      >
         <div ref="sliderRef" class="flex whitespace-nowrap">
           <div
             v-for="tech in clonedTechnologies"
@@ -195,7 +325,15 @@ const isBlackLogo = (name: string) =>
 
 .technology-slider {
   width: 100%;
-  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS devices */
+  scrollbar-width: none; /* Hide scrollbar for Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+}
+
+.technology-slider::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
 }
 
 .logo-wrapper {
@@ -257,5 +395,12 @@ const isBlackLogo = (name: string) =>
 
 :root.dark .fade-right {
   background: linear-gradient(to left, rgb(24 24 27), rgba(24, 24, 27, 0));
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 </style>
