@@ -97,7 +97,7 @@ const isExpanded = (itemTitle: string, index: number) => {
               leave-to-class="transform translate-y-4 opacity-0"
             >
               <ul
-                v-if="!sublist.expandable || isExpanded(item.title, index)"
+                v-if="!sublist.expandable || isExpanded(item.title, subIndex)"
                 class="space-y-3 list-disc px-4 ml-6"
               >
                 <li v-for="subItem in sublist.items" :key="subItem.text">
