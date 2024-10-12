@@ -32,29 +32,31 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
     <div v-for="(item, index) in items" :key="item.title">
       <div>
         <div
-          class="group flex w-fit items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
+          class="group flex w-full items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
           @click="toggleExpand(index)"
         >
-          <div
-            v-if="showNumbers"
-            class="text-xl md:text-2xl font-bold mr-2 text-gray-800 dark:text-gray-200"
-          >
-            {{ index + 1 }}.
+          <div class="flex items-center">
+            <ArrowChevronRightIcon
+              class="h-4 w-4 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+              :class="[
+                { 'rotate-180': isExpanded(index) },
+                isExpanded(index)
+                  ? 'group-hover:translate-y-0.5'
+                  : 'group-hover:translate-y-0.5',
+              ]"
+            />
+            <div
+              v-if="showNumbers"
+              class="text-xl md:text-2xl font-bold mr-2 text-gray-800 dark:text-gray-200"
+            >
+              {{ index + 1 }}.
+            </div>
           </div>
           <h3
             class="text-xl md:text-2xl text-gray-800 dark:text-gray-200 font-bold"
           >
             {{ item.title }}
           </h3>
-          <ArrowChevronRightIcon
-            class="h-4 -ml-2 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
-            :class="[
-              { 'rotate-180': isExpanded(index) },
-              isExpanded(index)
-                ? 'group-hover:-translate-y-0.5'
-                : 'group-hover:translate-y-0.5',
-            ]"
-          />
         </div>
         <Transition
           enter-active-class="transition-all duration-300 ease-out"
@@ -64,10 +66,10 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
           leave-from-class="transform translate-y-0 opacity-100"
           leave-to-class="transform translate-y-8 opacity-0"
         >
-          <div v-if="isExpanded(index)" class="flex flex-col gap-6 mt-4">
+          <div v-if="isExpanded(index)" class="flex flex-col gap-6 mt-4 ml-6">
             <p v-if="item.additionalInfo">
               <span v-if="additionalInfoLabel" class="font-bold"
-                >{{ additionalInfoLabel }}
+              >{{ additionalInfoLabel }}
               </span>
               {{ item.additionalInfo }}
             </p>

@@ -41,11 +41,13 @@ const isExpanded = (itemTitle: string, index: number) => {
         <div
           class="group flex items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
         >
-          <div
-            v-if="showNumbers"
-            class="text-2xl font-bold mr-2 text-gray-800 dark:text-gray-200"
-          >
-            {{ index + 1 }}.
+          <div class="flex items-center">
+            <div
+              v-if="showNumbers"
+              class="text-2xl font-bold mr-2 text-gray-800 dark:text-gray-200"
+            >
+              {{ index + 1 }}.
+            </div>
           </div>
           <h3
             class="text-xl md:text-2xl text-gray-800 dark:text-gray-200 font-bold"
@@ -72,20 +74,21 @@ const isExpanded = (itemTitle: string, index: number) => {
                 sublist.expandable && toggleExpand(item.title, index)
               "
             >
+              <ArrowChevronRightIcon
+                v-if="sublist.expandable"
+                class="h-4 w-4 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+                :class="[
+                  { 'rotate-180': isExpanded(item.title, index) },
+                  isExpanded(item.title, index)
+                    ? 'group-hover:translate-y-0.5'
+                    : 'group-hover:translate-y-0.5',
+                ]"
+              />
               <h4
                 class="text-medium text-gray-800 dark:text-gray-200 font-bold"
               >
                 {{ sublist.title }}
               </h4>
-              <ArrowChevronRightIcon
-                class="h-4 -ml-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
-                :class="[
-                  { 'rotate-180': isExpanded(item.title, index) },
-                  isExpanded(item.title, index)
-                    ? 'group-hover:-translate-y-0.5'
-                    : 'group-hover:translate-y-0.5',
-                ]"
-              />
             </div>
             <Transition
               enter-active-class="transition-all duration-300 ease-out"
@@ -99,7 +102,7 @@ const isExpanded = (itemTitle: string, index: number) => {
                 v-if="
                   !sublist.expandable || isExpanded(item.title, index)
                 "
-                class="space-y-3 list-disc px-4"
+                class="space-y-3 list-disc px-4 ml-6"
               >
                 <li v-for="subItem in sublist.items" :key="subItem.text">
                   {{ subItem.text }}
