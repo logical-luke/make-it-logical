@@ -4,11 +4,15 @@ import ArrowChevronRightIcon from "@/components/ArrowChevronRightIcon.vue";
 
 interface ListItem {
   title: string;
-  sublists: { title?: string; expandable?: boolean; items: { text: string }[] }[];
+  sublists: {
+    title?: string;
+    expandable?: boolean;
+    items: { text: string }[];
+  }[];
   additionalInfo?: string;
 }
 
-const props = defineProps<{
+defineProps<{
   items: ListItem[];
   showNumbers: boolean;
   additionalInfoLabel?: string;
@@ -51,26 +55,36 @@ const isExpanded = (itemTitle: string, sublistTitle: string) => {
         </div>
         <div class="flex flex-col gap-10 mt-4">
           <p v-if="item.additionalInfo">
-            <span v-if="additionalInfoLabel" class="font-bold">{{ additionalInfoLabel }}</span>
+            <span v-if="additionalInfoLabel" class="font-bold">{{
+              additionalInfoLabel
+            }}</span>
             {{ item.additionalInfo }}
           </p>
-          <div v-for="sublist in item.sublists" :key="sublist.title" class="flex flex-col gap-6">
+          <div
+            v-for="sublist in item.sublists"
+            :key="sublist.title"
+            class="flex flex-col gap-6"
+          >
             <div
               v-if="sublist.title"
               class="group flex items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
-              @click="sublist.expandable && toggleExpand(item.title, sublist.title)"
+              @click="
+                sublist.expandable && toggleExpand(item.title, sublist.title)
+              "
             >
-              <h4 class="text-medium text-gray-800 dark:text-gray-200 font-bold">
+              <h4
+                class="text-medium text-gray-800 dark:text-gray-200 font-bold"
+              >
                 {{ sublist.title }}
               </h4>
               <ArrowChevronRightIcon
                 class="h-4 -ml-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
                 :class="[
-              { 'rotate-180': isExpanded(item.title, sublist.title) },
-              isExpanded(item.title, sublist.title)
-                ? 'group-hover:-translate-y-0.5'
-                : 'group-hover:translate-y-0.5',
-            ]"
+                  { 'rotate-180': isExpanded(item.title, sublist.title) },
+                  isExpanded(item.title, sublist.title)
+                    ? 'group-hover:-translate-y-0.5'
+                    : 'group-hover:translate-y-0.5',
+                ]"
               />
             </div>
             <Transition
@@ -81,7 +95,12 @@ const isExpanded = (itemTitle: string, sublistTitle: string) => {
               leave-from-class="transform translate-y-0 opacity-100"
               leave-to-class="transform translate-y-4 opacity-0"
             >
-              <ul v-if="!sublist.expandable || isExpanded(item.title, sublist.title)" class="space-y-3 list-disc px-4">
+              <ul
+                v-if="
+                  !sublist.expandable || isExpanded(item.title, sublist.title)
+                "
+                class="space-y-3 list-disc px-4"
+              >
                 <li v-for="subItem in sublist.items" :key="subItem.text">
                   {{ subItem.text }}
                 </li>

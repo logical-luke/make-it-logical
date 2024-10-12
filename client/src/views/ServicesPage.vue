@@ -5,8 +5,7 @@ import TechnologySlider from "@/components/TechnologySlider.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
-import ExpandableList from "@/components/ExpandableList.vue";
-import BulltetList from "@/components/BulltetList.vue";
+import BulletList from "@/components/BulletList.vue";
 
 const { t } = useI18n();
 
@@ -273,7 +272,7 @@ const serviceItems = services.value.map((service) => ({
       </template>
     </SubHeader>
     <BottomToTopSlideTransition duration="500">
-      <BulltetList
+      <BulletList
         :items="serviceItems"
         :show-numbers="false"
         additional-info-label="Best for:"
@@ -288,7 +287,7 @@ const serviceItems = services.value.map((service) => ({
       <p class="text-xl mb-8 max-w-4xl">
         {{
           t(
-            "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs."
+            "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs.",
           )
         }}
       </p>
