@@ -53,7 +53,7 @@ const technologies = [
   { name: "Cloudflare", logo: cloudflareLogo },
   { name: "Sentry", logo: sentryLogo },
   { name: "Cypress", logo: cypressLogo },
-  { name: "RabbitMQ", logo: rabbitMqLogo },
+  { name: "RabbitMQ", logo: rabbitMqLogo }
 ];
 
 const containerRef = ref<HTMLDivElement | null>(null);
@@ -74,7 +74,7 @@ const targetScrollLeft = ref(0);
 const velocity = ref(0);
 const lastScrollLeft = ref(0);
 const lastTimestamp = ref(0);
-const autoScrollDelay = 3000;
+const autoScrollDelay = 1900;
 
 const handleInteractionStart = (e: MouseEvent | TouchEvent) => {
   isMouseDown.value = true;
@@ -227,7 +227,7 @@ onMounted(() => {
   startBlinkEffect();
   if (containerRef.value) {
     containerRef.value.addEventListener("wheel", handleWheel, {
-      passive: false,
+      passive: false
     });
   }
 });
@@ -255,7 +255,7 @@ const blackLogos = [
   "cypress",
   "sentry",
   "symfony",
-  "openai",
+  "openai"
 ];
 
 const isBlackLogo = (name: string) =>
@@ -267,7 +267,7 @@ const isBlackLogo = (name: string) =>
     <div class="relative">
       <div
         ref="containerRef"
-        class="technology-slider overflow-x-hidden cursor-grab active:cursor-grabbing no-select"
+        class="technology-slider overflow-x-hidden cursor-grab active:cursor-grabbing"
         @mousedown="handleInteractionStart"
         @touchstart="handleInteractionStart"
         @mouseup="handleInteractionEnd"
@@ -275,6 +275,7 @@ const isBlackLogo = (name: string) =>
         @touchend="handleInteractionEnd"
         @mousemove="handleMouseMove"
         @touchmove="handleMouseMove"
+        @wheel="handleWheel"
       >
         <div ref="sliderRef" class="flex whitespace-nowrap">
           <div
@@ -290,10 +291,15 @@ const isBlackLogo = (name: string) =>
               <img
                 :src="tech.logo"
                 :alt="tech.name"
+                draggable="false"
                 :class="[
-                  'max-w-full max-h-full object-contain transition-all grayscale hover:grayscale-0 opacity-70 hover:opacity-100 duration-300 logo-svg',
-                  { 'dark-mode-white-fill': isBlackLogo(tech.name) },
+                  'max-w-full max-h-full object-contain transition-all opacity-70 duration-300 logo-svg',
+                  {
+                    'grayscale hover:grayscale-0': !activeTechnologies.has(tech.name),
+                    'dark-mode-white-fill': isBlackLogo(tech.name),
+                  },
                 ]"
+                @dragstart.prevent
               />
             </div>
             <p
@@ -311,7 +317,7 @@ const isBlackLogo = (name: string) =>
     <div class="mt-6 text-xs text-gray-500 dark:text-gray-300 text-center px-4">
       {{
         t(
-          "The logos displayed are trademarks or registered trademarks of their respective owners. Their use here does not imply endorsement of our website or service by the trademark owners.",
+          "The logos displayed are trademarks or registered trademarks of their respective owners. Their use here does not imply endorsement of our website or service by the trademark owners."
         )
       }}
     </div>
@@ -324,16 +330,40 @@ const isBlackLogo = (name: string) =>
 }
 
 .technology-slider {
-  width: 100%;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS devices */
-  scrollbar-width: none; /* Hide scrollbar for Firefox */
-  -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.technology-slider img {
+  pointer-events: none;
+}
+
+.active-logo img {
+  opacity: 1 !important;
+  filter: grayscale(0) !important;
+  transform: scale(1.15);
+}
+
+@keyframes blink {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+    filter: grayscale(0);
+  }
+}
+
+.active-logo {
+  animation: blink 1s ease-in-out;
 }
 
 .technology-slider::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari, and Opera */
+  display: none;
 }
 
 .logo-wrapper {
@@ -345,23 +375,6 @@ const isBlackLogo = (name: string) =>
 
 .logo-svg {
   transition: all 0.3s ease;
-}
-
-.active-logo {
-  animation: blink 1s ease-in-out;
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(1.15);
-    opacity: 1;
-    filter: grayscale(0);
-  }
 }
 
 :root.dark .dark-mode-white-fill {
@@ -388,19 +401,11 @@ const isBlackLogo = (name: string) =>
   background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
 }
 
-/* Dark mode styles */
 :root.dark .fade-left {
   background: linear-gradient(to right, rgb(24 24 27), rgba(24, 24, 27, 0));
 }
 
 :root.dark .fade-right {
   background: linear-gradient(to left, rgb(24 24 27), rgba(24, 24, 27, 0));
-}
-
-.no-select {
-  user-select: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
 }
 </style>

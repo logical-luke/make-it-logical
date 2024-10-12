@@ -216,7 +216,7 @@ onMounted(() => {
     rotateEffect();
     bubbleEffect();
     sparkEffect();
-  }, 500);
+  }, 200);
 });
 </script>
 
