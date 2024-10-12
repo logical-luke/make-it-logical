@@ -37,17 +37,17 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
         >
           <div
             v-if="showNumbers"
-            class="text-2xl font-bold mr-2 text-black dark:text-gray-200"
+            class="text-2xl font-bold mr-2 text-gray-800 dark:text-gray-200"
           >
             {{ index + 1 }}.
           </div>
           <h3
-            class="text-xl md:text-2xl text-black dark:text-gray-200 font-bold"
+            class="text-xl md:text-2xl text-gray-800 dark:text-gray-200 font-bold"
           >
             {{ item.title }}
           </h3>
           <ArrowChevronRightIcon
-            class="h-4 -ml-2 fill-gray-400 hover:fill-black dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+            class="h-4 -ml-2 fill-gray-400 hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
             :class="[
               { 'rotate-180': isExpanded(index) },
               isExpanded(index)

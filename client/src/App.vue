@@ -58,7 +58,7 @@ watch(
   <div class="min-h-[calc(100vh-44px)]">
     <NavigationBar />
     <main>
-      <div class="container mx-auto py-32 px-6 md:px-0">
+      <div class="container mx-auto py-24 md:py-32 px-6 md:px-0">
         <RouterView v-slot="{ Component }">
           <Component :is="Component"></Component>
         </RouterView>

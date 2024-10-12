@@ -6,6 +6,7 @@ import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 import ExpandableList from "@/components/ExpandableList.vue";
+import BulltetList from "@/components/BulltetList.vue";
 
 const { t } = useI18n();
 
@@ -219,31 +220,26 @@ const services = ref([
 ]);
 const sectionItems = [
   {
-    icon: "pi pi-check-circle",
     title: "Comprehensive Solutions",
     description:
       "Cover all aspects of your digital needs, from planning to maintenance",
   },
   {
-    icon: "pi pi-chart-line",
     title: "Results-Driven Approach",
     description:
       "Address directly your business challenges and drive measurable outcomes",
   },
   {
-    icon: "pi pi-sitemap",
     title: "Scalable Architecture",
     description:
       "Own solutions that grow with your business, preventing future bottlenecks",
   },
   {
-    icon: "pi pi-cog",
     title: "Efficiency-Focused Process",
     description:
       "Enjoy a development process that emphasizes simplicity and effectiveness, saving you time and resources",
   },
   {
-    icon: "pi pi-bolt",
     title: "Innovation-Led Craft",
     description:
       "Gain a competitive edge in your market with leveraging of cutting-edge technologies",
@@ -254,8 +250,8 @@ const serviceItems = services.value.map((service) => ({
   title: service.title,
   sublists: [
     { items: service.descriptionPoints.map((point) => ({ text: point })) },
-    { title: "Deliverables", items: service.deliverables },
-    { title: "Key Benefits", items: service.benefits },
+    { title: "Deliverables", items: service.deliverables, expandable: true },
+    { title: "Key Benefits", items: service.benefits, expandable: true },
   ],
   additionalInfo: service.suitableFor,
 }));
@@ -277,7 +273,7 @@ const serviceItems = services.value.map((service) => ({
       </template>
     </SubHeader>
     <BottomToTopSlideTransition duration="500">
-      <ExpandableList
+      <BulltetList
         :items="serviceItems"
         :show-numbers="false"
         additional-info-label="Best for:"
@@ -292,13 +288,12 @@ const serviceItems = services.value.map((service) => ({
       <p class="text-xl mb-8 max-w-4xl">
         {{
           t(
-            "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs.",
+            "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs."
           )
         }}
       </p>
       <TechnologySlider />
     </section>
-
     <section class="py-12 md:py-16">
       <h2 class="text-3xl md:text-4xl font-bold mb-8">
         {{ t("Why Choose Our Services ?") }}
@@ -309,12 +304,6 @@ const serviceItems = services.value.map((service) => ({
           :key="index"
           class="py-6 max-w-4xl"
         >
-          <i
-            :class="[
-              item.icon,
-              'text-3xl text-gray-600 dark:text-gray-400 mb-4',
-            ]"
-          ></i>
           <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
           <p>{{ item.description }}</p>
         </div>

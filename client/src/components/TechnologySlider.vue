@@ -2,7 +2,7 @@
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, onUnmounted } from "vue";
 
 import typescriptLogo from "@/assets/tech/typescript-logo.svg";
 import phpLogo from "@/assets/tech/php-logo.svg";
@@ -58,7 +58,7 @@ const technologies = [
 const containerRef = ref<HTMLDivElement | null>(null);
 const sliderRef = ref<HTMLDivElement | null>(null);
 const scrollPosition = ref(0);
-const scrollSpeed = 0.2; // Reduced speed (adjust as needed)
+const scrollSpeed = 0.2;
 
 const clonedTechnologies = computed(() => [...technologies, ...technologies]);
 
@@ -76,8 +76,55 @@ const startAutoScroll = () => {
   requestAnimationFrame(animate);
 };
 
+const activeTechnologies = ref<Set<string>>(new Set());
+let blinkInterval: number;
+
+const startBlinkEffect = () => {
+  const blinkLogo = () => {
+    const visibleLogos = getVisibleLogos();
+    if (visibleLogos.length > 0 && Math.random() < 0.3) {
+      // 30% chance to blink
+      const randomIndex = Math.floor(Math.random() * visibleLogos.length);
+      const techToActivate = visibleLogos[randomIndex];
+      activeTechnologies.value.add(techToActivate);
+      setTimeout(() => {
+        activeTechnologies.value.delete(techToActivate);
+      }, 1000);
+    }
+  };
+
+  blinkInterval = window.setInterval(blinkLogo, 3000); // Increased interval to 3 seconds
+};
+
+const getVisibleLogos = () => {
+  if (!containerRef.value) return [];
+
+  const containerRect = containerRef.value.getBoundingClientRect();
+  const logoElements = containerRef.value.querySelectorAll(".logo-wrapper");
+  const visibleLogos: string[] = [];
+
+  logoElements.forEach((logo) => {
+    const logoRect = logo.getBoundingClientRect();
+    if (
+      logoRect.left >= containerRect.left &&
+      logoRect.right <= containerRect.right
+    ) {
+      visibleLogos.push(logo.getAttribute("data-tech-name") || "");
+    }
+  });
+
+  return visibleLogos;
+};
+
 onMounted(() => {
   startAutoScroll();
+  startBlinkEffect();
+});
+
+onUnmounted(() => {
+  if (blinkInterval) {
+    clearInterval(blinkInterval);
+  }
 });
 
 const blackLogos = [
@@ -107,12 +154,14 @@ const isBlackLogo = (name: string) =>
           >
             <div
               class="logo-wrapper w-24 h-24 flex items-center justify-center"
+              :class="{ 'active-logo': activeTechnologies.has(tech.name) }"
+              :data-tech-name="tech.name"
             >
               <img
                 :src="tech.logo"
                 :alt="tech.name"
                 :class="[
-                  'max-w-full max-h-full object-contain transition-all grayscale opacity-70 duration-300 logo-svg',
+                  'max-w-full max-h-full object-contain transition-all grayscale hover:grayscale-0 opacity-70 hover:opacity-100 duration-300 logo-svg',
                   { 'dark-mode-white-fill': isBlackLogo(tech.name) },
                 ]"
               />
@@ -158,6 +207,23 @@ const isBlackLogo = (name: string) =>
 
 .logo-svg {
   transition: all 0.3s ease;
+}
+
+.active-logo {
+  animation: blink 1s ease-in-out;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+    filter: grayscale(0);
+  }
 }
 
 :root.dark .dark-mode-white-fill {

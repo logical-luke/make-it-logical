@@ -5,6 +5,7 @@ import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 import ExpandableList from "@/components/ExpandableList.vue";
+import BulltetList from "@/components/BulltetList.vue";
 
 const { t } = useI18n();
 
@@ -102,7 +103,7 @@ const processItems = processSteps.value.map((step) => ({
     </SubHeader>
     <BottomToTopSlideTransition>
       <div class="flex flex-col gap-4 max-w-4xl">
-        <ExpandableList :items="processItems" :show-numbers="true" />
+        <BulltetList :items="processItems" :show-numbers="true" />
       </div>
     </BottomToTopSlideTransition>
   </section>

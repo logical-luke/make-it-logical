@@ -1,43 +1,84 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
+import { ref } from "vue";
 import LinkItem from "@/components/LinkItem.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 import BulbShape from "@/components/BulbShape.vue";
+import ExpandableList from "@/components/ExpandableList.vue";
 
-const features = [
+const { t } = useI18n();
+
+const services = ref([
   {
-    icon: "pi pi-comments",
-    title: t("Listen"),
-    description: t("Your vis  ion is decoded into actionable tech plans."),
+    title: t("Planning & Leadership"),
+    additionalInfo: t("We transform visions into actionable plans. Our approach aligns technology with business goals, creating clear roadmaps for success. By coordinating cross-functional teams, we ensure smooth project delivery. The result? Streamlined operations, improved performance, and faster time-to-market. Our leadership doesn't just manage projects; it drives innovation and maximizes ROI.")
   },
   {
-    icon: "pi pi-pencil",
-    title: t("Design"),
-    description: t("Intuitive solutions that users love are crafted."),
+    title: t("User Experience Design"),
+    additionalInfo: t("Great design goes beyond aesthetics; it solves problems. We start with in-depth user research, uncovering needs and pain points. This insight drives our design process, resulting in intuitive interfaces that users love. We iterate based on feedback, ensuring each design decision enhances user satisfaction. The outcome is increased engagement, higher retention rates, and a strong competitive edge.")
   },
   {
-    icon: "pi pi-cog",
-    title: t("Build"),
-    description: t("Concepts are transformed into powerful digital realities."),
+    title: t("Software Development"),
+    additionalInfo: t("Code is the backbone of digital success. We build robust, scalable solutions using cutting-edge technologies. Our development process emphasizes quality, security, and performance. We create flexible architectures that grow with your business, ensuring long-term value. The result is software that not only meets current needs but is primed for future challenges.")
   },
   {
-    icon: "pi pi-check-circle",
-    title: t("Deliver"),
-    description: t("Solutions that drive tangible results are launched."),
+    title: t("Technical Operations"),
+    additionalInfo: t("Smooth operations are crucial for business continuity. We implement efficient systems for software delivery and updates, enhancing reliability and performance. Our approach optimizes resource utilization and implements proactive monitoring. This leads to reduced downtime, improved security, and significant cost savings. We turn potential technical headaches into operational strengths.")
   },
   {
-    icon: "pi pi-chart-line",
-    title: t("Improve"),
-    description: t("Optimize and refine for ongoing success."),
+    title: t("Application Improvements"),
+    additionalInfo: t("In the digital world, standing still means falling behind. We provide continuous enhancements to keep your software at peak performance. Regular audits identify optimization opportunities in functionality, security, and user experience. We implement updates that not only fix issues but add value. The result is software that evolves with your business, consistently meeting and exceeding user expectations.")
   },
-];
+  {
+    title: t("Software Modernization"),
+    additionalInfo: t("Legacy systems often hold untapped potential. Our modernization approach preserves valuable business logic while upgrading technology. We implement modern architectures and cloud solutions, enhancing performance and scalability. This process not only extends the life of your software but opens new possibilities for innovation. The outcome is revitalized systems that drive business growth and efficiency.")
+  },
+  {
+    title: t("Search Engine Optimization"),
+    additionalInfo: t("Visibility is key in the digital marketplace. Our SEO strategies go beyond keywords, focusing on creating valuable, relevant content. We optimize website structure and performance, enhancing user experience and search rankings. Our data-driven approach continuously refines strategies for maximum impact. The result is increased organic traffic, better user engagement, and improved conversion rates.")
+  }
+]);
+
+const processSteps = ref([
+  {
+    label: t("Listen"),
+    additionalInfo: t("Understanding is the foundation of success. We begin by deeply exploring your business goals, challenges, and vision. This phase involves comprehensive market research and stakeholder interviews. We analyze competitors, identify opportunities, and define clear, measurable objectives. The outcome is a well-defined project roadmap that aligns technology initiatives with business strategy, setting the stage for impactful solutions.")
+  },
+  {
+    label: t("Design"),
+    additionalInfo: t("Good design bridges user needs and business goals. We create user personas and journey maps to guide our process. Our designs balance aesthetics with functionality, ensuring intuitive user experiences. We use rapid prototyping and user testing to validate concepts early. This approach leads to interfaces that not only look great but significantly enhance user satisfaction and task completion rates.")
+  },
+  {
+    label: t("Build"),
+    additionalInfo: t("Quality development is an investment in your future. We employ agile methodologies to ensure flexibility and continuous delivery. Our coding standards emphasize cleanliness, efficiency, and security. We integrate robust testing frameworks to maintain high quality throughout development. The result is reliable, scalable software that forms a solid foundation for your digital presence.")
+  },
+  {
+    label: t("Deliver"),
+    additionalInfo: t("Launching is just the beginning of the journey. We ensure a smooth transition from development to production with comprehensive testing and staged rollouts. Our process includes thorough documentation and user training to facilitate adoption. We set up monitoring systems for proactive issue resolution. This phase culminates in the successful deployment of your solution, ready to deliver real-world value.")
+  },
+  {
+    label: t("Improve"),
+    additionalInfo: t("Digital solutions thrive on continuous improvement. We implement analytics to gather insights on user behavior and system performance. Regular feedback sessions with users and stakeholders guide our enhancement strategies. We prioritize updates based on business impact and user needs. This ongoing process ensures your solution remains cutting-edge, continuously adapting to new challenges and opportunities.")
+  }
+]);
+
+const serviceItems = services.value.map((service) => ({
+  title: service.title,
+  sublists: [],
+  additionalInfo: service.additionalInfo
+}));
+
+const processItems = processSteps.value.map((step) => ({
+  title: step.label,
+  sublists: [],
+  additionalInfo: step.additionalInfo
+}));
 </script>
+
 <template>
   <div class="flex flex-col gap-24">
-    <section class="md:min-h-[calc(100vh-44px)] flex flex-col md:flex-row">
-      <div class="w-full md:w-1/2 z-10 mb-8 md:mb-0">
+    <section class="min-h-[calc(100vh-230px)] flex flex-col md:flex-row">
+      <div class="w-full md:w-1/2 mb-8 md:mb-0">
         <BottomToTopSlideTransition duration="300">
           <h2
             class="flex flex-col text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
@@ -53,36 +94,11 @@ const features = [
         <BulbShape />
       </div>
     </section>
-    <section>
-      <BottomToTopSlideTransition>
+
+    <BottomToTopSlideTransition duration="500">
+      <section>
         <h2
           class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12"
-        >
-          {{ t("Digital Alchemy") }}
-        </h2>
-      </BottomToTopSlideTransition>
-      <BottomToTopSlideTransition>
-        <div class="flex flex-col gap-8 mb-12">
-          <div v-for="feature in features" :key="feature.title">
-            <div class="py-6">
-              <h3 class="text-2xl font-bold mb-4">{{ feature.title }}</h3>
-              <p class="text-lg">
-                {{ feature.description }}
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="flex justify-center">
-          <LinkItem to="/process">
-            {{ t("Unveil Process") }}
-          </LinkItem>
-        </div>
-      </BottomToTopSlideTransition>
-    </section>
-    <BottomToTopSlideTransition>
-      <section class="mt-16">
-        <h2
-          class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12 max-w-4xl"
         >
           {{ t("Solutions That Resonate") }}
         </h2>
@@ -92,15 +108,35 @@ const features = [
         <p class="text-xl md:text-2xl mb-12 max-w-4xl">
           {{ t("We craft experiences that connect, engage, and inspire.") }}
         </p>
-        <div class="flex justify-center">
+        <ExpandableList
+          :items="serviceItems"
+          :show-numbers="false"
+        />
+        <div class="flex justify-center mt-8">
           <LinkItem to="/services">
-            {{ t("Discover Magic") }}
+            {{ t("Explore Services") }}
+          </LinkItem>
+        </div>
+      </section>
+    </BottomToTopSlideTransition>
+
+    <BottomToTopSlideTransition duration="200">
+      <section>
+        <h2
+          class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12 max-w-4xl"
+        >
+          {{ t("Digital Alchemy") }}
+        </h2>
+        <ExpandableList :items="processItems" :show-numbers="true" />
+        <div class="flex justify-center mt-8">
+          <LinkItem to="/process">
+            {{ t("Discover Process") }}
           </LinkItem>
         </div>
       </section>
     </BottomToTopSlideTransition>
     <BottomToTopSlideTransition>
-      <section class="mt-16">
+      <section>
         <h2
           class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12 max-w-4xl"
         >
