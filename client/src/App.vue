@@ -11,7 +11,7 @@ const transitionTrigger = ref(0);
 
 import {
   getPageTitle,
-  getMetaDescription,
+  getMetaDescription
 } from "@/services/seoMetadataProvider";
 
 provide("transitionTrigger", transitionTrigger);
@@ -36,8 +36,8 @@ onMounted(() => {
     offers: {
       "@type": "Offer",
       price: "0",
-      priceCurrency: "USD",
-    },
+      priceCurrency: "USD"
+    }
   });
   document.head.appendChild(script);
 });
@@ -47,10 +47,10 @@ watch(
   () => {
     document.title = getPageTitle(route);
     document
-      .querySelector('meta[name="description"]')
+      .querySelector("meta[name=\"description\"]")
       ?.setAttribute("content", getMetaDescription(route));
   },
-  { immediate: true },
+  { immediate: true }
 );
 </script>
 

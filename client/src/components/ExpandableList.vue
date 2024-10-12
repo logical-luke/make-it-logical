@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import ArrowChevronRightIcon from "@/components/ArrowChevronRightIcon.vue";
 
 interface ListItem {
   title: string;
@@ -41,20 +42,19 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
             {{ index + 1 }}.
           </div>
           <h3
-            class="text-xl md:text-2xl text-black dark:text-gray-200 font-bold mr-2"
+            class="text-xl md:text-2xl text-black dark:text-gray-200 font-bold"
           >
             {{ item.title }}
           </h3>
-          <i
-            class="pi transition-transform duration-300"
+          <ArrowChevronRightIcon
+            class="h-4 -ml-2 fill-gray-400 hover:fill-black dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
             :class="[
-              'pi-chevron-down',
               { 'rotate-180': isExpanded(index) },
               isExpanded(index)
                 ? 'group-hover:-translate-y-0.5'
                 : 'group-hover:translate-y-0.5',
             ]"
-          ></i>
+          />
         </div>
         <Transition
           enter-active-class="transition-all duration-300 ease-out"
@@ -67,7 +67,7 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
           <div v-if="isExpanded(index)" class="flex flex-col gap-6 mt-4">
             <p v-if="item.additionalInfo">
               <span v-if="additionalInfoLabel" class="font-bold"
-                >{{ additionalInfoLabel }}
+              >{{ additionalInfoLabel }}
               </span>
               {{ item.additionalInfo }}
             </p>
@@ -75,13 +75,11 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
               <h4 v-if="sublist.title" class="font-bold mb-4">
                 {{ sublist.title }}
               </h4>
-              <ul class="space-y-3">
+              <ul class="space-y-3 list-disc px-4">
                 <li
                   v-for="subItem in sublist.items"
                   :key="subItem.text"
-                  class="flex items-center"
                 >
-                  <i class="mr-3 md:mx-3 text-xs pi pi-circle"></i>
                   {{ subItem.text }}
                 </li>
               </ul>

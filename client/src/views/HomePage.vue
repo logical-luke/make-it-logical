@@ -2,83 +2,57 @@
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
-import StartupImage from "@/components/StartupImage.vue";
 import LinkItem from "@/components/LinkItem.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
-import FadeTransition from "@/components/FadeTransition.vue";
+import BulbShape from "@/components/BulbShape.vue";
 
 const features = [
   {
     icon: "pi pi-comments",
     title: t("Listen"),
-    description: t("Your vision is decoded into actionable tech plans."),
+    description: t("Your vis  ion is decoded into actionable tech plans.")
   },
   {
     icon: "pi pi-pencil",
     title: t("Design"),
-    description: t("Intuitive solutions that users love are crafted."),
+    description: t("Intuitive solutions that users love are crafted.")
   },
   {
     icon: "pi pi-cog",
     title: t("Build"),
-    description: t("Concepts are transformed into powerful digital realities."),
+    description: t("Concepts are transformed into powerful digital realities.")
   },
   {
     icon: "pi pi-check-circle",
     title: t("Deliver"),
-    description: t("Solutions that drive tangible results are launched."),
+    description: t("Solutions that drive tangible results are launched.")
   },
   {
     icon: "pi pi-chart-line",
     title: t("Improve"),
-    description: t("Optimize and refine for ongoing success."),
-  },
+    description: t("Optimize and refine for ongoing success.")
+  }
 ];
 </script>
-
 <template>
   <div class="flex flex-col gap-24">
-    <section class="md:min-h-[calc(100vh-280px)] flex flex-col">
-      <div class="flex flex-col md:flex-row items-center flex-grow">
-        <div class="w-full md:w-1/2 flex flex-col justify-between h-full">
-          <div>
-            <BottomToTopSlideTransition duration="300">
-              <h2
-                class="flex flex-col text-5xl md:text-6xl lg:text-7xl mb-8 font-bold leading-1"
-              >
-                <span class="font-normal">{{ t("Web") }}</span>
-                <span>{{ t("Simplified") }}</span>
-                <span class="font-normal">{{ t("Humanity") }}</span>
-                <span>{{ t("Amplified") }}</span>
-              </h2>
-            </BottomToTopSlideTransition>
-          </div>
-          <div class="mt-auto">
-            <BottomToTopSlideTransition duration="500">
-              <p class="text-xl sm:text-2xl md:text-3xl mb-6">
-                {{ t("Bridging technology and human understanding.") }}
-              </p>
-              <p class="text-xl sm:text-2xl md:text-3xl mb-12">
-                {{ t("Simplifying the") }}
-                <span class="font-semibold">{{ t("web, for the people") }}</span
-                >.
-              </p>
-            </BottomToTopSlideTransition>
-          </div>
-        </div>
-        <div class="w-full md:w-1/2">
-          <div
-            class="aspect-w-16 opacity-80 dark:opacity-70 aspect-h-9 md:aspect-w-1 md:aspect-h-1"
-          >
-            <FadeTransition>
-              <StartupImage class="w-full h-full object-cover" />
-            </FadeTransition>
-          </div>
-        </div>
+    <section
+      class="md:min-h-[calc(100vh-44px)] flex flex-col md:flex-row">
+      <div class="w-full md:w-1/2 z-10 mb-8 md:mb-0">
+        <BottomToTopSlideTransition duration="300">
+          <h2 class="flex flex-col text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+            <span class="font-normal">{{ t("Web") }}</span>
+            <span>{{ t("Simplified") }}</span>
+            <span class="font-normal">{{ t("Humanity") }}</span>
+            <span>{{ t("Amplified") }}</span>
+          </h2>
+        </BottomToTopSlideTransition>
+      </div>
+      <div class="w-full md:w-1/2 -mt-4 md:mt-0 -ml-8">
+          <BulbShape/>
       </div>
     </section>
-
-    <section class="mt-20">
+    <section>
       <BottomToTopSlideTransition>
         <h2
           class="text-gray-800 dark:text-gray-200 text-4xl md:text-5xl font-bold mb-12"
@@ -90,12 +64,6 @@ const features = [
         <div class="flex flex-col gap-8 mb-12">
           <div v-for="feature in features" :key="feature.title">
             <div class="py-6">
-              <i
-                :class="[
-                  feature.icon,
-                  'text-5xl py-4 text-gray-400 dark:text-gray-600',
-                ]"
-              ></i>
               <h3 class="text-2xl font-bold mb-4">{{ feature.title }}</h3>
               <p class="text-lg">
                 {{ feature.description }}
