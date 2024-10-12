@@ -32,7 +32,7 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
     <div v-for="(item, index) in items" :key="item.title">
       <div>
         <div
-          class="group flex items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
+          class="group flex w-fit items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
           @click="toggleExpand(index)"
         >
           <div
@@ -47,7 +47,7 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
             {{ item.title }}
           </h3>
           <ArrowChevronRightIcon
-            class="h-4 -ml-2 fill-gray-400 hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+            class="h-4 -ml-2 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
             :class="[
               { 'rotate-180': isExpanded(index) },
               isExpanded(index)
