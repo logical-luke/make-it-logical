@@ -37,7 +37,7 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
         >
           <div
             v-if="showNumbers"
-            class="text-2xl font-bold mr-2 text-gray-800 dark:text-gray-200"
+            class="text-xl md:text-2xl font-bold mr-2 text-gray-800 dark:text-gray-200"
           >
             {{ index + 1 }}.
           </div>

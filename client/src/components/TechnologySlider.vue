@@ -53,7 +53,7 @@ const technologies = [
   { name: "Cloudflare", logo: cloudflareLogo },
   { name: "Sentry", logo: sentryLogo },
   { name: "Cypress", logo: cypressLogo },
-  { name: "RabbitMQ", logo: rabbitMqLogo }
+  { name: "RabbitMQ", logo: rabbitMqLogo },
 ];
 
 const containerRef = ref<HTMLDivElement | null>(null);
@@ -222,16 +222,12 @@ const getVisibleLogos = () => {
   return visibleLogos;
 };
 
-const preventDragStart = (e: DragEvent) => {
-  e.preventDefault();
-};
-
 onMounted(() => {
   startAutoScroll();
   startBlinkEffect();
   if (containerRef.value) {
     containerRef.value.addEventListener("wheel", handleWheel, {
-      passive: false
+      passive: false,
     });
   }
 });
@@ -259,7 +255,7 @@ const blackLogos = [
   "cypress",
   "sentry",
   "symfony",
-  "openai"
+  "openai",
 ];
 
 const isBlackLogo = (name: string) =>
@@ -267,7 +263,9 @@ const isBlackLogo = (name: string) =>
 </script>
 
 <template>
-  <div class="technology-slider-container relative px-4 md:px-6 lg:px-8">
+  <div
+    class="technology-slider-container relative px-4 md:px-6 lg:px-8 bg-gray-100 dark:bg-zinc-900"
+  >
     <div class="relative">
       <div
         ref="containerRef"
@@ -288,7 +286,7 @@ const isBlackLogo = (name: string) =>
             class="inline-flex flex-col items-center justify-center w-40 mx-4"
           >
             <div
-              class="logo-wrapper w-24 h-24 flex items-center justify-center"
+              class="logo-wrapper w-24 h-24 flex items-center justify-center bg-transparent"
               :class="{ 'active-logo': activeTechnologies.has(tech.name) }"
               :data-tech-name="tech.name"
             >
@@ -297,13 +295,12 @@ const isBlackLogo = (name: string) =>
                 :alt="tech.name"
                 draggable="false"
                 :class="[
-                  'max-w-full max-h-full object-contain transition-all duration-300 logo-svg',
+                  'max-w-full max-h-full object-contain transition-all duration-300 logo-svg bg-transparent',
                   {
                     'logo-default': !isBlackLogo(tech.name),
                     'logo-dark-mode': isBlackLogo(tech.name),
                   },
                 ]"
-                @dragstart.prevent
               />
             </div>
             <p
@@ -321,7 +318,7 @@ const isBlackLogo = (name: string) =>
     <div class="mt-6 text-xs text-gray-500 dark:text-gray-300 text-center px-4">
       {{
         t(
-          "The logos displayed are trademarks or registered trademarks of their respective owners. Their use here does not imply endorsement of our website or service by the trademark owners."
+          "The logos displayed are trademarks or registered trademarks of their respective owners. Their use here does not imply endorsement of our website or service by the trademark owners.",
         )
       }}
     </div>
@@ -371,7 +368,7 @@ const isBlackLogo = (name: string) =>
 .active-logo img {
   opacity: 1 !important;
   filter: grayscale(0%) !important;
-  transform: scale(1.15);
+  transform: scale(1.03);
 }
 
 :root.dark .active-logo .logo-dark-mode {
@@ -379,12 +376,13 @@ const isBlackLogo = (name: string) =>
 }
 
 @keyframes blink {
-  0%, 100% {
+  0%,
+  100% {
     transform: scale(1);
     opacity: 0.7;
   }
   50% {
-    transform: scale(1.15);
+    transform: scale(1.03);
     opacity: 1;
   }
 }
@@ -419,17 +417,24 @@ const isBlackLogo = (name: string) =>
   bottom: 0;
   width: 100px;
   pointer-events: none;
-  z-index: 1;
 }
 
 .fade-left {
   left: 0;
-  background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    to right,
+    rgb(243 244 246) 0%,
+    rgba(243, 244, 246, 0) 100%
+  );
 }
 
 .fade-right {
   right: 0;
-  background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    to left,
+    rgb(243 244 246) 0%,
+    rgba(243, 244, 246, 0) 100%
+  );
 }
 
 :root.dark .fade-left {

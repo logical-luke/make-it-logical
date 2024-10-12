@@ -4,7 +4,16 @@ export default {
   darkMode: ['selector'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['"Sinkin Sans"', 'sans-serif'],
+      },
+      transitionDuration: {
+        '1300': '2000ms',
+        '1500': '2000ms',
+        '2000': '2000ms',
+      },
       colors: {
+        'black': '#050411',
         'honolulu-blue': {
           DEFAULT: '#197bbd',
           50: '#cbe6f8',

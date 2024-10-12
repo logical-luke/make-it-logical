@@ -3,7 +3,7 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
 </script>
 
 <template>
-  <BottomToTopSlideTransition duration="500">
+  <BottomToTopSlideTransition duration="1300">
     <div class="flex flex-col gap-6 py-6 mb-10 md:mb-24">
       <p class="text-xl md:text-2xl mb-4 max-w-4xl">
         <slot></slot>

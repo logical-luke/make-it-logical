@@ -40,7 +40,7 @@ watch(
         {{ t("Share contact.") }}
       </template>
     </SubHeader>
-    <BottomToTopSlideTransition>
+    <BottomToTopSlideTransition duration="1300">
       <div v-if="show" class="flex flex-col gap-6 mx-auto mb-16">
         <div class="flex flex-col gap-4 w-full">
           <LinkItem

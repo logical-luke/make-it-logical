@@ -17,7 +17,7 @@ defineProps<Props>();
     class="flex duration-300 transition-all gap-0 hover:gap-2 items-center text-xl fill-gray-400 hover:fill-black dark:fill-gray-400 dark:hover:fill-gray-200"
   >
     <span
-      class="underline text-black dark:text-gray-200 decoration-gray-400 dark:hover:decoration-white hover:decoration-black underline-offset-8 hover:decoration-3"
+      class="underline text-black dark:text-gray-200 decoration-gray-400 dark:hover:decoration-gray-100 hover:decoration-black underline-offset-8 hover:decoration-3"
       ><slot></slot
     ></span>
     <ArrowRightIcon v-if="!disableIcon" class="h-5 -ml-3" />
@@ -27,10 +27,10 @@ defineProps<Props>();
     :href="to"
     target="_blank"
     rel="noopener noreferrer"
-    class="flex duration-300 transition-all gap-2 hover:gap-4 items-center text-xl text-gray-400 hover:text-black dark:hover:text-white"
+    class="flex duration-300 transition-all gap-2 hover:gap-4 items-center text-xl text-gray-400 hover:text-black dark:hover:text-gray-100"
   >
     <span
-      class="underline text-black dark:text-gray-200 decoration-gray-400 dark:hover:decoration-white hover:decoration-black underline-offset-8 hover:decoration-3"
+      class="underline text-black dark:text-gray-200 decoration-gray-400 dark:hover:decoration-gray-100 hover:decoration-black underline-offset-8 hover:decoration-3"
       ><slot></slot
     ></span>
   </a>

@@ -13,6 +13,7 @@ import {
   getPageTitle,
   getMetaDescription,
 } from "@/services/seoMetadataProvider";
+import FadeTransition from "@/components/FadeTransition.vue";
 
 provide("transitionTrigger", transitionTrigger);
 
@@ -65,5 +66,7 @@ watch(
       </div>
     </main>
   </div>
-  <FooterSection />
+  <FadeTransition duration="1500">
+    <FooterSection />
+  </FadeTransition>
 </template>

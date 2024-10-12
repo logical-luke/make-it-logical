@@ -58,7 +58,7 @@ const services = ref([
     ),
   },
   {
-    title: t("Software Development"),
+    title: t("Development"),
     descriptionPoints: [
       t("Building reliable and scalable software solutions"),
       t("Leveraging the latest technologies and best practices"),
@@ -82,7 +82,7 @@ const services = ref([
     ),
   },
   {
-    title: t("Technical Operations"),
+    title: t("Operations"),
     descriptionPoints: [
       t("Setting up efficient systems for software delivery and updates"),
       t("Improving infrastructure reliability and resource utilization"),
@@ -110,7 +110,7 @@ const services = ref([
     ),
   },
   {
-    title: t("Application Improvements"),
+    title: t("Improvements"),
     descriptionPoints: [
       t("Ongoing enhancements to keep software running smoothly"),
       t(
@@ -136,7 +136,7 @@ const services = ref([
     ),
   },
   {
-    title: t("Software Modernization"),
+    title: t("Modernization"),
     descriptionPoints: [
       t("Refreshing outdated software systems with modern technologies"),
       t("Preserving critical business processes and data"),
@@ -270,7 +270,7 @@ const serviceItems = services.value.map((service) => ({
         {{ t("Creating value through technology and streamlined processes.") }}
       </template>
     </SubHeader>
-    <BottomToTopSlideTransition duration="500">
+    <BottomToTopSlideTransition duration="1500">
       <BulletList
         :items="serviceItems"
         :show-numbers="false"

@@ -18,8 +18,10 @@ watch(
 </script>
 
 <template>
-  <BottomToTopSlideTransition duration="300">
-    <h1 class="text-5xl leading-1 md:leading-24 font-semibold mb-8 max-w-4xl">
+  <BottomToTopSlideTransition duration="700">
+    <h1
+      class="text-3xl md:text-5xl leading-1 md:leading-24 font-semibold mb-8 max-w-4xl"
+    >
       <slot></slot>
     </h1>
   </BottomToTopSlideTransition>
