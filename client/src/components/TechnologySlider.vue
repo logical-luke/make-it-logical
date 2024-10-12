@@ -315,7 +315,7 @@ const isBlackLogo = (name: string) =>
       <div class="fade-right"></div>
     </div>
 
-    <div class="mt-6 text-xs text-gray-500 dark:text-gray-300 text-center px-4">
+    <div class="mt-6 text-xs text-gray-700 dark:text-gray-300 text-center px-4">
       {{
         t(
           "The logos displayed are trademarks or registered trademarks of their respective owners. Their use here does not imply endorsement of our website or service by the trademark owners.",
