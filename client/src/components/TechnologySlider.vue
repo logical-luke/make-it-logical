@@ -294,6 +294,7 @@ const isBlackLogo = (name: string) =>
                 :src="tech.logo"
                 :alt="tech.name"
                 draggable="false"
+                loading="lazy"
                 :class="[
                   'max-w-full max-h-full object-contain transition-all duration-300 logo-svg bg-transparent',
                   {
