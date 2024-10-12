@@ -53,7 +53,7 @@ const technologies = [
   { name: "Cloudflare", logo: cloudflareLogo },
   { name: "Sentry", logo: sentryLogo },
   { name: "Cypress", logo: cypressLogo },
-  { name: "RabbitMQ", logo: rabbitMqLogo },
+  { name: "RabbitMQ", logo: rabbitMqLogo }
 ];
 
 const containerRef = ref<HTMLDivElement | null>(null);
@@ -222,12 +222,16 @@ const getVisibleLogos = () => {
   return visibleLogos;
 };
 
+const preventDragStart = (e: DragEvent) => {
+  e.preventDefault();
+};
+
 onMounted(() => {
   startAutoScroll();
   startBlinkEffect();
   if (containerRef.value) {
     containerRef.value.addEventListener("wheel", handleWheel, {
-      passive: false,
+      passive: false
     });
   }
 });
@@ -255,7 +259,7 @@ const blackLogos = [
   "cypress",
   "sentry",
   "symfony",
-  "openai",
+  "openai"
 ];
 
 const isBlackLogo = (name: string) =>
@@ -293,12 +297,10 @@ const isBlackLogo = (name: string) =>
                 :alt="tech.name"
                 draggable="false"
                 :class="[
-                  'max-w-full max-h-full object-contain transition-all opacity-70 duration-300 logo-svg',
+                  'max-w-full max-h-full object-contain transition-all duration-300 logo-svg',
                   {
-                    'grayscale hover:grayscale-0': !activeTechnologies.has(
-                      tech.name,
-                    ),
-                    'dark-mode-white-fill': isBlackLogo(tech.name),
+                    'logo-default': !isBlackLogo(tech.name),
+                    'logo-dark-mode': isBlackLogo(tech.name),
                   },
                 ]"
                 @dragstart.prevent
@@ -319,7 +321,7 @@ const isBlackLogo = (name: string) =>
     <div class="mt-6 text-xs text-gray-500 dark:text-gray-300 text-center px-4">
       {{
         t(
-          "The logos displayed are trademarks or registered trademarks of their respective owners. Their use here does not imply endorsement of our website or service by the trademark owners.",
+          "The logos displayed are trademarks or registered trademarks of their respective owners. Their use here does not imply endorsement of our website or service by the trademark owners."
         )
       }}
     </div>
@@ -342,22 +344,48 @@ const isBlackLogo = (name: string) =>
   pointer-events: none;
 }
 
+.logo-default {
+  opacity: 0.7;
+  filter: grayscale(100%);
+}
+
+.logo-dark-mode {
+  opacity: 0.7;
+  filter: grayscale(100%);
+}
+
+:root.dark .logo-dark-mode {
+  filter: grayscale(100%) brightness(0) invert(1);
+}
+
+.logo-default:hover,
+.logo-dark-mode:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+}
+
+:root.dark .logo-dark-mode:hover {
+  filter: grayscale(0%) brightness(0) invert(1);
+}
+
 .active-logo img {
   opacity: 1 !important;
-  filter: grayscale(0) !important;
+  filter: grayscale(0%) !important;
   transform: scale(1.15);
 }
 
+:root.dark .active-logo .logo-dark-mode {
+  filter: grayscale(0%) brightness(0) invert(1) !important;
+}
+
 @keyframes blink {
-  0%,
-  100% {
+  0%, 100% {
     transform: scale(1);
     opacity: 0.7;
   }
   50% {
-    transform: scale(1.03);
+    transform: scale(1.15);
     opacity: 1;
-    filter: grayscale(0);
   }
 }
 
