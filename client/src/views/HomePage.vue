@@ -10,37 +10,38 @@ const features = [
   {
     icon: "pi pi-comments",
     title: t("Listen"),
-    description: t("Your vis  ion is decoded into actionable tech plans.")
+    description: t("Your vis  ion is decoded into actionable tech plans."),
   },
   {
     icon: "pi pi-pencil",
     title: t("Design"),
-    description: t("Intuitive solutions that users love are crafted.")
+    description: t("Intuitive solutions that users love are crafted."),
   },
   {
     icon: "pi pi-cog",
     title: t("Build"),
-    description: t("Concepts are transformed into powerful digital realities.")
+    description: t("Concepts are transformed into powerful digital realities."),
   },
   {
     icon: "pi pi-check-circle",
     title: t("Deliver"),
-    description: t("Solutions that drive tangible results are launched.")
+    description: t("Solutions that drive tangible results are launched."),
   },
   {
     icon: "pi pi-chart-line",
     title: t("Improve"),
-    description: t("Optimize and refine for ongoing success.")
-  }
+    description: t("Optimize and refine for ongoing success."),
+  },
 ];
 </script>
 <template>
   <div class="flex flex-col gap-24">
-    <section
-      class="md:min-h-[calc(100vh-44px)] flex flex-col md:flex-row">
+    <section class="md:min-h-[calc(100vh-44px)] flex flex-col md:flex-row">
       <div class="w-full md:w-1/2 z-10 mb-8 md:mb-0">
         <BottomToTopSlideTransition duration="300">
-          <h2 class="flex flex-col text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+          <h2
+            class="flex flex-col text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
+          >
             <span class="font-normal">{{ t("Web") }}</span>
             <span>{{ t("Simplified") }}</span>
             <span class="font-normal">{{ t("Humanity") }}</span>
@@ -49,7 +50,7 @@ const features = [
         </BottomToTopSlideTransition>
       </div>
       <div class="w-full md:w-1/2 -mt-4 md:mt-0 -ml-8">
-          <BulbShape/>
+        <BulbShape />
       </div>
     </section>
     <section>

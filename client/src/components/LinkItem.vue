@@ -20,7 +20,7 @@ defineProps<Props>();
       class="underline text-black dark:text-gray-200 decoration-gray-400 dark:hover:decoration-white hover:decoration-black underline-offset-8 hover:decoration-3"
       ><slot></slot
     ></span>
-    <ArrowRightIcon v-if="!disableIcon" class="h-5 -ml-3"/>
+    <ArrowRightIcon v-if="!disableIcon" class="h-5 -ml-3" />
   </RouterLink>
   <a
     v-else

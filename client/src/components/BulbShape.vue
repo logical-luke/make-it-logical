@@ -15,13 +15,30 @@
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
-        <radialGradient id="bulbGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+        <radialGradient
+          id="bulbGradient"
+          cx="50%"
+          cy="50%"
+          r="50%"
+          fx="50%"
+          fy="50%"
+        >
           <stop offset="0%" stop-color="currentColor" stop-opacity="0.2" />
           <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
         </radialGradient>
       </defs>
-      <circle cx="600" cy="600" r="550" fill="url(#bulbGradient)" class="pulse-animation" />
-      <g id="layer1" transform="translate(150, 1050) scale(0.09, -0.09)" filter="url(#glow)">
+      <circle
+        cx="600"
+        cy="600"
+        r="550"
+        fill="url(#bulbGradient)"
+        class="pulse-animation"
+      />
+      <g
+        id="layer1"
+        transform="translate(150, 1050) scale(0.09, -0.09)"
+        filter="url(#glow)"
+      >
         <path
           v-for="(path, index) in paths"
           :key="index"
@@ -40,13 +57,23 @@
         />
       </g>
     </svg>
-    <div v-for="i in 5" :key="i" class="bubble" :style="bubbleStyles[i-1]"></div>
-    <div v-for="i in 3" :key="`spark-${i}`" class="spark" :style="sparkStyles[i-1]"></div>
+    <div
+      v-for="i in 5"
+      :key="i"
+      class="bubble"
+      :style="bubbleStyles[i - 1]"
+    ></div>
+    <div
+      v-for="i in 3"
+      :key="`spark-${i}`"
+      class="spark"
+      :style="sparkStyles[i - 1]"
+    ></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed, onUnmounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 
 const animationDuration = 2000;
 const pauseDuration = 3000;
@@ -83,59 +110,65 @@ const paths = [
   "m 5023.18,2033.95 c 0,-71.45 -57.94,-129.45 -129.42,-129.45 -71.47,0 -129.42,58 -129.42,129.45 0,71.47 57.95,129.41 129.42,129.41 71.48,0 129.42,-57.94 129.42,-129.41",
   "m 5640.93,1364.5 c 105.52,-138.6 -51.08,-295.2 -189.6,-189.7 -105.51,138.6 51.08,295.2 189.6,189.7",
   "m 6359.06,1364.5 c -105.51,-138.6 51.09,-295.2 189.61,-189.7 105.51,138.6 -51.07,295.2 -189.61,189.7",
-  "m 7207.68,2033.95 c 0,-71.45 -57.95,-129.45 -129.43,-129.45 -71.47,0 -129.42,58 -129.42,129.45 0,71.47 57.95,129.41 129.42,129.41 71.48,0 129.43,-57.94 129.43,-129.41"
+  "m 7207.68,2033.95 c 0,-71.45 -57.95,-129.45 -129.43,-129.45 -71.47,0 -129.42,58 -129.42,129.45 0,71.47 57.95,129.41 129.42,129.41 71.48,0 129.43,-57.94 129.43,-129.41",
 ];
 const pathLengths = computed(() => {
-  return paths.map(path => {
-    const dummyPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  return paths.map((path) => {
+    const dummyPath = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "path",
+    );
     dummyPath.setAttribute("d", path);
     return dummyPath.getTotalLength();
   });
 });
 
-const animationProgress = ref(pathLengths.value.map(length => length));
+const animationProgress = ref(pathLengths.value.map((length) => length));
 const glitchOpacity = ref(paths.map(() => 1));
 const rotation = ref(0);
-const bubbleStyles = ref(Array(5).fill().map(() => ({
-  left: "50%",
-  top: "50%",
-  opacity: 0,
-  transform: "translate(-50%, -50%) scale(0)"
-})));
-const sparkStyles = ref(Array(3).fill().map(() => ({
-  left: "50%",
-  top: "50%",
-  opacity: 0
-})));
+const bubbleStyles = ref(
+  Array(5)
+    .fill()
+    .map(() => ({
+      left: "50%",
+      top: "50%",
+      opacity: 0,
+      transform: "translate(-50%, -50%) scale(0)",
+    })),
+);
+const sparkStyles = ref(
+  Array(3)
+    .fill()
+    .map(() => ({
+      left: "50%",
+      top: "50%",
+      opacity: 0,
+    })),
+);
 const animate = async () => {
   const randomOrder = paths.map((_, i) => i).sort(() => Math.random() - 0.5);
 
-  // Draw paths
   for (const index of randomOrder) {
     animationProgress.value[index] = 0;
-    await new Promise(resolve => setTimeout(resolve, 50));
+    await new Promise((resolve) => setTimeout(resolve, 50));
   }
-  await new Promise(resolve => setTimeout(resolve, animationDuration));
+  await new Promise((resolve) => setTimeout(resolve, animationDuration));
 
-  // Pause
-  await new Promise(resolve => setTimeout(resolve, pauseDuration));
+  await new Promise((resolve) => setTimeout(resolve, pauseDuration));
 
-  // Erase paths
   for (const index of randomOrder.reverse()) {
     animationProgress.value[index] = pathLengths.value[index];
-    await new Promise(resolve => setTimeout(resolve, 50));
+    await new Promise((resolve) => setTimeout(resolve, 50));
   }
-  await new Promise(resolve => setTimeout(resolve, animationDuration));
+  await new Promise((resolve) => setTimeout(resolve, animationDuration));
 
-  // Pause
-  await new Promise(resolve => setTimeout(resolve, pauseDuration));
+  await new Promise((resolve) => setTimeout(resolve, pauseDuration));
 
-  // Repeat animation
   requestAnimationFrame(animate);
 };
 const glitchEffect = () => {
   setInterval(() => {
-    glitchOpacity.value = paths.map(() => Math.random() < 0.02 ? 0.5 : 1);
+    glitchOpacity.value = paths.map(() => (Math.random() < 0.02 ? 0.5 : 1));
   }, 200);
 };
 
@@ -156,7 +189,7 @@ const bubbleEffect = () => {
         transform: `translate(-50%, -50%) scale(${Math.random() * 0.5 + 0.5})`,
         width: `${size}px`,
         height: `${size}px`,
-        transition: "all 3s ease-out"
+        transition: "all 3s ease-out",
       };
     });
   }, 2000);
@@ -169,16 +202,14 @@ const sparkEffect = () => {
       top: `${Math.random() * 100}%`,
       opacity: Math.random() * 0.7 + 0.3,
       transform: `scale(${Math.random() * 0.5 + 0.5})`,
-      transition: "all 0.5s ease-out"
+      transition: "all 0.5s ease-out",
     }));
   }, 1500);
 };
 
 onMounted(() => {
-  // Start with empty state
-  animationProgress.value = pathLengths.value.map(length => length);
+  animationProgress.value = pathLengths.value.map((length) => length);
 
-  // Start animation after a short delay
   setTimeout(() => {
     animate();
     glitchEffect();

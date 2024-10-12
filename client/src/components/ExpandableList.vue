@@ -67,7 +67,7 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
           <div v-if="isExpanded(index)" class="flex flex-col gap-6 mt-4">
             <p v-if="item.additionalInfo">
               <span v-if="additionalInfoLabel" class="font-bold"
-              >{{ additionalInfoLabel }}
+                >{{ additionalInfoLabel }}
               </span>
               {{ item.additionalInfo }}
             </p>
@@ -76,10 +76,7 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
                 {{ sublist.title }}
               </h4>
               <ul class="space-y-3 list-disc px-4">
-                <li
-                  v-for="subItem in sublist.items"
-                  :key="subItem.text"
-                >
+                <li v-for="subItem in sublist.items" :key="subItem.text">
                   {{ subItem.text }}
                 </li>
               </ul>

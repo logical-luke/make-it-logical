@@ -18,7 +18,7 @@ const i18n = createI18n({
 });
 
 app.use(VueGtag, {
-  config: { id: "G-CYEFZ0M938" }
+  config: { id: "G-CYEFZ0M938" },
 });
 
 app.use(i18n);

@@ -12,7 +12,7 @@ const mobileMenuOpen = ref(false);
 const navItems = ref([
   { id: 1, name: "Services", path: "/services" },
   { id: 2, name: "Process", path: "/process" },
-  { id: 3, name: "Contact", path: "/contact" }
+  { id: 3, name: "Contact", path: "/contact" },
 ]);
 
 const toggleMobileMenu = () => {
