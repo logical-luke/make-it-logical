@@ -64,7 +64,7 @@ const isExpanded = (itemTitle: string, sublistTitle: string) => {
                 {{ sublist.title }}
               </h4>
               <ArrowChevronRightIcon
-                class="h-4 -ml-4 fill-gray-400 hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+                class="h-4 -ml-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
                 :class="[
               { 'rotate-180': isExpanded(item.title, sublist.title) },
               isExpanded(item.title, sublist.title)
