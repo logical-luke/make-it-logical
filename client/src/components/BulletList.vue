@@ -20,8 +20,8 @@ defineProps<{
 
 const expandedSublists = ref(new Set<string>());
 
-const toggleExpand = (itemTitle: string, sublistTitle: string) => {
-  const key = `${itemTitle}-${sublistTitle}`;
+const toggleExpand = (itemTitle: string, index: number) => {
+  const key = `${itemTitle}-${index}`;
   if (expandedSublists.value.has(key)) {
     expandedSublists.value.delete(key);
   } else {
@@ -29,8 +29,8 @@ const toggleExpand = (itemTitle: string, sublistTitle: string) => {
   }
 };
 
-const isExpanded = (itemTitle: string, sublistTitle: string) => {
-  return expandedSublists.value.has(`${itemTitle}-${sublistTitle}`);
+const isExpanded = (itemTitle: string, index: number) => {
+  return expandedSublists.value.has(`${itemTitle}-${index}`);
 };
 </script>
 
@@ -61,7 +61,7 @@ const isExpanded = (itemTitle: string, sublistTitle: string) => {
             {{ item.additionalInfo }}
           </p>
           <div
-            v-for="sublist in item.sublists"
+            v-for="(sublist, index) in item.sublists"
             :key="sublist.title"
             class="flex flex-col gap-6"
           >
@@ -69,7 +69,7 @@ const isExpanded = (itemTitle: string, sublistTitle: string) => {
               v-if="sublist.title"
               class="group flex items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
               @click="
-                sublist.expandable && toggleExpand(item.title, sublist.title)
+                sublist.expandable && toggleExpand(item.title, index)
               "
             >
               <h4
@@ -80,8 +80,8 @@ const isExpanded = (itemTitle: string, sublistTitle: string) => {
               <ArrowChevronRightIcon
                 class="h-4 -ml-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
                 :class="[
-                  { 'rotate-180': isExpanded(item.title, sublist.title) },
-                  isExpanded(item.title, sublist.title)
+                  { 'rotate-180': isExpanded(item.title, index) },
+                  isExpanded(item.title, index)
                     ? 'group-hover:-translate-y-0.5'
                     : 'group-hover:translate-y-0.5',
                 ]"
@@ -97,7 +97,7 @@ const isExpanded = (itemTitle: string, sublistTitle: string) => {
             >
               <ul
                 v-if="
-                  !sublist.expandable || isExpanded(item.title, sublist.title)
+                  !sublist.expandable || isExpanded(item.title, index)
                 "
                 class="space-y-3 list-disc px-4"
               >

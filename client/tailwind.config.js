@@ -13,7 +13,7 @@ export default {
         '2000': '2000ms',
       },
       colors: {
-        'black': '#050411',
+        'black': '#05040E',
         'honolulu-blue': {
           DEFAULT: '#197bbd',
           50: '#cbe6f8',
