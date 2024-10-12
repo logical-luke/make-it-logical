@@ -34,8 +34,6 @@ const handleScroll = () => {
   lastScrollTop.value = scrollTop <= 0 ? 0 : scrollTop;
 };
 
-const isMainPage = computed(() => route.path === "/");
-
 onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 });
@@ -64,12 +62,11 @@ onMounted(() => {
               alt="Make IT Logical Logo"
               class="h-10 w-auto"
             />
-            <Component
-              :is="isMainPage ? 'h1' : 'span'"
+            <span
               class="text-2xl hidden md:block text-black dark:text-gray-200 font-bold"
             >
               Make IT Logical
-            </Component>
+            </span>
           </div>
         </RouterLink>
         <nav :class="{ hidden: !mobileMenuOpen, 'md:flex': true }">
