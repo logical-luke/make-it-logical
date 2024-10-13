@@ -173,7 +173,7 @@ const processItems = processSteps.value.map((step) => ({
         >
           {{ t("Digital Alchemy") }}
         </h2>
-        <ExpandableList :items="processItems"/>
+        <ExpandableList :items="processItems" />
         <div class="flex justify-center mt-8">
           <LinkItem to="/process">
             {{ t("Discover Process") }}

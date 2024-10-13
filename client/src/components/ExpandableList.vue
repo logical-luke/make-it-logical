@@ -15,13 +15,15 @@ defineProps<{
 
 const expandedItems = ref(new Set<number>());
 
-const toggleExpand = (index: number, event: Event) => {
+const toggleExpand = (index: number) => {
   if (expandedItems.value.has(index)) {
     expandedItems.value.delete(index);
   } else {
     expandedItems.value.add(index);
   }
-  (event.target as HTMLElement).blur();
+  if (document.activeElement instanceof HTMLElement) {
+    document.activeElement.blur();
+  }
 };
 
 const isExpanded = (index: number) => expandedItems.value.has(index);
@@ -33,7 +35,7 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
       <div>
         <div
           class="group flex w-full md:w-fit items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
-          @click="toggleExpand(index, $event)"
+          @click="toggleExpand(index)"
         >
           <div class="flex items-center">
             <ArrowChevronRightIcon
