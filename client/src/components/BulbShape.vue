@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 
-const animationDuration = 2600;
-const pauseDuration = 2400;
+const animationDuration = 700;
+const pauseDuration = 5700;
 
 const paths = [
   "M 7466.21,3888.71 H 4533.79 L 3244.08,5251.82 2510.1,7244.04 3055.35,9487.92 4753.98,10730.4 H 7246.02 L 8944.66,9487.92 9489.89,7244.04 8755.92,5251.82 7466.21,3888.71",
@@ -53,16 +53,6 @@ const pathLengths = computed(() => {
 const animationProgress = ref(pathLengths.value.map((length) => length));
 const glitchOpacity = ref(paths.map(() => 1));
 const rotation = ref(0);
-const bubbleStyles = ref(
-  Array(5)
-    .fill()
-    .map(() => ({
-      left: "50%",
-      top: "50%",
-      opacity: 0,
-      transform: "translate(-50%, -50%) scale(0)",
-    })),
-);
 
 const animate = async () => {
   const randomOrder = paths.map((_, i) => i).sort(() => Math.random() - 0.5);
@@ -81,7 +71,7 @@ const animate = async () => {
   }
   await new Promise((resolve) => setTimeout(resolve, animationDuration));
 
-  await new Promise((resolve) => setTimeout(resolve, pauseDuration));
+  await new Promise((resolve) => setTimeout(resolve, pauseDuration / 4));
 
   requestAnimationFrame(animate);
 };
@@ -102,23 +92,6 @@ const rotateEffect = () => {
   return () => cancelAnimationFrame(rotateInterval);
 };
 
-const bubbleEffect = () => {
-  setInterval(() => {
-    bubbleStyles.value = bubbleStyles.value.map(() => {
-      const size = Math.random() * 20 + 10;
-      return {
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        opacity: Math.random() * 0.5 + 0.2,
-        transform: `translate(-50%, -50%) scale(${Math.random() * 0.5 + 0.5})`,
-        width: `${size}px`,
-        height: `${size}px`,
-        transition: "all 3s ease-out",
-      };
-    });
-  }, 2000);
-};
-
 onMounted(() => {
   animationProgress.value = pathLengths.value.map((length) => length);
 
@@ -126,7 +99,6 @@ onMounted(() => {
     animate();
     glitchEffect();
     rotateEffect();
-    bubbleEffect();
   }, 200);
 });
 </script>
@@ -192,12 +164,6 @@ onMounted(() => {
         />
       </g>
     </svg>
-    <div
-      v-for="i in 5"
-      :key="i"
-      class="bubble"
-      :style="bubbleStyles[i - 1]"
-    ></div>
   </div>
 </template>
 
@@ -220,14 +186,5 @@ onMounted(() => {
   50% {
     opacity: 0.4;
   }
-}
-
-.bubble {
-  position: absolute;
-  background-color: currentColor;
-  border-radius: 50%;
-  opacity: 0.2;
-  pointer-events: none;
-  will-change: transform, opacity;
 }
 </style>
