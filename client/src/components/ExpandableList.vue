@@ -15,16 +15,28 @@ defineProps<{
 
 const expandedItems = ref(new Set<number>());
 
+const activeItems = ref(new Set<number>());
+
 const toggleExpand = (index: number) => {
   if (expandedItems.value.has(index)) {
     expandedItems.value.delete(index);
   } else {
     expandedItems.value.add(index);
   }
-  if (document.activeElement instanceof HTMLElement) {
-    document.activeElement.blur();
+
+  if (activeItems.value.has(index)) {
+    activeItems.value.delete(index);
+  } else {
+    activeItems.value.clear();
+    activeItems.value.add(index);
   }
+
+  setTimeout(() => {
+    activeItems.value.clear();
+  }, 100);
 };
+
+const isActive = (index: number) => activeItems.value.has(index);
 
 const isExpanded = (index: number) => expandedItems.value.has(index);
 </script>
@@ -34,7 +46,8 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
     <div v-for="(item, index) in items" :key="item.title">
       <div>
         <div
-          class="group flex w-full md:w-fit items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
+          class="group flex w-full md:w-fit items-center text-gray-400 dark:text-gray-600 cursor-pointer"
+          :data-active="isActive(index)"
           @click="toggleExpand(index)"
         >
           <div class="flex items-center">
@@ -85,3 +98,32 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
     </div>
   </div>
 </template>
+
+<style scoped>
+.group {
+  @apply hover:text-gray-600 dark:hover:text-gray-200;
+}
+
+.group[data-active="true"] {
+  @apply text-gray-600 dark:text-gray-200;
+}
+
+.svg-icon {
+  @apply fill-gray-400;
+}
+
+.group:hover .svg-icon,
+.group[data-active="true"] .svg-icon {
+  @apply fill-gray-800 dark:fill-gray-200;
+}
+
+@media (hover: none) {
+  .group:hover {
+    @apply text-gray-400 dark:text-gray-600;
+  }
+
+  .group:hover .svg-icon {
+    @apply fill-gray-400 dark:fill-gray-400;
+  }
+}
+</style>
