@@ -17,7 +17,7 @@ watch(
   () => {
     mobileMenuOpen.value = false;
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 const checkScrollPosition = () => {
@@ -27,7 +27,7 @@ const checkScrollPosition = () => {
 const navItems = ref([
   { id: 1, name: "Services", path: "/services" },
   { id: 2, name: "Process", path: "/process" },
-  { id: 3, name: "Contact", path: "/contact" }
+  { id: 3, name: "Contact", path: "/contact" },
 ]);
 
 const toggleMobileMenu = () => {
@@ -119,7 +119,7 @@ watch(mobileMenuOpen, (newValue) => {
           :class="[
             'transition-opacity duration-500 ease-in-out',
             { 'opacity-0 invisible': !mobileMenuOpen },
-            'md:opacity-100 md:visible'
+            'md:opacity-100 md:visible',
           ]"
         />
         <button
