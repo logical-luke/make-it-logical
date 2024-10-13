@@ -89,8 +89,9 @@ watch(mobileMenuOpen, (newValue) => {
         <RouterLink to="/" class="flex-shrink-0">
           <div class="flex items-center gap-4">
             <img
-              src="@/assets/logo.svg"
+              src="/logo.svg"
               height="40"
+              fetchPriority="high"
               width="27"
               alt="Make IT Logical Logo"
               class="h-10 w-auto"
