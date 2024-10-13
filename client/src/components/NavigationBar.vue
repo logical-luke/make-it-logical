@@ -17,7 +17,7 @@ watch(
   () => {
     mobileMenuOpen.value = false;
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 const checkScrollPosition = () => {
@@ -27,7 +27,7 @@ const checkScrollPosition = () => {
 const navItems = ref([
   { id: 1, name: "Services", path: "/services" },
   { id: 2, name: "Process", path: "/process" },
-  { id: 3, name: "Contact", path: "/contact" },
+  { id: 3, name: "Contact", path: "/contact" }
 ]);
 
 const toggleMobileMenu = () => {
@@ -115,16 +115,13 @@ watch(mobileMenuOpen, (newValue) => {
             </li>
           </ul>
         </nav>
-        <Transition
-          enter-active-class="duration-500 ease-in-out"
-          enter-from-class="opacity-0"
-          enter-to-class="opacity-100"
-          leave-active-class="duration-500 ease-in-out"
-          leave-from-class="opacity-100"
-          leave-to-class="opacity-0"
-        >
-          <ThemeToggleButton v-if="mobileMenuOpen" />
-        </Transition>
+        <ThemeToggleButton
+          :class="[
+            'transition-opacity duration-500 ease-in-out',
+            { 'opacity-0 invisible': !mobileMenuOpen },
+            'md:opacity-100 md:visible'
+          ]"
+        />
         <button
           type="button"
           :aria-label="mobileMenuOpen ? 'Close Menu' : 'Open Menu'"
@@ -141,7 +138,6 @@ watch(mobileMenuOpen, (newValue) => {
       </div>
     </div>
   </header>
-
   <Transition
     enter-active-class="duration-200 ease-out"
     enter-from-class="opacity-0"
