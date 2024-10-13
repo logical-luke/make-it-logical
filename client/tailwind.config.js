@@ -7,6 +7,9 @@ export default {
       fontFamily: {
         sans: ['"Sinkin Sans"', 'sans-serif'],
       },
+      future: {
+        hoverOnlyWhenSupported: true,
+      },
       transitionDuration: {
         '1300': '2000ms',
         '1500': '2000ms',
