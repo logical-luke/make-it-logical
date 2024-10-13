@@ -128,7 +128,6 @@ watch(mobileMenuOpen, (newValue) => {
           :class="[
             'text-2xl transition-all duration-300 ease-in-out transform',
             mobileMenuOpen ? 'pi pi-times rotate-90' : 'pi pi-bars',
-            'hover:rotate-90',
           ]"
         ></i>
       </button>
