@@ -6,9 +6,9 @@ export function getPageTitle(route: RouteLocationNormalized): string {
     case "/":
       return `${baseTitle} | We Deliver Complete Digital Solutions`;
     case "/services":
-      return `Services: Tailored Digital Solutions | ${baseTitle}`;
+      return `Services: Crafted Digital Solutions | ${baseTitle}`;
     case "/process":
-      return `Process: Concept to Successful Delivery | ${baseTitle}`;
+      return `Process: Steps to Successful Delivery | ${baseTitle}`;
     case "/contact":
       return `Contact: Create Your Next Big Thing | ${baseTitle}`;
     default:
