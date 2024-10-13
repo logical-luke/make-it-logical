@@ -1,82 +1,8 @@
-<template>
-  <div class="relative">
-    <svg
-      id="svg1"
-      viewBox="0 0 1200 1200"
-      xmlns="http://www.w3.org/2000/svg"
-      class="bulb-svg"
-      :style="{ transform: `rotate(${rotation}deg)` }"
-    >
-      <defs>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
-        </filter>
-        <radialGradient
-          id="bulbGradient"
-          cx="50%"
-          cy="50%"
-          r="50%"
-          fx="50%"
-          fy="50%"
-        >
-          <stop offset="0%" stop-color="currentColor" stop-opacity="0.2" />
-          <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
-        </radialGradient>
-      </defs>
-      <circle
-        cx="600"
-        cy="600"
-        r="550"
-        fill="url(#bulbGradient)"
-        class="pulse-animation"
-      />
-      <g
-        id="layer1"
-        transform="translate(150, 1050) scale(0.09, -0.09)"
-        filter="url(#glow)"
-      >
-        <path
-          v-for="(path, index) in paths"
-          :key="index"
-          :d="path"
-          :style="{
-            strokeDasharray: `${pathLengths[index]} ${pathLengths[index]}`,
-            strokeDashoffset: animationProgress[index],
-            transition: `stroke-dashoffset ${animationDuration}ms ease-in-out ${index * 50}ms`,
-            opacity: glitchOpacity[index],
-          }"
-          stroke="currentColor"
-          fill="none"
-          stroke-width="30"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </g>
-    </svg>
-    <div
-      v-for="i in 5"
-      :key="i"
-      class="bubble"
-      :style="bubbleStyles[i - 1]"
-    ></div>
-    <div
-      v-for="i in 3"
-      :key="`spark-${i}`"
-      class="spark"
-      :style="sparkStyles[i - 1]"
-    ></div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 
-const animationDuration = 2000;
-const pauseDuration = 3000;
+const animationDuration = 2600;
+const pauseDuration = 2400;
 
 const paths = [
   "M 7466.21,3888.71 H 4533.79 L 3244.08,5251.82 2510.1,7244.04 3055.35,9487.92 4753.98,10730.4 H 7246.02 L 8944.66,9487.92 9489.89,7244.04 8755.92,5251.82 7466.21,3888.71",
@@ -112,6 +38,7 @@ const paths = [
   "m 6359.06,1364.5 c -105.51,-138.6 51.09,-295.2 189.61,-189.7 105.51,138.6 -51.07,295.2 -189.61,189.7",
   "m 7207.68,2033.95 c 0,-71.45 -57.95,-129.45 -129.43,-129.45 -71.47,0 -129.42,58 -129.42,129.45 0,71.47 57.95,129.41 129.42,129.41 71.48,0 129.43,-57.94 129.43,-129.41",
 ];
+
 const pathLengths = computed(() => {
   return paths.map((path) => {
     const dummyPath = document.createElementNS(
@@ -136,15 +63,7 @@ const bubbleStyles = ref(
       transform: "translate(-50%, -50%) scale(0)",
     })),
 );
-const sparkStyles = ref(
-  Array(3)
-    .fill()
-    .map(() => ({
-      left: "50%",
-      top: "50%",
-      opacity: 0,
-    })),
-);
+
 const animate = async () => {
   const randomOrder = paths.map((_, i) => i).sort(() => Math.random() - 0.5);
 
@@ -166,6 +85,7 @@ const animate = async () => {
 
   requestAnimationFrame(animate);
 };
+
 const glitchEffect = () => {
   setInterval(() => {
     glitchOpacity.value = paths.map(() => (Math.random() < 0.02 ? 0.5 : 1));
@@ -173,9 +93,13 @@ const glitchEffect = () => {
 };
 
 const rotateEffect = () => {
-  setInterval(() => {
-    rotation.value = Math.sin(Date.now() / 1000) * 1.5;
-  }, 50);
+  let rotateInterval: number;
+  const rotate = () => {
+    rotation.value = Math.sin(Date.now() / 1000) * 7; // Increased amplitude
+    rotateInterval = requestAnimationFrame(rotate);
+  };
+  rotate();
+  return () => cancelAnimationFrame(rotateInterval);
 };
 
 const bubbleEffect = () => {
@@ -195,18 +119,6 @@ const bubbleEffect = () => {
   }, 2000);
 };
 
-const sparkEffect = () => {
-  setInterval(() => {
-    sparkStyles.value = sparkStyles.value.map(() => ({
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      opacity: Math.random() * 0.7 + 0.3,
-      transform: `scale(${Math.random() * 0.5 + 0.5})`,
-      transition: "all 0.5s ease-out",
-    }));
-  }, 1500);
-};
-
 onMounted(() => {
   animationProgress.value = pathLengths.value.map((length) => length);
 
@@ -215,15 +127,99 @@ onMounted(() => {
     glitchEffect();
     rotateEffect();
     bubbleEffect();
-    sparkEffect();
   }, 200);
 });
 </script>
+
+<template>
+  <div class="relative">
+    <svg
+      id="svg1"
+      viewBox="0 0 1200 1200"
+      xmlns="http://www.w3.org/2000/svg"
+      class="bulb-svg"
+      :style="{ transform: `rotate(${rotation}deg)` }"
+    >
+      <defs>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
+          <feMerge>
+            <feMergeNode in="coloredBlur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <radialGradient
+          id="bulbGradient"
+          cx="50%"
+          cy="50%"
+          r="50%"
+          fx="50%"
+          fy="50%"
+        >
+          <stop offset="0%" stop-color="currentColor" stop-opacity="0.2" />
+          <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+
+      <circle
+        cx="690"
+        cy="410"
+        r="410"
+        fill="url(#bulbGradient)"
+        class="glow-effect"
+      />
+
+      <g
+        id="layer1"
+        transform="translate(150, 1050) scale(0.09, -0.09)"
+        filter="url(#glow)"
+      >
+        <path
+          v-for="(path, index) in paths"
+          :key="index"
+          :d="path"
+          :style="{
+            strokeDasharray: `${pathLengths[index]} ${pathLengths[index]}`,
+            strokeDashoffset: animationProgress[index],
+            transition: `stroke-dashoffset ${animationDuration}ms ease-in-out ${index * 50}ms`,
+            opacity: glitchOpacity[index],
+          }"
+          stroke="currentColor"
+          fill="none"
+          stroke-width="30"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </g>
+    </svg>
+    <div
+      v-for="i in 5"
+      :key="i"
+      class="bubble"
+      :style="bubbleStyles[i - 1]"
+    ></div>
+  </div>
+</template>
 
 <style scoped>
 .bulb-svg {
   transition: transform 0.5s ease-in-out;
   shape-rendering: geometricPrecision;
+  will-change: transform;
+}
+
+.glow-effect {
+  animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.4;
+  }
 }
 
 .bubble {
@@ -232,42 +228,6 @@ onMounted(() => {
   border-radius: 50%;
   opacity: 0.2;
   pointer-events: none;
-}
-
-.spark {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  background-color: currentColor;
-  border-radius: 50%;
-  filter: blur(0.5px);
-  pointer-events: none;
-}
-
-@media (min-width: 768px) {
-  .spark {
-    width: 4px;
-    height: 4px;
-    filter: blur(1px);
-  }
-}
-
-.pulse-animation {
-  animation: pulse 4s infinite;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.95);
-    opacity: 0.7;
-  }
-  50% {
-    transform: scale(1);
-    opacity: 0.3;
-  }
-  100% {
-    transform: scale(0.95);
-    opacity: 0.7;
-  }
+  will-change: transform, opacity;
 }
 </style>

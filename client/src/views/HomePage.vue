@@ -123,7 +123,7 @@ const processItems = processSteps.value.map((step) => ({
           </h2>
         </BottomToTopSlideTransition>
       </div>
-      <div class="w-full md:w-1/2 mt-10 md:mt-0 -ml-8">
+      <div class="w-full md:w-1/2 mt-10 md:mt-0 -ml-7">
         <BulbShape />
       </div>
     </section>
