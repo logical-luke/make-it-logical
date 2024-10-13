@@ -75,7 +75,7 @@ const services = ref([
       { text: t("Scalable and maintainable codebase") },
       { text: t("Comprehensive testing and quality assurance reports") },
       { text: t("Detailed documentation and training materials") },
-      { text: t("Seamless integration with the client's existing systems") },
+      { text: t("Seamless integration with the other systems") },
     ],
     suitableFor: t(
       "Building custom software to automate processes or create new revenue streams.",
@@ -87,13 +87,13 @@ const services = ref([
       t("Setting up efficient systems for software delivery and updates"),
       t("Improving infrastructure reliability and resource utilization"),
       t("Implementing tools and processes to catch and fix issues quickly"),
-      t("Ensuring seamless integration with existing IT environments"),
+      t("Ensuring seamless integration with various IT environments"),
     ],
     benefits: [
       { text: t("Faster, more reliable software updates and deployments") },
       { text: t("Improved system uptime, performance, and security") },
       { text: t("Reduced operational costs and enhanced productivity") },
-      { text: t("Smooth integration with the client's technology stack") },
+      { text: t("Smooth integration with the current technology stack") },
     ],
     deliverables: [
       { text: t("Automated software delivery and deployment pipelines") },
@@ -103,7 +103,7 @@ const services = ref([
           "Optimized infrastructure configuration and resource utilization",
         ),
       },
-      { text: t("Seamless integration with the client's existing IT systems") },
+      { text: t("Seamless integration with the IT systems") },
     ],
     suitableFor: t(
       "Improving system reliability and reducing downtime in critical operations.",
@@ -116,7 +116,7 @@ const services = ref([
       t(
         "Regular updates for better performance, security, and user experience",
       ),
-      t("Improving existing code for efficiency and maintainability"),
+      t("Improving code for efficiency and maintainability"),
       t("Implementing proactive monitoring and issue prevention"),
     ],
     benefits: [
@@ -132,7 +132,7 @@ const services = ref([
       { text: t("Proactive monitoring and issue prevention strategies") },
     ],
     suitableFor: t(
-      "Enhancing existing software to handle increased user load or add new features.",
+      "Enhancing software to handle increased user load or add new features.",
     ),
   },
   {
@@ -160,9 +160,7 @@ const services = ref([
         text: t("Improved user interfaces and productivity-enhancing features"),
       },
       {
-        text: t(
-          "Smooth integration with the client's existing and future systems",
-        ),
+        text: t("Smooth integration with the existing and future systems"),
       },
     ],
     suitableFor: t(

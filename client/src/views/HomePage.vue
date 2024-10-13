@@ -171,7 +171,7 @@ const processItems = processSteps.value.map((step) => ({
         <h2
           class="text-gray-800 dark:text-gray-200 text-2xl md:text-5xl font-bold mb-12 max-w-4xl"
         >
-          {{ t("Digital Alchemy") }}
+          {{ t("Digital Orchestra") }}
         </h2>
         <ExpandableList :items="processItems" />
         <div class="flex justify-center mt-8">
@@ -206,7 +206,7 @@ const processItems = processSteps.value.map((step) => ({
         </div>
         <div class="flex justify-center">
           <LinkItem to="/contact">
-            {{ t("Ignite Journey") }}
+            {{ t("Ignite Success") }}
           </LinkItem>
         </div>
       </section>
