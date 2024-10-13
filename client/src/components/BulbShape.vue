@@ -78,7 +78,10 @@ const animate = async () => {
 
 const glitchEffect = () => {
   setInterval(() => {
-    glitchOpacity.value = paths.map(() => (Math.random() < 0.02 ? 0.5 : 1));
+    const isDark = document.documentElement.classList.contains("dark");
+    glitchOpacity.value = paths.map(() =>
+      Math.random() < 0.02 ? (isDark ? 0.7 : 0.4) : 1,
+    );
   }, 200);
 };
 
@@ -109,7 +112,7 @@ onMounted(() => {
       id="svg1"
       viewBox="0 0 1200 1200"
       xmlns="http://www.w3.org/2000/svg"
-      class="bulb-svg"
+      class="bulb-svg text-black dark:text-gray-200"
       :style="{ transform: `rotate(${rotation}deg)` }"
     >
       <defs>
@@ -186,5 +189,15 @@ onMounted(() => {
   50% {
     opacity: 0.4;
   }
+}
+
+/* Adjust glow intensity for light mode */
+:root:not(.dark) .glow-effect {
+  opacity: 0.5;
+}
+
+/* Enhance visibility in light mode */
+:root:not(.dark) .bulb-svg {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
 }
 </style>
