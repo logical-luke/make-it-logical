@@ -152,11 +152,11 @@ const processItems = processSteps.value.map((step) => ({
     <BottomToTopSlideTransition>
       <section>
         <h2
-          class="text-gray-800 dark:text-gray-200 text-lg md:text-4xl font-bold mb-8"
+          class="text-gray-800 dark:text-gray-200 text-xl md:text-4xl font-bold mb-6"
         >
           {{ t("Technologies We Work With") }}
         </h2>
-        <p class="text-xl mb-8 max-w-4xl">
+        <p class="text-lg md:text-2xl mb-8 max-w-4xl">
           {{
             t(
               "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs.",

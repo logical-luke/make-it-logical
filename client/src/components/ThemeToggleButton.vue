@@ -51,10 +51,8 @@ watch(
     @click="toggleTheme"
   >
     <i
-      class="text-2xl md:text-xl"
+      class="text-2xl md:text-xl transition-all duration-300 ease-in-out transform'"
       :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
     ></i>
   </button>
 </template>
-
-<style scoped></style>
