@@ -270,13 +270,12 @@ const serviceItems = services.value.map((service) => ({
         {{ t("Creating value through technology and streamlined processes.") }}
       </template>
     </SubHeader>
-    <BottomToTopSlideTransition duration="1500">
-      <BulletList
-        :items="serviceItems"
-        :show-numbers="false"
-        additional-info-label="Best for:"
-      />
-    </BottomToTopSlideTransition>
+
+    <BulletList
+      :items="serviceItems"
+      :show-numbers="false"
+      additional-info-label="Best for:"
+    />
   </section>
   <BottomToTopSlideTransition>
     <section class="py-12 md:py-16">
@@ -289,8 +288,10 @@ const serviceItems = services.value.map((service) => ({
           :key="index"
           class="py-6 max-w-4xl"
         >
-          <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
-          <p>{{ item.description }}</p>
+          <BottomToTopSlideTransition>
+            <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+          </BottomToTopSlideTransition>
         </div>
       </div>
     </section>

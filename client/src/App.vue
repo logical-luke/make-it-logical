@@ -66,7 +66,7 @@ watch(
       </div>
     </main>
   </div>
-  <FadeTransition duration="1500">
+  <FadeTransition duration="1500" :use-intersection-observer="false">
     <FooterSection />
   </FadeTransition>
 </template>

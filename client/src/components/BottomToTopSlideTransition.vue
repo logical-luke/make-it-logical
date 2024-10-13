@@ -1,19 +1,5 @@
 <script setup lang="ts">
-import { ref, inject, watch } from "vue";
-
-const transitionTrigger = inject("transitionTrigger", ref(0));
-const show = ref(false);
-
-watch(
-  transitionTrigger,
-  () => {
-    show.value = false;
-    setTimeout(() => {
-      show.value = true;
-    }, 0);
-  },
-  { immediate: true },
-);
+import { ref, inject, watch, onMounted, onUnmounted } from "vue";
 
 interface Props {
   duration?:
@@ -27,11 +13,18 @@ interface Props {
     | "300"
     | "200"
     | "100";
+  useIntersectionObserver?: boolean;
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  duration: "500",
+  useIntersectionObserver: true,
+});
 
-const duration = props.duration || "700";
+const show = ref(false);
+const componentRef = ref<HTMLElement | null>(null);
+
+const transitionTrigger = inject("transitionTrigger", ref(0));
 
 const enterDurationClass = () => {
   const durations = {
@@ -47,7 +40,7 @@ const enterDurationClass = () => {
     "100": "duration-100",
   };
 
-  return durations[duration];
+  return durations[props.duration];
 };
 
 const leaveDurationClass = () => {
@@ -64,21 +57,62 @@ const leaveDurationClass = () => {
     "100": "duration-100",
   };
 
-  return durations[duration];
+  return durations[props.duration];
 };
+
+let observer: IntersectionObserver | null = null;
+
+if (props.useIntersectionObserver) {
+  onMounted(() => {
+    observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            show.value = true;
+            observer?.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    if (componentRef.value) {
+      observer.observe(componentRef.value);
+    }
+  });
+
+  onUnmounted(() => {
+    if (observer) {
+      observer.disconnect();
+    }
+  });
+} else {
+  watch(
+    transitionTrigger,
+    () => {
+      show.value = false;
+      setTimeout(() => {
+        show.value = true;
+      }, 0);
+    },
+    { immediate: true },
+  );
+}
 </script>
 
 <template>
-  <Transition
-    :enter-active-class="`${enterDurationClass()} ease-in-out delay-100`"
-    enter-from-class="transform translate-y-4 opacity-0"
-    enter-to-class="transform translate-y-0 opacity-100"
-    :leave-active-class="`${leaveDurationClass()} ease-in-out`"
-    leave-from-class="transform translate-y-0 opacity-100"
-    leave-to-class="transform translate-y-4 opacity-0"
-  >
-    <div v-if="show">
-      <slot></slot>
-    </div>
-  </Transition>
+  <div ref="componentRef">
+    <Transition
+      :enter-active-class="`${enterDurationClass()} ease-in-out delay-100`"
+      enter-from-class="transform translate-y-4 opacity-0"
+      enter-to-class="transform translate-y-0 opacity-100"
+      :leave-active-class="`${leaveDurationClass()} ease-in-out`"
+      leave-from-class="transform translate-y-0 opacity-100"
+      leave-to-class="transform translate-y-4 opacity-0"
+    >
+      <div v-if="show">
+        <slot></slot>
+      </div>
+    </Transition>
+  </div>
 </template>
