@@ -119,9 +119,9 @@ onUnmounted(() => {
           <div class="flex items-center">
             <div
               v-if="showNumbers"
-              class="text-2xl font-bold mr-2 text-gray-800 dark:text-gray-200"
+              class="text-2xl font-bold mr-2 text-gray-500 dark:text-gray-400"
             >
-              {{ index + 1 }}.
+              {{ index + 1 }}
             </div>
           </div>
           <h3

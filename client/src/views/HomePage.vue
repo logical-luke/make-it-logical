@@ -190,7 +190,7 @@ const processItems = processSteps.value.map((step) => ({
         </h2>
         <div class="flex flex-col gap-4">
           <p class="md:text-2xl mb-8 max-w-4xl">
-            {{ t("Create experiences that don't just work – they") }}
+            {{ t("Get solutions that don't just work – they") }}
             <span class="font-semibold">{{ t("wow") }}</span
             >.
           </p>
