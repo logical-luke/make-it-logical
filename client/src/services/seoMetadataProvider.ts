@@ -4,7 +4,7 @@ export function getPageTitle(route: RouteLocationNormalized): string {
   const baseTitle = "Make IT Logical";
   switch (route.path) {
     case "/":
-      return `${baseTitle} | Software Solutions that Empowers People`;
+      return `${baseTitle} | We Deliver Complete Digital Solutions`;
     case "/services":
       return `Services: Tailored Digital Solutions | ${baseTitle}`;
     case "/process":
@@ -24,8 +24,8 @@ export function getMetaDescription(route: RouteLocationNormalized): string {
     case "/process":
       return "Our streamlined approach ensures efficient, high-quality results. From initial concept to final delivery, we align every step with your business objectives.";
     case "/contact":
-      return "Ready to transform your business? Get in touch for innovative solutions that drive growth. Let's create your next big thing together.";
+      return "Ready to transform your business? Get in touch for solutions that drive growth. Let's create your next big thing together.";
     default:
-      return "Page not found. Return to our homepage for innovative solutions that power business growth and digital transformation.";
+      return "Page not found. Return to our homepage for solutions that power business growth and digital transformation.";
   }
 }
