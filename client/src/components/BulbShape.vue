@@ -80,7 +80,7 @@ const glitchEffect = () => {
   setInterval(() => {
     const isDark = document.documentElement.classList.contains("dark");
     glitchOpacity.value = paths.map(() =>
-      Math.random() < 0.02 ? (isDark ? 0.7 : 0.4) : 1,
+      Math.random() < 0.02 ? (isDark ? 0.7 : 0.2) : 1,
     );
   }, 200);
 };
@@ -164,6 +164,7 @@ onMounted(() => {
           stroke-width="30"
           stroke-linecap="round"
           stroke-linejoin="round"
+          class="shadow-md"
         />
       </g>
     </svg>
@@ -189,15 +190,5 @@ onMounted(() => {
   50% {
     opacity: 0.4;
   }
-}
-
-/* Adjust glow intensity for light mode */
-:root:not(.dark) .glow-effect {
-  opacity: 0.5;
-}
-
-/* Enhance visibility in light mode */
-:root:not(.dark) .bulb-svg {
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
 }
 </style>
