@@ -128,7 +128,7 @@ onMounted(() => {
           fx="50%"
           fy="50%"
         >
-          <stop offset="0%" stop-color="currentColor" stop-opacity="0.2" />
+          <stop offset="10%" stop-color="currentColor" stop-opacity="0.25" />
           <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
         </radialGradient>
       </defs>
@@ -175,7 +175,7 @@ onMounted(() => {
 }
 
 .glow-effect {
-  animation: pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  animation: pulse 2.3s cubic-bezier(0.4, 0.2, 0.6, 0.8) infinite;
 }
 
 @keyframes pulse {
