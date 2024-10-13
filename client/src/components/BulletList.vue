@@ -34,13 +34,14 @@ const animationDuration = props.animationDuration || "500";
 const expandedSublists = ref(new Set<string>());
 const visibleItems = ref(new Set<string>());
 
-const toggleExpand = (itemTitle: string, index: number) => {
+const toggleExpand = (itemTitle: string, index: number, event: Event) => {
   const key = `${itemTitle}-${index}`;
   if (expandedSublists.value.has(key)) {
     expandedSublists.value.delete(key);
   } else {
     expandedSublists.value.add(key);
   }
+  (event.target as HTMLElement).blur();
 };
 
 const isExpanded = (itemTitle: string, index: number) => {
@@ -62,7 +63,7 @@ const durationClass = () => {
     "400": "duration-400",
     "300": "duration-300",
     "200": "duration-200",
-    "100": "duration-100",
+    "100": "duration-100"
   };
 
   return durations[animationDuration];
@@ -81,7 +82,7 @@ onMounted(() => {
         }
       });
     },
-    { threshold: 0.1 },
+    { threshold: 0.1 }
   );
 
   document.querySelectorAll("[data-observe]").forEach((el) => {
@@ -143,8 +144,8 @@ onUnmounted(() => {
           ]"
         >
           <span v-if="additionalInfoLabel" class="font-bold">{{
-            additionalInfoLabel
-          }}</span>
+              additionalInfoLabel
+            }}</span>
           {{ item.additionalInfo }}
         </p>
 
@@ -164,7 +165,7 @@ onUnmounted(() => {
                 ? 'translate-y-0 opacity-100'
                 : 'translate-y-4 opacity-0',
             ]"
-            @click="sublist.expandable && toggleExpand(item.title, subIndex)"
+            @click="sublist.expandable && toggleExpand(item.title, subIndex, $event)"
           >
             <ArrowChevronRightIcon
               v-if="sublist.expandable"

@@ -10,18 +10,18 @@ interface ListItem {
 
 defineProps<{
   items: ListItem[];
-  showNumbers: boolean;
   additionalInfoLabel?: string;
 }>();
 
 const expandedItems = ref(new Set<number>());
 
-const toggleExpand = (index: number) => {
+const toggleExpand = (index: number, event: Event) => {
   if (expandedItems.value.has(index)) {
     expandedItems.value.delete(index);
   } else {
     expandedItems.value.add(index);
   }
+  (event.target as HTMLElement).blur();
 };
 
 const isExpanded = (index: number) => expandedItems.value.has(index);
@@ -32,8 +32,8 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
     <div v-for="(item, index) in items" :key="item.title">
       <div>
         <div
-          class="group flex w-full items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
-          @click="toggleExpand(index)"
+          class="group flex w-full md:w-fit items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
+          @click="toggleExpand(index, $event)"
         >
           <div class="flex items-center">
             <ArrowChevronRightIcon
@@ -45,12 +45,6 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
                   : 'group-hover:translate-y-0.5',
               ]"
             />
-            <div
-              v-if="showNumbers"
-              class="text-xl md:text-2xl font-bold mr-2 text-gray-800 dark:text-gray-200"
-            >
-              {{ index + 1 }}.
-            </div>
           </div>
           <h3
             class="text-xl md:text-2xl text-gray-800 dark:text-gray-200 font-bold"

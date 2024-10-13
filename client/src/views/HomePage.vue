@@ -141,7 +141,7 @@ const processItems = processSteps.value.map((step) => ({
         <p class="text-lg md:text-2xl mb-12 max-w-4xl">
           {{ t("We craft experiences that connect, engage, and inspire.") }}
         </p>
-        <ExpandableList :items="serviceItems" :show-numbers="false" />
+        <ExpandableList :items="serviceItems" />
         <div class="flex justify-center mt-8">
           <LinkItem to="/services">
             {{ t("Explore Services") }}
@@ -173,7 +173,7 @@ const processItems = processSteps.value.map((step) => ({
         >
           {{ t("Digital Alchemy") }}
         </h2>
-        <ExpandableList :items="processItems" :show-numbers="true" />
+        <ExpandableList :items="processItems"/>
         <div class="flex justify-center mt-8">
           <LinkItem to="/process">
             {{ t("Discover Process") }}
