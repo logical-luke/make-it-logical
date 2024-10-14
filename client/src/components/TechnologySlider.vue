@@ -4,56 +4,31 @@ import { useI18n } from "vue-i18n";
 const { t } = useI18n();
 import { ref, onMounted, computed, onUnmounted } from "vue";
 
-import typescriptLogo from "@/assets/tech/typescript-logo.svg";
-import phpLogo from "@/assets/tech/php-logo.svg";
-import vueLogo from "@/assets/tech/vue-logo.svg";
-import kafkaLogo from "@/assets/tech/kafka-logo.svg";
-import githubActionsLogo from "@/assets/tech/github-actions-logo.svg";
-import awsLogo from "@/assets/tech/aws-logo.svg";
-import gcpLogo from "@/assets/tech/gcp-logo.svg";
-import pythonLogo from "@/assets/tech/python-logo.svg";
-import nodejsLogo from "@/assets/tech/nodejs-logo.svg";
-import tailwindLogo from "@/assets/tech/tailwindcss-logo.svg";
-import gitLogo from "@/assets/tech/git-logo.svg";
-import grafanaLogo from "@/assets/tech/grafana-logo.svg";
-import kumaLogo from "@/assets/tech/kuma-logo.svg";
-import prometheusLogo from "@/assets/tech/prometheus-logo.svg";
-import openaiLogo from "@/assets/tech/openai-logo.svg";
-import symfonyLogo from "@/assets/tech/symfony-logo.svg";
-import laravelLogo from "@/assets/tech/laravel-logo.svg";
-import cloudflareLogo from "@/assets/tech/cloudflare-logo.svg";
-import sentryLogo from "@/assets/tech/sentry-logo.svg";
-import rabbitMqLogo from "@/assets/tech/rabbitmq-logo.svg";
-import dockerLogo from "@/assets/tech/docker-logo.svg";
-import mysqlLogo from "@/assets/tech/mysql-logo.svg";
-import analyticsLogo from "@/assets/tech/analytics-logo.svg";
-import cypressLogo from "@/assets/tech/cypress-logo.svg";
-
 const technologies = [
-  { name: "TypeScript", logo: typescriptLogo },
-  { name: "Vue.js", logo: vueLogo },
-  { name: "PHP", logo: phpLogo },
-  { name: "Docker", logo: dockerLogo },
-  { name: "GitHub Actions", logo: githubActionsLogo },
-  { name: "AWS", logo: awsLogo },
-  { name: "GCP", logo: gcpLogo },
-  { name: "Symfony", logo: symfonyLogo },
-  { name: "Python", logo: pythonLogo },
-  { name: "MySQL", logo: mysqlLogo },
-  { name: "Apache Kafka", logo: kafkaLogo },
-  { name: "Node.js", logo: nodejsLogo },
-  { name: "Laravel", logo: laravelLogo },
-  { name: "Tailwind CSS", logo: tailwindLogo },
-  { name: "Google Analytics", logo: analyticsLogo },
-  { name: "Git", logo: gitLogo },
-  { name: "Grafana", logo: grafanaLogo },
-  { name: "Uptime Kuma", logo: kumaLogo },
-  { name: "Prometheus", logo: prometheusLogo },
-  { name: "OpenAI", logo: openaiLogo },
-  { name: "Cloudflare", logo: cloudflareLogo },
-  { name: "Sentry", logo: sentryLogo },
-  { name: "Cypress", logo: cypressLogo },
-  { name: "RabbitMQ", logo: rabbitMqLogo },
+  { name: "TypeScript", logo: "/tech/typescript-logo.svg" },
+  { name: "Vue.js", logo: "/tech/vue-logo.svg" },
+  { name: "PHP", logo: "/tech/php-logo.svg" },
+  { name: "Docker", logo: "/tech/docker-logo.svg" },
+  { name: "GitHub Actions", logo: "/tech/github-actions-logo.svg" },
+  { name: "AWS", logo: "/tech/aws-logo.svg" },
+  { name: "GCP", logo: "/tech/gcp-logo.svg" },
+  { name: "Symfony", logo: "/tech/symfony-logo.svg" },
+  { name: "Python", logo: "/tech/python-logo.svg" },
+  { name: "MySQL", logo: "/tech/mysql-logo.svg" },
+  { name: "Apache Kafka", logo: "/tech/kafka-logo.svg" },
+  { name: "Node.js", logo: "/tech/nodejs-logo.svg" },
+  { name: "Laravel", logo: "/tech/laravel-logo.svg" },
+  { name: "Tailwind CSS", logo: "/tech/tailwindcss-logo.svg" },
+  { name: "Google Analytics", logo: "/tech/analytics-logo.svg" },
+  { name: "Git", logo: "/tech/git-logo.svg" },
+  { name: "Grafana", logo: "/tech/grafana-logo.svg" },
+  { name: "Uptime Kuma", logo: "/tech/kuma-logo.svg" },
+  { name: "Prometheus", logo: "/tech/prometheus-logo.svg" },
+  { name: "OpenAI", logo: "/tech/openai-logo.svg" },
+  { name: "Cloudflare", logo: "/tech/cloudflare-logo.svg" },
+  { name: "Sentry", logo: "/tech/sentry-logo.svg" },
+  { name: "Cypress", logo: "/tech/cypress-logo.svg" },
+  { name: "RabbitMQ", logo: "/tech/rabbitmq-logo.svg" },
 ];
 
 const containerRef = ref<HTMLDivElement | null>(null);
