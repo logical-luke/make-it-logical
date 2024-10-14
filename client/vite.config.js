@@ -22,7 +22,9 @@ export default defineConfig({
         "/",
         "/services",
         "/process",
-        "/contact"
+        "/contact",
+        "/terms",
+        "/privacy",
       ]
     })
   ],
