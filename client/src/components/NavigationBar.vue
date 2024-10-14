@@ -4,6 +4,8 @@ import { useRoute } from "vue-router";
 import ThemeToggleButton from "@/components/ThemeToggleButton.vue";
 import LinkItem from "@/components/LinkItem.vue";
 import FadeTransition from "@/components/FadeTransition.vue";
+import MenuIcon from "@/components/MenuIcon.vue";
+import CloseIcon from "@/components/CloseIcon.vue";
 
 const route = useRoute();
 const lastScrollTop = ref(0);
@@ -128,25 +130,32 @@ watch(mobileMenuOpen, (newValue) => {
           <button
             type="button"
             :aria-label="mobileMenuOpen ? 'Close Menu' : 'Open Menu'"
-            class="md:hidden z-50 w-8 h-8 flex items-center justify-center"
+            class="md:hidden z-50 flex items-center justify-center"
             @click="toggleMobileMenu"
           >
-            <i
-              :class="[
-                'text-2xl transition-all duration-300 ease-in-out transform',
-                mobileMenuOpen ? 'pi pi-times rotate-90' : 'pi pi-bars',
-              ]"
-            ></i>
+            <span
+              class="right-2 relative w-8 h-8 transition-transform duration-300 ease-in-out"
+              :class="{ 'rotate-90': mobileMenuOpen }"
+            >
+              <MenuIcon
+                class="absolute inset-0 transition-opacity duration-100 ease-in-out"
+                :class="{ 'opacity-0': mobileMenuOpen }"
+              />
+              <CloseIcon
+                class="absolute inset-0 transition-opacity duration-300 ease-in-out"
+                :class="{ 'opacity-0': !mobileMenuOpen }"
+              />
+            </span>
           </button>
         </div>
       </div>
     </header>
   </FadeTransition>
   <Transition
-    enter-active-class="duration-200 ease-out"
+    enter-active-class="duration-300 ease-out"
     enter-from-class="opacity-0"
     enter-to-class="opacity-100"
-    leave-active-class="duration-100 ease-in"
+    leave-active-class="duration-200 ease-in"
     leave-from-class="opacity-100"
     leave-to-class="opacity-0"
   >

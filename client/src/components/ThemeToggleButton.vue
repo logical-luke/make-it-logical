@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { ref, watch, onMounted } from "vue";
+import SunIcon from "@/components/SunIcon.vue";
+import MoonIcon from "@/components/MoonIcon.vue";
+import FadeTransition from "@/components/FadeTransition.vue";
 
 const isDarkTheme = ref(false);
 
@@ -44,15 +47,23 @@ watch(
 </script>
 
 <template>
-  <button
-    type="button"
-    aria-label="Toggle Theme"
-    class="flex items-center"
-    @click="toggleTheme"
-  >
-    <i
-      class="text-2xl md:text-xl transition-all duration-300 ease-in-out transform'"
-      :class="isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'"
-    ></i>
-  </button>
+  <FadeTransition duration="1300">
+    <button
+      type="button"
+      aria-label="Toggle Theme"
+      class="flex items-center justify-center w-8 h-8"
+      @click="toggleTheme"
+    >
+      <span class="relative w-6 h-6">
+        <SunIcon
+          v-if="!isDarkTheme"
+          class="absolute inset-0 w-full h-full transition-opacity duration-300 ease-in-out"
+        />
+        <MoonIcon
+          v-else
+          class="absolute inset-0 w-full h-full transition-opacity duration-300 ease-in-out"
+        />
+      </span>
+    </button>
+  </FadeTransition>
 </template>
