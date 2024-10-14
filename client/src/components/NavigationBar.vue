@@ -97,7 +97,7 @@ watch(mobileMenuOpen, (newValue) => {
               class="h-10 w-auto"
             />
             <span
-              class="text-lg md:text-2xl text-black dark:text-gray-200 font-bold"
+              class="text-lg md:text-2xl text-black dark:text-gray-100 font-bold"
             >
               Make IT Logical
             </span>

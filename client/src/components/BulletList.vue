@@ -114,7 +114,7 @@ onUnmounted(() => {
         ]"
       >
         <div
-          class="group flex items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer"
+          class="group flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600 cursor-pointer"
         >
           <div class="flex flex-col">
             <div
@@ -124,7 +124,7 @@ onUnmounted(() => {
               {{ index + 1 }}.
             </div>
             <h3
-              class="text-xl md:text-2xl text-gray-800 dark:text-gray-200 font-bold"
+              class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold"
             >
               {{ item.title }}
             </h3>
@@ -162,7 +162,7 @@ onUnmounted(() => {
             data-observe
             :class="[
               durationClass(),
-              'transform transition-all ease-in-out delay-100 group flex items-center hover:text-gray-600 dark:hover:text-gray-200 text-gray-400 dark:text-gray-600 cursor-pointer',
+              'transform transition-all ease-in-out delay-100 group flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600 cursor-pointer',
               isVisible(`item-${index}-sublist-${subIndex}-title`)
                 ? 'translate-y-0 opacity-100'
                 : 'translate-y-4 opacity-0',
@@ -179,7 +179,7 @@ onUnmounted(() => {
                   : 'group-hover:translate-y-0.5',
               ]"
             />
-            <h4 class="text-medium text-gray-800 dark:text-gray-200 font-bold">
+            <h4 class="text-medium text-gray-800 dark:text-gray-100 font-bold">
               {{ sublist.title }}
             </h4>
           </div>

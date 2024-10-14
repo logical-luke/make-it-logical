@@ -62,7 +62,7 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
             />
           </div>
           <h3
-            class="text-xl md:text-2xl text-gray-800 dark:text-gray-200 font-bold"
+            class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold"
           >
             {{ item.title }}
           </h3>
@@ -101,11 +101,11 @@ const isExpanded = (index: number) => expandedItems.value.has(index);
 
 <style scoped>
 .group {
-  @apply hover:text-gray-600 dark:hover:text-gray-200;
+  @apply hover:text-gray-600 dark:hover:text-gray-100;
 }
 
 .group[data-active="true"] {
-  @apply text-gray-600 dark:text-gray-200;
+  @apply text-gray-600 dark:text-gray-100;
 }
 
 .svg-icon {

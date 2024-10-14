@@ -121,7 +121,7 @@ onMounted(() => {
       id="svg1"
       viewBox="0 0 1200 1200"
       xmlns="http://www.w3.org/2000/svg"
-      class="bulb-svg text-black dark:text-gray-200"
+      class="bulb-svg text-black dark:text-gray-100"
       :style="{ transform: `rotate(${rotation}deg)` }"
     >
       <defs>
