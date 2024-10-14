@@ -128,7 +128,7 @@ const processItems = processSteps.value.map((step) => ({
       </div>
     </section>
 
-    <BottomToTopSlideTransition>
+    <BottomToTopSlideTransition duration="500">
       <section>
         <h2
           class="text-gray-500 dark:text-gray-400 text-2xl md:text-5xl font-bold mb-12"
