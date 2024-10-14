@@ -14,90 +14,90 @@ const services = ref([
   {
     title: t("Planning & Leadership"),
     additionalInfo: t(
-      "We transform visions into actionable plans. Our approach aligns technology with business goals, creating clear roadmaps for success. By coordinating cross-functional teams, we ensure smooth project delivery. The result? Streamlined operations, improved performance, and faster time-to-market. Our leadership doesn't just manage projects; it drives innovation and maximizes ROI."
-    )
+      "We transform visions into actionable plans. Our approach aligns technology with business goals, creating clear roadmaps for success. By coordinating cross-functional teams, we ensure smooth project delivery. The result? Streamlined operations, improved performance, and faster time-to-market. Our leadership doesn't just manage projects; it drives innovation and maximizes ROI.",
+    ),
   },
   {
     title: t("User Experience Design"),
     additionalInfo: t(
-      "Great design goes beyond aesthetics; it solves problems. We start with in-depth user research, uncovering needs and pain points. This insight drives our design process, resulting in intuitive interfaces that users love. We iterate based on feedback, ensuring each design decision enhances user satisfaction. The outcome is increased engagement, higher retention rates, and a strong competitive edge."
-    )
+      "Great design goes beyond aesthetics; it solves problems. We start with in-depth user research, uncovering needs and pain points. This insight drives our design process, resulting in intuitive interfaces that users love. We iterate based on feedback, ensuring each design decision enhances user satisfaction. The outcome is increased engagement, higher retention rates, and a strong competitive edge.",
+    ),
   },
   {
     title: t("Development"),
     additionalInfo: t(
-      "Code is the backbone of digital success. We build robust, scalable solutions using cutting-edge technologies. Our development process emphasizes quality, security, and performance. We create flexible architectures that grow with your business, ensuring long-term value. The result is software that not only meets current needs but is primed for future challenges."
-    )
+      "Code is the backbone of digital success. We build robust, scalable solutions using cutting-edge technologies. Our development process emphasizes quality, security, and performance. We create flexible architectures that grow with your business, ensuring long-term value. The result is software that not only meets current needs but is primed for future challenges.",
+    ),
   },
   {
     title: t("Operations"),
     additionalInfo: t(
-      "Smooth operations are crucial for business continuity. We implement efficient systems for software delivery and updates, enhancing reliability and performance. Our approach optimizes resource utilization and implements proactive monitoring. This leads to reduced downtime, improved security, and significant cost savings. We turn potential technical headaches into operational strengths."
-    )
+      "Smooth operations are crucial for business continuity. We implement efficient systems for software delivery and updates, enhancing reliability and performance. Our approach optimizes resource utilization and implements proactive monitoring. This leads to reduced downtime, improved security, and significant cost savings. We turn potential technical headaches into operational strengths.",
+    ),
   },
   {
     title: t("Improvements"),
     additionalInfo: t(
-      "In the digital world, standing still means falling behind. We provide continuous enhancements to keep your software at peak performance. Regular audits identify optimization opportunities in functionality, security, and user experience. We implement updates that not only fix issues but add value. The result is software that evolves with your business, consistently meeting and exceeding user expectations."
-    )
+      "In the digital world, standing still means falling behind. We provide continuous enhancements to keep your software at peak performance. Regular audits identify optimization opportunities in functionality, security, and user experience. We implement updates that not only fix issues but add value. The result is software that evolves with your business, consistently meeting and exceeding user expectations.",
+    ),
   },
   {
     title: t("Modernization"),
     additionalInfo: t(
-      "Legacy systems often hold untapped potential. Our modernization approach preserves valuable business logic while upgrading technology. We implement modern architectures and cloud solutions, enhancing performance and scalability. This process not only extends the life of your software but opens new possibilities for innovation. The outcome is revitalized systems that drive business growth and efficiency."
-    )
+      "Legacy systems often hold untapped potential. Our modernization approach preserves valuable business logic while upgrading technology. We implement modern architectures and cloud solutions, enhancing performance and scalability. This process not only extends the life of your software but opens new possibilities for innovation. The outcome is revitalized systems that drive business growth and efficiency.",
+    ),
   },
   {
     title: t("Search Engine Optimization"),
     additionalInfo: t(
-      "Visibility is key in the digital marketplace. Our SEO strategies go beyond keywords, focusing on creating valuable, relevant content. We optimize website structure and performance, enhancing user experience and search rankings. Our data-driven approach continuously refines strategies for maximum impact. The result is increased organic traffic, better user engagement, and improved conversion rates."
-    )
-  }
+      "Visibility is key in the digital marketplace. Our SEO strategies go beyond keywords, focusing on creating valuable, relevant content. We optimize website structure and performance, enhancing user experience and search rankings. Our data-driven approach continuously refines strategies for maximum impact. The result is increased organic traffic, better user engagement, and improved conversion rates.",
+    ),
+  },
 ]);
 
 const processSteps = ref([
   {
     label: t("Listen"),
     additionalInfo: t(
-      "Understanding is the foundation of success. We begin by deeply exploring your business goals, challenges, and vision. This phase involves comprehensive market research and stakeholder interviews. We analyze competitors, identify opportunities, and define clear, measurable objectives. The outcome is a well-defined project roadmap that aligns technology initiatives with business strategy, setting the stage for impactful solutions."
-    )
+      "Understanding is the foundation of success. We begin by deeply exploring your business goals, challenges, and vision. This phase involves comprehensive market research and stakeholder interviews. We analyze competitors, identify opportunities, and define clear, measurable objectives. The outcome is a well-defined project roadmap that aligns technology initiatives with business strategy, setting the stage for impactful solutions.",
+    ),
   },
   {
     label: t("Design"),
     additionalInfo: t(
-      "Good design bridges user needs and business goals. We create user personas and journey maps to guide our process. Our designs balance aesthetics with functionality, ensuring intuitive user experiences. We use rapid prototyping and user testing to validate concepts early. This approach leads to interfaces that not only look great but significantly enhance user satisfaction and task completion rates."
-    )
+      "Good design bridges user needs and business goals. We create user personas and journey maps to guide our process. Our designs balance aesthetics with functionality, ensuring intuitive user experiences. We use rapid prototyping and user testing to validate concepts early. This approach leads to interfaces that not only look great but significantly enhance user satisfaction and task completion rates.",
+    ),
   },
   {
     label: t("Build"),
     additionalInfo: t(
-      "Quality development is an investment in your future. We employ agile methodologies to ensure flexibility and continuous delivery. Our coding standards emphasize cleanliness, efficiency, and security. We integrate robust testing frameworks to maintain high quality throughout development. The result is reliable, scalable software that forms a solid foundation for your digital presence."
-    )
+      "Quality development is an investment in your future. We employ agile methodologies to ensure flexibility and continuous delivery. Our coding standards emphasize cleanliness, efficiency, and security. We integrate robust testing frameworks to maintain high quality throughout development. The result is reliable, scalable software that forms a solid foundation for your digital presence.",
+    ),
   },
   {
     label: t("Deliver"),
     additionalInfo: t(
-      "Launching is just the beginning of the journey. We ensure a smooth transition from development to production with comprehensive testing and staged rollouts. Our process includes thorough documentation and user training to facilitate adoption. We set up monitoring systems for proactive issue resolution. This phase culminates in the successful deployment of your solution, ready to deliver real-world value."
-    )
+      "Launching is just the beginning of the journey. We ensure a smooth transition from development to production with comprehensive testing and staged rollouts. Our process includes thorough documentation and user training to facilitate adoption. We set up monitoring systems for proactive issue resolution. This phase culminates in the successful deployment of your solution, ready to deliver real-world value.",
+    ),
   },
   {
     label: t("Improve"),
     additionalInfo: t(
-      "Digital solutions thrive on continuous improvement. We implement analytics to gather insights on user behavior and system performance. Regular feedback sessions with users and stakeholders guide our enhancement strategies. We prioritize updates based on business impact and user needs. This ongoing process ensures your solution remains cutting-edge, continuously adapting to new challenges and opportunities."
-    )
-  }
+      "Digital solutions thrive on continuous improvement. We implement analytics to gather insights on user behavior and system performance. Regular feedback sessions with users and stakeholders guide our enhancement strategies. We prioritize updates based on business impact and user needs. This ongoing process ensures your solution remains cutting-edge, continuously adapting to new challenges and opportunities.",
+    ),
+  },
 ]);
 
 const serviceItems = services.value.map((service) => ({
   title: service.title,
   sublists: [],
-  additionalInfo: service.additionalInfo
+  additionalInfo: service.additionalInfo,
 }));
 
 const processItems = processSteps.value.map((step) => ({
   title: step.label,
   sublists: [],
-  additionalInfo: step.additionalInfo
+  additionalInfo: step.additionalInfo,
 }));
 </script>
 
@@ -118,8 +118,8 @@ const processItems = processSteps.value.map((step) => ({
             class="flex flex-col font-semibold text-lg md:text-3xl lg:text-4xl leading-tight"
           >
             <span class="text-primary font-normal">{{
-                t("We simply deliver complete")
-              }}</span>
+              t("We simply deliver complete")
+            }}</span>
             {{ t("digital solutions") }}
           </h2>
         </BottomToTopSlideTransition>
@@ -160,7 +160,7 @@ const processItems = processSteps.value.map((step) => ({
         <p class="text-lg md:text-2xl mb-8 max-w-4xl">
           {{
             t(
-              "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs."
+              "While these are our primary technologies, we're always open to exploring new tools that best fit your project needs.",
             )
           }}
         </p>

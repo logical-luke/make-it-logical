@@ -179,7 +179,9 @@ onUnmounted(() => {
                   : 'group-hover:translate-y-0.5',
               ]"
             />
-            <h4 class="text-medium text-gray-800 dark:text-gray-100 font-semibold">
+            <h4
+              class="text-medium text-gray-800 dark:text-gray-100 font-semibold"
+            >
               {{ sublist.title }}
             </h4>
           </div>

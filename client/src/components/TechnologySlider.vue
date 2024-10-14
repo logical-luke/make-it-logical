@@ -2,7 +2,7 @@
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
-import { ref, onMounted, computed, onUnmounted, watch } from "vue";
+import { ref, onMounted, computed, onUnmounted } from "vue";
 
 import typescriptLogo from "@/assets/tech/typescript-logo.svg";
 import phpLogo from "@/assets/tech/php-logo.svg";
@@ -210,9 +210,9 @@ const getVisibleLogos = () => {
 
 const updateBlinkHistory = () => {
   const visibleLogos = getVisibleLogos();
-  const allLogos = technologies.map(tech => tech.name);
+  const allLogos = technologies.map((tech) => tech.name);
 
-  allLogos.forEach(logo => {
+  allLogos.forEach((logo) => {
     if (!visibleLogos.includes(logo)) {
       blinkHistory.value.delete(logo);
     }
@@ -223,9 +223,11 @@ const startBlinkEffect = () => {
   const blinkLogo = () => {
     updateBlinkHistory();
     const visibleLogos = getVisibleLogos();
-    const availableLogos = visibleLogos.filter(logo => !blinkHistory.value.has(logo));
+    const availableLogos = visibleLogos.filter(
+      (logo) => !blinkHistory.value.has(logo),
+    );
 
-    if (availableLogos.length > 0 && Math.random() < 0.7) {
+    if (availableLogos.length > 0 && Math.random() < 0.6) {
       const randomIndex = Math.floor(Math.random() * availableLogos.length);
       const techToActivate = availableLogos[randomIndex];
 
