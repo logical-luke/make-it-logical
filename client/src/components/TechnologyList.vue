@@ -60,7 +60,7 @@ const durationClass = () => {
     "400": "duration-400",
     "300": "duration-300",
     "200": "duration-200",
-    "100": "duration-100",
+    "100": "duration-100"
   };
 
   return durations[animationDuration];
@@ -79,7 +79,7 @@ onMounted(() => {
         }
       });
     },
-    { threshold: 0.1 },
+    { threshold: 0.1 }
   );
 
   document.querySelectorAll("[data-observe]").forEach((el) => {
@@ -121,14 +121,16 @@ onUnmounted(() => {
                 : 'group-hover:translate-y-0.5',
             ]"
           />
-          <h3
-            class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold"
-          >
-            {{ tech.name }}
-          </h3>
-          <span class="ml-2 text-sm text-gray-500 dark:text-gray-400">{{
-            tech.category
-          }}</span>
+          <div class="flex flex-col">
+            <h3
+              class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold"
+            >
+              {{ tech.name }}
+            </h3>
+            <span class="text-sm text-gray-500 dark:text-gray-400">{{
+                tech.category
+              }}</span>
+          </div>
         </div>
       </div>
 
@@ -155,7 +157,7 @@ onUnmounted(() => {
       <p class="mt-6 text-xs text-gray-700 dark:text-gray-300">
         {{
           t(
-            "The technologies listed are for informational purposes only and do not imply any official association or endorsement.",
+            "The technologies listed are for informational purposes only and do not imply any official association or endorsement."
           )
         }}
       </p>
