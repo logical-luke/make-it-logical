@@ -131,7 +131,7 @@ const processItems = processSteps.value.map((step) => ({
     <BottomToTopSlideTransition>
       <section>
         <h2
-          class="text-gray-800 dark:text-gray-200 text-2xl md:text-5xl font-bold mb-12"
+          class="text-gray-500 dark:text-gray-400 text-2xl md:text-5xl font-bold mb-12"
         >
           {{ t("Solutions That Resonate") }}
         </h2>
@@ -152,7 +152,7 @@ const processItems = processSteps.value.map((step) => ({
     <BottomToTopSlideTransition>
       <section>
         <h2
-          class="text-gray-800 dark:text-gray-200 text-xl md:text-4xl font-bold mb-6"
+          class="text-gray-500 dark:text-gray-400 text-xl md:text-4xl font-bold mb-6"
         >
           {{ t("Technologies We Work With") }}
         </h2>
@@ -169,7 +169,7 @@ const processItems = processSteps.value.map((step) => ({
     <BottomToTopSlideTransition>
       <section>
         <h2
-          class="text-gray-800 dark:text-gray-200 text-2xl md:text-5xl font-bold mb-12 max-w-4xl"
+          class="text-gray-500 dark:text-gray-400 text-2xl md:text-5xl font-bold mb-12 max-w-4xl"
         >
           {{ t("Digital Orchestra") }}
         </h2>
@@ -184,7 +184,7 @@ const processItems = processSteps.value.map((step) => ({
     <BottomToTopSlideTransition>
       <section>
         <h2
-          class="text-gray-800 dark:text-gray-200 text-2xl md:text-5xl font-bold mb-12 max-w-4xl"
+          class="text-gray-500 dark:text-gray-400 text-2xl md:text-5xl font-bold mb-12 max-w-4xl"
         >
           {{ t("Ready for a Journey?") }}
         </h2>
