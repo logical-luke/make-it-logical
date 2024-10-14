@@ -2,7 +2,7 @@
 import { ref, onMounted, computed } from "vue";
 
 const animationDuration = 700;
-const pauseDuration = 5700;
+const pauseDuration = 12300;
 
 const paths = [
   "M 7466.21,3888.71 H 4533.79 L 3244.08,5251.82 2510.1,7244.04 3055.35,9487.92 4753.98,10730.4 H 7246.02 L 8944.66,9487.92 9489.89,7244.04 8755.92,5251.82 7466.21,3888.71",
@@ -36,14 +36,14 @@ const paths = [
   "m 5023.18,2033.95 c 0,-71.45 -57.94,-129.45 -129.42,-129.45 -71.47,0 -129.42,58 -129.42,129.45 0,71.47 57.95,129.41 129.42,129.41 71.48,0 129.42,-57.94 129.42,-129.41",
   "m 5640.93,1364.5 c 105.52,-138.6 -51.08,-295.2 -189.6,-189.7 -105.51,138.6 51.08,295.2 189.6,189.7",
   "m 6359.06,1364.5 c -105.51,-138.6 51.09,-295.2 189.61,-189.7 105.51,138.6 -51.07,295.2 -189.61,189.7",
-  "m 7207.68,2033.95 c 0,-71.45 -57.95,-129.45 -129.43,-129.45 -71.47,0 -129.42,58 -129.42,129.45 0,71.47 57.95,129.41 129.42,129.41 71.48,0 129.43,-57.94 129.43,-129.41",
+  "m 7207.68,2033.95 c 0,-71.45 -57.95,-129.45 -129.43,-129.45 -71.47,0 -129.42,58 -129.42,129.45 0,71.47 57.95,129.41 129.42,129.41 71.48,0 129.43,-57.94 129.43,-129.41"
 ];
 
 const pathLengths = computed(() => {
   return paths.map((path) => {
     const dummyPath = document.createElementNS(
       "http://www.w3.org/2000/svg",
-      "path",
+      "path"
     );
     dummyPath.setAttribute("d", path);
     return dummyPath.getTotalLength();
@@ -53,10 +53,15 @@ const pathLengths = computed(() => {
 const animationProgress = ref(pathLengths.value.map((length) => length));
 const glitchOpacity = ref(paths.map(() => 1));
 const rotation = ref(0);
-
+let bulbVisible = ref(false);
+const stopOpacity = computed(() => Math.sin((bulbVisible.value ? 0.45 : 0.1)));
+const glowRadius = computed(() => (bulbVisible.value ? 430 : 1));
 const animate = async () => {
   const randomOrder = paths.map((_, i) => i).sort(() => Math.random() - 0.5);
 
+  setTimeout(() => {
+    bulbVisible.value = true;
+  }, animationDuration * 3);
   for (const index of randomOrder) {
     animationProgress.value[index] = 0;
     await new Promise((resolve) => setTimeout(resolve, 50));
@@ -70,8 +75,10 @@ const animate = async () => {
     await new Promise((resolve) => setTimeout(resolve, 50));
   }
   await new Promise((resolve) => setTimeout(resolve, animationDuration));
-
-  await new Promise((resolve) => setTimeout(resolve, pauseDuration / 4));
+  setTimeout(() => {
+    bulbVisible.value = false;
+  }, animationDuration / 5);
+  await new Promise((resolve) => setTimeout(resolve, pauseDuration / 10));
 
   requestAnimationFrame(animate);
 };
@@ -80,7 +87,7 @@ const glitchEffect = () => {
   setInterval(() => {
     const isDark = document.documentElement.classList.contains("dark");
     glitchOpacity.value = paths.map(() =>
-      Math.random() < 0.02 ? (isDark ? 0.7 : 0.2) : 1,
+      Math.random() < 0.02 ? (isDark ? 0.4 : 0.2) : 1
     );
   }, 200);
 };
@@ -88,7 +95,7 @@ const glitchEffect = () => {
 const rotateEffect = () => {
   let rotateInterval: number;
   const rotate = () => {
-    rotation.value = Math.sin(Date.now() / 1000) * 7; // Increased amplitude
+    rotation.value = Math.sin(Date.now() / 15000) * 35;
     rotateInterval = requestAnimationFrame(rotate);
   };
   rotate();
@@ -131,7 +138,7 @@ onMounted(() => {
           fx="50%"
           fy="50%"
         >
-          <stop offset="10%" stop-color="currentColor" stop-opacity="0.25" />
+          <stop offset="10%" stop-color="currentColor" :stop-opacity="stopOpacity" />
           <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
         </radialGradient>
       </defs>
@@ -139,7 +146,7 @@ onMounted(() => {
       <circle
         cx="690"
         cy="410"
-        r="410"
+        :r="glowRadius"
         fill="url(#bulbGradient)"
         class="glow-effect"
       />
@@ -180,6 +187,7 @@ onMounted(() => {
 
 .glow-effect {
   animation: pulse 2.3s cubic-bezier(0.4, 0.2, 0.6, 0.8) infinite;
+  transition: all 300ms ease-in-out;
 }
 
 @keyframes pulse {
