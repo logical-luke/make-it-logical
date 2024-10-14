@@ -20,7 +20,7 @@ watch(
   () => {
     mobileMenuOpen.value = false;
   },
-  { immediate: true },
+  { immediate: true }
 );
 
 const checkScrollPosition = () => {
@@ -30,7 +30,7 @@ const checkScrollPosition = () => {
 const navItems = ref([
   { id: 1, name: "Services", path: "/services" },
   { id: 2, name: "Process", path: "/process" },
-  { id: 3, name: "Contact", path: "/contact" },
+  { id: 3, name: "Contact", path: "/contact" }
 ]);
 
 const toggleMobileMenu = () => {
@@ -78,61 +78,60 @@ watch(mobileMenuOpen, (newValue) => {
 </script>
 
 <template>
-  <FadeTransition duration="1300">
-    <header
-      v-show="isNavVisible"
-      :class="[
+  <header
+    v-show="isNavVisible"
+    :class="[
         'bg-gray-100 dark:bg-zinc-900 py-6 px-6 fixed w-full z-40 h-20',
         'transition-shadow duration-700 ease-in-out',
         { 'shadow-md': !isAtTop && !mobileMenuOpen },
       ]"
-    >
-      <div class="container mx-auto flex justify-between items-center">
-        <RouterLink to="/" class="flex-shrink-0">
-          <div class="flex items-center gap-4">
-            <img
-              src="/logo.svg"
-              height="40"
-              fetchPriority="high"
-              width="27"
-              alt="Make IT Logical Logo"
-              class="h-10 w-auto"
-            />
-            <span
-              class="text-lg md:text-2xl text-black dark:text-gray-100 font-bold"
-            >
+  >
+    <div class="container mx-auto flex justify-between items-center">
+      <RouterLink to="/" class="flex-shrink-0">
+        <div class="flex items-center gap-4">
+          <img
+            src="/logo.svg"
+            height="40"
+            fetchPriority="high"
+            width="27"
+            alt="Make IT Logical Logo"
+            class="h-10 w-auto"
+          />
+          <span
+            class="text-lg md:text-2xl text-black dark:text-gray-100 font-bold"
+          >
               Make IT Logical
             </span>
-          </div>
-        </RouterLink>
+        </div>
+      </RouterLink>
 
-        <div class="flex items-center space-x-6">
-          <nav class="hidden md:flex">
-            <ul class="flex space-x-6 items-center">
-              <li v-for="item in navItems" :key="item.id">
-                <RouterLink
-                  :to="item.path"
-                  class="text-base transition-colors duration-300 hover:underline underline-offset-8"
-                  :class="{ underline: route.path === item.path }"
-                >
-                  {{ item.name }}
-                </RouterLink>
-              </li>
-            </ul>
-          </nav>
-          <ThemeToggleButton
-            :class="[
+      <div class="flex items-center space-x-6">
+        <nav class="hidden md:flex">
+          <ul class="flex space-x-6 items-center">
+            <li v-for="item in navItems" :key="item.id">
+              <RouterLink
+                :to="item.path"
+                class="text-base transition-colors duration-300 hover:underline underline-offset-8"
+                :class="{ underline: route.path === item.path }"
+              >
+                {{ item.name }}
+              </RouterLink>
+            </li>
+          </ul>
+        </nav>
+        <ThemeToggleButton
+          :class="[
               'transition-opacity duration-500 ease-in-out',
               { 'opacity-0 invisible': !mobileMenuOpen },
               'md:opacity-100 md:visible',
             ]"
-          />
-          <button
-            type="button"
-            :aria-label="mobileMenuOpen ? 'Close Menu' : 'Open Menu'"
-            class="md:hidden z-50 flex items-center justify-center"
-            @click="toggleMobileMenu"
-          >
+        />
+        <button
+          type="button"
+          :aria-label="mobileMenuOpen ? 'Close Menu' : 'Open Menu'"
+          class="md:hidden z-50 flex items-center justify-center"
+          @click="toggleMobileMenu"
+        >
             <span
               class="right-2 relative w-8 h-8 transition-transform duration-300 ease-in-out"
               :class="{ 'rotate-90': mobileMenuOpen }"
@@ -146,11 +145,10 @@ watch(mobileMenuOpen, (newValue) => {
                 :class="{ 'opacity-0': !mobileMenuOpen }"
               />
             </span>
-          </button>
-        </div>
+        </button>
       </div>
-    </header>
-  </FadeTransition>
+    </div>
+  </header>
   <Transition
     enter-active-class="duration-300 ease-out"
     enter-from-class="opacity-0"
@@ -177,7 +175,8 @@ watch(mobileMenuOpen, (newValue) => {
             </li>
           </ul>
         </nav>
-        <div class="mt-auto pb-6 flex justify-between items-center">
+        <div class="mt-auto pb-8 flex flex-col">
+          <p class="text-sm">Spark Your</p>
           <LinkItem
             :disable-icon="true"
             :external="true"

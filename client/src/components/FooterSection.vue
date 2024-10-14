@@ -36,7 +36,7 @@ const legalLinks = [
               vision@makeitlogical.io
             </LinkItem>
           </div>
-          <div class="flex gap-4 mt-6 md:mt-auto md:mt-0 order-3 md:order-none">
+          <div class="flex gap-4 mt-6 md:mt-auto order-3 md:order-none">
             <LinkItem
               v-for="item in legalLinks"
               :key="item.name"
