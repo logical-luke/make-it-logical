@@ -145,7 +145,7 @@ onUnmounted(() => {
               : 'translate-y-4 opacity-0',
           ]"
         >
-          <span v-if="additionalInfoLabel" class="font-bold">{{
+          <span v-if="additionalInfoLabel" class="font-semibold">{{
             additionalInfoLabel
           }}</span>
           {{ item.additionalInfo }}
@@ -179,7 +179,7 @@ onUnmounted(() => {
                   : 'group-hover:translate-y-0.5',
               ]"
             />
-            <h4 class="text-medium text-gray-800 dark:text-gray-100 font-bold">
+            <h4 class="text-medium text-gray-800 dark:text-gray-100 font-semibold">
               {{ sublist.title }}
             </h4>
           </div>

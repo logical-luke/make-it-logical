@@ -2,7 +2,7 @@
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
-import { ref, onMounted, computed, onUnmounted } from "vue";
+import { ref, onMounted, computed, onUnmounted, watch } from "vue";
 
 import typescriptLogo from "@/assets/tech/typescript-logo.svg";
 import phpLogo from "@/assets/tech/php-logo.svg";
@@ -185,22 +185,7 @@ const startAutoScroll = () => {
 
 const activeTechnologies = ref<Set<string>>(new Set());
 let blinkInterval: number;
-
-const startBlinkEffect = () => {
-  const blinkLogo = () => {
-    const visibleLogos = getVisibleLogos();
-    if (visibleLogos.length > 0 && Math.random() < 0.3) {
-      const randomIndex = Math.floor(Math.random() * visibleLogos.length);
-      const techToActivate = visibleLogos[randomIndex];
-      activeTechnologies.value.add(techToActivate);
-      setTimeout(() => {
-        activeTechnologies.value.delete(techToActivate);
-      }, 1000);
-    }
-  };
-
-  blinkInterval = window.setInterval(blinkLogo, 3000);
-};
+const blinkHistory = ref<Set<string>>(new Set());
 
 const getVisibleLogos = () => {
   if (!containerRef.value) return [];
@@ -211,17 +196,50 @@ const getVisibleLogos = () => {
 
   logoElements.forEach((logo) => {
     const logoRect = logo.getBoundingClientRect();
+    const techName = logo.getAttribute("data-tech-name") || "";
     if (
       logoRect.left >= containerRect.left &&
       logoRect.right <= containerRect.right
     ) {
-      visibleLogos.push(logo.getAttribute("data-tech-name") || "");
+      visibleLogos.push(techName);
     }
   });
 
   return visibleLogos;
 };
 
+const updateBlinkHistory = () => {
+  const visibleLogos = getVisibleLogos();
+  const allLogos = technologies.map(tech => tech.name);
+
+  allLogos.forEach(logo => {
+    if (!visibleLogos.includes(logo)) {
+      blinkHistory.value.delete(logo);
+    }
+  });
+};
+
+const startBlinkEffect = () => {
+  const blinkLogo = () => {
+    updateBlinkHistory();
+    const visibleLogos = getVisibleLogos();
+    const availableLogos = visibleLogos.filter(logo => !blinkHistory.value.has(logo));
+
+    if (availableLogos.length > 0 && Math.random() < 0.7) {
+      const randomIndex = Math.floor(Math.random() * availableLogos.length);
+      const techToActivate = availableLogos[randomIndex];
+
+      activeTechnologies.value.add(techToActivate);
+      blinkHistory.value.add(techToActivate);
+
+      setTimeout(() => {
+        activeTechnologies.value.delete(techToActivate);
+      }, 1000);
+    }
+  };
+
+  blinkInterval = window.setInterval(blinkLogo, 3000);
+};
 onMounted(() => {
   startAutoScroll();
   startBlinkEffect();
@@ -367,9 +385,8 @@ const isBlackLogo = (name: string) =>
 }
 
 .active-logo img {
-  opacity: 1 !important;
-  filter: grayscale(0%) !important;
-  transform: scale(1.03);
+  opacity: 0.3 !important;
+  transform: scale(0.7);
 }
 
 :root.dark .active-logo .logo-dark-mode {
@@ -389,7 +406,7 @@ const isBlackLogo = (name: string) =>
 }
 
 .active-logo {
-  animation: blink 1s ease-in-out;
+  animation: blink 0.5s ease-in-out;
 }
 
 .technology-slider::-webkit-scrollbar {
