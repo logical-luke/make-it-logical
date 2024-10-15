@@ -14,7 +14,7 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
           class="flex flex-col text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
         >
           <span>{{ t("Get Software") }}</span>
-          <span>{{ t("Not Confusion") }}</span>
+          <span class="line-through">{{ t("Not Confusion") }}</span>
         </h1>
       </BottomToTopSlideTransition>
       <BottomToTopSlideTransition duration="1300">
