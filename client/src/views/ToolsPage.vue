@@ -375,19 +375,6 @@ const technologies = ref<Technology[]>([
     ],
   },
   {
-    name: "Figma",
-    category: "Design Tool",
-    description:
-      "A collaborative, cloud-based design tool for creating user interfaces and digital products.",
-    useCases: [
-      "Design user interfaces and user experience prototypes for web and mobile applications",
-      "Collaborate with team members on design projects in real-time",
-      "Streamline the design-to-development handoff process",
-      "Create design systems and reusable UI components",
-      "Gather feedback and iterate on designs efficiently",
-    ],
-  },
-  {
     name: "On-Premise Infrastructure",
     category: "Servers Technology",
     description:
@@ -494,7 +481,7 @@ const groupedTechnologies = computed(() => {
       "WordPress",
       "WooCommerce",
     ],
-    "Front-end Frameworks and Design": ["Bootstrap", "Tailwind CSS", "Figma"],
+    "Front-end Frameworks and Design": ["Bootstrap", "Tailwind CSS"],
     "Data Management": ["MySQL", "Apache Kafka", "RabbitMQ"],
     "Analytics and Observability": [
       "Google Analytics",
