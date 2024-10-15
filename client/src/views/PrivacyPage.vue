@@ -164,9 +164,7 @@ const privacyPolicy = ref([
 
 <template>
   <section id="privacy-policy">
-    <MainHeader>
-      {{ t("Privacy Policy") }}
-    </MainHeader>
+    <MainHeader text="Privacy Policy" />
     <SubHeader
       first="We value your privacy and are committed to protecting your data."
       second="This policy outlines how we collect, use, and safeguard your information."

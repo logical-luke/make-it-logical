@@ -83,9 +83,7 @@ const processItems = processSteps.value.map((step) => ({
 
 <template>
   <section id="process">
-    <MainHeader>
-      {{ t("Step-by-Step Transformation Process") }}
-    </MainHeader>
+    <MainHeader text="Step-by-Step Transformation Process" />
     <SubHeader
       first="Our comprehensive, end-to-end process transforms your vision into measurable business success."
       second="By harmonizing innovative technologies, optimized workflows, and engaged teams, we deliver tangible growth and competitive advantages."

@@ -7,11 +7,13 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
 </script>
 
 <template>
-  <section class="min-h-[calc(100vh-80px)] flex flex-col md:flex-row">
+  <section
+    class="min-h-[calc(100vh-80px)] flex flex-col md:flex-row tracking-wider"
+  >
     <div class="w-full md:w-1/2 mb-8 md:mb-0">
       <BottomToTopSlideTransition duration="700">
         <h1
-          class="flex flex-col text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
+          class="flex flex-col text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 tracking-wider leading-10"
         >
           <span>{{ t("Get Software") }}</span>
           <span class="line-through">{{ t("Not Confusion") }}</span>
@@ -19,7 +21,7 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
       </BottomToTopSlideTransition>
       <BottomToTopSlideTransition duration="1300">
         <h2
-          class="flex flex-col font-semibold text-lg md:text-3xl lg:text-4xl leading-tight"
+          class="flex flex-col font-semibold text-lg md:text-3xl lg:text-4xl tracking-wider"
         >
           <span class="text-primary font-normal">{{
             t("We deliver complete")

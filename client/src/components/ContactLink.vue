@@ -5,11 +5,12 @@ const { t } = useI18n();
 import LinkItem from "@/components/LinkItem.vue";
 import { event } from "vue-gtag";
 
-const sendConversionEvent = () => event("conversion", {
-  "send_to": "AW-10875393244/uAJeCPaHyd0ZENyp5cEo",
-  "value": 1.0,
-  "currency": "PLN"
-});
+const sendConversionEvent = () =>
+  event("conversion", {
+    send_to: "AW-10875393244/uAJeCPaHyd0ZENyp5cEo",
+    value: 1.0,
+    currency: "PLN",
+  });
 </script>
 
 <template>

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
 import { ref, computed } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
@@ -545,9 +542,7 @@ const groupedTechnologies = computed(() => {
 </script>
 
 <template>
-  <MainHeader>
-    {{ t("Cutting-Edge Technologies & Platforms") }}
-  </MainHeader>
+  <MainHeader text="Cutting-Edge Technologies & Platforms" />
   <SubHeader
     first="We leverage the latest software development technologies and platforms to deliver scalable, high-performing solutions tailored to your business."
     second="Whether you require custom software, web applications, or cloud-based systems, we have the technical capabilities to bring your vision to life."

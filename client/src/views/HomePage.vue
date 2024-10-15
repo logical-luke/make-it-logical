@@ -6,7 +6,7 @@ import ContactSection from "@/components/ContactSection.vue";
 </script>
 
 <template>
-  <div class="flex flex-col gap-24">
+  <div class="flex flex-col gap-10 md:gap-24">
     <HeroSection />
     <ServicesSection />
     <ProcessSection />

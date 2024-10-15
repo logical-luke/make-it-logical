@@ -366,9 +366,7 @@ const serviceItems = services.value.map((service) => ({
 
 <template>
   <section id="services">
-    <MainHeader>
-      {{ t("Comprehensive Digital Solutions for Businesses") }}
-    </MainHeader>
+    <MainHeader text="Comprehensive Digital Solutions for Businesses" />
     <SubHeader
       first="Our services are designed to help you streamline operations, drive innovation, and gain a competitive edge in your market."
       second="From custom software development to cloud migration and UX design, we tailor our solutions to unlock your full digital potential."

@@ -106,9 +106,7 @@ const termsOfService = ref([
 
 <template>
   <section id="terms-of-service">
-    <MainHeader>
-      {{ t("Terms and Conditions") }}
-    </MainHeader>
+    <MainHeader text="Terms and Conditions" />
     <SubHeader
       first="In our commitment to transparency and clarity, we present our comprehensive terms and conditions."
       second="These guidelines are designed to ensure a logical and straightforward understanding of our mutual obligations."
