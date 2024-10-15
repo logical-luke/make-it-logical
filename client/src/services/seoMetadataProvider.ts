@@ -4,15 +4,17 @@ export function getPageTitle(route: RouteLocationNormalized): string {
   const baseTitle = "Make IT Logical";
   switch (route.path) {
     case "/":
-      return `${baseTitle} | We Deliver Complete Digital Solutions`;
+      return `${baseTitle} | We Deliver Complete Applications`;
     case "/services":
-      return `Services: Crafted Digital Solutions | ${baseTitle}`;
+      return `Services: Digital Solutions for Businesses | ${baseTitle}`;
     case "/process":
-      return `Process: Steps to Successful Delivery | ${baseTitle}`;
+      return `Process: Step-by-Step Transformation | ${baseTitle}`;
     case "/contact":
       return `Contact: Create Your Next Big Thing | ${baseTitle}`;
     case "/terms":
       return `Terms: Service Agreement | ${baseTitle}`;
+    case "/technologies":
+      return `Technologies: Technologies & Platforms | ${baseTitle}`;
     case "/privacy":
       return `Privacy: Data Protection Practices | ${baseTitle}`;
     default:
@@ -23,18 +25,20 @@ export function getPageTitle(route: RouteLocationNormalized): string {
 export function getMetaDescription(route: RouteLocationNormalized): string {
   switch (route.path) {
     case "/":
-      return "Make IT Logical creates solutions driving business growth. We specialize in app development and digital product creation for companies of all sizes.";
+      return "Boost your business with custom digital solutions. We develop apps and products that drive growth for companies of all sizes. Transform your ideas into reality.";
     case "/services":
-      return "Comprehensive digital services including app development, UX design, and technical operations. Tailored solutions to meet your specific business requirements.";
+      return "Elevate your business with our tailored digital services. From app development to UX design, we deliver solutions that meet your specific needs and drive results.";
     case "/process":
-      return "Our streamlined approach ensures efficient, high-quality results. From initial concept to final delivery, we align every step with your business objectives.";
+      return "Achieve your business goals with our efficient, results-driven approach. Our step-by-step process ensures high-quality solutions aligned with your objectives.";
     case "/contact":
-      return "Ready to transform your business? Get in touch for solutions that drive growth. Let's create your next big thing together.";
+      return "Ready to innovate? Contact us to create your next big thing. Our expert team will help transform your ideas into powerful digital solutions for your business.";
     case "/terms":
-      return "Our Terms of Service outline the rules and regulations for using our digital solutions. Understand your rights and obligations when engaging with our platform.";
+      return "Understand your rights and obligations when using our digital solutions. Our Terms of Service provide clear guidelines for a smooth partnership.";
+    case "/technologies":
+      return "Leverage cutting-edge tech for your business success. We use the latest platforms to build scalable, high-performing solutions tailored to your unique needs.";
     case "/privacy":
-      return "Learn how we collect, use, and protect your personal information. Our Privacy Policy ensures transparency and compliance with data protection laws.";
+      return "Your data security is our priority. Learn how we protect your information and ensure compliance with data protection laws in our transparent Privacy Policy.";
     default:
-      return "Page not found. Return to our homepage for solutions that power business growth and digital transformation.";
+      return "Page not found. Explore our homepage for innovative digital solutions that power business growth and drive successful transformations.";
   }
 }

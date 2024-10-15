@@ -54,7 +54,7 @@ const linkSize =
       :class="[
         linkSize,
         lessContrast
-          ? 'text-gray-500 dark:text-gray-400 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-600 dark:hover:decoration-gray-400'
+          ? 'text-gray-600 dark:text-gray-500 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-600 dark:hover:decoration-gray-400'
           : 'text-black dark:text-gray-100 decoration-gray-400 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-gray-100',
       ]"
     >
@@ -79,7 +79,7 @@ const linkSize =
       :class="[
         linkSize,
         lessContrast
-          ? 'text-gray-500 dark:text-gray-400 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-600 dark:hover:decoration-gray-400'
+          ? 'text-gray-600 dark:text-gray-500 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-600 dark:hover:decoration-gray-400'
           : 'text-black dark:text-gray-100 decoration-gray-400 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-gray-100',
       ]"
     >
