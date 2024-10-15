@@ -13,9 +13,8 @@ import LinkItem from "@/components/LinkItem.vue";
     :external="true"
     to="mailto:vision@makeitlogical.io"
     class="text-sm"
-  >
-    vision@makeitlogical.io
-  </LinkItem>
+    text="vision@makeitlogical.io"
+  />
 </template>
 
 <style scoped></style>

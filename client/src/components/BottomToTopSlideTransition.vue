@@ -60,6 +60,8 @@ const leaveDurationClass = () => {
   return durations[props.duration];
 };
 
+const hasAnimated = ref(false);
+
 let observer: IntersectionObserver | null = null;
 
 if (props.useIntersectionObserver) {
@@ -67,8 +69,9 @@ if (props.useIntersectionObserver) {
     observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !hasAnimated.value) {
             show.value = true;
+            hasAnimated.value = true;
             observer?.unobserve(entry.target);
           }
         });
@@ -90,10 +93,13 @@ if (props.useIntersectionObserver) {
   watch(
     transitionTrigger,
     () => {
-      show.value = false;
-      setTimeout(() => {
-        show.value = true;
-      }, 0);
+      if (!hasAnimated.value) {
+        show.value = false;
+        hasAnimated.value = true; // Mark as animated immediately
+        setTimeout(() => {
+          show.value = true;
+        }, 0);
+      }
     },
     { immediate: true },
   );

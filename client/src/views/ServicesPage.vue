@@ -367,22 +367,12 @@ const serviceItems = services.value.map((service) => ({
 <template>
   <section id="services">
     <MainHeader>
-      {{ t("Transformative Digital Solutions for Businesses") }}
+      {{ t("Comprehensive Digital Solutions for Businesses") }}
     </MainHeader>
-    <SubHeader>
-      {{
-        t(
-          "We deliver scalable, high-performance software and technology solutions that solve real business challenges.",
-        )
-      }}
-      <template #second>
-        {{
-          t(
-            "Driving value and growth through innovative digital transformation.",
-          )
-        }}
-      </template>
-    </SubHeader>
+    <SubHeader
+      first="Our services are designed to help you streamline operations, drive innovation, and gain a competitive edge in your market."
+      second="From custom software development to cloud migration and UX design, we tailor our solutions to unlock your full digital potential."
+    />
     <BottomToTopSlideTransition duration="1300">
       <BulletList
         :items="serviceItems"

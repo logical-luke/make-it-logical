@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from "vue";
 
-const animationDuration = 700;
+const animationDuration = 350;
 const pauseDuration = 12300;
 
 const paths = [
@@ -169,7 +169,7 @@ onMounted(() => {
           :style="{
             strokeDasharray: `${pathLengths[index]} ${pathLengths[index]}`,
             strokeDashoffset: animationProgress[index],
-            transition: `stroke-dashoffset ${animationDuration}ms ease-in-out ${index * 50}ms`,
+            transition: `stroke-dashoffset ${animationDuration}ms ease-in-out ${index * 25}ms`,
             opacity: glitchOpacity[index],
           }"
           stroke="currentColor"

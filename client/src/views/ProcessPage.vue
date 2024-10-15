@@ -84,22 +84,12 @@ const processItems = processSteps.value.map((step) => ({
 <template>
   <section id="process">
     <MainHeader>
-      {{ t("Vision into Reality") }}
+      {{ t("Step-by-Step Transformation Process") }}
     </MainHeader>
-    <SubHeader>
-      {{
-        t(
-          "Razor-sharp process cuts through complexity, delivering solutions that ignite growth and user engagement.",
-        )
-      }}
-      <template #second>
-        {{
-          t(
-            "Translating goals into tangible, measurable success through efficient delivery.",
-          )
-        }}
-      </template>
-    </SubHeader>
+    <SubHeader
+      first="Our comprehensive, end-to-end process transforms your vision into measurable business success."
+      second="By harmonizing innovative technologies, optimized workflows, and engaged teams, we deliver tangible growth and competitive advantages."
+    />
     <BottomToTopSlideTransition duration="1300">
       <div class="flex flex-col gap-4 max-w-4xl">
         <BulletList :items="processItems" :show-numbers="true" />

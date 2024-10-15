@@ -7,7 +7,7 @@ import HomePageSection from "@/components/HomePageSection.vue";
 
 <template>
   <HomePageSection
-    title="Solve Your Problem"
+    title="Solve Your Problems Now"
     link-target="/contact"
     link-text="Let's Talk"
   >
@@ -24,7 +24,7 @@ import HomePageSection from "@/components/HomePageSection.vue";
         {{ t("a perfect") }}
       </p>
       <p class="text-xl md:text-4xl mb-12 font-bold max-w-4xl">
-        {{ t("symphony") }}
+        {{ t("harmony") }}
       </p>
     </div>
   </HomePageSection>

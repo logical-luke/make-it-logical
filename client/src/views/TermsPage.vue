@@ -13,78 +13,91 @@ const termsOfService = ref([
     title: t("Introduction"),
     content: [
       t(
-        "These terms and conditions outline the rules and regulations for using Make IT Logical's Website, located at https://makeitlogical.io.",
+        "These terms and conditions outline the rules and regulations for using Make IT Logical's Website and Services.",
       ),
       t(
-        "By accessing this Website, we assume you accept these terms and conditions. Only continue to use Make IT Logical if you agree to take all the terms and conditions stated on this page.",
-      ),
-    ],
-  },
-  {
-    title: t("Cookies"),
-    content: [
-      t(
-        "We employ the use of cookies. By accessing Make IT Logical, you agree to use cookies in agreement with Make IT Logical's Privacy Policy.",
-      ),
-      t(
-        "Most interactive websites use cookies to let us retrieve the user's details for each visit. Our Website uses cookies to enable the functionality of certain areas to make it easier for people visiting our Website. Some of our affiliate/advertising partners may also use cookies.",
+        "By accessing our Website or using our Services, we assume you accept these terms and conditions. Do not continue to use Make IT Logical if you do not agree to take all of the terms and conditions stated on this page.",
       ),
     ],
   },
   {
-    title: t("License"),
-    content: [
-      t(
-        "Unless otherwise stated, Make IT Logical and/or its licensors own the intellectual property rights for all material on Make IT Logical. All intellectual property rights are reserved. You may access this from Make IT Logical for your personal use, subject to restrictions set in these terms and conditions.",
-      ),
-    ],
-    list: [
-      t("Republish material from Make IT Logical"),
-      t("Sell, rent, or sub-license material from Make IT Logical"),
-      t("Reproduce, duplicate, or copy material from Make IT Logical"),
-      t("Redistribute content from Make IT Logical"),
-    ],
-  },
-  {
-    title: t("Hyperlinking to our Content"),
-    content: [
-      t(
-        "Any organizations may link to our home page, publications, or other Website information so long as the link: (a) is not in any way deceptive; (b) does not falsely imply sponsorship, endorsement, or approval of the linking party and its products and/or services; and (c) fits within the context of the linking party's site.",
-      ),
-    ],
-  },
-  {
-    title: t("Content Liability"),
-    content: [
-      t(
-        "We shall not be held responsible for any content on your Website. You agree to protect and defend us against all claims that are rising on your Website. No link(s) should appear on any Website that may be interpreted as libelous, obscene, or criminal or which infringes, otherwise violates, or advocates the infringement or other violation of any third-party rights.",
-      ),
-    ],
-  },
-  {
-    title: t("Reservation of Rights"),
-    content: [
-      t(
-        "We reserve the right to request that you remove all links or any particular link to our Website. You approve to remove all links to our Website upon request immediately. We also reserve the right to amend these terms and conditions and its linking policy at any time. By continuously linking to our Website, you agree to be bound to and follow these linking terms and conditions.",
-      ),
+    title: t("Definitions"),
+    content: [t("For the purposes of these Terms and Conditions:")],
+    definitions: [
+      {
+        term: t("Company"),
+        description: t(
+          '(referred to as either "the Company", "We", "Us" or "Our" in this Agreement) Make IT Logical, registered as Łukasz Ziaja, al. Wiśniowa 36a/304 53-137 Wrocław, Poland',
+        ),
+      },
+      {
+        term: t("Service"),
+        description: t(
+          "Refers to the Website https://makeitlogical.io and any software development services provided by the Company",
+        ),
+      },
+      {
+        term: t("Website"),
+        description: t(
+          "The website operated by Make IT Logical, accessible from https://makeitlogical.io",
+        ),
+      },
+      {
+        term: t("You"),
+        description: t(
+          "The individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service",
+        ),
+      },
     ],
   },
   {
-    title: t("Disclaimer"),
+    title: t("Use of Service"),
     content: [
       t(
-        "To the maximum extent permitted by applicable law, we exclude all representations, warranties, and conditions relating to our Website and the use of this Website.",
+        "Our Service may contain links to third-party web sites or services that are not owned or controlled by Make IT Logical. The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party web sites or services.",
+      ),
+      t(
+        "You further acknowledge and agree that Make IT Logical shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such web sites or services.",
+      ),
+    ],
+  },
+  {
+    title: t("Intellectual Property"),
+    content: [
+      t(
+        "Unless otherwise stated, Make IT Logical and/or its licensors own the intellectual property rights for all material on the Website and in the Services provided. All intellectual property rights are reserved.",
       ),
     ],
     list: [
       t(
-        "limit or exclude our or your liability for fraud or fraudulent misrepresentation;",
+        "You may view and/or print pages from the Website for your own personal use subject to restrictions set in these terms and conditions.",
       ),
       t(
-        "modify any of our or your liabilities in any way that is not permitted under applicable law; or",
+        "You must not use any part of the content on our Website for commercial purposes without obtaining a license to do so from us or our licensors.",
       ),
+    ],
+  },
+  {
+    title: t("Limitation of Liability"),
+    content: [
       t(
-        "exclude any of our or your liabilities that may not be excluded under applicable law.",
+        "To the fullest extent permitted by applicable law, in no event will Make IT Logical, its affiliates, officers, directors, employees, agents, suppliers or licensors be liable for any indirect, special, incidental, punitive, exemplary or consequential damages of any kind arising from or relating to these terms or your use of the Services.",
+      ),
+    ],
+  },
+  {
+    title: t("Changes to Service"),
+    content: [
+      t(
+        "We reserve the right to withdraw or amend our Service, and any service or material we provide via the Service, in our sole discretion without notice. We will not be liable if for any reason all or any part of the Service is unavailable at any time or for any period.",
+      ),
+    ],
+  },
+  {
+    title: t("Amendments to Terms"),
+    content: [
+      t(
+        "We may amend these Terms at any time by posting the amended terms on this site. It is your responsibility to review these Terms periodically.",
       ),
     ],
   },
@@ -96,20 +109,10 @@ const termsOfService = ref([
     <MainHeader>
       {{ t("Terms and Conditions") }}
     </MainHeader>
-    <SubHeader>
-      {{
-        t(
-          "In our commitment to transparency and clarity, we present our comprehensive terms and conditions.",
-        )
-      }}
-      <template #second>
-        {{
-          t(
-            "These guidelines are designed to ensure a logical and straightforward understanding of our mutual obligations.",
-          )
-        }}
-      </template>
-    </SubHeader>
+    <SubHeader
+      first="In our commitment to transparency and clarity, we present our comprehensive terms and conditions."
+      second="These guidelines are designed to ensure a logical and straightforward understanding of our mutual obligations."
+    />
     <BottomToTopSlideTransition duration="1300">
       <div class="flex flex-col gap-4 max-w-4xl">
         <BottomToTopSlideTransition>
@@ -131,6 +134,15 @@ const termsOfService = ref([
                 {{ item }}
               </li>
             </ul>
+            <div v-if="section.definitions" class="space-y-4">
+              <div
+                v-for="(def, dIndex) in section.definitions"
+                :key="dIndex"
+                class="mb-2"
+              >
+                <strong>{{ def.term }}:</strong> {{ def.description }}
+              </div>
+            </div>
           </div>
         </BottomToTopSlideTransition>
         <BottomToTopSlideTransition>
@@ -143,26 +155,26 @@ const termsOfService = ref([
                 )
               }}
             </p>
-            <ul class="list-disc pl-5 mb-2 space-y-4">
+            <ul class="list-disc pl-5 mb-2 space-y-4 mt-4">
               <li>
                 {{ t("By email:") }}
                 <LinkItem
+                  class="mt-2"
                   :disable-icon="true"
                   :external="true"
                   to="mailto:office@makeitlogical.io"
-                >
-                  office@makeitlogical.io
-                </LinkItem>
+                  text="office@makeitlogical.io"
+                />
               </li>
               <li>
                 {{ t("By phone:") }}
                 <LinkItem
+                  class="mt-2"
                   :disable-icon="true"
                   :external="true"
                   to="tel:+48696606391"
-                >
-                  +48 696 606 391
-                </LinkItem>
+                  text="+48 696 606 391"
+                />
               </li>
             </ul>
           </div>

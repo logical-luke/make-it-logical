@@ -13,7 +13,7 @@ import {
   getPageTitle,
   getMetaDescription,
 } from "@/services/seoMetadataProvider";
-import FadeTransition from "@/components/FadeTransition.vue";
+import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 
 provide("transitionTrigger", transitionTrigger);
 
@@ -66,7 +66,10 @@ watch(
       </div>
     </main>
   </div>
-  <FadeTransition duration="1500" :use-intersection-observer="false">
+  <BottomToTopSlideTransition
+    duration="1500"
+    :use-intersection-observer="false"
+  >
     <FooterSection />
-  </FadeTransition>
+  </BottomToTopSlideTransition>
 </template>

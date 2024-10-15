@@ -48,7 +48,7 @@ const processItems = processSteps.value.map((step) => ({
 
 <template>
   <HomePageSection
-    title="Our Proven Transformation Framework"
+    title="Proven Partnership Methodology"
     link-target="/process"
     link-text="Discover Process"
   >

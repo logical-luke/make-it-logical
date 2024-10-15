@@ -28,9 +28,9 @@ const legalLinks = [
               :to="item.path"
               :disable-icon="true"
               :less-contrast="true"
-            >
-              {{ item.name }}
-            </LinkItem>
+              :text="item.name"
+              custom-link-size="md"
+            />
           </div>
         </div>
 
@@ -45,9 +45,12 @@ const legalLinks = [
                 :key="item.name"
                 class="mb-4 md:mb-6"
               >
-                <LinkItem :to="item.path" :disable-icon="true">
-                  {{ item.name }}
-                </LinkItem>
+                <LinkItem
+                  :to="item.path"
+                  :disable-icon="true"
+                  :text="item.name"
+                  custom-link-size="md"
+                />
               </li>
             </ul>
           </nav>

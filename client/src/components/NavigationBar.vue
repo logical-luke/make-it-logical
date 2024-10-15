@@ -6,6 +6,7 @@ import ThemeToggleButton from "@/components/ThemeToggleButton.vue";
 import MenuIcon from "@/components/MenuIcon.vue";
 import CloseIcon from "@/components/CloseIcon.vue";
 import ContactLink from "@/components/ContactLink.vue";
+import FadeTransition from "@/components/FadeTransition.vue";
 
 const route = useRoute();
 const lastScrollTop = ref(0);
@@ -80,68 +81,70 @@ watch(mobileMenuOpen, (newValue) => {
       { 'shadow-md': !isAtTop && !mobileMenuOpen },
     ]"
   >
-    <div class="container mx-auto flex justify-between items-center">
-      <RouterLink to="/" class="flex-shrink-0">
-        <div class="flex items-center gap-4">
-          <img
-            src="/logo.svg"
-            height="40"
-            fetchPriority="high"
-            width="27"
-            alt="Make IT Logical Logo"
-            class="h-10 w-auto"
-          />
-          <span
-            class="text-lg md:text-2xl text-black dark:text-gray-100 font-bold"
-          >
-            Make IT Logical
-          </span>
-        </div>
-      </RouterLink>
+    <FadeTransition>
+      <div class="container mx-auto flex justify-between items-center">
+        <RouterLink to="/" class="flex-shrink-0">
+          <div class="flex items-center gap-4">
+            <img
+              src="/logo.svg"
+              height="40"
+              fetchPriority="high"
+              width="27"
+              alt="Make IT Logical Logo"
+              class="h-10 w-auto"
+            />
+            <span
+              class="text-lg md:text-2xl text-black dark:text-gray-100 font-bold"
+            >
+              Make IT Logical
+            </span>
+          </div>
+        </RouterLink>
 
-      <div class="flex items-center space-x-6">
-        <nav class="hidden md:flex">
-          <ul class="flex space-x-6 items-center">
-            <li v-for="item in navItems" :key="item.id">
-              <RouterLink
-                :to="item.path"
-                class="text-base transition-colors duration-300 hover:underline underline-offset-8"
-                :class="{ underline: route.path === item.path }"
-              >
-                {{ item.name }}
-              </RouterLink>
-            </li>
-          </ul>
-        </nav>
-        <ThemeToggleButton
-          :class="[
-            'transition-opacity duration-500 ease-in-out',
-            { 'opacity-0 invisible': !mobileMenuOpen },
-            'md:opacity-100 md:visible',
-          ]"
-        />
-        <button
-          type="button"
-          :aria-label="mobileMenuOpen ? 'Close Menu' : 'Open Menu'"
-          class="md:hidden z-50 flex items-center justify-center"
-          @click="toggleMobileMenu"
-        >
-          <span
-            class="right-2 relative w-8 h-8 transition-transform duration-300 ease-in-out"
-            :class="{ 'rotate-90': mobileMenuOpen }"
+        <div class="flex items-center space-x-6">
+          <nav class="hidden md:flex">
+            <ul class="flex space-x-6 items-center">
+              <li v-for="item in navItems" :key="item.id">
+                <RouterLink
+                  :to="item.path"
+                  class="text-base transition-colors duration-300 hover:underline underline-offset-8"
+                  :class="{ underline: route.path === item.path }"
+                >
+                  {{ item.name }}
+                </RouterLink>
+              </li>
+            </ul>
+          </nav>
+          <ThemeToggleButton
+            :class="[
+              'transition-opacity duration-500 ease-in-out',
+              { 'opacity-0 invisible': !mobileMenuOpen },
+              'md:opacity-100 md:visible',
+            ]"
+          />
+          <button
+            type="button"
+            :aria-label="mobileMenuOpen ? 'Close Menu' : 'Open Menu'"
+            class="md:hidden z-50 flex items-center justify-center"
+            @click="toggleMobileMenu"
           >
-            <MenuIcon
-              class="absolute inset-0 transition-opacity duration-100 ease-in-out"
-              :class="{ 'opacity-0': mobileMenuOpen }"
-            />
-            <CloseIcon
-              class="absolute inset-0 transition-opacity duration-300 ease-in-out"
-              :class="{ 'opacity-0': !mobileMenuOpen }"
-            />
-          </span>
-        </button>
+            <span
+              class="right-2 relative w-8 h-8 transition-transform duration-300 ease-in-out"
+              :class="{ 'rotate-90': mobileMenuOpen }"
+            >
+              <MenuIcon
+                class="absolute inset-0 transition-opacity duration-100 ease-in-out"
+                :class="{ 'opacity-0': mobileMenuOpen }"
+              />
+              <CloseIcon
+                class="absolute inset-0 transition-opacity duration-300 ease-in-out"
+                :class="{ 'opacity-0': !mobileMenuOpen }"
+              />
+            </span>
+          </button>
+        </div>
       </div>
-    </div>
+    </FadeTransition>
   </header>
   <Transition
     enter-active-class="duration-300 ease-out"

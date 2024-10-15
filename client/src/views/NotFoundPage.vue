@@ -12,9 +12,7 @@ const { t } = useI18n();
     <MainHeader>
       {{ t("404 - Page Not Found") }}
     </MainHeader>
-    <SubHeader>
-      {{ t("The page you're looking for doesn't exist.") }}
-    </SubHeader>
-    <LinkItem to="/">{{ t("Go to Homepage") }}</LinkItem>
+    <SubHeader first="The page you're looking for doesn't exist." />
+    <LinkItem to="/" text="Go To Homepage" />
   </section>
 </template>

@@ -22,10 +22,8 @@ defineProps<Props>();
         {{ t(title) }}
       </h2>
       <slot></slot>
-      <div v-if="linkTarget && linkText" class="flex justify-center mt-12">
-        <LinkItem :to="linkTarget">
-          {{ t(linkText) }}
-        </LinkItem>
+      <div v-if="linkTarget && linkText" class="flex justify-center py-14">
+        <LinkItem :to="linkTarget" :text="linkText" />
       </div>
     </section>
   </BottomToTopSlideTransition>

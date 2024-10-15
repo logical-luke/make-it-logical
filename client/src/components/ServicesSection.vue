@@ -61,14 +61,14 @@ const serviceItems = services.value.map((service) => ({
 
 <template>
   <HomePageSection
-    title="Custom Software & Web Solutions That Solve Your Challenges"
+    title="Custom Software & Web Solutions"
     link-target="/services"
     link-text="Explore Services"
   >
     <p class="flex flex-col gap-2 text-lg md:text-xl mb-12 max-w-4xl">
       <span>{{
         t(
-          "We create innovative, user-centric digital experiences that drive business growth.",
+          "We create user-centric digital experiences that drive business growth.",
         )
       }}</span>
       <span>{{
