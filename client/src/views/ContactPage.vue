@@ -13,7 +13,7 @@ import ContactLink from "@/components/ContactLink.vue";
     <MainHeader>
       {{ t("Let's Start") }}
     </MainHeader>
-    <div class="flex flex-col gap-6 py-6 mb-10">
+    <div class="flex flex-col gap-6 py-6 mb-6 md:mb-10">
       <BottomToTopSlideTransition duration="1000">
         <p class="text-xl md:text-2xl mb-4 max-w-4xl flex flex-col gap-2">
           <span>{{ t("Results are driven by action.") }}</span>
