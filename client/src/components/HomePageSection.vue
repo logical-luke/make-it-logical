@@ -17,7 +17,7 @@ defineProps<Props>();
   <BottomToTopSlideTransition>
     <section>
       <h2
-        class="max-w-4xl text-gray-500 dark:text-gray-400 text-xl md:text-4xl font-bold mb-8"
+        class="max-w-4xl text-gray-500 dark:text-gray-400 text-2xl md:text-4xl font-bold mb-8"
       >
         {{ t(title) }}
       </h2>

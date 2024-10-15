@@ -12,7 +12,7 @@ import HomePageSection from "@/components/HomePageSection.vue";
     link-text="Let's Talk"
   >
     <div class="flex flex-col gap-4">
-      <p class="md:text-2xl mb-8 max-w-4xl">
+      <p class="md:text-lg mb-8 max-w-4xl">
         {{ t("Get digital solutions that don't just work – they") }}
         <span class="font-semibold">{{ t("wow") }}</span
         >.

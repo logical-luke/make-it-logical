@@ -65,7 +65,7 @@ const serviceItems = services.value.map((service) => ({
     link-target="/services"
     link-text="Explore Services"
   >
-    <p class="flex flex-col gap-2 text-lg md:text-xl mb-12 max-w-4xl">
+    <p class="flex flex-col gap-2 md:text-lg mb-12 max-w-4xl">
       <span>{{
         t(
           "We create user-centric digital experiences that drive business growth.",
