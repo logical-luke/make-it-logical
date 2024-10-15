@@ -175,7 +175,7 @@ onUnmounted(() => {
             >
               <div
                 v-if="isExpanded(`${groupIndex}-${itemIndex}`)"
-                class="flex flex-col gap-6 mt-4 ml-6"
+                class="flex flex-col gap-6 mt-4 ml-7"
               >
                 <p v-if="item.additionalInfo">
                   <span v-if="additionalInfoLabel" class="font-bold"
@@ -249,7 +249,7 @@ onUnmounted(() => {
           >
             <div
               v-if="isExpanded(index.toString())"
-              class="flex flex-col gap-6 mt-4 ml-6"
+              class="flex flex-col gap-6 mt-4 ml-7"
             >
               <p v-if="item.additionalInfo">
                 <span v-if="additionalInfoLabel" class="font-bold"
