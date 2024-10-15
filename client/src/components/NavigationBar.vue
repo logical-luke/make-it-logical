@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, inject } from "vue";
 import { useRoute } from "vue-router";
+import navItems from "@/router/navItems";
 import ThemeToggleButton from "@/components/ThemeToggleButton.vue";
-import LinkItem from "@/components/LinkItem.vue";
-import FadeTransition from "@/components/FadeTransition.vue";
 import MenuIcon from "@/components/MenuIcon.vue";
 import CloseIcon from "@/components/CloseIcon.vue";
+import ContactLink from "@/components/ContactLink.vue";
 
 const route = useRoute();
 const lastScrollTop = ref(0);
@@ -20,18 +20,12 @@ watch(
   () => {
     mobileMenuOpen.value = false;
   },
-  { immediate: true }
+  { immediate: true },
 );
 
 const checkScrollPosition = () => {
   isAtTop.value = window.scrollY === 0;
 };
-
-const navItems = ref([
-  { id: 1, name: "Services", path: "/services" },
-  { id: 2, name: "Process", path: "/process" },
-  { id: 3, name: "Contact", path: "/contact" }
-]);
 
 const toggleMobileMenu = () => {
   mobileMenuOpen.value = !mobileMenuOpen.value;
@@ -81,10 +75,10 @@ watch(mobileMenuOpen, (newValue) => {
   <header
     v-show="isNavVisible"
     :class="[
-        'bg-gray-100 dark:bg-zinc-900 py-6 px-6 fixed w-full z-40 h-20',
-        'transition-shadow duration-700 ease-in-out',
-        { 'shadow-md': !isAtTop && !mobileMenuOpen },
-      ]"
+      'bg-gray-100 dark:bg-zinc-900 py-6 px-6 fixed w-full z-40 h-20',
+      'transition-shadow duration-700 ease-in-out',
+      { 'shadow-md': !isAtTop && !mobileMenuOpen },
+    ]"
   >
     <div class="container mx-auto flex justify-between items-center">
       <RouterLink to="/" class="flex-shrink-0">
@@ -100,8 +94,8 @@ watch(mobileMenuOpen, (newValue) => {
           <span
             class="text-lg md:text-2xl text-black dark:text-gray-100 font-bold"
           >
-              Make IT Logical
-            </span>
+            Make IT Logical
+          </span>
         </div>
       </RouterLink>
 
@@ -121,10 +115,10 @@ watch(mobileMenuOpen, (newValue) => {
         </nav>
         <ThemeToggleButton
           :class="[
-              'transition-opacity duration-500 ease-in-out',
-              { 'opacity-0 invisible': !mobileMenuOpen },
-              'md:opacity-100 md:visible',
-            ]"
+            'transition-opacity duration-500 ease-in-out',
+            { 'opacity-0 invisible': !mobileMenuOpen },
+            'md:opacity-100 md:visible',
+          ]"
         />
         <button
           type="button"
@@ -132,19 +126,19 @@ watch(mobileMenuOpen, (newValue) => {
           class="md:hidden z-50 flex items-center justify-center"
           @click="toggleMobileMenu"
         >
-            <span
-              class="right-2 relative w-8 h-8 transition-transform duration-300 ease-in-out"
-              :class="{ 'rotate-90': mobileMenuOpen }"
-            >
-              <MenuIcon
-                class="absolute inset-0 transition-opacity duration-100 ease-in-out"
-                :class="{ 'opacity-0': mobileMenuOpen }"
-              />
-              <CloseIcon
-                class="absolute inset-0 transition-opacity duration-300 ease-in-out"
-                :class="{ 'opacity-0': !mobileMenuOpen }"
-              />
-            </span>
+          <span
+            class="right-2 relative w-8 h-8 transition-transform duration-300 ease-in-out"
+            :class="{ 'rotate-90': mobileMenuOpen }"
+          >
+            <MenuIcon
+              class="absolute inset-0 transition-opacity duration-100 ease-in-out"
+              :class="{ 'opacity-0': mobileMenuOpen }"
+            />
+            <CloseIcon
+              class="absolute inset-0 transition-opacity duration-300 ease-in-out"
+              :class="{ 'opacity-0': !mobileMenuOpen }"
+            />
+          </span>
         </button>
       </div>
     </div>
@@ -176,15 +170,7 @@ watch(mobileMenuOpen, (newValue) => {
           </ul>
         </nav>
         <div class="mt-auto pb-8 flex flex-col">
-          <p class="text-sm">Spark Your</p>
-          <LinkItem
-            :disable-icon="true"
-            :external="true"
-            to="mailto:vision@makeitlogical.io"
-            class="text-sm"
-          >
-            vision@makeitlogical.io
-          </LinkItem>
+          <ContactLink />
         </div>
       </div>
     </div>

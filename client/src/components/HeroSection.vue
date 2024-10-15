@@ -11,10 +11,10 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
     <div class="w-full md:w-1/2 mb-8 md:mb-0">
       <BottomToTopSlideTransition duration="700">
         <h1
-          class="text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
+          class="flex flex-col text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
         >
-          {{ t("Get Software") }}<br />
-          {{ t("Not Confusion") }}
+          <span>{{ t("Get Software") }}</span>
+          <span>{{ t("Not Confusion") }}</span>
         </h1>
       </BottomToTopSlideTransition>
       <BottomToTopSlideTransition duration="1300">
@@ -22,7 +22,7 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
           class="flex flex-col font-semibold text-lg md:text-3xl lg:text-4xl leading-tight"
         >
           <span class="text-primary font-normal">{{
-            t("We simply deliver complete")
+            t("We deliver complete")
           }}</span>
           {{ t("digital solutions") }}
         </h2>

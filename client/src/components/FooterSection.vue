@@ -2,15 +2,10 @@
 import LinkItem from "@/components/LinkItem.vue";
 import { useRoute } from "vue-router";
 import { computed } from "vue";
-
+import navLinks from "@/router/navItems";
+import ContactLink from "@/components/ContactLink.vue";
 const route = useRoute();
 const isContact = computed(() => route.path === "/contact");
-
-const navLinks = [
-  { name: "Services", path: "/services" },
-  { name: "Process", path: "/process" },
-  { name: "Contact", path: "/contact" },
-];
 
 const legalLinks = [
   { name: "Terms", path: "/terms" },
@@ -24,17 +19,7 @@ const legalLinks = [
       <div class="flex flex-col md:flex-row justify-between gap-6">
         <div class="flex flex-col md:w-1/2 mb-8 md:mb-0">
           <div v-if="!isContact" class="mb-6">
-            <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">
-              Spark your
-            </p>
-            <LinkItem
-              :disable-icon="true"
-              :external="true"
-              to="mailto:vision@makeitlogical.io"
-              class="text-sm"
-            >
-              vision@makeitlogical.io
-            </LinkItem>
+            <ContactLink />
           </div>
           <div class="flex gap-4 mt-6 md:mt-auto order-3 md:order-none">
             <LinkItem

@@ -94,12 +94,12 @@ const termsOfService = ref([
 <template>
   <section id="terms-of-service">
     <MainHeader>
-      {{ t("Terms of Service") }}
+      {{ t("Terms and Conditions") }}
     </MainHeader>
     <SubHeader>
       {{
         t(
-          "In our commitment to transparency and clarity, we present our comprehensive terms of service.",
+          "In our commitment to transparency and clarity, we present our comprehensive terms and conditions.",
         )
       }}
       <template #second>

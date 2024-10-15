@@ -28,7 +28,7 @@ const privacyPolicy = ref([
       ),
     ],
     list: [
-      t("Company: Make IT Logical"),
+      t("Company: Łukasz Ziaja"),
       t("Country: Poland"),
       t("Service: The Website https://makeitlogical.io"),
       t(

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from "vue";
-import ArrowChevronRightIcon from "@/components/ArrowChevronRightIcon.vue";
+import ArrowRightIcon from "@/components/ArrowRightIcon.vue";
 
 interface ListItem {
   title: string;
@@ -169,14 +169,13 @@ onUnmounted(() => {
             ]"
             @click="sublist.expandable && toggleExpand(item.title, subIndex)"
           >
-            <ArrowChevronRightIcon
+            <ArrowRightIcon
               v-if="sublist.expandable"
               class="h-4 w-4 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
               :class="[
-                { 'rotate-180': isExpanded(item.title, subIndex) },
                 isExpanded(item.title, subIndex)
-                  ? 'group-hover:translate-y-0.5'
-                  : 'group-hover:translate-y-0.5',
+                  ? '-rotate-90 group-hover:translate-y-0.5'
+                  : 'rotate-90 group-hover:translate-y-0.5',
               ]"
             />
             <h4

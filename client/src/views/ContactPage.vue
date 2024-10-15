@@ -3,21 +3,24 @@ import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 
-import LinkItem from "@/components/LinkItem.vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
+import ContactLink from "@/components/ContactLink.vue";
 </script>
 
 <template>
   <section id="contact">
     <MainHeader>
-      {{ t("Results are Driven by Action") }}
+      {{ t("Let's Start") }}
     </MainHeader>
     <SubHeader>
-      {{ t("We just listen and transform your visions into reality.") }}
+      <div class="flex flex-col gap-2">
+        <span>{{ t("Results are driven by action.") }}</span>
+        <span>{{ t("We listen and transform your goals into reality.") }}</span>
+      </div>
       <template #second>
-        <span class="font-normal">{{ t("Start your success story.") }}</span>
+        <span class="font-normal">{{ t("Make your success story.") }}</span>
         {{ t("Here and now.") }}
       </template>
       <template #third>
@@ -26,16 +29,7 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
       </template>
     </SubHeader>
     <BottomToTopSlideTransition duration="1300">
-      <p class="text-sm">Spark Your</p>
-      <div class="flex flex-col gap-4 w-full">
-        <LinkItem
-          :disable-icon="true"
-          :external="true"
-          to="mailto:vision@makeitlogical.io"
-        >
-          vision@makeitlogical.io
-        </LinkItem>
-      </div>
+      <ContactLink />
     </BottomToTopSlideTransition>
   </section>
 </template>

@@ -3,8 +3,8 @@ import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 import { ref, onMounted, onUnmounted } from "vue";
-import ArrowChevronRightIcon from "@/components/ArrowChevronRightIcon.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
+import ArrowRightIcon from "@/components/ArrowRightIcon.vue";
 
 interface Technology {
   name: string;
@@ -112,13 +112,12 @@ onUnmounted(() => {
           class="group flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600 cursor-pointer"
           @click="toggleExpand(tech.name)"
         >
-          <ArrowChevronRightIcon
+          <ArrowRightIcon
             class="h-4 w-4 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
             :class="[
-              { 'rotate-180': isExpanded(tech.name) },
               isExpanded(tech.name)
-                ? 'group-hover:translate-y-0.5'
-                : 'group-hover:translate-y-0.5',
+                ? '-rotate-90 group-hover:translate-y-0.5'
+                : 'rotate-90 group-hover:translate-y-0.5',
             ]"
           />
           <div class="flex flex-col">

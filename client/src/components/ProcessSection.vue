@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
+
 const { t } = useI18n();
 import { ref } from "vue";
 import HomePageSection from "@/components/HomePageSection.vue";
 import ExpandableList from "@/components/ExpandableList.vue";
-import LinkItem from "@/components/LinkItem.vue";
 
 const processSteps = ref([
   {
@@ -47,13 +47,24 @@ const processItems = processSteps.value.map((step) => ({
 </script>
 
 <template>
-  <HomePageSection title="Digital Orchestra">
+  <HomePageSection
+    title="Our Proven Transformation Framework"
+    link-target="/process"
+    link-text="Discover Process"
+  >
+    <p class="flex flex-col gap-2 text-lg md:text-xl mb-12 max-w-4xl">
+      <span>{{
+        t(
+          "A comprehensive, end-to-end digital transformation process is the foundation for unlocking the full potential of your technology initiatives.",
+        )
+      }}</span>
+      <span>{{
+        t(
+          "By harmonizing innovative technologies, optimized business processes, and engaged people, we drive sustainable growth and competitive advantage.",
+        )
+      }}</span>
+    </p>
     <ExpandableList :items="processItems" />
-    <div class="flex justify-center mt-8">
-      <LinkItem to="/process">
-        {{ t("Discover Process") }}
-      </LinkItem>
-    </div>
   </HomePageSection>
 </template>
 

@@ -3,14 +3,17 @@ import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 import HomePageSection from "@/components/HomePageSection.vue";
-import LinkItem from "@/components/LinkItem.vue";
 </script>
 
 <template>
-  <HomePageSection title="Ready for a Journey?">
+  <HomePageSection
+    title="Solve Your Problem"
+    link-target="/contact"
+    link-text="Let's Talk"
+  >
     <div class="flex flex-col gap-4">
       <p class="md:text-2xl mb-8 max-w-4xl">
-        {{ t("Get solutions that don't just work – they") }}
+        {{ t("Get digital solutions that don't just work – they") }}
         <span class="font-semibold">{{ t("wow") }}</span
         >.
       </p>
@@ -23,11 +26,6 @@ import LinkItem from "@/components/LinkItem.vue";
       <p class="text-xl md:text-4xl mb-12 font-bold max-w-4xl">
         {{ t("symphony") }}
       </p>
-    </div>
-    <div class="flex justify-center">
-      <LinkItem to="/contact">
-        {{ t("Ignite Success") }}
-      </LinkItem>
     </div>
   </HomePageSection>
 </template>
