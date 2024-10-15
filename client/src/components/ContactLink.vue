@@ -1,7 +1,15 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 const { t } = useI18n();
+
 import LinkItem from "@/components/LinkItem.vue";
+import { event } from "vue-gtag";
+
+const sendConversionEvent = () => event("conversion", {
+  "send_to": "AW-10875393244/uAJeCPaHyd0ZENyp5cEo",
+  "value": 1.0,
+  "currency": "PLN"
+});
 </script>
 
 <template>
@@ -14,7 +22,6 @@ import LinkItem from "@/components/LinkItem.vue";
     to="mailto:vision@makeitlogical.io"
     class="text-sm"
     text="vision@makeitlogical.io"
+    @click="sendConversionEvent"
   />
 </template>
-
-<style scoped></style>
