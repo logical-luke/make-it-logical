@@ -11,7 +11,7 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
     <div class="w-full md:w-1/2 mb-8 md:mb-0">
       <BottomToTopSlideTransition duration="700">
         <h1
-          class="flex flex-col text-2xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
+          class="flex flex-col text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 leading-tight"
         >
           <span>{{ t("Get Software") }}</span>
           <span>{{ t("Not Confusion") }}</span>
