@@ -3,6 +3,7 @@ import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
 import ArrowRightIcon from "@/components/ArrowRightIcon.vue";
+import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 
 interface Props {
   to: string;
@@ -20,7 +21,7 @@ const linkClass = {
   md: "text-md",
   lg: "text-lg",
   xl: "text-xl",
-  "2xl": "text-2xl",
+  "2xl": "text-2xl"
 };
 
 const upperLinkClass = {
@@ -28,27 +29,29 @@ const upperLinkClass = {
   md: "md:text-lg",
   lg: "md:text-xl",
   xl: "md:text-2xl",
-  "2xl": "md:text-3xl",
+  "2xl": "md:text-3xl"
 };
 const linkSize =
   typeof props.customLinkSize === "string"
     ? linkClass[props.customLinkSize] +
-      " " +
-      upperLinkClass[props.customLinkSize]
+    " " +
+    upperLinkClass[props.customLinkSize]
     : "text-xl md:text-2xl";
 </script>
 
 <template>
-  <RouterLink
-    v-if="!external"
-    :to="to"
-    class="flex duration-300 transition-all gap-0 hover:gap-2 items-center"
-    :class="[
+  <BottomToTopSlideTransition>
+    <div>
+      <RouterLink
+        v-if="!external"
+        :to="to"
+        class="flex duration-300 transition-all gap-0 hover:gap-2 items-center"
+        :class="[
       lessContrast
         ? 'fill-gray-300 hover:fill-gray-500 dark:fill-gray-600 dark:hover:fill-gray-400'
         : 'fill-gray-400 hover:fill-black dark:fill-gray-400 dark:hover:fill-gray-200',
     ]"
-  >
+      >
     <span
       class="underline underline-offset-8 hover:decoration-3"
       :class="[
@@ -60,20 +63,20 @@ const linkSize =
     >
       {{ t(text) }}
     </span>
-    <ArrowRightIcon v-if="!disableIcon" class="h-5 -ml-3" />
-  </RouterLink>
-  <a
-    v-else
-    :href="to"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="flex duration-300 transition-all gap-2 hover:gap-4 items-center"
-    :class="[
+        <ArrowRightIcon v-if="!disableIcon" class="h-5 -ml-3" />
+      </RouterLink>
+      <a
+        v-else
+        :href="to"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex duration-300 transition-all gap-2 hover:gap-4 items-center"
+        :class="[
       lessContrast
         ? 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
         : 'text-gray-400 hover:text-black dark:hover:text-gray-100',
     ]"
-  >
+      >
     <span
       class="underline underline-offset-8 hover:decoration-3"
       :class="[
@@ -85,5 +88,7 @@ const linkSize =
     >
       {{ t(text) }}
     </span>
-  </a>
+      </a>
+    </div>
+  </BottomToTopSlideTransition>
 </template>
