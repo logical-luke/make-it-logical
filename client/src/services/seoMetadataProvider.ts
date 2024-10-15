@@ -4,7 +4,7 @@ export function getPageTitle(route: RouteLocationNormalized): string {
   const baseTitle = "Make IT Logical";
   switch (route.path) {
     case "/":
-      return `${baseTitle} | We Deliver Complete Applications`;
+      return `${baseTitle} | We Deliver Complete Digital Solutions`;
     case "/services":
       return `Services: Digital Solutions for Businesses | ${baseTitle}`;
     case "/process":
