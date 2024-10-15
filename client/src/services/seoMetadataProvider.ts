@@ -13,8 +13,8 @@ export function getPageTitle(route: RouteLocationNormalized): string {
       return `Contact: Create Your Next Big Thing | ${baseTitle}`;
     case "/terms":
       return `Terms: Service Agreement | ${baseTitle}`;
-    case "/technologies":
-      return `Technologies: Technologies & Platforms | ${baseTitle}`;
+    case "/tools":
+      return `Tools: Technologies & Platforms | ${baseTitle}`;
     case "/privacy":
       return `Privacy: Data Protection Practices | ${baseTitle}`;
     default:
@@ -34,7 +34,7 @@ export function getMetaDescription(route: RouteLocationNormalized): string {
       return "Ready to innovate? Contact us to create your next big thing. Our expert team will help transform your ideas into powerful digital solutions for your business.";
     case "/terms":
       return "Understand your rights and obligations when using our digital solutions. Our Terms of Service provide clear guidelines for a smooth partnership.";
-    case "/technologies":
+    case "/tools":
       return "Leverage cutting-edge tech for your business success. We use the latest platforms to build scalable, high-performing solutions tailored to your unique needs.";
     case "/privacy":
       return "Your data security is our priority. Learn how we protect your information and ensure compliance with data protection laws in our transparent Privacy Policy.";
