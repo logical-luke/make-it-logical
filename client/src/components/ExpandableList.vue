@@ -11,6 +11,8 @@ interface ListItem {
 
 interface Group {
   name: string;
+  expandable?: boolean;
+  description?: string;
   items: ListItem[];
 }
 
@@ -32,32 +34,24 @@ const props = defineProps<{
 }>();
 
 const animationDuration = props.animationDuration || "500";
-
+const expandedGroups = ref(new Set<string>());
 const expandedItems = ref(new Set<string>());
-const activeItems = ref(new Set<string>());
 const visibleItems = ref(new Set<string>());
 
-const toggleExpand = (key: string) => {
-  if (expandedItems.value.has(key)) {
-    expandedItems.value.delete(key);
+const toggleExpand = (key: string, type: "group" | "item") => {
+  const targetSet =
+    type === "group" ? expandedGroups.value : expandedItems.value;
+  if (targetSet.has(key)) {
+    targetSet.delete(key);
   } else {
-    expandedItems.value.add(key);
+    targetSet.add(key);
   }
-
-  if (activeItems.value.has(key)) {
-    activeItems.value.delete(key);
-  } else {
-    activeItems.value.clear();
-    activeItems.value.add(key);
-  }
-
-  setTimeout(() => {
-    activeItems.value.clear();
-  }, 100);
 };
 
-const isActive = (key: string) => activeItems.value.has(key);
-const isExpanded = (key: string) => expandedItems.value.has(key);
+const isExpanded = (key: string, type: "group" | "item") =>
+  type === "group"
+    ? expandedGroups.value.has(key)
+    : expandedItems.value.has(key);
 const isVisible = (key: string) => visibleItems.value.has(key);
 
 const durationClass = () => {
@@ -113,163 +107,176 @@ onUnmounted(() => {
         :key="group.name"
         class="flex flex-col gap-8 max-w-4xl"
       >
-        <h2
+        <div
           :id="`group-${groupIndex}-title`"
           data-observe
           :class="[
             durationClass(),
-            'transform transition-all ease-in-out delay-100 max-w-4xl text-gray-500 dark:text-gray-400 text-2xl md:text-3xl font-bold',
+            'transform transition-all ease-in-out delay-100 max-w-4xl text-2xl md:text-3xl font-bold group flex items-center cursor-pointer',
             isVisible(`group-${groupIndex}-title`)
-              ? 'translate-y-0 opacity-100'
-              : 'translate-y-4 opacity-0',
+              ? 'translate-y-0'
+              : 'translate-y-4',
           ]"
+          @click="toggleExpand(groupIndex.toString(), 'group')"
         >
-          {{ group.name }}
-        </h2>
-        <div v-for="(item, itemIndex) in group.items" :key="item.title">
-          <div>
-            <div
-              :id="`group-${groupIndex}-item-${itemIndex}-title`"
-              data-observe
-              :class="[
-                durationClass(),
-                'transform transition-all ease-in-out delay-100 group flex w-full md:w-fit items-center text-gray-400 dark:text-gray-600 cursor-pointer',
-                isVisible(`group-${groupIndex}-item-${itemIndex}-title`)
-                  ? 'translate-y-0 opacity-100'
-                  : 'translate-y-4 opacity-0',
-              ]"
-              :data-active="isActive(`${groupIndex}-${itemIndex}`)"
-              @click="toggleExpand(`${groupIndex}-${itemIndex}`)"
-            >
-              <div class="flex items-center">
-                <ArrowRightIcon
-                  class="h-4 w-4 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
-                  :class="[
-                    isExpanded(`${groupIndex}-${itemIndex}`)
-                      ? '-rotate-90 group-hover:translate-y-0.5'
-                      : 'rotate-90 group-hover:translate-y-0.5',
-                  ]"
-                />
-              </div>
-              <div class="flex flex-col">
-                <h3
-                  class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold"
-                >
-                  {{ item.title }}
-                </h3>
-                <span
-                  v-if="item.tag"
-                  class="text-sm text-gray-500 dark:text-gray-400"
-                >
-                  {{ item.tag }}
-                </span>
-              </div>
-            </div>
-            <Transition
-              :enter-active-class="`${durationClass()} transition-all ease-out`"
-              :enter-from-class="'transform translate-y-8 opacity-0'"
-              :enter-to-class="'transform translate-y-0 opacity-100'"
-              :leave-active-class="`${durationClass()} transition-all ease-in`"
-              :leave-from-class="'transform translate-y-0 opacity-100'"
-              :leave-to-class="'transform translate-y-8 opacity-0'"
-            >
+          <ArrowRightIcon
+            class="h-5 w-5 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+            :class="[
+              isExpanded(groupIndex.toString(), 'group')
+                ? '-rotate-90 group-hover:translate-y-0.5'
+                : 'rotate-90 group-hover:translate-y-0.5',
+            ]"
+          />
+          <h3 class="text-gray-800 dark:text-gray-100">
+            {{ group.name }}
+          </h3>
+        </div>
+        <Transition
+          :enter-active-class="`${durationClass()} transition-all ease-out`"
+          :enter-from-class="'transform translate-y-8 opacity-0'"
+          :enter-to-class="'transform translate-y-0 opacity-100'"
+          :leave-active-class="`${durationClass()} transition-all ease-in`"
+          :leave-from-class="'transform translate-y-0 opacity-100'"
+          :leave-to-class="'transform translate-y-8 opacity-0'"
+        >
+          <div
+            v-if="isExpanded(groupIndex.toString(), 'group')"
+            class="ml-8 flex flex-col gap-8"
+          >
+            <div v-for="(item, itemIndex) in group.items" :key="item.title">
               <div
-                v-if="isExpanded(`${groupIndex}-${itemIndex}`)"
-                class="flex flex-col gap-6 mt-4 ml-7"
+                :id="`group-${groupIndex}-item-${itemIndex}-title`"
+                data-observe
+                :class="[
+                  durationClass(),
+                  'transform transition-all ease-in-out delay-100 group flex w-full md:w-fit items-center text-gray-400 dark:text-gray-600 cursor-pointer',
+                ]"
+                @click="toggleExpand(`${groupIndex}-${itemIndex}`, 'item')"
               >
-                <p v-if="item.additionalInfo">
-                  <span v-if="additionalInfoLabel" class="font-bold"
-                    >{{ additionalInfoLabel }}
+                <div class="flex items-center">
+                  <ArrowRightIcon
+                    class="h-4 w-4 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+                    :class="[
+                      isExpanded(`${groupIndex}-${itemIndex}`, 'item')
+                        ? '-rotate-90 group-hover:translate-y-0.5'
+                        : 'rotate-90 group-hover:translate-y-0.5',
+                    ]"
+                  />
+                </div>
+                <div class="flex flex-col">
+                  <h3
+                    class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold"
+                  >
+                    {{ item.title }}
+                  </h3>
+                  <span
+                    v-if="item.tag"
+                    class="text-sm text-gray-500 dark:text-gray-400"
+                  >
+                    {{ item.tag }}
                   </span>
-                  {{ item.additionalInfo }}
-                </p>
-                <div v-for="sublist in item.sublists" :key="sublist.title">
-                  <h4 v-if="sublist.title" class="font-bold mb-4">
-                    {{ sublist.title }}
-                  </h4>
-                  <ul class="space-y-3 list-disc px-4">
-                    <li v-for="subItem in sublist.items" :key="subItem.text">
-                      {{ subItem.text }}
-                    </li>
-                  </ul>
                 </div>
               </div>
-            </Transition>
+              <Transition
+                :enter-active-class="`${durationClass()} transition-all ease-out`"
+                :enter-from-class="'transform translate-y-8 opacity-0'"
+                :enter-to-class="'transform translate-y-0 opacity-100'"
+                :leave-active-class="`${durationClass()} transition-all ease-in`"
+                :leave-from-class="'transform translate-y-0 opacity-100'"
+                :leave-to-class="'transform translate-y-8 opacity-0'"
+              >
+                <div
+                  v-if="isExpanded(`${groupIndex}-${itemIndex}`, 'item')"
+                  class="flex flex-col gap-8 mt-6 ml-7"
+                >
+                  <p v-if="item.additionalInfo">
+                    <span v-if="additionalInfoLabel" class="font-bold">
+                      {{ additionalInfoLabel }}
+                    </span>
+                    {{ item.additionalInfo }}
+                  </p>
+                  <div v-for="sublist in item.sublists" :key="sublist.title">
+                    <h4 v-if="sublist.title" class="font-bold mb-4">
+                      {{ sublist.title }}
+                    </h4>
+                    <ul class="space-y-3 list-disc px-4">
+                      <li v-for="subItem in sublist.items" :key="subItem.text">
+                        {{ subItem.text }}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </Transition>
+            </div>
           </div>
-        </div>
+        </Transition>
       </div>
     </template>
     <template v-else>
       <div v-for="(item, index) in items as ListItem[]" :key="item.title">
-        <div>
+        <div
+          :id="`item-${index}-title`"
+          data-observe
+          :class="[
+            durationClass(),
+            'transform transition-all ease-in-out delay-100 group flex w-full md:w-fit items-center text-gray-400 dark:text-gray-600 cursor-pointer',
+          ]"
+          @click="toggleExpand(index.toString(), 'item')"
+        >
+          <div class="flex items-center">
+            <ArrowRightIcon
+              class="h-4 w-4 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+              :class="[
+                isExpanded(index.toString(), 'item')
+                  ? '-rotate-90 group-hover:translate-y-0.5'
+                  : 'rotate-90 group-hover:translate-y-0.5',
+              ]"
+            />
+          </div>
+          <div class="flex flex-col">
+            <h3
+              class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold"
+            >
+              {{ item.title }}
+            </h3>
+            <span
+              v-if="item.tag"
+              class="text-sm text-gray-500 dark:text-gray-400"
+            >
+              {{ item.tag }}
+            </span>
+          </div>
+        </div>
+        <Transition
+          :enter-active-class="`${durationClass()} transition-all ease-out`"
+          :enter-from-class="'transform translate-y-8 opacity-0'"
+          :enter-to-class="'transform translate-y-0 opacity-100'"
+          :leave-active-class="`${durationClass()} transition-all ease-in`"
+          :leave-from-class="'transform translate-y-0 opacity-100'"
+          :leave-to-class="'transform translate-y-8 opacity-0'"
+        >
           <div
-            :id="`item-${index}-title`"
-            data-observe
-            :class="[
-              durationClass(),
-              'transform transition-all ease-in-out delay-100 group flex w-full md:w-fit items-center text-gray-400 dark:text-gray-600 cursor-pointer',
-              isVisible(`item-${index}-title`)
-                ? 'translate-y-0 opacity-100'
-                : 'translate-y-4 opacity-0',
-            ]"
-            :data-active="isActive(index.toString())"
-            @click="toggleExpand(index.toString())"
+            v-if="isExpanded(index.toString(), 'item')"
+            class="flex flex-col gap-8 mt-4 ml-7"
           >
-            <div class="flex items-center">
-              <ArrowRightIcon
-                class="h-4 w-4 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
-                :class="[
-                  isExpanded(index.toString())
-                    ? '-rotate-90 group-hover:translate-y-0.5'
-                    : 'rotate-90 group-hover:translate-y-0.5',
-                ]"
-              />
-            </div>
-            <div class="flex flex-col">
-              <h3
-                class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold"
-              >
-                {{ item.title }}
-              </h3>
-              <span
-                v-if="item.tag"
-                class="text-sm text-gray-500 dark:text-gray-400"
-              >
-                {{ item.tag }}
+            <p v-if="item.additionalInfo">
+              <span v-if="additionalInfoLabel" class="font-bold">
+                {{ additionalInfoLabel }}
               </span>
+              {{ item.additionalInfo }}
+            </p>
+            <div v-for="sublist in item.sublists" :key="sublist.title">
+              <h4 v-if="sublist.title" class="font-bold mb-4">
+                {{ sublist.title }}
+              </h4>
+              <ul class="space-y-3 list-disc px-4">
+                <li v-for="subItem in sublist.items" :key="subItem.text">
+                  {{ subItem.text }}
+                </li>
+              </ul>
             </div>
           </div>
-          <Transition
-            :enter-active-class="`${durationClass()} transition-all ease-out`"
-            :enter-from-class="'transform translate-y-8 opacity-0'"
-            :enter-to-class="'transform translate-y-0 opacity-100'"
-            :leave-active-class="`${durationClass()} transition-all ease-in`"
-            :leave-from-class="'transform translate-y-0 opacity-100'"
-            :leave-to-class="'transform translate-y-8 opacity-0'"
-          >
-            <div
-              v-if="isExpanded(index.toString())"
-              class="flex flex-col gap-6 mt-4 ml-7"
-            >
-              <p v-if="item.additionalInfo">
-                <span v-if="additionalInfoLabel" class="font-bold"
-                  >{{ additionalInfoLabel }}
-                </span>
-                {{ item.additionalInfo }}
-              </p>
-              <div v-for="sublist in item.sublists" :key="sublist.title">
-                <h4 v-if="sublist.title" class="font-bold mb-4">
-                  {{ sublist.title }}
-                </h4>
-                <ul class="space-y-3 list-disc px-4">
-                  <li v-for="subItem in sublist.items" :key="subItem.text">
-                    {{ subItem.text }}
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </Transition>
-        </div>
+        </Transition>
       </div>
     </template>
   </div>
