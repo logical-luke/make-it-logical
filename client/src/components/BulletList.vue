@@ -124,7 +124,12 @@ onUnmounted(() => {
               {{ index + 1 }}.
             </div>
             <h3
-              class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold"
+              class="text-xl md:text-2xl font-bold"
+              :class="
+                showNumbers
+                  ? 'text-gray-800 dark:text-gray-100'
+                  : 'text-gray-500 dark:text-gray-400'
+              "
             >
               {{ item.title }}
             </h3>
