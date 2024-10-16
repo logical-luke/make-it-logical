@@ -102,11 +102,11 @@ const isExpanded = (itemTitle: string, index: number) => {
 
           <Transition
             enter-active-class="duration-400 transition-all ease-in-out"
-            enter-from-class="transform translate-y-4 opacity-0"
+            enter-from-class="transform translate-y-4 opacity-5"
             enter-to-class="transform translate-y-0 opacity-100"
             leave-active-class="duration-400 transition-all ease-in-out"
             leave-from-class="transform translate-y-0 opacity-100"
-            leave-to-class="transform translate-y-4 opacity-0"
+            leave-to-class="transform translate-y-4 opacity-5"
           >
             <ul
               v-if="!sublist.expandable || isExpanded(item.title, subIndex)"

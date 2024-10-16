@@ -69,11 +69,11 @@ const isExpanded = (key: string, type: "group" | "item") =>
         </div>
         <Transition
           enter-active-class="duration-200 transition-all ease-out"
-          enter-from-class="transform translate-y-8 opacity-0"
+          enter-from-class="transform translate-y-8 opacity-5"
           enter-to-class="transform translate-y-0 opacity-100"
           leave-active-class="duration-200 transition-all ease-in"
           leave-from-class="transform translate-y-0 opacity-100"
-          leave-to-class="transform translate-y-8 opacity-0"
+          leave-to-class="transform translate-y-8 opacity-5"
         >
           <div
             v-if="isExpanded(groupIndex.toString(), 'group')"
@@ -110,11 +110,11 @@ const isExpanded = (key: string, type: "group" | "item") =>
               </div>
               <Transition
                 enter-active-class="duration-200 transition-all ease-out"
-                enter-from-class="transform translate-y-8 opacity-0"
+                enter-from-class="transform translate-y-8 opacity-5"
                 enter-to-class="transform translate-y-0 opacity-100"
                 leave-active-class="duration-200 transition-all ease-in"
                 leave-from-class="transform translate-y-0 opacity-100"
-                leave-to-class="transform translate-y-8 opacity-0"
+                leave-to-class="transform translate-y-8 opacity-5"
               >
                 <div
                   v-if="isExpanded(`${groupIndex}-${itemIndex}`, 'item')"
@@ -175,11 +175,11 @@ const isExpanded = (key: string, type: "group" | "item") =>
         </div>
         <Transition
           enter-active-class="duration-200 transition-all ease-out"
-          enter-from-class="transform translate-y-8 opacity-0"
+          enter-from-class="transform translate-y-8 opacity-5"
           enter-to-class="transform translate-y-0 opacity-100"
           leave-active-class="duration-200 transition-all ease-in"
           leave-from-class="transform translate-y-0 opacity-100"
-          leave-to-class="transform translate-y-8 opacity-0"
+          leave-to-class="transform translate-y-8 opacity-5"
         >
           <div
             v-if="isExpanded(index.toString(), 'item')"

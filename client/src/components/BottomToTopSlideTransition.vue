@@ -25,7 +25,7 @@ watch(
 <template>
   <div
     class="transition-all transform duration-300 ease-in"
-    :class="[show ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4']"
+    :class="[show ? 'opacity-100 translate-y-0' : 'opacity-5 translate-y-4']"
   >
     <slot></slot>
   </div>
