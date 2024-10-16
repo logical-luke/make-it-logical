@@ -27,7 +27,7 @@ const services = ref([
     additionalInfo: t(
       "A robust IT infrastructure is the backbone of business success. Our services transform potential technical challenges into operational strengths. We implement comprehensive systems for software delivery, updates, and proactive monitoring, all customized to your specific needs. This approach minimizes downtime, enhances security, and yields significant cost savings. Consider us your behind-the-scenes tech guardians, ensuring your systems run smoothly so you can focus on innovation and growth.",
     ),
-    tag: t("Reliable systems management to minimize downtime & reduce costs"),
+    tag: t("Systems management to minimize downtime & reduce costs"),
   },
   {
     title: t("Technology Planning & Project Leadership"),
@@ -41,14 +41,14 @@ const services = ref([
     additionalInfo: t(
       "In today's fast-paced digital environment, static software quickly becomes obsolete. Our optimization services ensure your applications stay ahead of the curve. Through regular audits, we uncover hidden potential in your software and implement strategic enhancements. This proactive approach boosts performance, increases user satisfaction, and unlocks new capabilities. By aligning closely with your team, we transform your software into a dynamic asset that adapts to emerging market opportunities.",
     ),
-    tag: t("Performance upgrades to enhance user experience & business value"),
+    tag: t("Improvements to enhance user experience & business value"),
   },
   {
     title: t("System Modernization & Cloud Migration"),
     additionalInfo: t(
-      "Don't let legacy systems hinder your progress. Our modernization and cloud migration services propel your infrastructure into the future. We begin by preserving valuable business logic while upgrading to cutting-edge architectures and cloud solutions. This transformation enhances performance, scalability, and efficiency. The move to cloud opens doors to advanced data analysis, seamless remote work, and rapid deployment. Together, we'll convert technological debt into a competitive advantage, positioning your business at the forefront of your industry.",
+      "Don't let old systems hinder your progress. Our modernization and cloud migration services propel your infrastructure into the future. We begin by preserving valuable business logic while upgrading to cutting-edge architectures and cloud solutions. This transformation enhances performance, scalability, and efficiency. The move to cloud opens doors to advanced data analysis, seamless remote work, and rapid deployment. Together, we'll convert technological debt into a competitive advantage, positioning your business at the forefront of your industry.",
     ),
-    tag: t("Legacy system upgrades to improve scalability & reduce costs"),
+    tag: t("Upgrades to improve scalability & reduce costs"),
   },
   {
     title: t("Search Engine Optimization (SEO)"),

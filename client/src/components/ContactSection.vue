@@ -7,13 +7,16 @@ import HomePageSection from "@/components/HomePageSection.vue";
 
 <template>
   <HomePageSection
-    title="Get Digital Solutions Now"
+    title="Get Solutions Now"
     link-target="/contact"
     link-text="Let's Talk"
   >
     <div class="flex flex-col gap-4">
       <p class="text-lg md:text-2xl max-w-4xl">
-        {{ t("Your vision, our expertise") }}
+        {{ t("Your vision") }}
+      </p>
+      <p class="text-lg md:text-2xl max-w-4xl">
+        {{ t("our expertise") }}
       </p>
       <p class="text-lg md:text-2xl max-w-4xl">
         {{ t("a perfect") }}

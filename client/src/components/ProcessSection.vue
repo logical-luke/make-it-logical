@@ -48,7 +48,7 @@ const processItems = processSteps.value.map((step) => ({
 
 <template>
   <HomePageSection
-    title="Proven Partnership Methodology"
+    title="Partnership Methodology"
     link-target="/process"
     link-text="Discover Process"
   >
@@ -60,7 +60,7 @@ const processItems = processSteps.value.map((step) => ({
       }}</span>
       <span>{{
         t(
-          "By harmonizing innovative technologies, optimized business processes, and engaged people, you achieve sustainable growth and competitive advantage.",
+          "By harmonizing people, technologies, and business processes, you achieve sustainable growth and competitive advantage.",
         )
       }}</span>
     </p>

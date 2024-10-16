@@ -368,8 +368,8 @@ const serviceItems = services.value.map((service) => ({
   <section id="services">
     <MainHeader text="Comprehensive Digital Solutions for Businesses" />
     <SubHeader
-      first="Our services are designed to help you streamline operations, drive innovation, and gain a competitive edge in your market."
-      second="From custom software development to cloud migration and UX design, we tailor our solutions to unlock your full digital potential."
+      first="Crafted to help you streamline operations, drive innovation, and gain a competitive edge in your market."
+      second="From custom software development to cloud migration and UX design, we tailored our services to unlock your full digital potential."
     />
     <BottomToTopSlideTransition duration="1300">
       <BulletList
@@ -381,7 +381,9 @@ const serviceItems = services.value.map((service) => ({
   </section>
   <BottomToTopSlideTransition>
     <section class="py-12 md:py-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-8">
+      <h2
+        class="text-3xl md:text-4xl font-bold mb-8 text-gray-500 dark:text-gray-400"
+      >
         {{ t("Why Choose Our Services ?") }}
       </h2>
       <div class="flex flex-col gap-6">

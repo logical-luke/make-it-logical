@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
-
+import { RouterLink } from "vue-router";
 const { t } = useI18n();
 import ArrowRightIcon from "@/components/ArrowRightIcon.vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
