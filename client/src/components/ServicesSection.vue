@@ -23,9 +23,9 @@ const services = ref([
     tag: t("Intuitive interfaces to increase user satisfaction & retention"),
   },
   {
-    title: t("Technology Planning & Project Leadership"),
+    title: t("Planning & Project Leadership"),
     additionalInfo: t(
-      "Navigating the digital landscape requires a clear roadmap. Our technology planning and project leadership provide that crucial direction. We align your tech initiatives with business objectives, creating strategies that drive tangible results. Our experienced project leaders coordinate teams and ensure smooth delivery, leading to streamlined operations and faster time-to-market. By anticipating obstacles and driving innovation, we help you turn technological challenges into opportunities for growth.",
+      "Navigating the digital landscape requires a clear roadmap. Our planning and project leadership provide that crucial direction. We align your tech initiatives with business objectives, creating strategies that drive tangible results. Our experienced project leaders coordinate teams and ensure smooth delivery, leading to streamlined operations and faster time-to-market. By anticipating obstacles and driving innovation, we help you turn technological challenges into opportunities for growth.",
     ),
     tag: t("Strategic tech planning to accelerate growth & maximize ROI"),
   },
