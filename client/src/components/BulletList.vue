@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
 import ArrowRightIcon from "@/components/ArrowRightIcon.vue";
 
 interface ListItem {
@@ -12,27 +12,13 @@ interface ListItem {
   additionalInfo?: string;
 }
 
-const props = defineProps<{
+defineProps<{
   items: ListItem[];
   showNumbers: boolean;
   additionalInfoLabel?: string;
-  animationDuration?:
-    | "2000"
-    | "1500"
-    | "1300"
-    | "1000"
-    | "700"
-    | "500"
-    | "400"
-    | "300"
-    | "200"
-    | "100";
 }>();
 
-const animationDuration = props.animationDuration || "500";
-
 const expandedSublists = ref(new Set<string>());
-const visibleItems = ref(new Set<string>());
 
 const toggleExpand = (itemTitle: string, index: number) => {
   const key = `${itemTitle}-${index}`;
@@ -45,58 +31,9 @@ const toggleExpand = (itemTitle: string, index: number) => {
     document.activeElement.blur();
   }
 };
-
 const isExpanded = (itemTitle: string, index: number) => {
   return expandedSublists.value.has(`${itemTitle}-${index}`);
 };
-
-const isVisible = (key: string) => {
-  return visibleItems.value.has(key);
-};
-
-const durationClass = () => {
-  const durations = {
-    "2000": "duration-2000",
-    "1500": "duration-1500",
-    "1300": "duration-1300",
-    "1000": "duration-1000",
-    "700": "duration-700",
-    "500": "duration-500",
-    "400": "duration-400",
-    "300": "duration-300",
-    "200": "duration-200",
-    "100": "duration-100",
-  };
-
-  return durations[animationDuration];
-};
-
-let observer: IntersectionObserver;
-
-onMounted(() => {
-  observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            visibleItems.value.add(entry.target.id);
-          }, 100); // Add a small delay before showing the item
-        }
-      });
-    },
-    { threshold: 0.1 },
-  );
-
-  document.querySelectorAll("[data-observe]").forEach((el) => {
-    observer.observe(el);
-  });
-});
-
-onUnmounted(() => {
-  if (observer) {
-    observer.disconnect();
-  }
-});
 </script>
 
 <template>
@@ -105,13 +42,7 @@ onUnmounted(() => {
       <div
         :id="`item-${index}-title`"
         data-observe
-        :class="[
-          durationClass(),
-          'transform transition-all ease-in-out delay-100',
-          isVisible(`item-${index}-title`)
-            ? 'translate-y-0 opacity-100'
-            : 'translate-y-4 opacity-0',
-        ]"
+        class="transform transition-all ease-in-out delay-100 duration-1300"
       >
         <div
           class="group flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600 cursor-pointer pt-4 pb-2"
@@ -133,18 +64,7 @@ onUnmounted(() => {
         </div>
       </div>
       <div class="flex flex-col gap-10 mt-4">
-        <p
-          v-if="item.additionalInfo"
-          :id="`item-${index}-info`"
-          data-observe
-          :class="[
-            durationClass(),
-            'transform transition-all ease-in-out delay-100',
-            isVisible(`item-${index}-info`)
-              ? 'translate-y-0 opacity-100'
-              : 'translate-y-4 opacity-0',
-          ]"
-        >
+        <p v-if="item.additionalInfo">
           <span v-if="additionalInfoLabel" class="font-semibold">{{
             additionalInfoLabel
           }}</span>
@@ -158,15 +78,9 @@ onUnmounted(() => {
         >
           <div
             v-if="sublist.title"
-            :id="`item-${index}-sublist-${subIndex}-title`"
-            data-observe
             :class="[
               sublist.expandable ? 'cursor-pointer' : '',
-              durationClass(),
-              'transform transition-all ease-in-out delay-100 group flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600',
-              isVisible(`item-${index}-sublist-${subIndex}-title`)
-                ? 'translate-y-0 opacity-100'
-                : 'translate-y-4 opacity-0',
+              'roup flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600',
             ]"
             @click="sublist.expandable && toggleExpand(item.title, subIndex)"
           >
@@ -187,24 +101,16 @@ onUnmounted(() => {
           </div>
 
           <Transition
-            :enter-active-class="`${durationClass()} transition-all ease-in-out delay-100`"
+            enter-active-class="duration-400 transition-all ease-in-out"
             enter-from-class="transform translate-y-4 opacity-0"
             enter-to-class="transform translate-y-0 opacity-100"
-            :leave-active-class="`${durationClass()} transition-all ease-in-out`"
+            leave-active-class="duration-400 transition-all ease-in-out"
             leave-from-class="transform translate-y-0 opacity-100"
             leave-to-class="transform translate-y-4 opacity-0"
           >
             <ul
               v-if="!sublist.expandable || isExpanded(item.title, subIndex)"
-              :id="`item-${index}-sublist-${subIndex}-items`"
-              data-observe
-              :class="[
-                durationClass(),
-                'transform transition-all ease-in-out delay-100 space-y-3 list-disc px-4 ml-6',
-                isVisible(`item-${index}-sublist-${subIndex}-items`)
-                  ? 'translate-y-0 opacity-100'
-                  : 'translate-y-4 opacity-0',
-              ]"
+              :class="['space-y-3 list-disc px-4 ml-6']"
             >
               <li v-for="subItem in sublist.items" :key="subItem.text">
                 {{ subItem.text }}

@@ -333,7 +333,7 @@ const serviceItems = services.value.map((service) => ({
     <SubHeader
       first="From custom apps development to cloud migration and UX design."
     />
-    <BottomToTopSlideTransition duration="1300">
+    <BottomToTopSlideTransition>
       <BulletList
         :items="serviceItems"
         :show-numbers="false"
@@ -341,25 +341,21 @@ const serviceItems = services.value.map((service) => ({
       />
     </BottomToTopSlideTransition>
   </section>
-  <BottomToTopSlideTransition>
-    <section class="py-12 md:py-16">
-      <h2
-        class="text-xl md:text-2xl mb-4 max-w-4xl font-bold text-gray-500 dark:text-gray-400"
+  <section class="py-12 md:py-16">
+    <h2
+      class="text-xl md:text-2xl mb-4 max-w-4xl font-bold text-gray-500 dark:text-gray-400"
+    >
+      {{ t("Why Choose Our Services?") }}
+    </h2>
+    <div class="flex flex-col gap-6 text-lg md:text-xl">
+      <div
+        v-for="(item, index) in sectionItems"
+        :key="index"
+        class="py-6 max-w-4xl"
       >
-        {{ t("Why Choose Our Services?") }}
-      </h2>
-      <div class="flex flex-col gap-6 text-lg md:text-xl">
-        <div
-          v-for="(item, index) in sectionItems"
-          :key="index"
-          class="py-6 max-w-4xl"
-        >
-          <BottomToTopSlideTransition>
-            <h3 class="font-bold mb-2">{{ item.title }}</h3>
-            <p class="text-base">{{ item.description }}</p>
-          </BottomToTopSlideTransition>
-        </div>
+        <h3 class="font-bold mb-2">{{ item.title }}</h3>
+        <p class="text-base">{{ item.description }}</p>
       </div>
-    </section>
-  </BottomToTopSlideTransition>
+    </div>
+  </section>
 </template>

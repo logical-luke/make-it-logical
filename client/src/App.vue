@@ -13,7 +13,6 @@ import {
   getPageTitle,
   getMetaDescription,
 } from "@/services/seoMetadataProvider";
-import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 
 provide("transitionTrigger", transitionTrigger);
 
@@ -66,10 +65,5 @@ watch(
       </div>
     </main>
   </div>
-  <BottomToTopSlideTransition
-    duration="1500"
-    :use-intersection-observer="false"
-  >
-    <FooterSection />
-  </BottomToTopSlideTransition>
+  <FooterSection />
 </template>

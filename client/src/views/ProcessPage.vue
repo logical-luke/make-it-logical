@@ -87,7 +87,7 @@ const processItems = processSteps.value.map((step) => ({
     <SubHeader
       first="We're committed to maximizing your potential and driving sustainable growth, from initial concept through continuous improvement."
     />
-    <BottomToTopSlideTransition duration="1300">
+    <BottomToTopSlideTransition>
       <div class="flex flex-col gap-4 max-w-4xl">
         <BulletList :items="processItems" :show-numbers="true" />
       </div>

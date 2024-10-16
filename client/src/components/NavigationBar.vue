@@ -81,7 +81,7 @@ watch(mobileMenuOpen, (newValue) => {
       { 'shadow-md': !isAtTop && !mobileMenuOpen },
     ]"
   >
-    <FadeTransition>
+    <FadeTransition duration="300">
       <div class="container mx-auto flex justify-between items-center">
         <RouterLink to="/" class="flex-shrink-0">
           <div class="flex items-center gap-4">
@@ -117,7 +117,6 @@ watch(mobileMenuOpen, (newValue) => {
           </nav>
           <ThemeToggleButton
             :class="[
-              'transition-opacity duration-500 ease-in-out',
               { 'opacity-0 invisible': !mobileMenuOpen },
               'md:opacity-100 md:visible',
             ]"

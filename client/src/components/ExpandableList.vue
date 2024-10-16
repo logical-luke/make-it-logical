@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted } from "vue";
+import { ref } from "vue";
 import ArrowRightIcon from "@/components/ArrowRightIcon.vue";
 
 interface ListItem {
@@ -16,27 +16,14 @@ interface Group {
   items: ListItem[];
 }
 
-const props = defineProps<{
+defineProps<{
   items: ListItem[] | Group[];
   additionalInfoLabel?: string;
   grouped?: boolean;
-  animationDuration?:
-    | "2000"
-    | "1500"
-    | "1300"
-    | "1000"
-    | "700"
-    | "500"
-    | "400"
-    | "300"
-    | "200"
-    | "100";
 }>();
 
-const animationDuration = props.animationDuration || "500";
 const expandedGroups = ref(new Set<string>());
 const expandedItems = ref(new Set<string>());
-const visibleItems = ref(new Set<string>());
 
 const toggleExpand = (key: string, type: "group" | "item") => {
   const targetSet =
@@ -52,51 +39,6 @@ const isExpanded = (key: string, type: "group" | "item") =>
   type === "group"
     ? expandedGroups.value.has(key)
     : expandedItems.value.has(key);
-const isVisible = (key: string) => visibleItems.value.has(key);
-
-const durationClass = () => {
-  const durations = {
-    "2000": "duration-2000",
-    "1500": "duration-1500",
-    "1300": "duration-1300",
-    "1000": "duration-1000",
-    "700": "duration-700",
-    "500": "duration-500",
-    "400": "duration-400",
-    "300": "duration-300",
-    "200": "duration-200",
-    "100": "duration-100",
-  };
-
-  return durations[animationDuration];
-};
-
-let observer: IntersectionObserver;
-
-onMounted(() => {
-  observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => {
-            visibleItems.value.add(entry.target.id);
-          }, 100);
-        }
-      });
-    },
-    { threshold: 0.1 },
-  );
-
-  document.querySelectorAll("[data-observe]").forEach((el) => {
-    observer.observe(el);
-  });
-});
-
-onUnmounted(() => {
-  if (observer) {
-    observer.disconnect();
-  }
-});
 </script>
 
 <template>
@@ -108,20 +50,12 @@ onUnmounted(() => {
         class="flex flex-col gap-8 max-w-4xl"
       >
         <div
-          :id="`group-${groupIndex}-title`"
-          data-observe
-          :class="[
-            durationClass(),
-            'transform transition-all ease-in-out delay-100 max-w-4xl text-2xl md:text-3xl font-bold group flex items-center cursor-pointer',
-            isVisible(`group-${groupIndex}-title`)
-              ? 'translate-y-0'
-              : 'translate-y-4',
-          ]"
+          class="max-w-4xl text-2xl md:text-3xl font-bold group flex items-center cursor-pointer"
           @click="toggleExpand(groupIndex.toString(), 'group')"
         >
           <div class="flex-shrink-0 mr-3">
             <ArrowRightIcon
-              class="h-5 w-5 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+              class="h-5 w-5 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-all duration-200"
               :class="[
                 isExpanded(groupIndex.toString(), 'group')
                   ? '-rotate-90 group-hover:translate-y-0.5'
@@ -134,12 +68,12 @@ onUnmounted(() => {
           </h2>
         </div>
         <Transition
-          :enter-active-class="`${durationClass()} transition-all ease-out`"
-          :enter-from-class="'transform translate-y-8 opacity-0'"
-          :enter-to-class="'transform translate-y-0 opacity-100'"
-          :leave-active-class="`${durationClass()} transition-all ease-in`"
-          :leave-from-class="'transform translate-y-0 opacity-100'"
-          :leave-to-class="'transform translate-y-8 opacity-0'"
+          enter-active-class="duration-200 transition-all ease-out"
+          enter-from-class="transform translate-y-8 opacity-0"
+          enter-to-class="transform translate-y-0 opacity-100"
+          leave-active-class="duration-200 transition-all ease-in"
+          leave-from-class="transform translate-y-0 opacity-100"
+          leave-to-class="transform translate-y-8 opacity-0"
         >
           <div
             v-if="isExpanded(groupIndex.toString(), 'group')"
@@ -147,17 +81,12 @@ onUnmounted(() => {
           >
             <div v-for="(item, itemIndex) in group.items" :key="item.title">
               <div
-                :id="`group-${groupIndex}-item-${itemIndex}-title`"
-                data-observe
-                :class="[
-                  durationClass(),
-                  'transform transition-all ease-in-out delay-100 group flex w-full md:w-fit items-center text-gray-400 dark:text-gray-600 cursor-pointer',
-                ]"
+                class="transform transition-all ease-in-out delay-100 group flex w-full md:w-fit items-center text-gray-400 dark:text-gray-600 cursor-pointer"
                 @click="toggleExpand(`${groupIndex}-${itemIndex}`, 'item')"
               >
                 <div class="flex-shrink-0 mr-3">
                   <ArrowRightIcon
-                    class="h-4 w-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+                    class="h-4 w-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-200"
                     :class="[
                       isExpanded(`${groupIndex}-${itemIndex}`, 'item')
                         ? '-rotate-90 group-hover:translate-y-0.5'
@@ -180,12 +109,12 @@ onUnmounted(() => {
                 </div>
               </div>
               <Transition
-                :enter-active-class="`${durationClass()} transition-all ease-out`"
-                :enter-from-class="'transform translate-y-8 opacity-0'"
-                :enter-to-class="'transform translate-y-0 opacity-100'"
-                :leave-active-class="`${durationClass()} transition-all ease-in`"
-                :leave-from-class="'transform translate-y-0 opacity-100'"
-                :leave-to-class="'transform translate-y-8 opacity-0'"
+                enter-active-class="duration-200 transition-all ease-out"
+                enter-from-class="transform translate-y-8 opacity-0"
+                enter-to-class="transform translate-y-0 opacity-100"
+                leave-active-class="duration-200 transition-all ease-in"
+                leave-from-class="transform translate-y-0 opacity-100"
+                leave-to-class="transform translate-y-8 opacity-0"
               >
                 <div
                   v-if="isExpanded(`${groupIndex}-${itemIndex}`, 'item')"
@@ -217,17 +146,12 @@ onUnmounted(() => {
     <template v-else>
       <div v-for="(item, index) in items as ListItem[]" :key="item.title">
         <div
-          :id="`item-${index}-title`"
-          data-observe
-          :class="[
-            durationClass(),
-            'transform transition-all ease-in-out delay-100 group flex w-full md:w-fit items-center text-gray-400 dark:text-gray-600 cursor-pointer',
-          ]"
+          class="group flex w-full md:w-fit items-center text-gray-400 dark:text-gray-600 cursor-pointer"
           @click="toggleExpand(index.toString(), 'item')"
         >
           <div class="flex-shrink-0 mr-3">
             <ArrowRightIcon
-              class="h-4 w-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+              class="h-4 w-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-200"
               :class="[
                 isExpanded(index.toString(), 'item')
                   ? '-rotate-90 group-hover:translate-y-0.5'
@@ -250,12 +174,12 @@ onUnmounted(() => {
           </div>
         </div>
         <Transition
-          :enter-active-class="`${durationClass()} transition-all ease-out`"
-          :enter-from-class="'transform translate-y-8 opacity-0'"
-          :enter-to-class="'transform translate-y-0 opacity-100'"
-          :leave-active-class="`${durationClass()} transition-all ease-in`"
-          :leave-from-class="'transform translate-y-0 opacity-100'"
-          :leave-to-class="'transform translate-y-8 opacity-0'"
+          enter-active-class="duration-200 transition-all ease-out"
+          enter-from-class="transform translate-y-8 opacity-0"
+          enter-to-class="transform translate-y-0 opacity-100"
+          leave-active-class="duration-200 transition-all ease-in"
+          leave-from-class="transform translate-y-0 opacity-100"
+          leave-to-class="transform translate-y-8 opacity-0"
         >
           <div
             v-if="isExpanded(index.toString(), 'item')"

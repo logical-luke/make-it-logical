@@ -3,8 +3,8 @@ import { useI18n } from "vue-i18n";
 import { ref } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
-import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 import LinkItem from "@/components/LinkItem.vue";
+import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 
 const { t } = useI18n();
 
@@ -169,70 +169,66 @@ const privacyPolicy = ref([
       first="We value your privacy and are committed to protecting your data."
       second="This policy outlines how we collect, use, and safeguard your information."
     />
-    <BottomToTopSlideTransition duration="1300">
+    <BottomToTopSlideTransition>
       <div class="flex flex-col gap-6 max-w-4xl">
-        <BottomToTopSlideTransition>
-          <div v-for="(section, index) in privacyPolicy" :key="index">
-            <div class="mb-6">
-              <h2 class="text-xl font-bold mb-2">{{ section.title }}</h2>
-              <p
-                v-for="(paragraph, pIndex) in section.content"
-                :key="pIndex"
+        <div v-for="(section, index) in privacyPolicy" :key="index">
+          <div class="mb-6">
+            <h2 class="text-xl font-bold mb-2">{{ section.title }}</h2>
+            <p
+              v-for="(paragraph, pIndex) in section.content"
+              :key="pIndex"
+              class="mb-2"
+            >
+              {{ paragraph }}
+            </p>
+            <ul v-if="section.list" class="list-disc pl-5 mb-4">
+              <li v-for="(item, iIndex) in section.list" :key="iIndex">
+                {{ item }}
+              </li>
+            </ul>
+            <div v-if="section.definitions" class="space-y-4">
+              <div
+                v-for="(def, dIndex) in section.definitions"
+                :key="dIndex"
                 class="mb-2"
               >
-                {{ paragraph }}
-              </p>
-              <ul v-if="section.list" class="list-disc pl-5 mb-4">
-                <li v-for="(item, iIndex) in section.list" :key="iIndex">
-                  {{ item }}
-                </li>
-              </ul>
-              <div v-if="section.definitions" class="space-y-4">
-                <div
-                  v-for="(def, dIndex) in section.definitions"
-                  :key="dIndex"
-                  class="mb-2"
-                >
-                  <strong>{{ def.term }}:</strong> {{ def.description }}
-                </div>
+                <strong>{{ def.term }}:</strong> {{ def.description }}
               </div>
             </div>
           </div>
-        </BottomToTopSlideTransition>
-        <BottomToTopSlideTransition>
-          <div class="flex flex-col gap-2">
-            <h2 class="text-xl font-bold mb-2">{{ t("Contact Us") }}</h2>
-            <p>
-              {{
-                t(
-                  "If you have any questions about this Privacy Policy, you can contact us:",
-                )
-              }}
-            </p>
-            <ul class="list-disc pl-5 mb-2 space-y-4 mt-4">
-              <li>
-                {{ t("By email:") }}
-                <LinkItem
-                  class="mt-2"
-                  :disable-icon="true"
-                  :external="true"
-                  to="mailto:office@makeitlogical.io"
-                  text="office@makeitlogical.io"
-                />
-              </li>
-              <li>
-                {{ t("By phone:") }}
-                <LinkItem
-                  class="mt-2"
-                  :disable-icon="true"
-                  :external="true"
-                  to="tel:+48696606391"
-                  text="+48 696 606 391"
-                />
-              </li>
-            </ul>
-          </div>
-        </BottomToTopSlideTransition>
+        </div>
+        <div class="flex flex-col gap-2">
+          <h2 class="text-xl font-bold mb-2">{{ t("Contact Us") }}</h2>
+          <p>
+            {{
+              t(
+                "If you have any questions about this Privacy Policy, you can contact us:",
+              )
+            }}
+          </p>
+          <ul class="list-disc pl-5 mb-2 space-y-4 mt-4">
+            <li>
+              {{ t("By email:") }}
+              <LinkItem
+                class="mt-2"
+                :disable-icon="true"
+                :external="true"
+                to="mailto:office@makeitlogical.io"
+                text="office@makeitlogical.io"
+              />
+            </li>
+            <li>
+              {{ t("By phone:") }}
+              <LinkItem
+                class="mt-2"
+                :disable-icon="true"
+                :external="true"
+                to="tel:+48696606391"
+                text="+48 696 606 391"
+              />
+            </li>
+          </ul>
+        </div>
       </div>
     </BottomToTopSlideTransition>
   </section>
