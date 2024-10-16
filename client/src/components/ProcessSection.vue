@@ -53,16 +53,11 @@ const processItems = processSteps.value.map((step) => ({
     link-text="Discover Process"
   >
     <p class="flex flex-col gap-2 md:text-lg mb-12 max-w-4xl">
-      <span>{{
+      {{
         t(
-          "A comprehensive, end-to-end digital transformation process maximizes the full potential.",
+          "A comprehensive transformation process maximizes your full potential.",
         )
-      }}</span>
-      <span>{{
-        t(
-          "By harmonizing people, technologies, and business processes, you achieve sustainable growth and competitive advantage.",
-        )
-      }}</span>
+      }}
     </p>
     <ExpandableList :items="processItems" />
   </HomePageSection>

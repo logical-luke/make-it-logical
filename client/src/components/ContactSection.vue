@@ -6,11 +6,7 @@ import HomePageSection from "@/components/HomePageSection.vue";
 </script>
 
 <template>
-  <HomePageSection
-    title="Get Solutions Now"
-    link-target="/contact"
-    link-text="Let's Talk"
-  >
+  <HomePageSection link-target="/contact" link-text="Let's Talk">
     <div class="flex flex-col gap-4">
       <p class="text-lg md:text-2xl max-w-4xl">
         {{ t("Your vision") }}

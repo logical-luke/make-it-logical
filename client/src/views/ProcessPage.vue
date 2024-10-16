@@ -85,8 +85,8 @@ const processItems = processSteps.value.map((step) => ({
   <section id="process">
     <MainHeader text="Step-by-Step Transformation Process" />
     <SubHeader
-      first="Our comprehensive, end-to-end process transforms your vision into measurable business success."
-      second="By harmonizing innovative technologies, optimized workflows, and engaged teams, we deliver tangible growth and competitive advantages."
+      first="End-to-end process transforms your vision into measurable business success."
+      second="We're committed to maximizing your potential and driving sustainable growth, from initial concept through continuous improvement."
     />
     <BottomToTopSlideTransition duration="1300">
       <div class="flex flex-col gap-4 max-w-4xl">

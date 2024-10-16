@@ -531,8 +531,8 @@ const groupedTechnologies = computed(() => {
 <template>
   <MainHeader text="Cutting-Edge Technologies & Platforms" />
   <SubHeader
-    first="We leverage the latest software development technologies and platforms to deliver scalable, high-performing solutions tailored to your business."
-    second="Whether you require custom software, web applications, or cloud-based systems, we have the technical capabilities to bring your vision to life."
+    first="The latest software development technologies and platforms to deliver scalable, high-performing solutions working for your business."
+    second="Whether you need custom software, web applications, or cloud-based systems, we have the technical capabilities to bring your vision to life."
   />
   <BottomToTopSlideTransition duration="1300">
     <ExpandableList :items="groupedTechnologies" :grouped="true" />

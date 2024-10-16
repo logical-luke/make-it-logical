@@ -74,14 +74,7 @@ const serviceItems = services.value.map((service) => ({
     link-text="Explore Services"
   >
     <p class="flex flex-col gap-2 md:text-lg mb-12 max-w-4xl">
-      <span>{{
-        t("Uer-centric digital experiences that drives your business growth.")
-      }}</span>
-      <span>{{
-        t(
-          "Comprehensive suite of software and web development services to unlock new opportunities.",
-        )
-      }}</span>
+      {{ t("User-centric digital experiences drives your business growth.") }}
     </p>
     <ExpandableList :items="serviceItems" />
   </HomePageSection>
