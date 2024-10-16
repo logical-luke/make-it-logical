@@ -529,7 +529,7 @@ const groupedTechnologies = computed(() => {
 </script>
 
 <template>
-  <MainHeader text="Cutting-Edge Technologies & Platforms" />
+  <MainHeader text="Technologies & Platforms" />
   <SubHeader
     first="The latest software development technologies and platforms to deliver scalable, high-performing solutions working for your business."
     second="Whether you need custom software, web applications, or cloud-based systems, we have the technical capabilities to bring your vision to life."

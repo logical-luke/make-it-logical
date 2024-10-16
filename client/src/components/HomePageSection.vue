@@ -25,7 +25,7 @@ defineProps<Props>();
       <slot></slot>
       <div
         v-if="linkTarget && linkText"
-        class="flex justify-center pt-14 pb-10 md:pt-20 md:pb-12"
+        class="flex justify-center pt-14 pb-10 md:pt-20 md:pb-8"
       >
         <LinkItem :to="linkTarget" :text="linkText" />
       </div>
