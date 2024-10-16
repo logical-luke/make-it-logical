@@ -368,7 +368,7 @@ const serviceItems = services.value.map((service) => ({
   <section id="services">
     <MainHeader text="Solutions for Businesses" />
     <SubHeader
-      first="Crafted to help you streamline operations, drive innovation, and gain a competitive edge in your market."
+      first="Streamline operations, drive innovation, and gain a competitive edge in your market."
       second="From custom software development to cloud migration and UX design, we tailored our services to unlock your full digital potential."
     />
     <BottomToTopSlideTransition duration="1300">

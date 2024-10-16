@@ -56,7 +56,7 @@ watch(
 </script>
 
 <template>
-  <div class="min-h-[calc(100vh-108px)]">
+  <div class="min-h-screen md:min-h-[calc(100vh-108px)]">
     <NavigationBar />
     <main>
       <div class="container mx-auto py-24 md:py-32 px-6 md:px-0">

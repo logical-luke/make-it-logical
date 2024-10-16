@@ -17,7 +17,7 @@ defineProps<Props>();
       <h2 class="text-xl md:text-2xl mb-4 font-bold max-w-4xl">
         {{ t(first) }}
       </h2>
-      <p v-if="second" class="text-xl md:text-2xl mb-2 max-w-4xl">
+      <p v-if="second" class="text-lg md:text-xl mb-2 max-w-4xl">
         {{ t(second) }}
       </p>
     </div>

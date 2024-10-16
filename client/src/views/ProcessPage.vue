@@ -85,7 +85,7 @@ const processItems = processSteps.value.map((step) => ({
   <section id="process">
     <MainHeader text="Transformation Process" />
     <SubHeader
-      first="End-to-end process makes your goals measurable business success."
+      first="Makes your goals measurable success."
       second="We're committed to maximizing your potential and driving sustainable growth, from initial concept through continuous improvement."
     />
     <BottomToTopSlideTransition duration="1300">
