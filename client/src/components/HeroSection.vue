@@ -12,22 +12,22 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
   >
     <div class="w-full md:w-1/2 mb-8 md:mb-0">
       <BottomToTopSlideTransition duration="700">
-        <h1
+        <p
           class="flex flex-col text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 tracking-wider leading-10"
         >
-          <span>{{ t("Get Software") }}</span>
-          <span class="line-through">{{ t("Not Confusion") }}</span>
-        </h1>
+          <span>{{ t("Get Solutions") }}</span>
+          <span class="line-through decoration-4">{{
+            t("Not Confusion")
+          }}</span>
+        </p>
       </BottomToTopSlideTransition>
       <BottomToTopSlideTransition duration="1300">
-        <h2
+        <h1
           class="flex flex-col font-semibold text-lg md:text-3xl lg:text-4xl tracking-wider"
         >
-          <span class="text-primary font-normal">{{
-            t("We deliver complete")
-          }}</span>
-          {{ t("digital solutions") }}
-        </h2>
+          <span class="text-primary font-normal">{{ t("We build") }}</span>
+          {{ t("websites & web apps") }}
+        </h1>
       </BottomToTopSlideTransition>
     </div>
     <div class="w-full md:w-1/2 mt-10 md:mt-0 -ml-7">

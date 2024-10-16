@@ -47,11 +47,7 @@ const processItems = processSteps.value.map((step) => ({
 </script>
 
 <template>
-  <HomePageSection
-    title="Partnership Methodology"
-    link-target="/process"
-    link-text="Discover Process"
-  >
+  <HomePageSection link-target="/process" link-text="Discover Process">
     <p class="flex flex-col gap-2 md:text-lg mb-12 max-w-4xl">
       {{
         t(

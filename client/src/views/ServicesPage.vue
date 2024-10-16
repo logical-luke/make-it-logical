@@ -10,7 +10,7 @@ const { t } = useI18n();
 
 const services = ref([
   {
-    title: t("Software Development & Engineering"),
+    title: t("Web App & Website Development"),
     descriptionPoints: [
       t("Build scalable, high-performance software solutions"),
       t("Leverage latest technologies and industry best practices"),
@@ -61,7 +61,7 @@ const services = ref([
           "Online store with live inventory tracking for a multi-location bookshop",
         ),
       },
-      { text: t("Order and delivery app for a local bakery chain") },
+      { text: t("Order and delivery app for a bakery chain") },
       {
         text: t(
           "Data analysis tool using artificial intelligence (AI) for a financial advisory startup",
@@ -87,7 +87,7 @@ const services = ref([
       },
     ],
     suitableFor: t(
-      "Building custom software solutions to automate processes, improve productivity, or create new revenue streams.",
+      "Building custom application to automate processes, improve productivity, or create new revenue streams.",
     ),
   },
   {
@@ -136,7 +136,7 @@ const services = ref([
       { text: t("Website design for a boutique bed and breakfast chain") },
       {
         text: t(
-          "Usability testing and design improvements for a credit union's mobile app",
+          "Usability testing and design improvements for a credit union's web app",
         ),
       },
       {
@@ -154,7 +154,7 @@ const services = ref([
       },
       {
         text: t(
-          "Mobile app interface design for a personal fitness tracking startup",
+          "Web app interface design for a personal fitness tracking startup",
         ),
       },
       { text: t("Workflow optimization for a team collaboration tool") },
@@ -165,7 +165,56 @@ const services = ref([
       },
     ],
     suitableFor: t(
-      "Designing a website, mobile app, or web application to boost user engagement and conversions.",
+      "Designing a website, or web application to boost user engagement and conversions.",
+    ),
+  },
+  {
+    title: t("Fixes & Enhancements"),
+    descriptionPoints: [
+      t(
+        "Conduct ongoing performance, security, and user experience improvements",
+      ),
+      t("Implement regular software updates and feature enhancements"),
+      t("Improve code quality, efficiency, and maintainability"),
+      t("Implement proactive monitoring and issue prevention strategies"),
+      t("Optimize database performance and query efficiency"),
+      t("Enhance user interfaces based on feedback and analytics"),
+    ],
+    benefits: [
+      { text: t("Faster, more responsive, and user-friendly applications") },
+      { text: t("Reduced downtime, maintenance costs, and security risks") },
+      { text: t("Improved user satisfaction, loyalty, and engagement") },
+      { text: t("Proactive problem-solving before issues affect end-users") },
+    ],
+    deliverables: [
+      {
+        text: t(
+          "Optimized application performance, stability, and scalability",
+        ),
+      },
+      { text: t("Enhanced security, compliance, and regulatory standards") },
+      { text: t("Improved user interface, experience, and accessibility") },
+      {
+        text: t(
+          "Proactive monitoring, issue prevention, and remediation strategies",
+        ),
+      },
+    ],
+    applicationExamples: [
+      { text: t("Speed improvements for a high-traffic recipe website") },
+      { text: t("Security reinforcement for an online banking service") },
+      { text: t("Database efficiency boost for a customer insights company") },
+      {
+        text: t("Web app responsiveness upgrade for a food ordering service"),
+      },
+      {
+        text: t(
+          "Code cleanup and modernization for a school district's student information system",
+        ),
+      },
+    ],
+    suitableFor: t(
+      "Enhancing existing applications to handle increased user load, add new features, or improve overall user experience.",
     ),
   },
   {
@@ -218,9 +267,7 @@ const services = ref([
       },
       { text: t("Updating internal systems for a state environmental agency") },
       {
-        text: t(
-          "Cloud transition for a medium-sized law firm's case management software",
-        ),
+        text: t("Cloud transition for a law firm's case management software"),
       },
       {
         text: t(
@@ -236,58 +283,7 @@ const services = ref([
       },
     ],
     suitableFor: t(
-      "Upgrading outdated software systems to improve efficiency, security, and reduce maintenance costs.",
-    ),
-  },
-  {
-    title: t("Software Optimization & Enhancements"),
-    descriptionPoints: [
-      t(
-        "Conduct ongoing performance, security, and user experience improvements",
-      ),
-      t("Implement regular software updates and feature enhancements"),
-      t("Improve code quality, efficiency, and maintainability"),
-      t("Implement proactive monitoring and issue prevention strategies"),
-      t("Optimize database performance and query efficiency"),
-      t("Enhance user interfaces based on feedback and analytics"),
-    ],
-    benefits: [
-      { text: t("Faster, more responsive, and user-friendly applications") },
-      { text: t("Reduced downtime, maintenance costs, and security risks") },
-      { text: t("Improved user satisfaction, loyalty, and engagement") },
-      { text: t("Proactive problem-solving before issues affect end-users") },
-    ],
-    deliverables: [
-      {
-        text: t(
-          "Optimized application performance, stability, and scalability",
-        ),
-      },
-      { text: t("Enhanced security, compliance, and regulatory standards") },
-      { text: t("Improved user interface, experience, and accessibility") },
-      {
-        text: t(
-          "Proactive monitoring, issue prevention, and remediation strategies",
-        ),
-      },
-    ],
-    applicationExamples: [
-      { text: t("Speed improvements for a high-traffic recipe website") },
-      { text: t("Security reinforcement for an online banking service") },
-      { text: t("Database efficiency boost for a customer insights company") },
-      {
-        text: t(
-          "Mobile app responsiveness upgrade for a food ordering service",
-        ),
-      },
-      {
-        text: t(
-          "Code cleanup and modernization for a school district's student information system",
-        ),
-      },
-    ],
-    suitableFor: t(
-      "Enhancing existing software to handle increased user load, add new features, or improve overall user experience.",
+      "Upgrading outdated systems to improve efficiency, security, and reduce maintenance costs.",
     ),
   },
 ]);
@@ -335,8 +331,7 @@ const serviceItems = services.value.map((service) => ({
   <section id="services">
     <MainHeader text="Solutions for Businesses" />
     <SubHeader
-      first="Streamline operations, drive innovation, and gain a competitive edge in your market."
-      second="From custom software development to cloud migration and UX design, we tailored our services to unlock your full digital potential."
+      first="From custom apps development to cloud migration and UX design."
     />
     <BottomToTopSlideTransition duration="1300">
       <BulletList

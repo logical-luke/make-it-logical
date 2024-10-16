@@ -129,9 +129,9 @@ onUnmounted(() => {
               ]"
             />
           </div>
-          <h3 class="text-gray-800 dark:text-gray-100 break-words">
+          <h2 class="text-gray-800 dark:text-gray-100 break-words">
             {{ group.name }}
-          </h3>
+          </h2>
         </div>
         <Transition
           :enter-active-class="`${durationClass()} transition-all ease-out`"
@@ -236,11 +236,11 @@ onUnmounted(() => {
             />
           </div>
           <div class="flex flex-col">
-            <h3
+            <h2
               class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold break-words"
             >
               {{ item.title }}
-            </h3>
+            </h2>
             <span
               v-if="item.tag"
               class="text-sm text-gray-500 dark:text-gray-400"
@@ -268,9 +268,9 @@ onUnmounted(() => {
               {{ item.additionalInfo }}
             </p>
             <div v-for="sublist in item.sublists" :key="sublist.title">
-              <h4 v-if="sublist.title" class="font-bold mb-4">
+              <h3 v-if="sublist.title" class="font-bold mb-4">
                 {{ sublist.title }}
-              </h4>
+              </h3>
               <ul class="space-y-3 list-disc px-4">
                 <li v-for="subItem in sublist.items" :key="subItem.text">
                   {{ subItem.text }}
@@ -283,32 +283,3 @@ onUnmounted(() => {
     </template>
   </div>
 </template>
-
-<style scoped>
-.group {
-  @apply hover:text-gray-600 dark:hover:text-gray-100;
-}
-
-.group[data-active="true"] {
-  @apply text-gray-600 dark:text-gray-100;
-}
-
-.svg-icon {
-  @apply fill-gray-400;
-}
-
-.group:hover .svg-icon,
-.group[data-active="true"] .svg-icon {
-  @apply fill-gray-800 dark:fill-gray-200;
-}
-
-@media (hover: none) {
-  .group:hover {
-    @apply text-gray-400 dark:text-gray-600;
-  }
-
-  .group:hover .svg-icon {
-    @apply fill-gray-400 dark:fill-gray-400;
-  }
-}
-</style>

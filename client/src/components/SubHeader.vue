@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
+
 const { t } = useI18n();
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 
@@ -14,7 +15,10 @@ defineProps<Props>();
 <template>
   <BottomToTopSlideTransition duration="1300">
     <div class="flex flex-col gap-6 py-6 mb-10 md:mb-24">
-      <h2 class="text-xl md:text-2xl mb-4 font-bold max-w-4xl">
+      <h2
+        class="text-xl md:text-2xl mb-4 max-w-4xl"
+        :class="second ? 'font-semibold' : ''"
+      >
         {{ t(first) }}
       </h2>
       <p v-if="second" class="text-lg md:text-xl mb-2 max-w-4xl">

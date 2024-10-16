@@ -2,7 +2,6 @@
 import ServicesSection from "@/components/ServicesSection.vue";
 import HeroSection from "@/components/HeroSection.vue";
 import ProcessSection from "@/components/ProcessSection.vue";
-import ContactSection from "@/components/ContactSection.vue";
 </script>
 
 <template>
@@ -10,6 +9,5 @@ import ContactSection from "@/components/ContactSection.vue";
     <HeroSection />
     <ServicesSection />
     <ProcessSection />
-    <ContactSection />
   </div>
 </template>

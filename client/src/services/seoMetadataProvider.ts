@@ -4,7 +4,7 @@ export function getPageTitle(route: RouteLocationNormalized): string {
   const baseTitle = "Make IT Logical";
   switch (route.path) {
     case "/":
-      return `${baseTitle} | We Deliver Complete Digital Solutions`;
+      return `${baseTitle} | We Build Websites & Web Apps`;
     case "/services":
       return `Services: Solutions for Businesses | ${baseTitle}`;
     case "/process":
@@ -25,20 +25,20 @@ export function getPageTitle(route: RouteLocationNormalized): string {
 export function getMetaDescription(route: RouteLocationNormalized): string {
   switch (route.path) {
     case "/":
-      return "Boost your business with custom digital solutions. We develop apps and products that drive growth for companies of all sizes. Transform your ideas into reality.";
+      return "Skyrocket your business with custom apps. We build powerful solutions for all company sizes. Transform ideas into profit-driving realities.";
     case "/services":
-      return "Elevate your business with our tailored digital services. From app development to UX design, we deliver solutions that meet your specific needs and drive results.";
+      return "Supercharge your business with our digital services. Expert app development and UX design that boosts revenue and crushes goals.";
     case "/process":
-      return "Achieve your business goals with our efficient, results-driven approach. Our step-by-step process ensures high-quality solutions aligned with your objectives.";
+      return "Accelerate your success with our proven process. We deliver high-impact solutions on time, every time. Maximize ROI, minimize hassle.";
     case "/contact":
-      return "Ready to innovate? Contact us to create your next big thing. Our expert team will help transform your ideas into powerful digital solutions for your business.";
+      return "Ignite innovation now. Our experts create game-changing digital solutions to conquer your toughest business challenges. Let's talk.";
     case "/terms":
-      return "Understand your rights and obligations when using our digital solutions. Our Terms of Service provide clear guidelines for a smooth partnership.";
+      return "Crystal-clear guidelines for our digital solutions. Know your rights, our duties, and ensure a bulletproof partnership from day one.";
     case "/tools":
-      return "Leverage cutting-edge tech for your business success. We use the latest platforms to build scalable, high-performing solutions tailored to your unique needs.";
+      return "Harness cutting-edge tech for unstoppable growth. We build lightning-fast, scalable solutions tailored to dominate your market.";
     case "/privacy":
-      return "Your data security is our priority. Learn how we protect your information and ensure compliance with data protection laws in our transparent Privacy Policy.";
+      return "Ironclad data protection guaranteed. See how we safeguard your information and exceed data law requirements. Trust assured.";
     default:
-      return "Page not found. Explore our homepage for innovative digital solutions that power business growth and drive successful transformations.";
+      return "Page not found. Discover game-changing digital solutions on our homepage. Fuel your growth, outpace competitors, boost profits.";
   }
 }

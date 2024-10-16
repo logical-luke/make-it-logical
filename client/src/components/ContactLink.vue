@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
+
 const { t } = useI18n();
 
 import LinkItem from "@/components/LinkItem.vue";
@@ -11,18 +12,27 @@ const sendConversionEvent = () =>
     value: 1.0,
     currency: "PLN",
   });
+
+interface Props {
+  bigger?: boolean;
+}
+
+defineProps<Props>();
 </script>
 
 <template>
-  <p class="text-gray-600 dark:text-gray-300 text-sm mb-2">
-    {{ t("Ignite Your") }}
+  <p
+    class="text-gray-600 dark:text-gray-300 mb-2"
+    :class="bigger ? 'text-5xl md:text-6xl' : 'text-3xl md:text-4xl'"
+  >
+    {{ t("Let's Talk") }}
   </p>
   <LinkItem
     :disable-icon="true"
     :external="true"
-    to="mailto:vision@makeitlogical.io"
-    class="text-sm"
-    text="vision@makeitlogical.io"
+    :custom-link-size="bigger ? '2xl' : 'xl'"
+    to="mailto:hey@makeitlogical.io"
+    text="hey@makeitlogical.io"
     @click="sendConversionEvent"
   />
 </template>
