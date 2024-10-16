@@ -1,12 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomePage from "@/views/HomePage.vue";
-import ServicesPage from "@/views/ServicesPage.vue";
-import ProcessPage from "@/views/ProcessPage.vue";
-import ContactPage from "@/views/ContactPage.vue";
-import NotFoundPage from "@/views/NotFoundPage.vue";
-import TermsPage from "@/views/TermsPage.vue";
-import PrivacyPage from "@/views/PrivacyPage.vue";
-import ToolsPage from "@/views/ToolsPage.vue";
+
+const ServicesPage = () => import("@/views/ServicesPage.vue");
+const ProcessPage = () => import("@/views/ProcessPage.vue");
+const ContactPage = () => import("@/views/ContactPage.vue");
+const TermsPage = () => import("@/views/TermsPage.vue");
+const PrivacyPage = () => import("@/views/PrivacyPage.vue");
+const ToolsPage = () => import("@/views/ToolsPage.vue");
+const NotFoundPage = () => import("@/views/NotFoundPage.vue");
 
 const routes = [
   { path: "/", component: HomePage },

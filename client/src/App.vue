@@ -1,11 +1,16 @@
 <script setup lang="ts">
-import { ref, provide, onMounted, watch } from "vue";
+import { ref, provide, onMounted, watch, defineAsyncComponent } from "vue";
 import router from "@/router";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
-import NavigationBar from "@/components/NavigationBar.vue";
-import FooterSection from "@/components/FooterSection.vue";
+const NavigationBar = defineAsyncComponent(
+  () => import("@/components/NavigationBar.vue"),
+);
+const FooterSection = defineAsyncComponent(
+  () => import("@/components/FooterSection.vue"),
+);
+// import FooterSection from "@/components/FooterSection.vue";
 
 const transitionTrigger = ref(0);
 
