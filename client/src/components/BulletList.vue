@@ -114,17 +114,13 @@ onUnmounted(() => {
         ]"
       >
         <div
-          class="group flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600 cursor-pointer"
+          class="group flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600 cursor-pointer pt-4 pb-2"
         >
-          <div class="flex flex-col">
-            <div
-              v-if="showNumbers"
-              class="text-2xl font-bold text-gray-500 dark:text-gray-400"
-            >
+          <div class="flex flex-col text-2xl md:text-3xl font-bold">
+            <div v-if="showNumbers" class="text-gray-500 dark:text-gray-400">
               {{ index + 1 }}.
             </div>
             <h3
-              class="text-xl md:text-2xl font-bold"
               :class="
                 showNumbers
                   ? 'text-gray-800 dark:text-gray-100'
@@ -136,7 +132,6 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
-
       <div class="flex flex-col gap-10 mt-4">
         <p
           v-if="item.additionalInfo"

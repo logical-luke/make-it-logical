@@ -6,11 +6,11 @@ export function getPageTitle(route: RouteLocationNormalized): string {
     case "/":
       return `${baseTitle} | We Deliver Complete Digital Solutions`;
     case "/services":
-      return `Services: Digital Solutions for Businesses | ${baseTitle}`;
+      return `Services: Solutions for Businesses | ${baseTitle}`;
     case "/process":
-      return `Process: Step-by-Step Transformation | ${baseTitle}`;
+      return `Process: Transformation Approach | ${baseTitle}`;
     case "/contact":
-      return `Contact: Create Your Next Big Thing | ${baseTitle}`;
+      return `Contact: Let's Talk | ${baseTitle}`;
     case "/terms":
       return `Terms: Service Agreement | ${baseTitle}`;
     case "/tools":

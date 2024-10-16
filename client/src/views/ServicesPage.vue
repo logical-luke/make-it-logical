@@ -10,39 +10,51 @@ const { t } = useI18n();
 
 const services = ref([
   {
-    title: t("Technology Planning & Project Leadership"),
+    title: t("Software Development & Engineering"),
     descriptionPoints: [
-      t("Defining clear technology roadmaps and project milestones"),
-      t("Aligning digital initiatives with business goals and strategies"),
-      t("Coordinating cross-functional teams for seamless software delivery"),
-      t("Ensuring efficient, secure, and reliable software development"),
+      t("Building scalable, high-performance software solutions"),
+      t("Leveraging the latest technologies and industry best practices"),
+      t("Ensuring smooth integration of all application components"),
+      t(
+        "Delivering high-quality code with thorough testing and quality assurance",
+      ),
     ],
     benefits: [
-      { text: t("Clear technology plan that meets business objectives") },
       {
         text: t(
-          "Streamlined collaboration across technical and non-technical teams",
+          "Adaptable and future-ready software that grows with the business",
         ),
       },
       {
         text: t(
-          "Optimized performance, reliability, and security of software solutions",
+          "Optimized application performance and reduced maintenance costs",
         ),
       },
       {
-        text: t("Faster time-to-market for new digital products and features"),
+        text: t(
+          "Faster time-to-market for new features, updates, and innovations",
+        ),
+      },
+      {
+        text: t(
+          "Improved security, compliance, and reliability of software systems",
+        ),
       },
     ],
     deliverables: [
-      { text: t("Comprehensive technology plan and project timeline") },
-      { text: t("Effective communication and coordination between teams") },
+      { text: t("Scalable and maintainable codebase with clean architecture") },
+      { text: t("Comprehensive testing and quality assurance reports") },
       {
-        text: t("Detailed technical specifications and software architecture"),
+        text: t("Detailed documentation and training materials for end-users"),
       },
-      { text: t("Streamlined software development and deployment processes") },
+      {
+        text: t(
+          "Seamless integration with the client's existing IT infrastructure",
+        ),
+      },
     ],
     suitableFor: t(
-      "Launching a new digital product or modernizing existing software systems.",
+      "Building custom software solutions to automate processes, improve productivity, or create new revenue streams.",
     ),
   },
   {
@@ -53,7 +65,7 @@ const services = ref([
         "Conducting in-depth user research to understand needs and pain points",
       ),
       t("Iterating on designs based on user feedback and usability testing"),
-      t("Ensuring seamless interactions across all digital touchpoints"),
+      t("Ensuring seamless interactions across all touchpoints"),
     ],
     benefits: [
       { text: t("Improved customer satisfaction, engagement, and loyalty") },
@@ -86,51 +98,39 @@ const services = ref([
     ),
   },
   {
-    title: t("Software Development & Engineering"),
+    title: t("Planning & Project Leadership"),
     descriptionPoints: [
-      t("Building scalable, high-performance software solutions"),
-      t("Leveraging the latest technologies and industry best practices"),
-      t("Ensuring smooth integration of all application components"),
-      t(
-        "Delivering high-quality code with thorough testing and quality assurance",
-      ),
+      t("Defining clear roadmaps and project milestones"),
+      t("Aligning initiatives with business goals and strategies"),
+      t("Coordinating cross-functional teams for seamless delivery"),
+      t("Ensuring efficient, secure, and reliable development"),
     ],
     benefits: [
+      { text: t("Clear plan that meets business objectives") },
       {
         text: t(
-          "Adaptable and future-ready software that grows with the business",
+          "Streamlined collaboration across technical and non-technical teams",
         ),
       },
       {
         text: t(
-          "Optimized application performance and reduced maintenance costs",
+          "Optimized performance, reliability, and security of software solutions",
         ),
       },
       {
-        text: t(
-          "Faster time-to-market for new features, updates, and digital innovations",
-        ),
-      },
-      {
-        text: t(
-          "Improved security, compliance, and reliability of software systems",
-        ),
+        text: t("Faster time-to-market for new digital products and features"),
       },
     ],
     deliverables: [
-      { text: t("Scalable and maintainable codebase with clean architecture") },
-      { text: t("Comprehensive testing and quality assurance reports") },
+      { text: t("Comprehensive technology plan and project timeline") },
+      { text: t("Effective communication and coordination between teams") },
       {
-        text: t("Detailed documentation and training materials for end-users"),
+        text: t("Detailed technical specifications and software architecture"),
       },
-      {
-        text: t(
-          "Seamless integration with the client's existing IT infrastructure",
-        ),
-      },
+      { text: t("Streamlined software development and deployment processes") },
     ],
     suitableFor: t(
-      "Building custom software solutions to automate processes, improve productivity, or create new revenue streams.",
+      "Launching a new digital product or modernizing existing software systems.",
     ),
   },
   {
@@ -356,9 +356,13 @@ const sectionItems = [
 const serviceItems = services.value.map((service) => ({
   title: service.title,
   sublists: [
-    { items: service.descriptionPoints.map((point) => ({ text: point })) },
-    { title: "Deliverables", items: service.deliverables, expandable: true },
-    { title: "Key Benefits", items: service.benefits, expandable: true },
+    {
+      title: "What we do?",
+      items: service.descriptionPoints.map((point) => ({ text: point })),
+      expandable: true,
+    },
+    { title: "What you get?", items: service.deliverables, expandable: true },
+    { title: "What it does?", items: service.benefits, expandable: true },
   ],
   additionalInfo: service.suitableFor,
 }));
@@ -382,19 +386,19 @@ const serviceItems = services.value.map((service) => ({
   <BottomToTopSlideTransition>
     <section class="py-12 md:py-16">
       <h2
-        class="text-3xl md:text-4xl font-bold mb-8 text-gray-500 dark:text-gray-400"
+        class="text-xl md:text-2xl mb-4 max-w-4xl font-bold text-gray-500 dark:text-gray-400"
       >
         {{ t("Why Choose Our Services ?") }}
       </h2>
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-6 text-lg md:text-xl">
         <div
           v-for="(item, index) in sectionItems"
           :key="index"
           class="py-6 max-w-4xl"
         >
           <BottomToTopSlideTransition>
-            <h3 class="text-xl font-bold mb-2">{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
+            <h3 class="font-bold mb-2">{{ item.title }}</h3>
+            <p class="text-base">{{ item.description }}</p>
           </BottomToTopSlideTransition>
         </div>
       </div>

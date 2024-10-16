@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, watch, inject } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, RouterLink } from "vue-router";
 import navItems from "@/router/navItems";
 import ThemeToggleButton from "@/components/ThemeToggleButton.vue";
 import MenuIcon from "@/components/MenuIcon.vue";

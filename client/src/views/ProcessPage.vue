@@ -83,7 +83,7 @@ const processItems = processSteps.value.map((step) => ({
 
 <template>
   <section id="process">
-    <MainHeader text="Transformation Process" />
+    <MainHeader text="Transformation Approach" />
     <SubHeader
       first="Makes your goals measurable success."
       second="We're committed to maximizing your potential and driving sustainable growth, from initial concept through continuous improvement."

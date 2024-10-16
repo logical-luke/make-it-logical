@@ -118,7 +118,7 @@ onUnmounted(() => {
           data-observe
           :class="[
             durationClass(),
-            'transform transition-all ease-in-out delay-100 max-w-4xl text-gray-500 dark:text-gray-400 text-xl md:text-4xl font-bold',
+            'transform transition-all ease-in-out delay-100 max-w-4xl text-gray-500 dark:text-gray-400 text-2xl md:text-3xl font-bold',
             isVisible(`group-${groupIndex}-title`)
               ? 'translate-y-0 opacity-100'
               : 'translate-y-4 opacity-0',
