@@ -119,15 +119,17 @@ onUnmounted(() => {
           ]"
           @click="toggleExpand(groupIndex.toString(), 'group')"
         >
-          <ArrowRightIcon
-            class="h-5 w-5 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
-            :class="[
-              isExpanded(groupIndex.toString(), 'group')
-                ? '-rotate-90 group-hover:translate-y-0.5'
-                : 'rotate-90 group-hover:translate-y-0.5',
-            ]"
-          />
-          <h3 class="text-gray-800 dark:text-gray-100">
+          <div class="flex-shrink-0 mr-3">
+            <ArrowRightIcon
+              class="h-5 w-5 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+              :class="[
+                isExpanded(groupIndex.toString(), 'group')
+                  ? '-rotate-90 group-hover:translate-y-0.5'
+                  : 'rotate-90 group-hover:translate-y-0.5',
+              ]"
+            />
+          </div>
+          <h3 class="text-gray-800 dark:text-gray-100 break-words">
             {{ group.name }}
           </h3>
         </div>
@@ -153,9 +155,9 @@ onUnmounted(() => {
                 ]"
                 @click="toggleExpand(`${groupIndex}-${itemIndex}`, 'item')"
               >
-                <div class="flex items-center">
+                <div class="flex-shrink-0 mr-3">
                   <ArrowRightIcon
-                    class="h-4 w-4 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+                    class="h-4 w-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
                     :class="[
                       isExpanded(`${groupIndex}-${itemIndex}`, 'item')
                         ? '-rotate-90 group-hover:translate-y-0.5'
@@ -165,7 +167,7 @@ onUnmounted(() => {
                 </div>
                 <div class="flex flex-col">
                   <h3
-                    class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold"
+                    class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold break-words"
                   >
                     {{ item.title }}
                   </h3>
@@ -223,9 +225,9 @@ onUnmounted(() => {
           ]"
           @click="toggleExpand(index.toString(), 'item')"
         >
-          <div class="flex items-center">
+          <div class="flex-shrink-0 mr-3">
             <ArrowRightIcon
-              class="h-4 w-4 mr-3 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
+              class="h-4 w-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-300"
               :class="[
                 isExpanded(index.toString(), 'item')
                   ? '-rotate-90 group-hover:translate-y-0.5'
@@ -235,7 +237,7 @@ onUnmounted(() => {
           </div>
           <div class="flex flex-col">
             <h3
-              class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold"
+              class="text-xl md:text-2xl text-gray-800 dark:text-gray-100 font-bold break-words"
             >
               {{ item.title }}
             </h3>
