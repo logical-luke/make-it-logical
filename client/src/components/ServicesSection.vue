@@ -23,13 +23,6 @@ const services = ref([
     tag: t("Intuitive interfaces to increase user satisfaction & retention"),
   },
   {
-    title: t("Planning & Project Leadership"),
-    additionalInfo: t(
-      "Navigating the digital landscape requires a clear roadmap. Our planning and project leadership provide that crucial direction. We align your tech initiatives with business objectives, creating strategies that drive tangible results. Our experienced project leaders coordinate teams and ensure smooth delivery, leading to streamlined operations and faster time-to-market. By anticipating obstacles and driving innovation, we help you turn technological challenges into opportunities for growth.",
-    ),
-    tag: t("Strategic tech planning to accelerate growth & maximize ROI"),
-  },
-  {
     title: t("Software Optimization & Enhancements"),
     additionalInfo: t(
       "In today's fast-paced digital environment, static software quickly becomes obsolete. Our optimization services ensure your applications stay ahead of the curve. Through regular audits, we uncover hidden potential in your software and implement strategic enhancements. This proactive approach boosts performance, increases user satisfaction, and unlocks new capabilities. By aligning closely with your team, we transform your software into a dynamic asset that adapts to emerging market opportunities.",

@@ -169,58 +169,6 @@ const services = ref([
     ),
   },
   {
-    title: t("Planning & Project Leadership"),
-    descriptionPoints: [
-      t("Define clear roadmaps and project milestones"),
-      t("Align initiatives with business goals and strategies"),
-      t("Coordinate cross-functional teams for seamless delivery"),
-      t("Ensure efficient, secure, and reliable development"),
-      t("Implement agile methodologies for flexible project management"),
-      t("Optimize resource allocation and budgeting"),
-    ],
-    benefits: [
-      { text: t("Clear plan that meets business objectives") },
-      {
-        text: t(
-          "Streamlined collaboration across technical and non-technical teams",
-        ),
-      },
-      {
-        text: t(
-          "Optimized performance, reliability, and security of software solutions",
-        ),
-      },
-      {
-        text: t("Faster time-to-market for new digital products and features"),
-      },
-    ],
-    deliverables: [
-      { text: t("Comprehensive technology plan and project timeline") },
-      { text: t("Effective communication and coordination between teams") },
-      {
-        text: t("Detailed technical specifications and software architecture"),
-      },
-      { text: t("Streamlined software development and deployment processes") },
-    ],
-    applicationExamples: [
-      { text: t("Digital upgrade strategy for a regional grocery chain") },
-      {
-        text: t(
-          "Flexible work methods implementation for a software company's teams",
-        ),
-      },
-      { text: t("Multi-supplier project management for a car parts maker") },
-      {
-        text: t(
-          "Technology selection and planning for a renewable energy startup",
-        ),
-      },
-    ],
-    suitableFor: t(
-      "Launching a new digital product or modernizing existing software systems.",
-    ),
-  },
-  {
     title: t("System Modernization & Cloud Migration"),
     descriptionPoints: [
       t("Refresh outdated software systems with modern technologies"),
