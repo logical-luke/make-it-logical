@@ -161,8 +161,9 @@ onUnmounted(() => {
             :id="`item-${index}-sublist-${subIndex}-title`"
             data-observe
             :class="[
+              sublist.expandable ? 'cursor-pointer' : '',
               durationClass(),
-              'transform transition-all ease-in-out delay-100 group flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600 cursor-pointer',
+              'transform transition-all ease-in-out delay-100 group flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600',
               isVisible(`item-${index}-sublist-${subIndex}-title`)
                 ? 'translate-y-0 opacity-100'
                 : 'translate-y-4 opacity-0',

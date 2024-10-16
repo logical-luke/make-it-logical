@@ -12,12 +12,13 @@ const services = ref([
   {
     title: t("Software Development & Engineering"),
     descriptionPoints: [
-      t("Building scalable, high-performance software solutions"),
-      t("Leveraging the latest technologies and industry best practices"),
-      t("Ensuring smooth integration of all application components"),
-      t(
-        "Delivering high-quality code with thorough testing and quality assurance",
-      ),
+      t("Build scalable, high-performance software solutions"),
+      t("Leverage latest technologies and industry best practices"),
+      t("Ensure smooth integration of all application components"),
+      t("Deliver high-quality code with thorough testing"),
+      t("Implement robust security measures"),
+      t("Optimize for performance and maintainability"),
+      t("Develop cross-platform applications"),
     ],
     benefits: [
       {
@@ -47,9 +48,41 @@ const services = ref([
       {
         text: t("Detailed documentation and training materials for end-users"),
       },
+      { text: t("Seamless integration with the existing IT infrastructure") },
+    ],
+    applicationExamples: [
       {
         text: t(
-          "Seamless integration with the client's existing IT infrastructure",
+          "Custom business management system for a growing furniture manufacturer",
+        ),
+      },
+      {
+        text: t(
+          "Online store with live inventory tracking for a multi-location bookshop",
+        ),
+      },
+      { text: t("Order and delivery app for a local bakery chain") },
+      {
+        text: t(
+          "Data analysis tool using artificial intelligence (AI) for a financial advisory startup",
+        ),
+      },
+      {
+        text: t(
+          "Supply chain tracking system using blockchain for a coffee bean distributor",
+        ),
+      },
+      {
+        text: t("Automated software testing tool for a medical device company"),
+      },
+      {
+        text: t(
+          "Customer database and communication system for a community credit union",
+        ),
+      },
+      {
+        text: t(
+          "Table booking and sales management system for a family-owned restaurant group",
         ),
       },
     ],
@@ -60,12 +93,12 @@ const services = ref([
   {
     title: t("User Experience (UX) Design"),
     descriptionPoints: [
-      t("Creating visually appealing and user-friendly interfaces"),
-      t(
-        "Conducting in-depth user research to understand needs and pain points",
-      ),
-      t("Iterating on designs based on user feedback and usability testing"),
-      t("Ensuring seamless interactions across all touchpoints"),
+      t("Create visually appealing and user-friendly interfaces"),
+      t("Conduct in-depth user research to understand needs and pain points"),
+      t("Iterate on designs based on user feedback and usability testing"),
+      t("Ensure seamless interactions across all touchpoints"),
+      t("Implement accessibility best practices"),
+      t("Develop comprehensive design systems"),
     ],
     benefits: [
       { text: t("Improved customer satisfaction, engagement, and loyalty") },
@@ -93,6 +126,44 @@ const services = ref([
         ),
       },
     ],
+    applicationExamples: [
+      {
+        text: t(
+          "Redesign of an international school's staff and student portal",
+        ),
+      },
+      { text: t("User research and design for a doctor consultation app") },
+      { text: t("Website design for a boutique bed and breakfast chain") },
+      {
+        text: t(
+          "Usability testing and design improvements for a credit union's mobile app",
+        ),
+      },
+      {
+        text: t("Unified design system for a global online learning platform"),
+      },
+      {
+        text: t(
+          "User experience audit and enhancement for an online marketplace",
+        ),
+      },
+      {
+        text: t(
+          "Accessibility-focused redesign of a city's public services website",
+        ),
+      },
+      {
+        text: t(
+          "Mobile app interface design for a personal fitness tracking startup",
+        ),
+      },
+      { text: t("Workflow optimization for a team collaboration tool") },
+      {
+        text: t(
+          "Interactive demo for a virtual reality (VR) employee training program",
+        ),
+      },
+    ],
     suitableFor: t(
       "Designing a website, mobile app, or web application to boost user engagement and conversions.",
     ),
@@ -100,10 +171,12 @@ const services = ref([
   {
     title: t("Planning & Project Leadership"),
     descriptionPoints: [
-      t("Defining clear roadmaps and project milestones"),
-      t("Aligning initiatives with business goals and strategies"),
-      t("Coordinating cross-functional teams for seamless delivery"),
-      t("Ensuring efficient, secure, and reliable development"),
+      t("Define clear roadmaps and project milestones"),
+      t("Align initiatives with business goals and strategies"),
+      t("Coordinate cross-functional teams for seamless delivery"),
+      t("Ensure efficient, secure, and reliable development"),
+      t("Implement agile methodologies for flexible project management"),
+      t("Optimize resource allocation and budgeting"),
     ],
     benefits: [
       { text: t("Clear plan that meets business objectives") },
@@ -129,99 +202,35 @@ const services = ref([
       },
       { text: t("Streamlined software development and deployment processes") },
     ],
+    applicationExamples: [
+      { text: t("Digital upgrade strategy for a regional grocery chain") },
+      {
+        text: t(
+          "Flexible work methods implementation for a software company's teams",
+        ),
+      },
+      { text: t("Multi-supplier project management for a car parts maker") },
+      {
+        text: t(
+          "Technology selection and planning for a renewable energy startup",
+        ),
+      },
+    ],
     suitableFor: t(
       "Launching a new digital product or modernizing existing software systems.",
     ),
   },
   {
-    title: t("IT Operations & Maintenance"),
-    descriptionPoints: [
-      t(
-        "Setting up efficient systems for software delivery, updates, and deployments",
-      ),
-      t(
-        "Improving infrastructure reliability, performance, and resource utilization",
-      ),
-      t(
-        "Implementing tools and processes to proactively monitor and fix issues",
-      ),
-      t(
-        "Ensuring seamless integration with the client's existing IT environments",
-      ),
-    ],
-    benefits: [
-      { text: t("Faster, more reliable software updates and deployments") },
-      {
-        text: t(
-          "Improved system uptime, performance, security, and compliance",
-        ),
-      },
-      {
-        text: t("Reduced operational costs and enhanced IT team productivity"),
-      },
-      {
-        text: t(
-          "Smooth integration with the client's current technology stack",
-        ),
-      },
-    ],
-    deliverables: [
-      { text: t("Automated software delivery and deployment pipelines") },
-      { text: t("Comprehensive monitoring and incident response processes") },
-      {
-        text: t(
-          "Optimized infrastructure configuration and resource utilization",
-        ),
-      },
-      {
-        text: t("Seamless integration with the client's IT systems and tools"),
-      },
-    ],
-    suitableFor: t(
-      "Improving the reliability, security, and efficiency of critical IT operations.",
-    ),
-  },
-  {
-    title: t("Software Optimization & Enhancements"),
-    descriptionPoints: [
-      t("Ongoing performance, security, and user experience improvements"),
-      t("Regular software updates and feature enhancements"),
-      t("Improving code quality, efficiency, and maintainability"),
-      t("Implementing proactive monitoring and issue prevention strategies"),
-    ],
-    benefits: [
-      { text: t("Faster, more responsive, and user-friendly applications") },
-      { text: t("Reduced downtime, maintenance costs, and security risks") },
-      { text: t("Improved user satisfaction, loyalty, and engagement") },
-      { text: t("Proactive problem-solving before issues affect end-users") },
-    ],
-    deliverables: [
-      {
-        text: t(
-          "Optimized application performance, stability, and scalability",
-        ),
-      },
-      { text: t("Enhanced security, compliance, and regulatory standards") },
-      { text: t("Improved user interface, experience, and accessibility") },
-      {
-        text: t(
-          "Proactive monitoring, issue prevention, and remediation strategies",
-        ),
-      },
-    ],
-    suitableFor: t(
-      "Enhancing existing software to handle increased user load, add new features, or improve overall user experience.",
-    ),
-  },
-  {
     title: t("System Modernization & Cloud Migration"),
     descriptionPoints: [
-      t("Refreshing outdated software systems with modern technologies"),
-      t("Preserving critical business processes, data, and functionality"),
-      t("Improving user experience, productivity, and operational efficiency"),
+      t("Refresh outdated software systems with modern technologies"),
+      t("Preserve critical business processes, data, and functionality"),
+      t("Improve user experience, productivity, and operational efficiency"),
       t(
-        "Ensuring seamless integration with new systems, tools, and cloud platforms",
+        "Ensure seamless integration with new systems, tools, and cloud platforms",
       ),
+      t("Implement scalable and flexible cloud architectures"),
+      t("Provide staff training on new technologies and best practices"),
     ],
     benefits: [
       {
@@ -251,9 +260,30 @@ const services = ref([
       {
         text: t("Improved user interfaces and productivity-enhancing features"),
       },
+      { text: t("Smooth integration with the existing and future systems") },
+    ],
+    applicationExamples: [
       {
         text: t(
-          "Smooth integration with the client's existing and future systems",
+          "Moving business software from local servers to cloud for a toy manufacturer",
+        ),
+      },
+      { text: t("Updating internal systems for a state environmental agency") },
+      {
+        text: t(
+          "Cloud transition for a medium-sized law firm's case management software",
+        ),
+      },
+      {
+        text: t(
+          "Setting up mixed local and cloud systems for a supermarket chain",
+        ),
+      },
+      { text: t("Modernizing member management system for a credit union") },
+      { text: t("Restructuring online store system for better scalability") },
+      {
+        text: t(
+          "Cloud-based overhaul of a logistics company's package tracking",
         ),
       },
     ],
@@ -262,107 +292,92 @@ const services = ref([
     ),
   },
   {
-    title: t("Search Engine Optimization (SEO)"),
+    title: t("Software Optimization & Enhancements"),
     descriptionPoints: [
-      t("Improving website visibility and ranking in search engine results"),
       t(
-        "Optimizing website content, structure, and technical performance for better discoverability",
+        "Conduct ongoing performance, security, and user experience improvements",
       ),
-      t(
-        "Implementing targeted strategies to attract more qualified website visitors",
-      ),
-      t(
-        "Analyzing data-driven insights to continuously improve SEO and digital marketing efforts",
-      ),
+      t("Implement regular software updates and feature enhancements"),
+      t("Improve code quality, efficiency, and maintainability"),
+      t("Implement proactive monitoring and issue prevention strategies"),
+      t("Optimize database performance and query efficiency"),
+      t("Enhance user interfaces based on feedback and analytics"),
     ],
     benefits: [
-      {
-        text: t(
-          "Higher search engine rankings and increased organic website traffic",
-        ),
-      },
-      {
-        text: t(
-          "Better user engagement, lower bounce rates, and improved conversion rates",
-        ),
-      },
-      {
-        text: t(
-          "Increased return on investment from the website and digital marketing initiatives",
-        ),
-      },
-      {
-        text: t(
-          "Actionable data and insights to guide future content, marketing, and optimization strategies",
-        ),
-      },
+      { text: t("Faster, more responsive, and user-friendly applications") },
+      { text: t("Reduced downtime, maintenance costs, and security risks") },
+      { text: t("Improved user satisfaction, loyalty, and engagement") },
+      { text: t("Proactive problem-solving before issues affect end-users") },
     ],
     deliverables: [
       {
         text: t(
-          "Optimized website structure, content, and technical performance for search engines",
+          "Optimized application performance, stability, and scalability",
+        ),
+      },
+      { text: t("Enhanced security, compliance, and regulatory standards") },
+      { text: t("Improved user interface, experience, and accessibility") },
+      {
+        text: t(
+          "Proactive monitoring, issue prevention, and remediation strategies",
+        ),
+      },
+    ],
+    applicationExamples: [
+      { text: t("Speed improvements for a high-traffic recipe website") },
+      { text: t("Security reinforcement for an online banking service") },
+      { text: t("Database efficiency boost for a customer insights company") },
+      {
+        text: t(
+          "Mobile app responsiveness upgrade for a food ordering service",
         ),
       },
       {
         text: t(
-          "Targeted SEO strategies to attract more qualified website visitors",
-        ),
-      },
-      {
-        text: t(
-          "Comprehensive performance reports, analytics, and data-driven insights",
-        ),
-      },
-      {
-        text: t(
-          "Ongoing recommendations and implementation of continuous website improvements",
+          "Code cleanup and modernization for a school district's student information system",
         ),
       },
     ],
     suitableFor: t(
-      "Increasing organic website traffic, improving online visibility, and driving more qualified leads for products or services.",
+      "Enhancing existing software to handle increased user load, add new features, or improve overall user experience.",
     ),
   },
 ]);
-
 const sectionItems = [
   {
     title: "Comprehensive Solutions",
-    description:
-      "Cover all aspects of your digital needs, from planning to maintenance",
+    description: "Cover all digital needs, from planning to maintenance",
   },
   {
     title: "Results-Driven Approach",
-    description:
-      "Address directly your business challenges and drive measurable outcomes",
+    description: "Address business challenges and drive measurable outcomes",
   },
   {
     title: "Scalable Architecture",
-    description:
-      "Own solutions that grow with your business, preventing future bottlenecks",
+    description: "Build solutions that grow with your business",
   },
   {
     title: "Efficiency-Focused Process",
     description:
-      "Enjoy a development process that emphasizes simplicity and effectiveness, saving you time and resources",
+      "Emphasize simplicity and effectiveness, saving time and resources",
   },
   {
     title: "Innovation-Led Craft",
-    description:
-      "Gain a competitive edge in your market with leveraging of cutting-edge technologies",
+    description: "Leverage cutting-edge technologies for competitive advantage",
   },
 ];
 
 const serviceItems = services.value.map((service) => ({
   title: service.title,
   sublists: [
+    { title: "Example projects", items: service.applicationExamples },
     {
       title: "What we do?",
       items: service.descriptionPoints.map((point) => ({ text: point })),
       expandable: true,
     },
     { title: "What you get?", items: service.deliverables, expandable: true },
-    { title: "What it does?", items: service.benefits, expandable: true },
+    { title: "What is the result?", items: service.benefits, expandable: true },
   ],
   additionalInfo: service.suitableFor,
 }));
@@ -388,7 +403,7 @@ const serviceItems = services.value.map((service) => ({
       <h2
         class="text-xl md:text-2xl mb-4 max-w-4xl font-bold text-gray-500 dark:text-gray-400"
       >
-        {{ t("Why Choose Our Services ?") }}
+        {{ t("Why Choose Our Services?") }}
       </h2>
       <div class="flex flex-col gap-6 text-lg md:text-xl">
         <div
