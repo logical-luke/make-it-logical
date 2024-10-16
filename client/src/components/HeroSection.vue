@@ -26,7 +26,7 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
           class="flex flex-col font-semibold text-lg md:text-3xl lg:text-4xl tracking-wider"
         >
           <span class="text-primary font-normal">{{ t("We build") }}</span>
-          {{ t("websites & web apps") }}
+          {{ t("web apps & websites") }}
         </h1>
       </BottomToTopSlideTransition>
     </div>
