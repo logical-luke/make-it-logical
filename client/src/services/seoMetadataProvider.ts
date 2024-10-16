@@ -6,17 +6,17 @@ export function getPageTitle(route: RouteLocationNormalized): string {
     case "/":
       return `${baseTitle} | We Build Web Apps & Websites`;
     case "/services":
-      return `Services: Solutions for Businesses | ${baseTitle}`;
+      return `Web & Mobile App Development Services | ${baseTitle}`;
     case "/process":
-      return `Process: Transformation Approach | ${baseTitle}`;
+      return `Our 5-Step Development Process | ${baseTitle}`;
     case "/contact":
-      return `Contact: Let's Talk | ${baseTitle}`;
+      return `Contact Us | ${baseTitle}`;
     case "/terms":
-      return `Terms: Service Agreement | ${baseTitle}`;
+      return `Terms | ${baseTitle}`;
     case "/tools":
-      return `Tools: Technologies & Platforms | ${baseTitle}`;
+      return `Development Tools & Technologies | ${baseTitle}`;
     case "/privacy":
-      return `Privacy: Data Protection Practices | ${baseTitle}`;
+      return `Privacy Policy | ${baseTitle}`;
     default:
       return `Page Not Found | ${baseTitle}`;
   }
