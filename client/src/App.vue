@@ -2,15 +2,13 @@
 import { ref, provide, onMounted, watch, defineAsyncComponent } from "vue";
 import router from "@/router";
 import { useRoute } from "vue-router";
+import NavigationBar from "@/components/NavigationBar.vue";
 
 const route = useRoute();
-const NavigationBar = defineAsyncComponent(
-  () => import("@/components/NavigationBar.vue"),
-);
+
 const FooterSection = defineAsyncComponent(
   () => import("@/components/FooterSection.vue"),
 );
-// import FooterSection from "@/components/FooterSection.vue";
 
 const transitionTrigger = ref(0);
 
