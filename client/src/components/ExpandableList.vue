@@ -167,7 +167,7 @@ const isExpanded = (key: string, type: "group" | "item") =>
             </h2>
             <span
               v-if="item.tag"
-              class="text-sm text-gray-500 dark:text-gray-400"
+              class="text-sm text-gray-600 dark:text-gray-500"
             >
               {{ item.tag }}
             </span>
