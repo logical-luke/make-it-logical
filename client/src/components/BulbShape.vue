@@ -1,117 +1,125 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
-
-const animationDuration = 350;
+import { ref, onMounted, computed, onUnmounted } from "vue";
+import paths from "@/assets/bulbPaths.json";
+const drawDuration = 1000;
+const glowInDuration = 200;
 const pauseDuration = 12300;
+const eraseDuration = 2000;
+const finalPauseDuration = 1000;
+const totalCycleDuration = drawDuration + glowInDuration + pauseDuration + eraseDuration + finalPauseDuration;
 
-const paths = [
-  "M 7466.21,3888.71 H 4533.79 L 3244.08,5251.82 2510.1,7244.04 3055.35,9487.92 4753.98,10730.4 H 7246.02 L 8944.66,9487.92 9489.89,7244.04 8755.92,5251.82 7466.21,3888.71",
-  "m 4510.81,3888.71 382.95,-1095.2 h 2184.49 l 382.95,1095.2",
-  "m 7207.68,2793.51 c 0,-71.49 -57.95,-129.43 -129.43,-129.43 -71.47,0 -129.42,57.94 -129.42,129.43 0,71.47 57.95,129.41 129.42,129.41 71.48,0 129.43,-57.94 129.43,-129.41",
-  "m 3047.21,9490.98 2689.32,-241.35 1426.02,1502.87 1059.03,-2956.84 736.15,1695.32 29.28,17.3 L 4748.47,7491.58 3244.08,5251.82",
-  "M 2534.99,7223.07 5447.6,5735.86 8797.77,5365.44 7083.33,6714.5 l 27.96,51.26 1110.29,1029.9 -3407.76,2945.24",
-  "M 4813.82,10699 5736.53,9249.63 7083.33,6714.5 9489.89,7244.04",
-  "M 8797.77,5365.44 8221.58,7795.66",
-  "M 3273.83,5296.1 5401,5793.7 7083.33,6714.5",
-  "M 2567.61,7223.07 5736.53,9249.63",
-  "m 3145.47,9519.93 1603,-2028.35 953.32,1812.63",
-  "M 4719.49,7448.43 5447.6,5735.86 4613.43,3923.05",
-  "M 5447.6,5735.86 7498.09,3888.71",
-  "m 2639.53,7223.07 c 0,-71.47 -57.95,-129.42 -129.43,-129.42 -71.47,0 -129.42,57.95 -129.42,129.42 0,71.48 57.95,129.43 129.42,129.43 71.48,0 129.43,-57.95 129.43,-129.43",
-  "m 3176.63,9490.98 c 0,-71.48 -57.94,-129.42 -129.42,-129.42 -71.48,0 -129.42,57.94 -129.42,129.42 0,71.48 57.94,129.42 129.42,129.42 71.48,0 129.42,-57.94 129.42,-129.42",
-  "m 9087.16,9490.98 c 0,-71.48 -57.95,-129.42 -129.43,-129.42 -71.47,0 -129.42,57.94 -129.42,129.42 0,71.48 57.95,129.42 129.42,129.42 71.48,0 129.43,-57.94 129.43,-129.42",
-  "m 7372.19,10730.4 c 0,-71.5 -57.94,-129.5 -129.43,-129.5 -71.47,0 -129.41,58 -129.41,129.5 0,71.4 57.94,129.4 129.41,129.4 71.49,0 129.43,-58 129.43,-129.4",
-  "m 4877.89,10730.4 c 0,-71.5 -57.94,-129.5 -129.42,-129.5 -71.48,0 -129.42,58 -129.42,129.5 0,71.4 57.94,129.4 129.42,129.4 71.48,0 129.42,-58 129.42,-129.4",
-  "m 9619.32,7223.07 c 0,-71.47 -57.94,-129.42 -129.43,-129.42 -71.47,0 -129.41,57.95 -129.41,129.42 0,71.48 57.94,129.43 129.41,129.43 71.49,0 129.43,-57.95 129.43,-129.43",
-  "m 3368.92,5239.55 c 0,-71.47 -57.95,-129.41 -129.42,-129.41 -71.48,0 -129.42,57.94 -129.42,129.41 0,71.49 57.94,129.42 129.42,129.42 71.47,0 129.42,-57.93 129.42,-129.42",
-  "m 8897.19,5239.55 c 0,-71.47 -57.94,-129.41 -129.43,-129.41 -71.47,0 -129.41,57.94 -129.41,129.41 0,71.49 57.94,129.42 129.41,129.42 71.49,0 129.43,-57.93 129.43,-129.42",
-  "m 5577.03,5793.7 c 0,-71.47 -57.95,-129.42 -129.43,-129.42 -71.47,0 -129.42,57.95 -129.42,129.42 0,71.48 57.95,129.43 129.42,129.43 71.48,0 129.43,-57.95 129.43,-129.43",
-  "m 4881.25,7491.58 c 0,-71.48 -57.95,-129.42 -129.42,-129.42 -71.48,0 -129.43,57.94 -129.43,129.42 0,71.48 57.95,129.42 129.43,129.42 71.47,0 129.42,-57.94 129.42,-129.42",
-  "m 5831.21,9249.63 c 0,-71.47 -57.94,-129.41 -129.42,-129.41 -71.47,0 -129.42,57.94 -129.42,129.41 0,71.48 57.95,129.43 129.42,129.43 71.48,0 129.42,-57.95 129.42,-129.43",
-  "m 8351,7769.77 c 0,-71.47 -57.94,-129.42 -129.42,-129.42 -71.48,0 -129.42,57.95 -129.42,129.42 0,71.48 57.94,129.42 129.42,129.42 71.48,0 129.42,-57.94 129.42,-129.42",
-  "m 7212.74,6714.49 c 0,-71.47 -57.94,-129.42 -129.41,-129.42 -71.47,0 -129.42,57.95 -129.42,129.42 0,71.48 57.95,129.43 129.42,129.43 71.47,0 129.41,-57.95 129.41,-129.43",
-  "m 4663.21,3888.71 c 0,-71.47 -57.95,-129.42 -129.42,-129.42 -71.48,0 -129.42,57.95 -129.42,129.42 0,71.48 57.94,129.42 129.42,129.42 71.47,0 129.42,-57.94 129.42,-129.42",
-  "m 7595.63,3888.71 c 0,-71.47 -57.95,-129.42 -129.42,-129.42 -71.47,0 -129.42,57.95 -129.42,129.42 0,71.48 57.95,129.42 129.42,129.42 71.47,0 129.42,-57.94 129.42,-129.42",
-  "m 5023.18,2793.51 c 0,-71.49 -57.94,-129.43 -129.42,-129.43 -71.47,0 -129.42,57.94 -129.42,129.43 0,71.47 57.95,129.41 129.42,129.41 71.48,0 129.42,-57.94 129.42,-129.41",
-  "m 5023.18,2033.95 c 0,-71.45 -57.94,-129.45 -129.42,-129.45 -71.47,0 -129.42,58 -129.42,129.45 0,71.47 57.95,129.41 129.42,129.41 71.48,0 129.42,-57.94 129.42,-129.41",
-  "m 5640.93,1364.5 c 105.52,-138.6 -51.08,-295.2 -189.6,-189.7 -105.51,138.6 51.08,295.2 189.6,189.7",
-  "m 6359.06,1364.5 c -105.51,-138.6 51.09,-295.2 189.61,-189.7 105.51,138.6 -51.07,295.2 -189.61,189.7",
-  "m 7207.68,2033.95 c 0,-71.45 -57.95,-129.45 -129.43,-129.45 -71.47,0 -129.42,58 -129.42,129.45 0,71.47 57.95,129.41 129.42,129.41 71.48,0 129.43,-57.94 129.43,-129.41",
-];
-
-const pathLengths = computed(() => {
-  return paths.map((path) => {
-    const dummyPath = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "path",
-    );
-    dummyPath.setAttribute("d", path);
-    return dummyPath.getTotalLength();
-  });
-});
-
-const animationProgress = ref(pathLengths.value.map((length) => length));
-const glitchOpacity = ref(paths.map(() => 1));
+const pathLengths = ref<number[]>([]);
+const animationProgress = ref<number[]>([]);
+const glitchOpacity = ref<number[]>([]);
 const rotation = ref(0);
-let bulbVisible = ref(false);
+const bulbVisible = ref(false);
+const glowIntensity = ref(0);
+
 const stopOpacity = computed(() => Math.sin(bulbVisible.value ? 0.45 : 0.1));
-const glowRadius = computed(() => (bulbVisible.value ? 430 : 1));
-const animate = async () => {
-  const randomOrder = paths.map((_, i) => i).sort(() => Math.random() - 0.5);
+const glowRadius = computed(() => 430 * glowIntensity.value);
 
-  setTimeout(() => {
-    bulbVisible.value = true;
-  }, animationDuration * 3);
-  for (const index of randomOrder) {
-    animationProgress.value[index] = 0;
-    await new Promise((resolve) => setTimeout(resolve, 50));
-  }
-  await new Promise((resolve) => setTimeout(resolve, animationDuration));
+let randomOrder: number[] = [];
+let animationFrameId: number | null = null;
 
-  await new Promise((resolve) => setTimeout(resolve, pauseDuration));
+const calculatePathLengths = () => {
+  const svgNS = "http://www.w3.org/2000/svg";
+  const dummySvg = document.createElementNS(svgNS, "svg");
+  dummySvg.style.position = "absolute";
+  dummySvg.style.visibility = "hidden";
+  document.body.appendChild(dummySvg);
 
-  for (const index of randomOrder.reverse()) {
-    animationProgress.value[index] = pathLengths.value[index];
-    await new Promise((resolve) => setTimeout(resolve, 50));
-  }
-  await new Promise((resolve) => setTimeout(resolve, animationDuration));
-  setTimeout(() => {
+  pathLengths.value = paths.map((path) => {
+    const dummyPath = document.createElementNS(svgNS, "path");
+    dummyPath.setAttribute("d", path);
+    dummySvg.appendChild(dummyPath);
+    const length = dummyPath.getTotalLength();
+    dummySvg.removeChild(dummyPath);
+    return length;
+  });
+
+  document.body.removeChild(dummySvg);
+};
+
+const animate = (timestamp: number) => {
+  const cycleTime = timestamp % totalCycleDuration;
+
+  if (cycleTime < drawDuration) {
+    const progress = cycleTime / drawDuration;
+    randomOrder.forEach((index, i) => {
+      const pathProgress = Math.max(0, Math.min(1, (progress * paths.length - i)));
+      animationProgress.value[index] = pathLengths.value[index] * (1 - pathProgress);
+    });
+    bulbVisible.value = progress > 0;
+    glowIntensity.value = 0;
+  } else if (cycleTime < drawDuration + glowInDuration) {
+    animationProgress.value.fill(0);
+    glowIntensity.value = (cycleTime - drawDuration) / glowInDuration;
+  } else if (cycleTime < drawDuration + glowInDuration + pauseDuration) {
+    animationProgress.value.fill(0);
+    glowIntensity.value = 1;
+  } else if (cycleTime < drawDuration + glowInDuration + pauseDuration + eraseDuration) {
+    const progress = (cycleTime - (drawDuration + glowInDuration + pauseDuration)) / eraseDuration;
+    randomOrder.forEach((index, i) => {
+      const pathProgress = Math.max(0, Math.min(1, (progress * paths.length - i)));
+      animationProgress.value[index] = pathLengths.value[index] * pathProgress;
+    });
+    glowIntensity.value = 1 - progress;
+  } else {
+    animationProgress.value = [...pathLengths.value];
     bulbVisible.value = false;
-  }, animationDuration / 5);
-  await new Promise((resolve) => setTimeout(resolve, pauseDuration / 10));
+    glowIntensity.value = 0;
+  }
 
-  requestAnimationFrame(animate);
+  rotation.value = Math.sin(timestamp / 15000) * 35;
+
+  animationFrameId = requestAnimationFrame(animate);
 };
 
-const glitchEffect = () => {
-  setInterval(() => {
+let lastGlitchTime = 0;
+const glitchInterval = 200; // 200ms between glitch updates
+
+const glitchEffect = (timestamp: number) => {
+  if (timestamp - lastGlitchTime >= glitchInterval) {
+    lastGlitchTime = timestamp;
+
     const isDark = document.documentElement.classList.contains("dark");
-    if (bulbVisible.value) {
+    if (bulbVisible.value && glowIntensity.value > 0) {
       glitchOpacity.value = paths.map(() =>
-        Math.random() < 0.02 ? (isDark ? 0.4 : 0.2) : 1,
+        Math.random() < 0.02 ? (isDark ? 0.4 : 0.2) : 1
       );
+    } else {
+      glitchOpacity.value = paths.map(() => 1);
     }
-  }, 200);
-};
+  }
 
-const rotateEffect = () => {
-  let rotateInterval: number;
-  const rotate = () => {
-    rotation.value = Math.sin(Date.now() / 15000) * 35;
-    rotateInterval = requestAnimationFrame(rotate);
-  };
-  rotate();
-  return () => cancelAnimationFrame(rotateInterval);
+  animationFrameId = requestAnimationFrame(glitchEffect);
 };
 
 onMounted(() => {
-  animationProgress.value = pathLengths.value.map((length) => length);
+  calculatePathLengths();
+  animationProgress.value = [...pathLengths.value];
+  glitchOpacity.value = paths.map(() => 1);
+  randomOrder = paths.map((_, i) => i).sort(() => Math.random() - 0.5);
 
-  setTimeout(() => {
-    animate();
-    glitchEffect();
-    rotateEffect();
-  }, 200);
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(() => {
+      animationFrameId = requestAnimationFrame((timestamp) => {
+        animate(timestamp);
+        glitchEffect(timestamp);
+      });
+    });
+  } else {
+    setTimeout(() => {
+      animationFrameId = requestAnimationFrame((timestamp) => {
+        animate(timestamp);
+        glitchEffect(timestamp);
+      });
+    }, 200);
+  }
+});
+
+onUnmounted(() => {
+  if (animationFrameId) cancelAnimationFrame(animationFrameId);
 });
 </script>
 
@@ -155,6 +163,7 @@ onMounted(() => {
         :r="glowRadius"
         fill="url(#bulbGradient)"
         class="glow-effect"
+        :style="{ opacity: glowIntensity }"
       />
 
       <g
@@ -169,7 +178,6 @@ onMounted(() => {
           :style="{
             strokeDasharray: `${pathLengths[index]} ${pathLengths[index]}`,
             strokeDashoffset: animationProgress[index],
-            transition: `stroke-dashoffset ${animationDuration}ms ease-in-out ${index * 25}ms`,
             opacity: glitchOpacity[index],
           }"
           stroke="currentColor"
