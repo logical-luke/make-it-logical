@@ -31,7 +31,7 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
       </BottomToTopSlideTransition>
     </div>
     <div class="w-full md:w-1/2 mt-10 md:mt-0 -ml-7">
-      <BulbShape />
+<!--      <BulbShape />-->
     </div>
   </section>
 </template>
