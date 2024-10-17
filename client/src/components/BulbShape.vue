@@ -3,7 +3,6 @@ import { ref, onMounted, computed, onUnmounted } from "vue";
 import paths from "@/assets/bulbPaths.json";
 import precomputedValues from "@/assets/precomputedBulbValues.json";
 
-// Precomputed constants
 const drawDuration = 1500;
 const glowInDuration = 300;
 const pauseDuration = 12000;
@@ -21,11 +20,9 @@ const pathLengths = ref<number[]>(precomputedValues.pathLengths);
 const randomOrder: number[] = precomputedValues.randomOrder;
 const glitchPatterns: number[][] = precomputedValues.glitchPatterns;
 const glowIntensities: number[] = precomputedValues.glowIntensities;
-const rotationValues: number[] = precomputedValues.rotationValues;
 
 const animationProgress = ref<number[]>([...pathLengths.value]);
 const glitchOpacity = ref<number[]>(paths.map(() => 1));
-const rotation = ref(0);
 const bulbVisible = ref(false);
 const glowIntensity = ref(0);
 const svgReady = ref(false);
@@ -117,11 +114,6 @@ const animate = (timestamp: number) => {
       glowIntensity.value = 0;
   }
 
-  const rotationIndex =
-    Math.floor((adjustedTimestamp / 15000) * rotationValues.length) %
-    rotationValues.length;
-  rotation.value = rotationValues[rotationIndex];
-
   if (timestamp - lastGlitchTime >= glitchInterval) {
     lastGlitchTime = timestamp;
     if (bulbVisible.value && glowIntensity.value > 0) {
@@ -170,8 +162,7 @@ onUnmounted(() => {
       id="svg1"
       viewBox="0 0 1200 1200"
       xmlns="http://www.w3.org/2000/svg"
-      class="bulb-svg text-black dark:text-gray-100"
-      :style="{ transform: `rotate(${rotation}deg)` }"
+      class="bulb-svg text-black dark:text-gray-100 rotate-animation origin-center"
     >
       <defs>
         <filter id="glow">
@@ -253,5 +244,21 @@ onUnmounted(() => {
   50% {
     opacity: 0.4;
   }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  100% {
+    transform: rotate(-15deg);
+  }
+}
+
+.rotate-animation {
+  animation: rotate 30s ease-in-out infinite;
 }
 </style>
