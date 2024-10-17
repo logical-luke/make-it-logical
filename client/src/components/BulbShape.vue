@@ -3,29 +3,18 @@ import { ref, onMounted, computed, onUnmounted } from "vue";
 import paths from "@/assets/bulbPaths.json";
 import precomputedValues from "@/assets/precomputedBulbValues.json";
 
-const drawDuration = 1500;
-const glowInDuration = 300;
-const pauseDuration = 12000;
-const eraseDuration = 2500;
-const finalPauseDuration = 1000;
-const totalCycleDuration =
-  drawDuration +
-  glowInDuration +
-  pauseDuration +
-  eraseDuration +
-  finalPauseDuration;
-const glitchInterval = 200;
+const {
+  pathLengths,
+  glitchPatterns,
+  animationStates,
+  totalCycleDuration,
+  glitchInterval,
+} = precomputedValues;
 
-const pathLengths = ref<number[]>(precomputedValues.pathLengths);
-const randomOrder: number[] = precomputedValues.randomOrder;
-const glitchPatterns: number[][] = precomputedValues.glitchPatterns;
-const glowIntensities: number[] = precomputedValues.glowIntensities;
-
-const animationProgress = ref<number[]>([...pathLengths.value]);
+const animationProgress = ref(animationStates[0].animationProgress);
 const glitchOpacity = ref<number[]>(paths.map(() => 1));
 const bulbVisible = ref(false);
 const glowIntensity = ref(0);
-const svgReady = ref(false);
 
 const stopOpacity = computed(() => Math.sin(bulbVisible.value ? 0.45 : 0.1));
 const glowRadius = computed(() => 430 * glowIntensity.value);
@@ -33,87 +22,24 @@ const glowRadius = computed(() => 430 * glowIntensity.value);
 let animationFrameId: number | null = null;
 let lastGlitchTime = 0;
 let animationStartTime: number | null = null;
-const animationDelay = 200;
 
 const animate = (timestamp: number) => {
-  if (!svgReady.value) {
-    animationFrameId = requestAnimationFrame(animate);
-    return;
-  }
-
   if (animationStartTime === null) {
     animationStartTime = timestamp;
   }
 
   const elapsedTime = timestamp - animationStartTime;
+  const cycleTime = elapsedTime % totalCycleDuration;
+  const stateIndex = Math.floor(
+    (cycleTime / totalCycleDuration) * (animationStates.length - 1),
+  );
 
-  if (elapsedTime < animationDelay) {
-    animationFrameId = requestAnimationFrame(animate);
-    return;
-  }
+  const currentState = animationStates[stateIndex];
+  animationProgress.value = currentState.animationProgress;
+  bulbVisible.value = currentState.bulbVisible;
+  glowIntensity.value = currentState.glowIntensity;
 
-  const adjustedTimestamp = elapsedTime - animationDelay;
-  const cycleTime = adjustedTimestamp % totalCycleDuration;
-  const progress = cycleTime / drawDuration;
-  const glowIndex = Math.floor(progress * (glowIntensities.length - 1));
-  const glowProgress = (cycleTime - drawDuration) / glowInDuration;
-  const eraseProgress =
-    (cycleTime - (drawDuration + glowInDuration + pauseDuration)) /
-    eraseDuration;
-  switch (true) {
-    case cycleTime < drawDuration:
-      for (let i = 0; i < randomOrder.length; i++) {
-        const index = randomOrder[i];
-        const pathProgress = Math.max(
-          0,
-          Math.min(1, progress * paths.length - i * 0.1),
-        );
-        animationProgress.value[index] =
-          pathLengths.value[index] *
-          (1 -
-            glowIntensities[
-              Math.floor(pathProgress * (glowIntensities.length - 1))
-            ]);
-      }
-      bulbVisible.value = progress > 0;
-      glowIntensity.value = glowIntensities[glowIndex];
-      break;
-    case cycleTime < drawDuration + glowInDuration:
-      animationProgress.value.fill(0);
-      glowIntensity.value =
-        glowIntensities[
-          Math.floor(glowProgress * (glowIntensities.length - 1))
-        ];
-      break;
-    case cycleTime < drawDuration + glowInDuration + pauseDuration:
-      animationProgress.value.fill(0);
-      glowIntensity.value = 1;
-      break;
-    case cycleTime <
-      drawDuration + glowInDuration + pauseDuration + eraseDuration:
-      for (let i = 0; i < randomOrder.length; i++) {
-        const index = randomOrder[i];
-        const pathProgress = Math.max(
-          0,
-          Math.min(1, eraseProgress * paths.length - i * 0.1),
-        );
-        animationProgress.value[index] =
-          pathLengths.value[index] *
-          glowIntensities[
-            Math.floor(pathProgress * (glowIntensities.length - 1))
-          ];
-      }
-      glowIntensity.value =
-        glowIntensities[
-          Math.floor((1 - eraseProgress) * (glowIntensities.length - 1))
-        ];
-      break;
-    default:
-      animationProgress.value = [...pathLengths.value];
-      bulbVisible.value = false;
-      glowIntensity.value = 0;
-  }
-
+  // Glitch effect
   if (timestamp - lastGlitchTime >= glitchInterval) {
     lastGlitchTime = timestamp;
     if (bulbVisible.value && glowIntensity.value > 0) {
@@ -128,34 +54,22 @@ const animate = (timestamp: number) => {
 };
 
 onMounted(() => {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      if (entries[0].isIntersecting) {
-        svgReady.value = true;
-        observer.disconnect();
-
-        if ("requestIdleCallback" in window) {
-          requestIdleCallback(() => {
-            animationFrameId = requestAnimationFrame(animate);
-          });
-        } else {
-          setTimeout(() => {
-            animationFrameId = requestAnimationFrame(animate);
-          }, 0);
-        }
-      }
-    },
-    { threshold: 0.1 },
-  );
-
-  const svg = document.querySelector(".bulb-svg");
-  if (svg) observer.observe(svg);
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(() => {
+      animationFrameId = requestAnimationFrame(animate);
+    });
+  } else {
+    setTimeout(() => {
+      animationFrameId = requestAnimationFrame(animate);
+    }, 0);
+  }
 });
 
 onUnmounted(() => {
   if (animationFrameId) cancelAnimationFrame(animationFrameId);
 });
 </script>
+
 <template>
   <div class="relative">
     <svg
