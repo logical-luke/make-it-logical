@@ -6,7 +6,12 @@ const glowInDuration = 200;
 const pauseDuration = 12300;
 const eraseDuration = 2000;
 const finalPauseDuration = 1000;
-const totalCycleDuration = drawDuration + glowInDuration + pauseDuration + eraseDuration + finalPauseDuration;
+const totalCycleDuration =
+  drawDuration +
+  glowInDuration +
+  pauseDuration +
+  eraseDuration +
+  finalPauseDuration;
 
 const pathLengths = ref<number[]>([]);
 const animationProgress = ref<number[]>([]);
@@ -46,8 +51,12 @@ const animate = (timestamp: number) => {
   if (cycleTime < drawDuration) {
     const progress = cycleTime / drawDuration;
     randomOrder.forEach((index, i) => {
-      const pathProgress = Math.max(0, Math.min(1, (progress * paths.length - i)));
-      animationProgress.value[index] = pathLengths.value[index] * (1 - pathProgress);
+      const pathProgress = Math.max(
+        0,
+        Math.min(1, progress * paths.length - i),
+      );
+      animationProgress.value[index] =
+        pathLengths.value[index] * (1 - pathProgress);
     });
     bulbVisible.value = progress > 0;
     glowIntensity.value = 0;
@@ -57,10 +66,18 @@ const animate = (timestamp: number) => {
   } else if (cycleTime < drawDuration + glowInDuration + pauseDuration) {
     animationProgress.value.fill(0);
     glowIntensity.value = 1;
-  } else if (cycleTime < drawDuration + glowInDuration + pauseDuration + eraseDuration) {
-    const progress = (cycleTime - (drawDuration + glowInDuration + pauseDuration)) / eraseDuration;
+  } else if (
+    cycleTime <
+    drawDuration + glowInDuration + pauseDuration + eraseDuration
+  ) {
+    const progress =
+      (cycleTime - (drawDuration + glowInDuration + pauseDuration)) /
+      eraseDuration;
     randomOrder.forEach((index, i) => {
-      const pathProgress = Math.max(0, Math.min(1, (progress * paths.length - i)));
+      const pathProgress = Math.max(
+        0,
+        Math.min(1, progress * paths.length - i),
+      );
       animationProgress.value[index] = pathLengths.value[index] * pathProgress;
     });
     glowIntensity.value = 1 - progress;
@@ -85,7 +102,7 @@ const glitchEffect = (timestamp: number) => {
     const isDark = document.documentElement.classList.contains("dark");
     if (bulbVisible.value && glowIntensity.value > 0) {
       glitchOpacity.value = paths.map(() =>
-        Math.random() < 0.02 ? (isDark ? 0.4 : 0.2) : 1
+        Math.random() < 0.02 ? (isDark ? 0.4 : 0.2) : 1,
       );
     } else {
       glitchOpacity.value = paths.map(() => 1);
@@ -101,7 +118,7 @@ onMounted(() => {
   glitchOpacity.value = paths.map(() => 1);
   randomOrder = paths.map((_, i) => i).sort(() => Math.random() - 0.5);
 
-  if ('requestIdleCallback' in window) {
+  if ("requestIdleCallback" in window) {
     requestIdleCallback(() => {
       animationFrameId = requestAnimationFrame((timestamp) => {
         animate(timestamp);
