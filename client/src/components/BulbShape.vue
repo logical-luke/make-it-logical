@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref, onMounted, computed, onUnmounted } from "vue";
 import paths from "@/assets/bulbPaths.json";
-const drawDuration = 1000;
+
+const drawDuration = 2000;
 const glowInDuration = 200;
 const pauseDuration = 12300;
 const eraseDuration = 2000;
@@ -25,6 +26,12 @@ const glowRadius = computed(() => 430 * glowIntensity.value);
 
 let randomOrder: number[] = [];
 let animationFrameId: number | null = null;
+let lastGlitchTime = 0;
+const glitchInterval = 200;
+
+const svgReady = ref(false);
+let animationStartTime: number | null = null;
+const animationDelay = 300;
 
 const calculatePathLengths = () => {
   const svgNS = "http://www.w3.org/2000/svg";
@@ -46,7 +53,24 @@ const calculatePathLengths = () => {
 };
 
 const animate = (timestamp: number) => {
-  const cycleTime = timestamp % totalCycleDuration;
+  if (!svgReady.value) {
+    animationFrameId = requestAnimationFrame(animate);
+    return;
+  }
+
+  if (animationStartTime === null) {
+    animationStartTime = timestamp;
+  }
+
+  const elapsedTime = timestamp - animationStartTime;
+
+  if (elapsedTime < animationDelay) {
+    animationFrameId = requestAnimationFrame(animate);
+    return;
+  }
+
+  const adjustedTimestamp = timestamp - animationDelay;
+  const cycleTime = adjustedTimestamp % totalCycleDuration;
 
   if (cycleTime < drawDuration) {
     const progress = cycleTime / drawDuration;
@@ -87,18 +111,10 @@ const animate = (timestamp: number) => {
     glowIntensity.value = 0;
   }
 
-  rotation.value = Math.sin(timestamp / 15000) * 35;
+  rotation.value = Math.sin(adjustedTimestamp / 15000) * 35;
 
-  animationFrameId = requestAnimationFrame(animate);
-};
-
-let lastGlitchTime = 0;
-const glitchInterval = 200; // 200ms between glitch updates
-
-const glitchEffect = (timestamp: number) => {
   if (timestamp - lastGlitchTime >= glitchInterval) {
     lastGlitchTime = timestamp;
-
     const isDark = document.documentElement.classList.contains("dark");
     if (bulbVisible.value && glowIntensity.value > 0) {
       glitchOpacity.value = paths.map(() =>
@@ -109,7 +125,7 @@ const glitchEffect = (timestamp: number) => {
     }
   }
 
-  animationFrameId = requestAnimationFrame(glitchEffect);
+  animationFrameId = requestAnimationFrame(animate);
 };
 
 onMounted(() => {
@@ -118,20 +134,28 @@ onMounted(() => {
   glitchOpacity.value = paths.map(() => 1);
   randomOrder = paths.map((_, i) => i).sort(() => Math.random() - 0.5);
 
+  const svg = document.querySelector(".bulb-svg");
+  if (svg) {
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        if (entry.contentRect.width > 0 && entry.contentRect.height > 0) {
+          svgReady.value = true;
+          resizeObserver.disconnect();
+          break;
+        }
+      }
+    });
+    resizeObserver.observe(svg);
+  }
+
   if ("requestIdleCallback" in window) {
     requestIdleCallback(() => {
-      animationFrameId = requestAnimationFrame((timestamp) => {
-        animate(timestamp);
-        glitchEffect(timestamp);
-      });
+      animationFrameId = requestAnimationFrame(animate);
     });
   } else {
     setTimeout(() => {
-      animationFrameId = requestAnimationFrame((timestamp) => {
-        animate(timestamp);
-        glitchEffect(timestamp);
-      });
-    }, 200);
+      animationFrameId = requestAnimationFrame(animate);
+    }, 0);
   }
 });
 
