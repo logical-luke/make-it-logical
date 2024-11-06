@@ -25,6 +25,7 @@ export default defineConfig({
         "/contact",
         "/terms",
         "/tools",
+        "/about",
         "/privacy",
       ]
     })

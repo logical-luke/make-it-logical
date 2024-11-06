@@ -18,29 +18,29 @@ const technologies = ref<Technology[]>([
     name: "JavaScript",
     category: "Programming Language",
     description:
-      "A popular language used to create dynamic, interactive websites and web applications.",
+      "Powers dynamic, interactive websites and web applications.",
     useCases: [
-      "Create dynamic content that updates without reloading the page",
-      "Build interactive forms with real-time validation",
-      "Develop responsive user interfaces for web applications",
-      "Create browser-based games and entertainment applications",
+      "Create responsive, real-time user interfaces",
+      "Build interactive forms with instant validation",
+      "Develop browser-based games and applications",
       "Implement client-side data processing and visualization",
+      "Enable seamless user experiences without page reloads"
     ],
-    tag: "Web Apps • Interactive Forms",
+    tag: "Dynamic UIs • Interactive Web Apps"
   },
   {
     name: "TypeScript",
     category: "Programming Language",
     description:
-      "An enhanced version of JavaScript that helps build larger, more complex web applications.",
+      "Enhances JavaScript for building robust, large-scale web applications.",
     useCases: [
-      "Develop complex web applications with fewer errors",
-      "Create more maintainable code for large-scale business software",
+      "Develop complex web applications with improved reliability",
+      "Create maintainable code for enterprise-level software",
       "Build robust APIs for mobile and web applications",
-      "Implement advanced type checking for improved code quality",
-      "Enhance team collaboration on large JavaScript projects",
+      "Implement advanced type checking for superior code quality",
+      "Facilitate team collaboration on extensive JavaScript projects"
     ],
-    tag: "Large Apps • APIs • Team Collaboration",
+    tag: "Enterprise Apps • Scalable Solutions"
   },
   {
     name: "PHP",
@@ -52,9 +52,9 @@ const technologies = ref<Technology[]>([
       "Create content management systems for easily updating website information",
       "Develop forum or community platforms to engage with customers",
       "Implement user authentication and authorization systems",
-      "Create dynamic web pages that interact with databases",
+      "Create dynamic web pages that interact with databases"
     ],
-    tag: "E-commerce • CMS",
+    tag: "E-commerce • CMS"
   },
   {
     name: "Python",
@@ -66,9 +66,9 @@ const technologies = ref<Technology[]>([
       "Analyze and visualize business data to inform decision-making",
       "Develop machine learning models for predictive analytics",
       "Create web scraping tools to gather market intelligence",
-      "Build backend systems for web applications",
+      "Build backend systems for web applications"
     ],
-    tag: "Automation • Data Analysis • Machine Learning",
+    tag: "Automation • Data Analysis • Machine Learning"
   },
   {
     name: "Vue.js",
@@ -80,9 +80,9 @@ const technologies = ref<Technology[]>([
       "Build responsive dashboards for monitoring business metrics",
       "Develop user-friendly interfaces for complex business applications",
       "Create single-page applications for improved user experience",
-      "Implement progressive web apps for mobile-like experiences on the web",
+      "Implement progressive web apps for mobile-like experiences on the web"
     ],
-    tag: "SPAs • Dashboards",
+    tag: "SPAs • Dashboards"
   },
   {
     name: "Symfony",
@@ -94,9 +94,9 @@ const technologies = ref<Technology[]>([
       "Create secure online platforms for financial transactions",
       "Build scalable web services that can grow with your business",
       "Implement RESTful APIs for mobile and web applications",
-      "Create modular and reusable components for faster development",
+      "Create modular and reusable components for faster development"
     ],
-    tag: "Business Systems • APIs",
+    tag: "Business Systems • APIs"
   },
   {
     name: "Laravel",
@@ -108,9 +108,9 @@ const technologies = ref<Technology[]>([
       "Create custom CRM systems tailored to your sales process",
       "Build secure authentication systems for user accounts",
       "Develop e-commerce platforms with built-in features",
-      "Create APIs for mobile applications quickly and efficiently",
+      "Create APIs for mobile applications quickly and efficiently"
     ],
-    tag: "Rapid Development • CRM • E-commerce",
+    tag: "Rapid Development • CRM • E-commerce"
   },
   {
     name: "Node.js",
@@ -122,9 +122,9 @@ const technologies = ref<Technology[]>([
       "Build high-performance web applications that can handle many users",
       "Develop efficient backend services for mobile apps",
       "Create scalable microservices architectures",
-      "Build data streaming applications for real-time analytics",
+      "Build data streaming applications for real-time analytics"
     ],
-    tag: "Real-time Apps • Backend Services",
+    tag: "Real-time Apps • Backend Services"
   },
   {
     name: "Tailwind CSS",
@@ -136,9 +136,9 @@ const technologies = ref<Technology[]>([
       "Design consistent user interfaces across different web applications",
       "Build responsive email templates that look good on all devices",
       "Rapidly prototype and iterate on UI designs",
-      "Create custom design systems for large-scale web projects",
+      "Create custom design systems for large-scale web projects"
     ],
-    tag: "Responsive Design • Prototyping",
+    tag: "Responsive Design • Prototyping"
   },
   {
     name: "MySQL",
@@ -150,9 +150,9 @@ const technologies = ref<Technology[]>([
       "Manage inventory and sales data across multiple store locations",
       "Power dynamic content on websites, like user accounts or product listings",
       "Implement complex data relationships for business intelligence applications",
-      "Store and retrieve large volumes of transactional data efficiently",
+      "Store and retrieve large volumes of transactional data efficiently"
     ],
-    tag: "Data Storage • E-commerce",
+    tag: "Data Storage • E-commerce"
   },
   {
     name: "Apache Kafka",
@@ -164,9 +164,9 @@ const technologies = ref<Technology[]>([
       "Process and analyze logs from multiple systems for quick problem detection",
       "Build real-time dashboards for monitoring business metrics",
       "Implement event-driven architectures for microservices",
-      "Create data pipelines for real-time analytics and machine learning",
+      "Create data pipelines for real-time analytics and machine learning"
     ],
-    tag: "Real-time Data • Event-driven Architectures",
+    tag: "Real-time Data • Event-driven Architectures"
   },
   {
     name: "RabbitMQ",
@@ -178,9 +178,9 @@ const technologies = ref<Technology[]>([
       "Implement asynchronous processing for improved performance",
       "Create reliable job queues for background tasks",
       "Build event-driven architectures",
-      "Manage microservices communication efficiently",
+      "Manage microservices communication efficiently"
     ],
-    tag: "Scalability • Asynchronous Processing",
+    tag: "Scalability • Asynchronous Processing"
   },
   {
     name: "Docker",
@@ -192,9 +192,9 @@ const technologies = ref<Technology[]>([
       "Quickly set up and tear down test environments for new features",
       "Easily move applications between different cloud providers or servers",
       "Simplify the deployment process for complex applications",
-      "Isolate applications for improved security and resource management",
+      "Isolate applications for improved security and resource management"
     ],
-    tag: "Consistent Deployment • Test Environments",
+    tag: "Consistent Deployment • Test Environments"
   },
   {
     name: "GitHub Actions",
@@ -206,9 +206,9 @@ const technologies = ref<Technology[]>([
       "Deploy website updates automatically when changes are approved",
       "Generate reports on code quality and project status automatically",
       "Automate the release process for software updates",
-      "Implement continuous integration and delivery pipelines",
+      "Implement continuous integration and delivery pipelines"
     ],
-    tag: "CI/CD • Automated Testing",
+    tag: "CI/CD • Automated Testing"
   },
   {
     name: "Git",
@@ -220,9 +220,9 @@ const technologies = ref<Technology[]>([
       "Maintain different versions of your software for different clients",
       "Easily roll back changes if new features cause problems",
       "Create separate branches to develop and test new features",
-      "Track and manage code changes across large development teams",
+      "Track and manage code changes across large development teams"
     ],
-    tag: "Version Control • Collaboration",
+    tag: "Version Control • Collaboration"
   },
   {
     name: "AWS",
@@ -234,9 +234,9 @@ const technologies = ref<Technology[]>([
       "Store and process large amounts of data securely and cost-effectively",
       "Run complex business applications without maintaining physical servers",
       "Implement disaster recovery and backup solutions for critical data",
-      "Deploy global content delivery networks for faster website performance",
+      "Deploy global content delivery networks for faster website performance"
     ],
-    tag: "Scalable Hosting • Data Storage",
+    tag: "Scalable Hosting • Data Storage"
   },
   {
     name: "GCP",
@@ -248,9 +248,9 @@ const technologies = ref<Technology[]>([
       "Implement AI-powered features like product recommendations or chatbots",
       "Host applications that can serve users globally with low latency",
       "Process and analyze big data using managed services",
-      "Implement machine learning models at scale for business predictions",
+      "Implement machine learning models at scale for business predictions"
     ],
-    tag: "Data Analysis • AI Features",
+    tag: "Data Analysis • AI Features"
   },
   {
     name: "Google Analytics",
@@ -262,9 +262,9 @@ const technologies = ref<Technology[]>([
       "Track the effectiveness of your digital marketing campaigns",
       "Identify usability issues on your website to improve user experience",
       "Analyze user journeys to optimize conversion rates",
-      "Monitor real-time traffic during promotional events or product launches",
+      "Monitor real-time traffic during promotional events or product launches"
     ],
-    tag: "Traffic Analysis • Marketing Insights",
+    tag: "Traffic Analysis • Marketing Insights"
   },
   {
     name: "Grafana",
@@ -276,9 +276,9 @@ const technologies = ref<Technology[]>([
       "Monitor system performance in real-time",
       "Set up alerts for critical issues",
       "Analyze logs and traces for troubleshooting",
-      "Visualize business KPIs for data-driven decision making",
+      "Visualize business KPIs for data-driven decision making"
     ],
-    tag: "Dashboards • Real-time Monitoring",
+    tag: "Dashboards • Real-time Monitoring"
   },
   {
     name: "Uptime Kuma",
@@ -290,9 +290,9 @@ const technologies = ref<Technology[]>([
       "Receive alerts for service outages",
       "Track response times across different regions",
       "Monitor SSL certificate expiration",
-      "Create status pages for your services",
+      "Create status pages for your services"
     ],
-    tag: "Uptime Monitoring • Alerts",
+    tag: "Uptime Monitoring • Alerts"
   },
   {
     name: "Prometheus",
@@ -303,9 +303,9 @@ const technologies = ref<Technology[]>([
       "Implement alerting rules for proactive issue detection",
       "Monitor containerized environments",
       "Create custom metrics for business-specific monitoring",
-      "Integrate with Grafana for advanced visualizations",
+      "Integrate with Grafana for advanced visualizations"
     ],
-    tag: "Metrics Collection • Alerting",
+    tag: "Metrics Collection • Alerting"
   },
   {
     name: "Sentry",
@@ -317,9 +317,9 @@ const technologies = ref<Technology[]>([
       "Track application performance to identify bottlenecks and slow-loading pages",
       "Gain insights into user experiences and app crashes on different devices",
       "Monitor release deployments to catch new issues quickly",
-      "Prioritize bug fixes based on impact and frequency of errors",
+      "Prioritize bug fixes based on impact and frequency of errors"
     ],
-    tag: "Error Detection • Performance Tracking",
+    tag: "Error Detection • Performance Tracking"
   },
   {
     name: "Cypress",
@@ -330,9 +330,9 @@ const technologies = ref<Technology[]>([
       "Simulate user interactions to test UI flows",
       "Perform integration testing of web applications",
       "Create visual regression tests",
-      "Test responsive designs across different screen sizes",
+      "Test responsive designs across different screen sizes"
     ],
-    tag: "E2E Testing • UI Flows",
+    tag: "E2E Testing • UI Flows"
   },
   {
     name: "OpenAI",
@@ -344,9 +344,9 @@ const technologies = ref<Technology[]>([
       "Create AI-powered chatbots for customer service",
       "Generate human-like text for content creation",
       "Analyze and summarize large amounts of text data",
-      "Develop AI-assisted coding tools",
+      "Develop AI-assisted coding tools"
     ],
-    tag: "NLP • AI Chatbots",
+    tag: "NLP • AI Chatbots"
   },
   {
     name: "Cloudflare",
@@ -357,9 +357,9 @@ const technologies = ref<Technology[]>([
       "Protect websites from DDoS attacks",
       "Implement SSL/TLS encryption easily",
       "Optimize image delivery for faster page loads",
-      "Provide edge computing capabilities for faster data processing",
+      "Provide edge computing capabilities for faster data processing"
     ],
-    tag: "CDN • Security",
+    tag: "CDN • Security"
   },
   {
     name: "Bootstrap",
@@ -371,9 +371,9 @@ const technologies = ref<Technology[]>([
       "Develop responsive and mobile-friendly user interfaces",
       "Customize the design and layout of websites and web applications",
       "Integrate Bootstrap with other front-end technologies like JavaScript and Vue.js",
-      "Leverage the extensive ecosystem of Bootstrap plugins and themes",
+      "Leverage the extensive ecosystem of Bootstrap plugins and themes"
     ],
-    tag: "Responsive UI • Mobile-first Design",
+    tag: "Responsive UI • Mobile-first Design"
   },
   {
     name: "WordPress",
@@ -385,9 +385,9 @@ const technologies = ref<Technology[]>([
       "Develop custom websites and web applications using WordPress as a foundation",
       "Extend WordPress functionality with a vast library of plugins and themes",
       "Power e-commerce websites and online stores with the WooCommerce plugin",
-      "Provide an easy-to-use content management system for non-technical users",
+      "Provide an easy-to-use content management system for non-technical users"
     ],
-    tag: "Websites • Blogs",
+    tag: "Websites • Blogs"
   },
   {
     name: "WooCommerce",
@@ -399,9 +399,9 @@ const technologies = ref<Technology[]>([
       "Manage product catalogs, inventory, orders, and customer information",
       "Implement secure payment processing and checkout flows",
       "Extend the functionality of an e-commerce store with a wide range of WooCommerce plugins",
-      "Provide a user-friendly platform for non-technical users to manage their online store",
+      "Provide a user-friendly platform for non-technical users to manage their online store"
     ],
-    tag: "E-commerce • Payment Processing",
+    tag: "E-commerce • Payment Processing"
   },
   {
     name: "On-Premise Infrastructure",
@@ -413,9 +413,9 @@ const technologies = ref<Technology[]>([
       "Maintain full control over the IT infrastructure and security",
       "Integrate on-premise systems with cloud-based services and applications",
       "Comply with industry regulations and data sovereignty requirements",
-      "Provide reliable and low-latency access to local resources",
+      "Provide reliable and low-latency access to local resources"
     ],
-    tag: "Local Hosting • Security Control",
+    tag: "Local Hosting • Security Control"
   },
   {
     name: "Claude",
@@ -427,9 +427,9 @@ const technologies = ref<Technology[]>([
       "Provide intelligent responses and solutions to questions and problems",
       "Assist with research and data analysis by summarizing key insights",
       "Enhance productivity by automating repetitive writing and brainstorming tasks",
-      "Collaborate with humans to ideate, iterate, and refine ideas",
+      "Collaborate with humans to ideate, iterate, and refine ideas"
     ],
-    tag: "Content Creation • Problem Solving",
+    tag: "Content Creation • Problem Solving"
   },
   {
     name: "Google Search Console",
@@ -441,9 +441,9 @@ const technologies = ref<Technology[]>([
       "Understand how Google views and crawls your website",
       "Monitor your website's search performance and track key metrics",
       "Submit sitemaps and individual URLs to Google for faster indexing",
-      "Receive notifications about security issues and other problems with your site",
+      "Receive notifications about security issues and other problems with your site"
     ],
-    tag: "SEO • Search Performance",
+    tag: "SEO • Search Performance"
   },
   {
     name: "Kibana",
@@ -455,9 +455,9 @@ const technologies = ref<Technology[]>([
       "Create custom dashboards and reports to gain insights into system performance and user behavior",
       "Perform advanced data analysis and troubleshooting using the powerful query language",
       "Monitor and alert on critical events and anomalies in real-time",
-      "Integrate with other Elastic Stack components for a comprehensive observability solution",
+      "Integrate with other Elastic Stack components for a comprehensive observability solution"
     ],
-    tag: "Data Visualization • Alerts",
+    tag: "Data Visualization • Alerts"
   },
   {
     name: "Elasticsearch",
@@ -469,9 +469,9 @@ const technologies = ref<Technology[]>([
       "Implement real-time search and recommendation features for your applications",
       "Gain insights and identify patterns in your data through advanced analytics",
       "Integrate with other tools to create a comprehensive data platform",
-      "Build custom search-powered applications and solutions",
+      "Build custom search-powered applications and solutions"
     ],
-    tag: "Search • Data Analysis",
+    tag: "Search • Data Analysis"
   },
   {
     name: "Kubernetes",
@@ -483,9 +483,9 @@ const technologies = ref<Technology[]>([
       "Ensure high availability and fault tolerance for your mission-critical services",
       "Manage the resources used by your applications to optimize performance and costs",
       "Implement automated deployment and update processes for your software",
-      "Integrate with other tools to create a comprehensive DevOps workflow",
+      "Integrate with other tools to create a comprehensive DevOps workflow"
     ],
-    tag: "Scaling • Deployment Automation",
+    tag: "Scaling • Deployment Automation"
   },
   {
     name: "Terraform",
@@ -497,10 +497,10 @@ const technologies = ref<Technology[]>([
       "Ensure consistency and repeatability in how your infrastructure is deployed",
       "Track and manage changes to your infrastructure using version control",
       "Integrate with other tools to streamline your entire development and deployment process",
-      "Provision infrastructure for your applications in a reliable and scalable way",
+      "Provision infrastructure for your applications in a reliable and scalable way"
     ],
-    tag: "Infrastructure as Code • Consistency",
-  },
+    tag: "Infrastructure as Code • Consistency"
+  }
 ]);
 const groupedTechnologies = computed(() => {
   const groups = {
@@ -524,36 +524,35 @@ const groupedTechnologies = computed(() => {
     "Automated Testing": ["Cypress"],
     "AI and Automation": ["OpenAI", "Claude"],
   };
+
   return Object.entries(groups).map(([groupName, techNames]) => ({
     name: groupName,
-    items: techNames
-      .map((name) => {
-        const tech: Technology | undefined = technologies.value.find(
-          (t) => t.name === name,
-        );
-        if (!tech) {
-          return null;
-        }
-        return {
-          title: tech.name,
-          tag: tech.tag,
-          additionalInfo: tech.description,
-          sublists: [{ items: tech.useCases.map((uc) => ({ text: uc })) }],
-        };
-      })
-      .filter((item) => item !== null),
+    items: techNames.map((name) => {
+      const tech = technologies.value.find((t) => t.name === name);
+      if (!tech) return null;
+      return {
+        title: tech.name,
+        tag: tech.tag,
+        additionalInfo: tech.description,
+        sublists: [{
+          title: "Use Cases",
+          items: tech.useCases.map(uc => ({ text: uc }))
+        }],
+      };
+    }).filter((item) => item !== null),
   }));
 });
 </script>
 
 <template>
-  <MainHeader text="Technologies & Platforms" />
+  <MainHeader text="Cutting-Edge Tech Stack" />
   <SubHeader
-    first="Whether you need website, web applications, or cloud-based systems, we have the technical capabilities to bring your vision to life."
+    first="Empowering your digital vision with a comprehensive suite of modern technologies and platforms."
   />
   <BottomToTopSlideTransition duration="1300">
-    <ExpandableList :items="groupedTechnologies" :grouped="true" />
+    <div v-for="group in groupedTechnologies" :key="group.name" class="mb-8 flex flex-col gap-8">
+      <h2 class="max-w-4xl text-2xl md:text-3xl font-bold text-gray-500 dark:text-gray-400">{{ group.name }}</h2>
+      <ExpandableList :items="group.items" :grouped="false" />
+    </div>
   </BottomToTopSlideTransition>
 </template>
-
-<style scoped></style>

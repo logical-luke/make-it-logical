@@ -8,33 +8,33 @@ import ExpandableList from "@/components/ExpandableList.vue";
 
 const processSteps = ref([
   {
-    label: t("Listen"),
+    label: t("Discover"),
     additionalInfo: t(
-      "Your vision sets our course. We start by immersing ourselves in your business, understanding your goals, challenges, and aspirations. Through comprehensive market research and stakeholder interviews, we analyze your competitive landscape and uncover opportunities. This phase culminates in a focused project roadmap that aligns technology initiatives with your business strategy, setting the stage for impactful solutions.",
+      "Your vision becomes actionable tech strategy. Dive deep into business goals, market position, and user needs. Uncover growth opportunities and challenges. Emerge with clear, focused technical requirements aligned with your objectives."
     ),
   },
   {
     label: t("Design"),
     additionalInfo: t(
-      "Effective design bridges user needs and business goals. We create detailed user personas and journey maps to guide our process. Our designs balance aesthetics with functionality, ensuring intuitive user experiences. Rapid prototyping and user testing allow us to validate concepts early. This approach leads to interfaces that not only look appealing but significantly enhance user satisfaction and task completion rates.",
+      "Captivating interfaces that drive conversions. User-centric designs meet intuitive information architecture. Optimized flows and cross-platform consistency maximize engagement. Early prototyping and testing ensure satisfaction and efficiency."
     ),
   },
   {
-    label: t("Build"),
+    label: t("Develop"),
     additionalInfo: t(
-      "Quality development is an investment in your future. We employ agile methodologies to ensure flexibility and continuous delivery. Our coding standards emphasize cleanliness, efficiency, and security. Integrating robust testing frameworks maintains high quality throughout development. This meticulous approach results in reliable, scalable software that forms a solid foundation for your digital presence.",
+      "Witness designs transform into powerful digital realities. Scalable, robust solutions take shape with secure backends and responsive frontends. Seamless third-party integrations create flexible systems, ready to grow alongside your business."
     ),
   },
   {
-    label: t("Deliver"),
+    label: t("Deploy"),
     additionalInfo: t(
-      "Launching marks the beginning of your solution's journey. We ensure a smooth transition from development to production with comprehensive testing and staged rollouts. Our process includes thorough documentation and user training to facilitate adoption. Proactive monitoring systems allow us to address potential issues swiftly. This phase culminates in the successful deployment of your solution, primed to deliver real-world value.",
+      "Experience impactful launches delivering immediate value. Rigorous testing and smooth deployment processes set the stage. Comprehensive training ensures adoption. Proactive monitoring safeguards against issues, maximizing your digital investment from day one."
     ),
   },
   {
-    label: t("Improve"),
+    label: t("Optimize"),
     additionalInfo: t(
-      "Digital solutions thrive on continuous enhancement. We implement analytics to gather insights on user behavior and system performance. Regular feedback sessions with stakeholders guide our improvement strategies. Updates are prioritized based on business impact and user needs. This ongoing process ensures your solution remains cutting-edge, adapting to new challenges and capitalizing on emerging opportunities.",
+      "Keep your solution at the cutting edge. Continuous monitoring of performance and user behavior drives data-driven enhancements. Regular updates prioritize business impact and user needs, ensuring your digital assets evolve with market demands."
     ),
   },
 ]);
@@ -51,7 +51,7 @@ const processItems = processSteps.value.map((step) => ({
     <p class="flex flex-col gap-2 md:text-lg mb-12 max-w-4xl">
       {{
         t(
-          "A comprehensive transformation process maximizes your full potential.",
+          "A comprehensive transformation process maximizes your potential."
         )
       }}
     </p>

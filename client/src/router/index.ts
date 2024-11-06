@@ -7,6 +7,7 @@ import NotFoundPage from "@/views/NotFoundPage.vue";
 import TermsPage from "@/views/TermsPage.vue";
 import PrivacyPage from "@/views/PrivacyPage.vue";
 import ToolsPage from "@/views/ToolsPage.vue";
+import AboutUsPage from "@/views/AboutUsPage.vue";
 
 const routes = [
   { path: "/", component: HomePage },
@@ -16,6 +17,7 @@ const routes = [
   { path: "/terms", component: TermsPage },
   { path: "/privacy", component: PrivacyPage },
   { path: "/tools", component: ToolsPage },
+  { path: "/about", component: AboutUsPage },
   { path: "/:pathMatch(.*)*", component: NotFoundPage },
 ];
 

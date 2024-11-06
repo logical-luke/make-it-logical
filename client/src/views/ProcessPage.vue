@@ -10,15 +10,15 @@ const { t } = useI18n();
 
 const processSteps = ref([
   {
-    label: t("Listen"),
+    label: t("Discover"),
     descriptionPoints: [
-      t("Dive deep into business goals and objectives"),
-      t("Analyze target audience and market positioning"),
-      t("Identify pain points and growth opportunities"),
-      t("Translate vision into concrete technical requirements"),
+      t("Analyze business goals and market position"),
+      t("Identify growth opportunities and challenges"),
+      t("Define target audience and user needs"),
+      t("Translate vision into technical requirements"),
     ],
     details: t(
-      "This stage transforms vision into concrete, actionable technology plans. Every aspect of the business needs is understood and addressed.",
+      "Transform your vision into actionable tech strategies. We align every aspect of the solution with your business objectives."
     ),
   },
   {
@@ -26,48 +26,47 @@ const processSteps = ref([
     descriptionPoints: [
       t("Create user-centric interface designs"),
       t("Develop intuitive information architecture"),
-      t("Optimize user flows for maximum engagement"),
-      t("Ensure consistency across all touchpoints"),
+      t("Optimize user flows for engagement"),
+      t("Ensure cross-platform consistency"),
     ],
     details: t(
-      "The design phase focuses on creating interfaces that not only look great but also work seamlessly. User experience is prioritized to keep the audience engaged and coming back.",
+      "Craft interfaces that captivate and convert. We prioritize user experience to boost engagement and retention."
     ),
   },
   {
-    label: t("Build"),
-    description: t("Transform concepts into powerful digital realities."),
+    label: t("Develop"),
     descriptionPoints: [
-      t("Develop robust and scalable software solutions"),
-      t("Implement secure and efficient backend systems"),
-      t("Create responsive and performant frontend interfaces"),
-      t("Integrate third-party services and APIs as needed"),
+      t("Build scalable, robust software solutions"),
+      t("Implement secure, efficient backend systems"),
+      t("Create responsive, high-performance frontends"),
+      t("Integrate necessary third-party services"),
     ],
     details: t(
-      "During this phase, designs are brought to life, creating powerful digital solutions. The focus is on building systems that can grow and adapt with business needs.",
+      "Transform designs into powerful digital realities. We build flexible systems that grow with your business."
     ),
   },
   {
-    label: t("Deliver"),
+    label: t("Deploy"),
     descriptionPoints: [
       t("Conduct thorough testing and quality assurance"),
       t("Implement smooth deployment processes"),
-      t("Provide comprehensive user training and documentation"),
-      t("Ensure seamless transition and launch support"),
+      t("Provide user training and documentation"),
+      t("Ensure seamless launch support"),
     ],
     details: t(
-      "The delivery stage focuses on impactful launches, ensuring the solution is ready to deliver value from day one. The process is designed to maximize the immediate and long-term benefits of the digital investment.",
+      "Execute impactful launches that deliver immediate value. We maximize the ROI of your digital investment from day one."
     ),
   },
   {
-    label: t("Improve"),
+    label: t("Optimize"),
     descriptionPoints: [
-      t("Continuously monitor system performance and user behavior"),
-      t("Gather and analyze user feedback for improvements"),
-      t("Implement data-driven optimizations and new features"),
+      t("Monitor system performance and user behavior"),
+      t("Analyze feedback for continuous improvement"),
+      t("Implement data-driven enhancements"),
       t("Provide ongoing maintenance and security updates"),
     ],
     details: t(
-      "The commitment extends beyond the initial launch. Continuous refinement and optimization ensure the solution remains effective and at the cutting edge of technology.",
+      "Continuously refine and evolve your solution. We ensure your digital assets remain cutting-edge and effective."
     ),
   },
 ]);
@@ -83,9 +82,9 @@ const processItems = processSteps.value.map((step) => ({
 
 <template>
   <section id="process">
-    <MainHeader text="Transformation Approach" />
+    <MainHeader text="Agile Web Development Process" />
     <SubHeader
-      first="We're committed to maximizing your potential and driving sustainable growth, from initial concept through continuous improvement."
+      first="From concept to continuous improvement, we drive sustainable growth through innovative digital solutions."
     />
     <BottomToTopSlideTransition>
       <div class="flex flex-col gap-4 max-w-4xl">

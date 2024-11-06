@@ -4,17 +4,19 @@ export function getPageTitle(route: RouteLocationNormalized): string {
   const baseTitle = "Make IT Logical";
   switch (route.path) {
     case "/":
-      return `${baseTitle} | We Build Web Apps & Websites`;
+      return `${baseTitle} | Custom Web Apps & Websites Development`;
     case "/services":
-      return `Web App & Website Development Services | ${baseTitle}`;
+      return `Web Development & UX Design Services | ${baseTitle}`;
     case "/process":
-      return `Our 5-Step Development Process | ${baseTitle}`;
+      return `Agile Web Development Process | ${baseTitle}`;
+    case "/about":
+      return `About Our Web Development Agency | ${baseTitle}`;
     case "/contact":
-      return `Contact Us | ${baseTitle}`;
+      return `Contact Us for Web Development Solutions | ${baseTitle}`;
     case "/terms":
-      return `Terms | ${baseTitle}`;
+      return `Terms of Service | ${baseTitle}`;
     case "/tools":
-      return `Development Tools & Technologies | ${baseTitle}`;
+      return `Cutting-Edge Web Development Tech Stack | ${baseTitle}`;
     case "/privacy":
       return `Privacy Policy | ${baseTitle}`;
     default:
@@ -25,20 +27,22 @@ export function getPageTitle(route: RouteLocationNormalized): string {
 export function getMetaDescription(route: RouteLocationNormalized): string {
   switch (route.path) {
     case "/":
-      return "Skyrocket your business with custom apps. We build powerful solutions for all company sizes. Transform ideas into profit-driving realities.";
+      return "Empower your business with custom web apps and websites. We deliver tailored solutions that drive growth and innovation for companies of all sizes.";
     case "/services":
-      return "Supercharge your business with our digital services. Expert app development and UX design that boosts revenue and crushes goals.";
+      return "Boost your digital presence with our web development and UX design services. We create powerful, user-centric solutions to meet your business goals.";
     case "/process":
-      return "Accelerate your success with our proven process. We deliver high-impact solutions on time, every time. Maximize ROI, minimize hassle.";
+      return "Discover our agile web development process. From concept to launch, we ensure efficient delivery of high-quality digital solutions tailored to your needs.";
+    case "/about":
+      return "Learn about our web development agency. We combine technical expertise with a client-centric approach to deliver innovative digital solutions.";
     case "/contact":
-      return "Ignite innovation now. Our experts create game-changing digital solutions to conquer your toughest business challenges. Let's talk.";
+      return "Ready to transform your digital presence? Contact us for expert web development and UX design services tailored to your business needs.";
     case "/terms":
-      return "Crystal-clear guidelines for our digital solutions. Know your rights, our duties, and ensure a bulletproof partnership from day one.";
+      return "Review our terms of service for web development projects. Clear guidelines ensure a smooth partnership and protect both parties' interests.";
     case "/tools":
-      return "Harness cutting-edge tech for unstoppable growth. We build lightning-fast, scalable solutions tailored to dominate your market.";
+      return "Explore our cutting-edge web development tech stack. We use the latest technologies to build fast, scalable, and secure digital solutions.";
     case "/privacy":
-      return "Ironclad data protection guaranteed. See how we safeguard your information and exceed data law requirements. Trust assured.";
+      return "Read our privacy policy. We're committed to protecting your data and ensuring compliance with data protection laws in all our operations.";
     default:
-      return "Page not found. Discover game-changing digital solutions on our homepage. Fuel your growth, outpace competitors, boost profits.";
+      return "Page not found. Explore our site for custom web development solutions that drive business growth and enhance user experiences.";
   }
 }
