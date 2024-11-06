@@ -505,7 +505,8 @@ const technologies = ref<Technology[]>([
 const groupedTechnologies = computed(() => {
   const groups = {
     "Programming Languages": ["JavaScript", "TypeScript", "PHP", "Python"],
-    "Web Development Frameworks": ["Node.js", "Symfony", "Laravel", "Vue.js"],
+    "Web Development Frameworks": ["Symfony", "Laravel", "Vue.js"],
+    "Runtime Environments": ["Node.js"],
     "Content Management Systems": ["WordPress", "WooCommerce"],
     "Web Design Tools": ["Bootstrap", "Tailwind CSS"],
     "Databases and Messaging": ["MySQL", "Apache Kafka", "RabbitMQ"],
@@ -516,15 +517,14 @@ const groupedTechnologies = computed(() => {
       "Terraform",
       "AWS",
       "GCP",
-      "On-Premise Infrastructure",
+      "On-Premise Infrastructure"
     ],
     "Development Collaboration": ["GitHub Actions", "Git"],
     "Web Performance and Security": ["Cloudflare"],
     "System Monitoring": ["Grafana", "Uptime Kuma", "Prometheus", "Sentry"],
     "Automated Testing": ["Cypress"],
-    "AI and Automation": ["OpenAI", "Claude"],
+    "AI and Automation": ["OpenAI", "Claude"]
   };
-
   return Object.entries(groups).map(([groupName, techNames]) => ({
     name: groupName,
     items: techNames.map((name) => {
@@ -537,9 +537,9 @@ const groupedTechnologies = computed(() => {
         sublists: [{
           title: "Use Cases",
           items: tech.useCases.map(uc => ({ text: uc }))
-        }],
+        }]
       };
-    }).filter((item) => item !== null),
+    }).filter((item) => item !== null)
   }));
 });
 </script>
