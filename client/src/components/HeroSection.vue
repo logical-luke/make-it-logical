@@ -28,8 +28,8 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
         </h1>
       </BottomToTopSlideTransition>
     </div>
-    <div class="w-full md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
-      <DotLottieVue :speed="1.3" class="w-auto h-96" autoplay src="/bulb.json" />
+    <div class="w-full md:w-1/2 flex">
+      <DotLottieVue :speed="1.4" class="w-auto h-96" autoplay src="/bulb.json" />
     </div>
   </section>
 </template>
