@@ -45,7 +45,7 @@ const isExpanded = (itemTitle: string, index: number) => {
         class="transform transition-all ease-in-out delay-100 duration-1300"
       >
         <div
-          class="group flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600 cursor-pointer pt-4 pb-2"
+          class="group flex items-center hover:text-gray-600 dark:hover:text-gray-100 text-gray-400 dark:text-gray-600 pt-4 pb-2"
         >
           <div class="flex flex-col text-2xl md:text-3xl font-bold">
             <div v-if="showNumbers" class="text-gray-500 dark:text-gray-400">
