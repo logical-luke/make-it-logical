@@ -7,7 +7,7 @@
     viewBox="0 0 127 127"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g id="layer1" class="fill-black dark:fill-gray-100">
+    <g id="layer1" class="fill-secondary dark:fill-secondary-light">
       <g
         id="g18"
         transform="matrix(0.3258951,0,0,0.3258951,-388.48229,-262.86033)"

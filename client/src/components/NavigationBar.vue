@@ -81,7 +81,7 @@ watch(mobileMenuOpen, (newValue) => {
       { 'shadow-md': !isAtTop && !mobileMenuOpen },
     ]"
   >
-    <FadeTransition duration="300">
+    <FadeTransition>
       <div class="container mx-auto flex justify-between items-center">
         <RouterLink to="/" class="flex-shrink-0">
           <div class="flex items-center gap-4">
@@ -94,7 +94,7 @@ watch(mobileMenuOpen, (newValue) => {
               class="h-10 w-auto"
             />
             <span
-              class="text-lg md:text-2xl text-black dark:text-gray-100 font-bold"
+              class="text-lg md:text-2xl font-bold"
             >
               Make IT Logical
             </span>

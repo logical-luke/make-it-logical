@@ -26,9 +26,9 @@ defineProps<Props>();
 </script>
 
 <template>
-  <BottomToTopSlideTransition duration="700">
+  <BottomToTopSlideTransition>
     <h1
-      class="text-3xl tracking-wider leading-10 md:text-5xl font-semibold mb-8 max-w-4xl"
+      class="text-2xl tracking-wider leading-10 md:text-4xl font-semibold mb-8 max-w-4xl"
     >
       {{ t(text) }}
     </h1>

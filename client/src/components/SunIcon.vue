@@ -9,7 +9,7 @@
   >
     <g
       id="layer1"
-      class="fill-black dark:fill-gray-100"
+      class="fill-secondary dark:fill-secondary-light"
       transform="translate(-0.0292306,-0.33286664)"
     >
       <g

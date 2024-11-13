@@ -13,7 +13,7 @@ defineProps<Props>();
 </script>
 
 <template>
-  <BottomToTopSlideTransition duration="1300">
+  <BottomToTopSlideTransition>
     <div class="flex flex-col gap-6 py-6 mb-10">
       <h2
         class="text-xl md:text-2xl mb-4 max-w-4xl"

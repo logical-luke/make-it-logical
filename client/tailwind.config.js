@@ -17,8 +17,8 @@ export default {
       },
       colors: {
         primary: {
-          DEFAULT: '#f3f4f6', // Light mode background
-          dark: '#111827',    // Dark mode background
+          DEFAULT: '#f3f4f6',
+          dark: '#111827',
           50: '#f9fafb',
           100: '#f3f4f6',
           200: '#e5e7eb',
@@ -32,8 +32,8 @@ export default {
           950: '#030712',
         },
         secondary: {
-          DEFAULT: '#05040E', // Your custom black for text
-          light: '#f3f4f6',   // Light text for dark mode
+          DEFAULT: '#05040E',
+          light: '#f3f4f6',
           50: '#f7f7f8',
           100: '#efeef1',
           200: '#d8d6dd',
@@ -47,7 +47,7 @@ export default {
           950: '#05040E',
         },
         accent: {
-          DEFAULT: '#ffd900', // Your base accent color
+          DEFAULT: '#ffd900',
           50: '#fffdf0',
           100: '#fffbe0',
           200: '#fff6b3',

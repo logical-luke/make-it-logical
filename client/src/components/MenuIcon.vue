@@ -7,7 +7,7 @@
     y="0px"
     viewBox="0 0 4000 4000"
   >
-    <g class="fill-black dark:fill-gray-100">
+    <g class="fill-secondary dark:fill-secondary-light">
       <g id="g7" transform="translate(-277.17144 250)">
         <g id="g2">
           <g id="g1">

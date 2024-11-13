@@ -31,6 +31,8 @@ const upperLinkClass = {
   xl: "md:text-2xl",
   "2xl": "md:text-3xl",
 };
+
+const underLineClasses = "text-secondary dark:text-secondary-light decoration-secondary-300 dark:decoration-secondary-600 hover:decoration-secondary dark:hover:decoration-secondary-light";
 const linkSize =
   typeof props.customLinkSize === "string"
     ? linkClass[props.customLinkSize] +
@@ -57,7 +59,7 @@ const linkSize =
           linkSize,
           lessContrast
             ? 'text-gray-600 dark:text-gray-500 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-600 dark:hover:decoration-gray-400'
-            : 'text-black dark:text-gray-100 decoration-gray-400 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-gray-100',
+            : underLineClasses,
         ]"
       >
         {{ t(text) }}
@@ -82,7 +84,7 @@ const linkSize =
           linkSize,
           lessContrast
             ? 'text-gray-600 dark:text-gray-500 decoration-gray-300 dark:decoration-gray-600 hover:decoration-gray-600 dark:hover:decoration-gray-400'
-            : 'text-black dark:text-gray-100 decoration-gray-400 dark:decoration-gray-600 hover:decoration-black dark:hover:decoration-gray-100',
+            : underLineClasses,
         ]"
       >
         {{ t(text) }}
