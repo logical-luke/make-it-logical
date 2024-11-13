@@ -2,23 +2,21 @@
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
-import BulbShape from "@/components/BulbShape.vue";
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 </script>
 
 <template>
   <section
-    class="min-h-[calc(100vh-80px)] flex flex-col md:flex-row tracking-wider"
+    class="min-h-[calc(100vh-80px)] flex flex-col justify-center items-center md:flex-row md:justify-between tracking-wider"
   >
-    <div class="w-full md:w-1/2 mb-8 md:mb-0">
+    <div class="w-full md:w-1/2 flex flex-col items-start justify-center mt-20 md:-mt-40">
       <BottomToTopSlideTransition>
         <p
           class="flex flex-col text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 tracking-wider leading-10"
         >
           <span class="text-accent-700 dark:text-accent-600">{{ t("Get Solutions") }}</span>
-          <span class="line-through decoration-4">{{
-              t("Not Confusion")
-            }}</span>
+          <span class="line-through decoration-4">{{ t("Not Confusion") }}</span>
         </p>
       </BottomToTopSlideTransition>
       <BottomToTopSlideTransition>
@@ -30,10 +28,8 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
         </h1>
       </BottomToTopSlideTransition>
     </div>
-    <div class="w-full md:w-1/2 mt-10 md:mt-0 -ml-7">
-      <BottomToTopSlideTransition>
-        <BulbShape />
-      </BottomToTopSlideTransition>
+    <div class="w-full md:w-1/2 flex justify-center md:justify-end mt-8 md:mt-0">
+      <DotLottieVue :speed="1.3" class="w-auto h-96" autoplay src="/bulb.json" />
     </div>
   </section>
 </template>
