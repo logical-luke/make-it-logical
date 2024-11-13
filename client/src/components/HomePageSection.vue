@@ -8,6 +8,7 @@ interface Props {
   title?: string;
   linkTarget?: string;
   linkText?: string;
+  imagePosition?: "left" | "right";
 }
 
 defineProps<Props>();
@@ -21,10 +22,23 @@ defineProps<Props>();
     >
       {{ t(title) }}
     </h2>
-    <slot></slot>
+    <div :class="['flex', 'flex-col', imagePosition === 'left' ? 'md:flex-row-reverse' : 'md:flex-row', 'md:items-start', 'md:justify-between']">
+      <div class="flex flex-col gap-4 md:gap-6 md:text-lg mb-6 max-w-4xl">
+        <slot></slot>
+        <div
+          v-if="linkTarget && linkText"
+          class="flex justify-center pt-6 pb-4 md:hidden"
+        >
+          <LinkItem :to="linkTarget" :text="linkText" />
+        </div>
+      </div>
+      <div :class="['w-full', 'md:w-1/3', 'mt-4', 'md:mt-0']">
+        <slot name="image"></slot>
+      </div>
+    </div>
     <div
       v-if="linkTarget && linkText"
-      class="flex justify-center pt-14 pb-10 md:pt-20 md:pb-8"
+      class="hidden md:flex justify-center pt-6 pb-4 md:pt-8 md:pb-6"
     >
       <LinkItem :to="linkTarget" :text="linkText" />
     </div>

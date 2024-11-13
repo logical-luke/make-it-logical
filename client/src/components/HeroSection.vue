@@ -2,7 +2,7 @@
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();
-import { DotLottieVue } from '@lottiefiles/dotlottie-vue'
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 </script>
 
@@ -28,10 +28,8 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
         </h1>
       </BottomToTopSlideTransition>
     </div>
-    <div class="w-full md:w-1/2 flex">
+    <div class="w-full md:w-1/2 flex justify-center md:justify-end">
       <DotLottieVue :speed="1.4" class="w-auto h-96" autoplay src="/bulb.json" />
     </div>
   </section>
 </template>
-
-<style scoped></style>

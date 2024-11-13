@@ -42,7 +42,7 @@ const isExpanded = (key: string, type: "group" | "item") =>
 </script>
 
 <template>
-  <div class="flex flex-col gap-10 max-w-4xl">
+  <div class="flex flex-col gap-12 max-w-4xl">
     <template v-if="grouped">
       <div
         v-for="(group, groupIndex) in items as Group[]"
