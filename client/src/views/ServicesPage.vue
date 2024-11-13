@@ -37,7 +37,6 @@ const services = ref([
       { text: t("Online store with live inventory tracking") },
       { text: t("Order and delivery app for food services") },
       { text: t("AI-powered data analysis tool for fintech") },
-      { text: t("Blockchain-based supply chain tracking system") },
       { text: t("Automated software testing tool for healthcare") },
       { text: t("Customer database and communication system for finance") },
       { text: t("Booking and sales management for hospitality") },
@@ -77,8 +76,6 @@ const services = ref([
       { text: t("E-commerce UX audit and improvement") },
       { text: t("Accessible public services website redesign") },
       { text: t("Fitness tracking app interface design") },
-      { text: t("Team collaboration tool workflow optimization") },
-      { text: t("VR employee training program demo") },
     ],
     suitableFor: t(
       "Boosting user engagement and conversions in websites or web apps."
@@ -108,9 +105,7 @@ const services = ref([
     ],
     applicationExamples: [
       { text: t("High-traffic website speed optimization") },
-      { text: t("Online banking security reinforcement") },
       { text: t("Database efficiency boost for analytics") },
-      { text: t("Food ordering app responsiveness upgrade") },
       { text: t("Legacy system code modernization") },
     ],
     suitableFor: t(
@@ -141,10 +136,8 @@ const services = ref([
     ],
     applicationExamples: [
       { text: t("Manufacturing software cloud migration") },
-      { text: t("Government agency system modernization") },
       { text: t("Law firm case management cloud transition") },
       { text: t("Hybrid cloud setup for retail chains") },
-      { text: t("Credit union member management system upgrade") },
       { text: t("E-commerce platform scalability improvement") },
       { text: t("Logistics tracking system cloud overhaul") },
     ],

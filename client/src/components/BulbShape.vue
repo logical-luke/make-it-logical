@@ -16,8 +16,8 @@ const glitchOpacity = ref<number[]>(paths.map(() => 1));
 const bulbVisible = ref(false);
 const glowIntensity = ref(0);
 
-const stopOpacity = computed(() => Math.sin(bulbVisible.value ? 0.45 : 0.1));
-const glowRadius = computed(() => 430 * glowIntensity.value);
+const stopOpacity = computed(() => Math.sin(bulbVisible.value ? 0.65 : 0.05));
+const glowRadius = computed(() => 410 * glowIntensity.value);
 
 let animationFrameId: number | null = null;
 let lastGlitchTime = 0;
@@ -39,7 +39,6 @@ const animate = (timestamp: number) => {
   bulbVisible.value = currentState.bulbVisible;
   glowIntensity.value = currentState.glowIntensity;
 
-  // Glitch effect
   if (timestamp - lastGlitchTime >= glitchInterval) {
     lastGlitchTime = timestamp;
     if (bulbVisible.value && glowIntensity.value > 0) {
@@ -76,7 +75,7 @@ onUnmounted(() => {
       id="svg1"
       viewBox="0 0 1200 1200"
       xmlns="http://www.w3.org/2000/svg"
-      class="bulb-svg text-black dark:text-gray-100 rotate-animation origin-center"
+      class="bulb-svg dark:text-gray-100 rotate-animation origin-center"
     >
       <defs>
         <filter id="glow">
@@ -95,8 +94,7 @@ onUnmounted(() => {
           fy="50%"
         >
           <stop
-            offset="10%"
-            stop-color="currentColor"
+            stop-color="#ffd900"
             :stop-opacity="stopOpacity"
           />
           <stop offset="100%" stop-color="currentColor" stop-opacity="0" />
@@ -146,7 +144,7 @@ onUnmounted(() => {
 }
 
 .glow-effect {
-  animation: pulse 2.3s cubic-bezier(0.4, 0.2, 0.6, 0.8) infinite;
+  animation: pulse 1.8s cubic-bezier(0.4, 0.2, 0.6, 0.8) infinite;
   transition: all 200ms ease-in-out;
 }
 

@@ -76,7 +76,7 @@ watch(mobileMenuOpen, (newValue) => {
   <header
     v-show="isNavVisible"
     :class="[
-      'bg-gray-100 dark:bg-zinc-900 py-6 px-6 fixed w-full z-40 h-20',
+      'bg-primary dark:bg-primary-dark py-6 px-6 fixed w-full z-40 h-20',
       'transition-shadow duration-700 ease-in-out',
       { 'shadow-md': !isAtTop && !mobileMenuOpen },
     ]"
@@ -155,7 +155,7 @@ watch(mobileMenuOpen, (newValue) => {
   >
     <div
       v-if="mobileMenuOpen"
-      class="fixed inset-0 z-30 bg-gray-100 dark:bg-zinc-900 md:hidden"
+      class="fixed inset-0 z-30 bg-primary dark:bg-primary-dark md:hidden"
     >
       <div class="flex flex-col h-full pt-20 px-6">
         <nav class="mt-8">

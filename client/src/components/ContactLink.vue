@@ -22,7 +22,7 @@ defineProps<Props>();
 
 <template>
   <p
-    class="text-gray-600 dark:text-gray-300 mb-2"
+    class="text-accent-700 dark:text-accent-600 mb-2"
     :class="bigger ? 'text-5xl md:text-6xl' : 'text-3xl md:text-4xl'"
   >
     {{ t("Let's Talk") }}

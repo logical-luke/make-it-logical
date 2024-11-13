@@ -15,7 +15,7 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
         <p
           class="flex flex-col text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 tracking-wider leading-10"
         >
-          <span>{{ t("Get Solutions") }}</span>
+          <span class="text-accent-700 dark:text-accent-600">{{ t("Get Solutions") }}</span>
           <span class="line-through decoration-4">{{
             t("Not Confusion")
           }}</span>
@@ -25,7 +25,7 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
         <h1
           class="flex flex-col font-semibold text-lg md:text-3xl lg:text-4xl tracking-wider"
         >
-          <span class="text-primary font-normal">{{ t("We build") }}</span>
+          <span class="font-normal">{{ t("We build") }}</span>
           {{ t("web apps & websites") }}
         </h1>
       </BottomToTopSlideTransition>
