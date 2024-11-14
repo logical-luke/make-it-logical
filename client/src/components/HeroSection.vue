@@ -21,7 +21,7 @@ defineProps<{
         <p
           class="flex flex-col text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 tracking-wider leading-10"
         >
-          <span class="text-accent-700 dark:text-accent-600">{{ texts.getSolutions }}</span>
+          <span class="text-accent-800 dark:text-accent-600">{{ texts.getSolutions }}</span>
           <span class="line-through decoration-4">{{ texts.notConfusion }}</span>
         </p>
         <h1
