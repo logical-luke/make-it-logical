@@ -6,6 +6,7 @@ import ThemeToggleButton from "@/components/ThemeToggleButton.vue";
 import MenuIcon from "@/components/MenuIcon.vue";
 import CloseIcon from "@/components/CloseIcon.vue";
 import ContactLink from "@/components/ContactLink.vue";
+import LogoImage from "@/components/LogoImage.vue";
 
 const route = useRoute();
 const lastScrollTop = ref(0);
@@ -80,14 +81,7 @@ watch(mobileMenuOpen, (newValue) => {
     <div class="container mx-auto flex justify-between items-center">
       <RouterLink to="/" class="flex-shrink-0">
         <div class="flex items-center gap-4">
-          <img
-            src="/logo.svg"
-            height="40"
-            fetchPriority="high"
-            width="27"
-            alt="Make IT Logical Logo"
-            class="h-10 w-auto"
-          />
+          <LogoImage class="h-10 w-auto" />
           <span
             class="text-lg md:text-2xl font-bold"
           >
