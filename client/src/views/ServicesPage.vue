@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { ref, computed } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import BulletList from "@/components/BulletList.vue";
@@ -24,10 +24,8 @@ interface ServiceTexts {
 
 const texts = ref<ServiceTexts | null>(null);
 
-onMounted(async () => {
-  const response = await fetch("/servicesPageTexts.json");
-  texts.value = await response.json();
-});
+const response = await fetch("/servicesPageTexts.json");
+texts.value = await response.json();
 
 const serviceItems = computed(() => {
   if (!texts.value) return [];

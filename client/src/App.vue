@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import { onMounted, watch, defineAsyncComponent } from "vue";
+import { onMounted, watch, ref, defineAsyncComponent } from "vue";
 import { useRoute } from "vue-router";
 import NavigationBar from "@/components/NavigationBar.vue";
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 
 const route = useRoute();
 
@@ -62,7 +63,12 @@ watch(
             leave-from-class="opacity-100 translate-y-0"
             leave-to-class="opacity-5 translate-y-4"
           >
-            <Component :is="Component"></Component>
+            <Suspense>
+              <Component :is="Component"></Component>
+              <template #fallback>
+                <DotLottieVue :speed="1" class="w-auto h-64 md:h-96" autoplay loop src="/bulb-spinner.lottie" />
+              </template>
+            </Suspense>
           </Transition>
         </RouterView>
       </div>

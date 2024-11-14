@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref } from 'vue';
 import ServicesSection from "@/components/ServicesSection.vue";
 import HeroSection from "@/components/HeroSection.vue";
 import ProcessSection from "@/components/ProcessSection.vue";
@@ -32,10 +32,8 @@ interface HomePageTexts {
 
 const texts = ref<HomePageTexts | null>(null);
 
-onMounted(async () => {
-  const response = await fetch('/homePageTexts.json');
-  texts.value = await response.json();
-});
+const response = await fetch('/homePageTexts.json');
+texts.value = await response.json();
 </script>
 
 <template>

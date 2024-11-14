@@ -32,7 +32,7 @@ defineProps<{
         </h1>
     </div>
     <div class="w-full md:w-1/2 flex justify-center md:justify-end">
-      <DotLottieVue :speed="1.4" class="w-auto h-64 md:h-96" autoplay src="/bulb.json" />
+      <DotLottieVue :speed="1.4" class="w-auto h-64 md:h-96" autoplay src="/bulb.lottie" />
     </div>
   </section>
 </template>

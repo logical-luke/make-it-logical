@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import LinkItem from "@/components/LinkItem.vue";
@@ -26,10 +26,8 @@ interface PrivacyPageTexts {
 
 const texts = ref<PrivacyPageTexts | null>(null);
 
-onMounted(async () => {
-  const response = await fetch("/privacyPageTexts.json");
-  texts.value = await response.json();
-});
+const response = await fetch("/privacyPageTexts.json");
+texts.value = await response.json();
 </script>
 
 <template>

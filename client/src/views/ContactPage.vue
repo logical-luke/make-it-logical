@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import ContactLink from "@/components/ContactLink.vue";
 
 interface ContactPageTexts {
@@ -12,10 +12,8 @@ interface ContactPageTexts {
 
 const texts = ref<ContactPageTexts | null>(null);
 
-onMounted(async () => {
-  const response = await fetch("/contactPageTexts.json");
-  texts.value = await response.json();
-});
+const response = await fetch("/contactPageTexts.json");
+texts.value = await response.json();
 </script>
 
 <template>

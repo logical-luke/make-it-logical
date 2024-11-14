@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { ref, computed } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import BulletList from "@/components/BulletList.vue";
@@ -16,10 +16,8 @@ interface ProcessPageTexts {
 
 const texts = ref<ProcessPageTexts | null>(null);
 
-onMounted(async () => {
-  const response = await fetch("/processPageTexts.json");
-  texts.value = await response.json();
-});
+const response = await fetch("/processPageTexts.json");
+texts.value = await response.json();
 
 const processItems = computed(() => {
   if (!texts.value) return [];
