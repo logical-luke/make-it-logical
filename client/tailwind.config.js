@@ -7,9 +7,6 @@ export default {
   },
   theme: {
     extend: {
-      fontFamily: {
-        sans: ["\"Sinkin Sans\"", "sans-serif"]
-      },
       transitionDuration: {
         "1300": "2000ms",
         "1500": "2000ms",
