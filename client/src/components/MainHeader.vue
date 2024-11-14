@@ -1,21 +1,4 @@
 <script setup lang="ts">
-import { ref, inject, watch } from "vue";
-import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
-
-const transitionTrigger = inject("transitionTrigger", ref(0));
-const show = ref(false);
-
-watch(
-  transitionTrigger,
-  () => {
-    show.value = false;
-    setTimeout(() => {
-      show.value = true;
-    }, 0);
-  },
-  { immediate: true },
-);
-
 interface Props {
   text: string;
 }
@@ -24,11 +7,9 @@ defineProps<Props>();
 </script>
 
 <template>
-  <BottomToTopSlideTransition>
-    <h1
-      class="text-2xl tracking-wider leading-10 md:text-4xl font-semibold mb-8 max-w-4xl"
-    >
-      {{ text }}
-    </h1>
-  </BottomToTopSlideTransition>
+  <h1
+    class="text-2xl tracking-wider leading-10 md:text-4xl font-semibold mb-8 max-w-4xl"
+  >
+    {{ text }}
+  </h1>
 </template>

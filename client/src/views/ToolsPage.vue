@@ -3,7 +3,6 @@ import { ref, onMounted, computed } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
 import ExpandableList from "@/components/ExpandableList.vue";
-import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 
 interface Technology {
   name: string;
@@ -24,7 +23,7 @@ interface ToolsPageTexts {
 const texts = ref<ToolsPageTexts | null>(null);
 
 onMounted(async () => {
-  const response = await fetch('/toolsPageTexts.json');
+  const response = await fetch("/toolsPageTexts.json");
   texts.value = await response.json();
 });
 
@@ -77,11 +76,9 @@ const groupedTechnologies = computed(() => {
   <div v-if="texts">
     <MainHeader :text="texts.mainHeader" />
     <SubHeader :first="texts.subHeader.first" />
-    <BottomToTopSlideTransition>
-      <div v-for="group in groupedTechnologies" :key="group.name" class="mb-8 flex flex-col gap-8">
-        <h2 class="max-w-4xl text-2xl md:text-3xl font-bold text-gray-500 dark:text-gray-400">{{ group.name }}</h2>
-        <ExpandableList :items="group.items" :grouped="false" />
-      </div>
-    </BottomToTopSlideTransition>
+    <div v-for="group in groupedTechnologies" :key="group.name" class="mb-8 flex flex-col gap-8">
+      <h2 class="max-w-4xl text-2xl md:text-3xl font-bold text-gray-500 dark:text-gray-400">{{ group.name }}</h2>
+      <ExpandableList :items="group.items" :grouped="false" />
+    </div>
   </div>
 </template>

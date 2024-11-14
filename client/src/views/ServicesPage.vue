@@ -2,7 +2,6 @@
 import { ref, onMounted, computed } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
 import SubHeader from "@/components/SubHeader.vue";
-import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 import BulletList from "@/components/BulletList.vue";
 
 interface ServiceTexts {
@@ -26,7 +25,7 @@ interface ServiceTexts {
 const texts = ref<ServiceTexts | null>(null);
 
 onMounted(async () => {
-  const response = await fetch('/servicesPageTexts.json');
+  const response = await fetch("/servicesPageTexts.json");
   texts.value = await response.json();
 });
 
@@ -40,12 +39,12 @@ const serviceItems = computed(() => {
       {
         title: "What we do?",
         items: service.descriptionPoints.map((point) => ({ text: point })),
-        expandable: true,
+        expandable: true
       },
       { title: "What you get?", items: service.deliverables, expandable: true },
-      { title: "What is the result?", items: service.benefits, expandable: true },
+      { title: "What is the result?", items: service.benefits, expandable: true }
     ],
-    additionalInfo: service.suitableFor,
+    additionalInfo: service.suitableFor
   }));
 });
 </script>
@@ -55,13 +54,11 @@ const serviceItems = computed(() => {
     <section id="services">
       <MainHeader :text="texts.mainHeader" />
       <SubHeader :first="texts.subHeader" />
-      <BottomToTopSlideTransition>
-        <BulletList
-          :items="serviceItems"
-          :show-numbers="false"
-          additional-info-label="Ideal for:"
-        />
-      </BottomToTopSlideTransition>
+      <BulletList
+        :items="serviceItems"
+        :show-numbers="false"
+        additional-info-label="Ideal for:"
+      />
     </section>
     <section class="py-12 md:py-16">
       <h2
