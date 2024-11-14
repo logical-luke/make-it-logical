@@ -1,9 +1,17 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
+
+interface HeroSectionTexts {
+  getSolutions: string;
+  notConfusion: string;
+  weBuild: string;
+  webAppsAndWebsites: string;
+}
+
+defineProps<{
+  texts: HeroSectionTexts;
+}>();
 </script>
 
 <template>
@@ -15,16 +23,16 @@ import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.
         <p
           class="flex flex-col text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 tracking-wider leading-10"
         >
-          <span class="text-accent-700 dark:text-accent-600">{{ t("Get Solutions") }}</span>
-          <span class="line-through decoration-4">{{ t("Not Confusion") }}</span>
+          <span class="text-accent-700 dark:text-accent-600">{{ texts.getSolutions }}</span>
+          <span class="line-through decoration-4">{{ texts.notConfusion }}</span>
         </p>
       </BottomToTopSlideTransition>
       <BottomToTopSlideTransition>
         <h1
           class="flex flex-col font-semibold text-lg md:text-3xl lg:text-4xl tracking-wider"
         >
-          <span class="font-normal">{{ t("We build") }}</span>
-          {{ t("web apps & websites") }}
+          <span class="font-normal">{{ texts.weBuild }}</span>
+          {{ texts.webAppsAndWebsites }}
         </h1>
       </BottomToTopSlideTransition>
     </div>

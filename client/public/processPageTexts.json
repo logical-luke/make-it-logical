@@ -1,0 +1,56 @@
+{
+  "mainHeader": "Agile Web Development Process",
+  "subHeader": "From concept to continuous improvement, we drive sustainable growth through innovative digital solutions.",
+  "processSteps": [
+    {
+      "label": "Discover",
+      "descriptionPoints": [
+        "Analyze business goals and market position",
+        "Identify growth opportunities and challenges",
+        "Define target audience and user needs",
+        "Translate vision into technical requirements"
+      ],
+      "details": "Transform your vision into actionable tech strategies. We align every aspect of the solution with your business objectives."
+    },
+    {
+      "label": "Design",
+      "descriptionPoints": [
+        "Create user-centric interface designs",
+        "Develop intuitive information architecture",
+        "Optimize user flows for engagement",
+        "Ensure cross-platform consistency"
+      ],
+      "details": "Craft interfaces that captivate and convert. We prioritize user experience to boost engagement and retention."
+    },
+    {
+      "label": "Develop",
+      "descriptionPoints": [
+        "Build scalable, robust software solutions",
+        "Implement secure, efficient backend systems",
+        "Create responsive, high-performance frontends",
+        "Integrate necessary third-party services"
+      ],
+      "details": "Transform designs into powerful digital realities. We build flexible systems that grow with your business."
+    },
+    {
+      "label": "Deploy",
+      "descriptionPoints": [
+        "Conduct thorough testing and quality assurance",
+        "Implement smooth deployment processes",
+        "Provide user training and documentation",
+        "Ensure seamless launch support"
+      ],
+      "details": "Execute impactful launches that deliver immediate value. We maximize the ROI of your digital investment from day one."
+    },
+    {
+      "label": "Optimize",
+      "descriptionPoints": [
+        "Monitor system performance and user behavior",
+        "Analyze feedback for continuous improvement",
+        "Implement data-driven enhancements",
+        "Provide ongoing maintenance and security updates"
+      ],
+      "details": "Continuously refine and evolve your solution. We ensure your digital assets remain cutting-edge and effective."
+    }
+  ]
+}

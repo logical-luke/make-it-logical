@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
 import LinkItem from "@/components/LinkItem.vue";
 
 interface Props {
@@ -20,7 +17,7 @@ defineProps<Props>();
       v-if="title"
       class="max-w-4xl text-gray-500 dark:text-gray-400 text-2xl md:text-4xl font-bold mb-8"
     >
-      {{ t(title) }}
+      {{ title }}
     </h2>
     <div :class="['flex', 'flex-col', imagePosition === 'left' ? 'md:flex-row-reverse' : 'md:flex-row', 'md:items-start', 'md:justify-between']">
       <div class="flex flex-col gap-4 md:gap-6 md:text-lg mb-6 max-w-4xl">

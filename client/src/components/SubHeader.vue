@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 
 interface Props {
@@ -19,10 +16,10 @@ defineProps<Props>();
         class="text-xl md:text-2xl mb-4 max-w-4xl"
         :class="second ? 'font-semibold' : ''"
       >
-        {{ t(first) }}
+        {{ first }}
       </h2>
       <p v-if="second" class="text-lg md:text-xl mb-2 max-w-4xl">
-        {{ t(second) }}
+        {{ second }}
       </p>
     </div>
   </BottomToTopSlideTransition>

@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-
-const { t } = useI18n();
-
 import LinkItem from "@/components/LinkItem.vue";
 import { event } from "vue-gtag";
 
@@ -25,7 +21,7 @@ defineProps<Props>();
     class="text-accent-700 dark:text-accent-600 mb-2"
     :class="bigger ? 'text-5xl md:text-6xl' : 'text-3xl md:text-4xl'"
   >
-    {{ t("Let's Talk") }}
+    Let's Talk
   </p>
   <LinkItem
     :disable-icon="true"

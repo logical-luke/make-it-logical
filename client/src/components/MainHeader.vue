@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
-const { t } = useI18n();
 import { ref, inject, watch } from "vue";
 import BottomToTopSlideTransition from "@/components/BottomToTopSlideTransition.vue";
 
@@ -30,7 +28,7 @@ defineProps<Props>();
     <h1
       class="text-2xl tracking-wider leading-10 md:text-4xl font-semibold mb-8 max-w-4xl"
     >
-      {{ t(text) }}
+      {{ text }}
     </h1>
   </BottomToTopSlideTransition>
 </template>

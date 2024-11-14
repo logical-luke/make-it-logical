@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import { RouterLink } from "vue-router";
 
-const { t } = useI18n();
 import ArrowRightIcon from "@/components/ArrowRightIcon.vue";
 
 interface Props {
@@ -62,7 +60,7 @@ const linkSize =
             : underLineClasses,
         ]"
       >
-        {{ t(text) }}
+        {{ text }}
       </span>
       <ArrowRightIcon v-if="!disableIcon" class="h-5 -ml-3" />
     </RouterLink>
@@ -87,7 +85,7 @@ const linkSize =
             : underLineClasses,
         ]"
       >
-        {{ t(text) }}
+        {{ text }}
       </span>
     </a>
   </div>

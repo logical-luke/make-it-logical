@@ -1,0 +1,60 @@
+{
+  "heroSection": {
+    "getSolutions": "Get Solutions",
+    "notConfusion": "Not Confusion",
+    "weBuild": "We build",
+    "webAppsAndWebsites": "web apps & websites"
+  },
+  "servicesSection": {
+    "mainText": "User-centric digital experiences drive business growth.",
+    "linkText": "Explore Services",
+    "services": [
+      {
+        "title": "Web App & Website Development",
+        "additionalInfo": "Scalable, high-performing solutions that evolve with your ambitions. We dive deep into your challenges, creating systems that streamline processes and revolutionize operations. Our focus on quality and security forms the bedrock of every product, freeing you to drive your business forward.",
+        "tag": "Automate processes & boost productivity"
+      },
+      {
+        "title": "User Experience (UX) Design",
+        "additionalInfo": "We immerse in your users' world, uncovering needs and pain points. This insight drives our design process, resulting in interfaces tailored for your audience. Through collaboration and refinement, we ensure every interaction delights. The outcome? A digital experience that fosters loyalty, setting you apart in a crowded market.",
+        "tag": "Increase user satisfaction & retention"
+      },
+      {
+        "title": "Fixes & Enhancements",
+        "additionalInfo": "Keep your applications ahead of the curve. Regular audits uncover hidden potential, leading to strategic enhancements. This proactive approach boosts performance, increases user satisfaction, and unlocks new capabilities. Your software becomes a dynamic asset, adapting to emerging market opportunities.",
+        "tag": "Continuous improvements for competitive edge"
+      },
+      {
+        "title": "System Modernization & Cloud Migration",
+        "additionalInfo": "Propel your infrastructure into the future. We preserve valuable business logic while upgrading to cutting-edge architectures and cloud solutions. This transformation enhances performance, scalability, and efficiency. Gain access to advanced data analysis, seamless remote work, and rapid deployment. Convert technological debt into a competitive advantage.",
+        "tag": "Improve scalability & reduce costs"
+      }
+    ]
+  },
+  "processSection": {
+    "mainText": "A comprehensive transformation process maximizes your potential.",
+    "linkText": "Discover Process",
+    "processSteps": [
+      {
+        "label": "Discover",
+        "additionalInfo": "Your vision becomes actionable tech strategy. Dive deep into business goals, market position, and user needs. Uncover growth opportunities and challenges. Emerge with clear, focused technical requirements aligned with your objectives."
+      },
+      {
+        "label": "Design",
+        "additionalInfo": "Captivating interfaces that drive conversions. User-centric designs meet intuitive information architecture. Optimized flows and cross-platform consistency maximize engagement. Early prototyping and testing ensure satisfaction and efficiency."
+      },
+      {
+        "label": "Develop",
+        "additionalInfo": "Witness designs transform into powerful digital realities. Scalable, robust solutions take shape with secure backends and responsive frontends. Seamless third-party integrations create flexible systems, ready to grow alongside your business."
+      },
+      {
+        "label": "Deploy",
+        "additionalInfo": "Experience impactful launches delivering immediate value. Rigorous testing and smooth deployment processes set the stage. Comprehensive training ensures adoption. Proactive monitoring safeguards against issues, maximizing your digital investment from day one."
+      },
+      {
+        "label": "Optimize",
+        "additionalInfo": "Keep your solution at the cutting edge. Continuous monitoring of performance and user behavior drives data-driven enhancements. Regular updates prioritize business impact and user needs, ensuring your digital assets evolve with market demands."
+      }
+    ]
+  }
+}

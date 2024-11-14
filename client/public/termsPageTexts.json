@@ -1,0 +1,85 @@
+{
+  "mainHeader": "Terms and Conditions",
+  "subHeader": {
+    "first": "In our commitment to transparency and clarity, we present our comprehensive terms and conditions.",
+    "second": "These guidelines are designed to ensure a logical and straightforward understanding of our mutual obligations."
+  },
+  "termsOfService": [
+    {
+      "title": "Introduction",
+      "content": [
+        "These terms and conditions outline the rules and regulations for using Make IT Logical's Website and Services.",
+        "By accessing our Website or using our Services, we assume you accept these terms and conditions. Do not continue to use Make IT Logical if you do not agree to take all of the terms and conditions stated on this page."
+      ]
+    },
+    {
+      "title": "Definitions",
+      "content": ["For the purposes of these Terms and Conditions:"],
+      "definitions": [
+        {
+          "term": "Company",
+          "description": "(referred to as either \"the Company\", \"We\", \"Us\" or \"Our\" in this Agreement) Make IT Logical, registered as Łukasz Ziaja, al. Wiśniowa 36a/304 53-137 Wrocław, Poland"
+        },
+        {
+          "term": "Service",
+          "description": "Refers to the Website https://makeitlogical.io and any software development services provided by the Company"
+        },
+        {
+          "term": "Website",
+          "description": "The website operated by Make IT Logical, accessible from https://makeitlogical.io"
+        },
+        {
+          "term": "You",
+          "description": "The individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service"
+        }
+      ]
+    },
+    {
+      "title": "Use of Service",
+      "content": [
+        "Our Service may contain links to third-party web sites or services that are not owned or controlled by Make IT Logical. The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party web sites or services.",
+        "You further acknowledge and agree that Make IT Logical shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods or services available on or through any such web sites or services."
+      ]
+    },
+    {
+      "title": "Intellectual Property",
+      "content": [
+        "Unless otherwise stated, Make IT Logical and/or its licensors own the intellectual property rights for all material on the Website and in the Services provided. All intellectual property rights are reserved."
+      ],
+      "list": [
+        "You may view and/or print pages from the Website for your own personal use subject to restrictions set in these terms and conditions.",
+        "You must not use any part of the content on our Website for commercial purposes without obtaining a license to do so from us or our licensors."
+      ]
+    },
+    {
+      "title": "Limitation of Liability",
+      "content": [
+        "To the fullest extent permitted by applicable law, in no event will Make IT Logical, its affiliates, officers, directors, employees, agents, suppliers or licensors be liable for any indirect, special, incidental, punitive, exemplary or consequential damages of any kind arising from or relating to these terms or your use of the Services."
+      ]
+    },
+    {
+      "title": "Changes to Service",
+      "content": [
+        "We reserve the right to withdraw or amend our Service, and any service or material we provide via the Service, in our sole discretion without notice. We will not be liable if for any reason all or any part of the Service is unavailable at any time or for any period."
+      ]
+    },
+    {
+      "title": "Amendments to Terms",
+      "content": [
+        "We may amend these Terms at any time by posting the amended terms on this site. It is your responsibility to review these Terms periodically."
+      ]
+    }
+  ],
+  "contactUs": {
+    "title": "Contact Us",
+    "content": "If you have any questions or suggestions about our Terms and Conditions, do not hesitate to contact us:",
+    "email": {
+      "label": "By email:",
+      "value": "office@makeitlogical.io"
+    },
+    "phone": {
+      "label": "By phone:",
+      "value": "+48 696 606 391"
+    }
+  }
+}
