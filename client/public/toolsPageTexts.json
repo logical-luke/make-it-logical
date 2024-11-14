@@ -1,8 +1,5 @@
 {
   "mainHeader": "Cutting-Edge Tech Stack",
-  "subHeader": {
-    "first": "Empowering your digital vision with a comprehensive suite of modern technologies and platforms."
-  },
   "technologies": [
     {
       "name": "JavaScript",

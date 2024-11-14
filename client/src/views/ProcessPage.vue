@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
-import SubHeader from "@/components/SubHeader.vue";
 import BulletList from "@/components/BulletList.vue";
 
 interface ProcessPageTexts {
   mainHeader: string;
-  subHeader: string;
   processSteps: Array<{
     label: string;
     descriptionPoints: string[];
@@ -35,7 +33,6 @@ const processItems = computed(() => {
 <template>
   <section v-if="texts" id="process">
     <MainHeader :text="texts.mainHeader" />
-    <SubHeader :first="texts.subHeader" />
     <div class="flex flex-col gap-4 max-w-4xl">
       <BulletList :items="processItems" :show-numbers="true" />
     </div>

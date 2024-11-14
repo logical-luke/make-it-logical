@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
-import SubHeader from "@/components/SubHeader.vue";
 
 interface AboutUsPageTexts {
   mainHeader: string;
-  missionStatement: string;
   approach: {
     title: string;
     description: string;
@@ -33,7 +31,6 @@ texts.value = await response.json();
 <template>
   <section v-if="texts" class="about-page">
     <MainHeader :text="texts.mainHeader" />
-    <SubHeader :first="texts.missionStatement" />
 
     <div class="mt-12 md:mt-16">
       <h2 class="mb-6 max-w-4xl text-2xl md:text-3xl font-bold text-gray-500 dark:text-gray-400">{{ texts.approach.title

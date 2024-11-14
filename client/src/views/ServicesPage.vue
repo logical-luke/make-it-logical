@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import MainHeader from "@/components/MainHeader.vue";
-import SubHeader from "@/components/SubHeader.vue";
 import BulletList from "@/components/BulletList.vue";
 
 interface ServiceTexts {
   mainHeader: string;
-  subHeader: string;
   whyPartnerWithUs: string;
   services: Array<{
     title: string;
@@ -51,7 +49,6 @@ const serviceItems = computed(() => {
   <div v-if="texts">
     <section id="services">
       <MainHeader :text="texts.mainHeader" />
-      <SubHeader :first="texts.subHeader" />
       <BulletList
         :items="serviceItems"
         :show-numbers="false"
