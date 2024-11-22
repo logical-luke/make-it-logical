@@ -55,7 +55,7 @@ const isExpanded = (key: string, type: "group" | "item") =>
         >
           <div class="flex-shrink-0 mr-3">
             <ArrowRightIcon
-              class="h-5 w-5 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-all duration-200"
+              class="h-6 w-6 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-all duration-200"
               :class="[
                 isExpanded(groupIndex.toString(), 'group')
                   ? '-rotate-90 group-hover:translate-y-0.5'
@@ -86,7 +86,7 @@ const isExpanded = (key: string, type: "group" | "item") =>
               >
                 <div class="flex-shrink-0 mr-3">
                   <ArrowRightIcon
-                    class="h-4 w-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-200"
+                    class="h-5 w-5 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-200"
                     :class="[
                       isExpanded(`${groupIndex}-${itemIndex}`, 'item')
                         ? '-rotate-90 group-hover:translate-y-0.5'
@@ -151,7 +151,7 @@ const isExpanded = (key: string, type: "group" | "item") =>
         >
           <div class="flex-shrink-0 mr-3">
             <ArrowRightIcon
-              class="h-4 w-4 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-200"
+              class="h-5 w-5 fill-gray-400 group-hover:fill-gray-800 dark:fill-gray-400 dark:group-hover:fill-gray-200 transition-transform duration-200"
               :class="[
                 isExpanded(index.toString(), 'item')
                   ? '-rotate-90 group-hover:translate-y-0.5'

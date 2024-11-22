@@ -62,7 +62,7 @@ const linkSize =
       >
         {{ text }}
       </span>
-      <ArrowRightIcon v-if="!disableIcon" class="h-5 -ml-3" />
+      <ArrowRightIcon v-if="!disableIcon" class="h-5 -ml-2" />
     </RouterLink>
     <a
       v-else

@@ -31,9 +31,9 @@ const serviceItems = computed(() => {
   return texts.value.services.map((service) => ({
     title: service.title,
     sublists: [
-      { title: "Example projects", items: service.applicationExamples },
+      { title: "Example projects:", items: service.applicationExamples },
       {
-        title: "What we do?",
+        title: "What I do?",
         items: service.descriptionPoints.map((point) => ({ text: point })),
         expandable: true
       },

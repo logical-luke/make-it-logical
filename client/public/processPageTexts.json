@@ -1,15 +1,15 @@
 {
-  "mainHeader": "From concept to continuous improvement, we drive sustainable growth through innovative digital solutions",
+  "mainHeader": "From concept to continuous improvement, I drive sustainable growth through innovative digital solutions",
   "processSteps": [
     {
       "label": "Discover",
       "descriptionPoints": [
-        "Analyze business goals and market position",
+        "Analyze your business goals and market position",
         "Identify growth opportunities and challenges",
         "Define target audience and user needs",
-        "Translate vision into technical requirements"
+        "Translate your vision into technical requirements"
       ],
-      "details": "Transform your vision into actionable tech strategies. We align every aspect of the solution with your business objectives."
+      "details": "I transform your vision into actionable tech strategies, aligning every aspect of the solution with your business objectives."
     },
     {
       "label": "Design",
@@ -19,7 +19,7 @@
         "Optimize user flows for engagement",
         "Ensure cross-platform consistency"
       ],
-      "details": "Craft interfaces that captivate and convert. We prioritize user experience to boost engagement and retention."
+      "details": "Crafting interfaces that captivate and convert, I prioritize user experience to boost engagement and retention."
     },
     {
       "label": "Develop",
@@ -29,7 +29,7 @@
         "Create responsive, high-performance frontends",
         "Integrate necessary third-party services"
       ],
-      "details": "Transform designs into powerful digital realities. We build flexible systems that grow with your business."
+      "details": "Transforming designs into powerful digital realities, I build flexible systems that grow with your business."
     },
     {
       "label": "Deploy",
@@ -39,7 +39,7 @@
         "Provide user training and documentation",
         "Ensure seamless launch support"
       ],
-      "details": "Execute impactful launches that deliver immediate value. We maximize the ROI of your digital investment from day one."
+      "details": "Executing impactful launches that deliver immediate value, I maximize the ROI of your digital investment from day one."
     },
     {
       "label": "Optimize",
@@ -49,7 +49,7 @@
         "Implement data-driven enhancements",
         "Provide ongoing maintenance and security updates"
       ],
-      "details": "Continuously refine and evolve your solution. We ensure your digital assets remain cutting-edge and effective."
+      "details": "Continuously refining and evolving your solution, I ensure your digital assets remain cutting-edge and effective."
     }
   ]
 }
