@@ -74,7 +74,7 @@ const groupedTechnologies = computed(() => {
   <div v-if="texts">
     <MainHeader :text="texts.mainHeader" />
     <div v-for="group in groupedTechnologies" :key="group.name" class="mb-8 flex flex-col gap-8">
-      <h2 class="max-w-4xl text-2xl md:text-3xl font-bold text-gray-500 dark:text-gray-400">{{ group.name }}</h2>
+      <h2 class="max-w-4xl text-2xl md:text-3xl font-bold text-accent-800 dark:text-accent-600">{{ group.name }}</h2>
       <ExpandableList :items="group.items" :grouped="false" />
     </div>
   </div>

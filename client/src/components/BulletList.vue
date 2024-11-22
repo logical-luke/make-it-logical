@@ -51,13 +51,7 @@ const isExpanded = (itemTitle: string, index: number) => {
             <div v-if="showNumbers" class="text-gray-500 dark:text-gray-400">
               {{ index + 1 }}.
             </div>
-            <h3
-              :class="
-                showNumbers
-                  ? 'text-gray-800 dark:text-gray-100'
-                  : 'text-gray-500 dark:text-gray-400'
-              "
-            >
+            <h3 class="text-accent-800 dark:text-accent-600">
               {{ item.title }}
             </h3>
           </div>
