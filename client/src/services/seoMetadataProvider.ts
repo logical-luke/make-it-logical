@@ -10,9 +10,9 @@ export function getPageTitle(route: RouteLocationNormalized): string {
     case "/process":
       return `Agile Web Development Process | ${baseTitle}`;
     case "/about":
-      return `About Our Web Development Agency | ${baseTitle}`;
+      return `About My Web Development Approach | ${baseTitle}`;
     case "/contact":
-      return `Contact Us for Web Development Solutions | ${baseTitle}`;
+      return `Contact Me for Web Development Solutions | ${baseTitle}`;
     case "/terms":
       return `Terms of Service | ${baseTitle}`;
     case "/tools":
@@ -27,22 +27,22 @@ export function getPageTitle(route: RouteLocationNormalized): string {
 export function getMetaDescription(route: RouteLocationNormalized): string {
   switch (route.path) {
     case "/":
-      return "Empower your business with custom web apps and websites. We deliver tailored solutions that drive growth and innovation for companies of all sizes.";
+      return "Empower your business with custom web apps and websites. I deliver tailored solutions that drive growth and innovation for companies of all sizes.";
     case "/services":
-      return "Boost your digital presence with our web development and UX design services. We create powerful, user-centric solutions to meet your business goals.";
+      return "Boost your digital presence with my web development and UX design services. I create powerful, user-centric solutions to meet your business goals.";
     case "/process":
-      return "Discover our agile web development process. From concept to launch, we ensure efficient delivery of high-quality digital solutions tailored to your needs.";
+      return "Discover my agile web development process. From concept to launch, I ensure efficient delivery of high-quality digital solutions tailored to your needs.";
     case "/about":
-      return "Learn about our web development agency. We combine technical expertise with a client-centric approach to deliver innovative digital solutions.";
+      return "Learn about my web development approach. I combine technical expertise with a client-centric focus to deliver innovative digital solutions.";
     case "/contact":
-      return "Ready to transform your digital presence? Contact us for expert web development and UX design services tailored to your business needs.";
+      return "Ready to transform your digital presence? Contact me for expert web development and UX design services tailored to your business needs.";
     case "/terms":
-      return "Review our terms of service for web development projects. Clear guidelines ensure a smooth partnership and protect both parties' interests.";
+      return "Review my terms of service for web development projects. Clear guidelines ensure a smooth partnership and protect both parties' interests.";
     case "/tools":
-      return "Explore our cutting-edge web development tech stack. We use the latest technologies to build fast, scalable, and secure digital solutions.";
+      return "Explore the cutting-edge web development tech stack I use. I leverage the latest technologies to build fast, scalable, and secure digital solutions.";
     case "/privacy":
-      return "Read our privacy policy. We're committed to protecting your data and ensuring compliance with data protection laws in all our operations.";
+      return "Read my privacy policy. I'm committed to protecting your data and ensuring compliance with data protection laws in all my operations.";
     default:
-      return "Page not found. Explore our site for custom web development solutions that drive business growth and enhance user experiences.";
+      return "Page not found. Explore my site for custom web development solutions that drive business growth and enhance user experiences.";
   }
 }
